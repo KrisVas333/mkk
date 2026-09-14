@@ -60,6 +60,6 @@ Pirmas veikiantis MKK prototipas. Vietinis, be jokio viešo paviršiaus.
 - Podcast'ų balsas — Kraist (AI Kris'o balso versija), **ear-check dar nedarytas**.
 - Mokėjimai, kodų tikrinimas serveryje, sinchronizacija tarp įrenginių — nėra ir nebuvo plane.
 
-## v0.1.1 — 2026-09-15 03:40 (critic FIX-THEN-SHIP → 5 one-line fixes)
+## v0.1.1 — 2026-09-15 02:05 (critic FIX-THEN-SHIP → 5 one-line fixes)
 - config.json: curriculum claim hedged (⚠️ „dar tikrinu su šaltiniais") — its source was never opened; `coiLong` typo bendraįkūrėjis→bendraįkūrėjas.
 - app.js: myth cards no longer double-quoted; internal `needs-ear-check` flag rendered as a human ⚠️ line; 5/5 in the memory game gets its own honest message (100 % ≠ 70–90 % zone).
