@@ -354,7 +354,7 @@
     if (cat === 'mitai') {
       T.myths.forEach(function (m) {
         h += '<div class="item"><h3><span>' + esc(m.name) + '</span>' + evBadge('X') + '</h3>' +
-          '<p class="how muted">„' + esc(m.claim) + '“</p>' +
+          '<p class="how muted">' + esc(m.claim) + '</p>' +
           '<p class="how">' + esc(m.truth) + '</p>' +
           '<div class="prac"><b>Vietoj to:</b> ' + esc(m.instead) + '</div>' +
           '<p class="meta">' + esc(m.src) + '</p></div>';
@@ -586,7 +586,7 @@
         h += '<p class="big">🎙 įrašoma</p>';
       }
       h += '<hr class="sep"><p class="lbl">Tekstas</p><p class="sm" style="white-space:pre-line">' + esc(pc.script || '') + '</p>';
-      if (pc.status) h += '<p class="meta">' + esc(pc.status) + '</p>';
+      if (pc.status === 'needs-ear-check') h += '<p class="meta">⚠️ Įrašas dar nepatikrintas Kristijono ausimi.</p>';
     }
     h += '<hr class="sep"><p class="lbl">Ką prisimeni?</p>' +
       '<p class="xs muted">Vienas paspaudimas. Ne pažymys — tik tavo paties patikrinimas.</p><div class="btnrow">' +
@@ -694,7 +694,7 @@
         h += '<div class="cell ' + cls + '">' + esc(x) + '</div>';
       });
       h += '</div>';
-      h += '<p class="sm">' + (right >= 4 ? 'Geras lygis. Tarp 70 ir 90 % teisingų — ten, kur treniruotė dar yra treniruotė.' :
+      h += '<p class="sm">' + (right === 5 ? 'Visi penki. Jei taip bus ir rytoj — laikas sunkesnio lygio: treniruotė veikia, kai pataikai 70–90 %, ne 100 %.' : right >= 4 ? 'Geras lygis. Tarp 70 ir 90 % teisingų — ten, kur treniruotė dar yra treniruotė.' :
         right >= 2 ? 'Normalu. Rytoj tie patys penki bus lengvesni — tai ir yra visa technika.' :
           'Per sunku. Rytoj bandom vėl — ir tai ne apie gabumus, o apie kartojimą.') + '</p>';
       if (missed.length) h += '<p class="meta">Nepataikei: ' + esc(missed.join(' · ')) + ' — jie grįš rytoj.</p>';
