@@ -1,0 +1,196 @@
+{
+  "name": "MKK",
+  "fullName": "Mokymosi Meistrų Klubas",
+  "nameNote": "⚠️ darbinis pavadinimas",
+  "tagline": "Išmok mokytis. Kasdien po 3 minutes.",
+  "version": "v0.1.0",
+  "build": "2026-09-15",
+  "author": "Kristijonas Vasiliauskas",
+  "authorLink": "krisvas.lt",
+  "voiceNote": "Balsas: Kraist — AI Kris'o balso versija (⚠️ ear-check)",
+  "giftForAllProviders": true,
+  "story": [
+    "Mokykloje mane tyliai nurašė. Puslapį normaliai perskaityti pradėjau vienuolikos.",
+    "Paskui daugiau nei dešimtmetį mokiau vaikus statyti robotus.",
+    "Per tą laiką perskaičiau viską, ką radau apie mokymosi mokslą, dirbtinį intelektą ir smegenis.",
+    "Ir pamačiau spragą: Bendrosiose programose (2022) mokėjimas mokytis ĮVARDYTAS — bet silpniausiai mokoma dalis yra refleksija ir savo mokymosi strategijų vertinimas.",
+    "MKK treniruoja būtent ją. Trys minutės per dieną."
+  ],
+  "disclaimerShort": "⚗️ Eksperimentinis prototipas, sukurtas su AI. Gali klysti — svarbius dalykus pasitikrinkite. Nemokamas. Radote klaidą? Parašykite: krisvas.lt",
+  "disclaimerFull": [
+    "⚗️ Eksperimentinis prototipas",
+    "Šį įrankį sukūriau su dirbtiniu intelektu. Jis nuolat keičiasi, gali klysti, suklastoti detalę arba rodyti pasenusius duomenis — todėl naudokite jį kaip pokalbio pradžią, ne kaip galutinę tiesą.",
+    "Įrankiai nemokami ir kuriami atvirai: noriu, kad augtų VISŲ Lietuvos būrelių ir vaikų mokymosi kokybė — ne tik mano. Radote klaidą, netikslumą ar nesąžiningumą — parašykite, taisau greitai.",
+    "Kristijonas Vasiliauskas · krisvas.lt"
+  ],
+  "coi": "Kristijonas — ExoClass bendraįkūrėjas ir robotikos būrelio savininkas. Dovana nėra būrelių reitingas.",
+  "coiLong": "Interesų konfliktas: esu ExoClass bendraįkūrėjis ir turiu robotikos būrelį. „MKK+ nemokamai“ galioja BET KURIO būrelio vaikams — tai dovana, ne veiklų reitingas. Būrelių skiltyje veiklos rikiuojamos abėcėle, robotika niekada nėra pirma, ir nė viena veikla čia nereitinguojama.",
+  "evidence": {
+    "A": {
+      "label": "A",
+      "name": "Stiprus",
+      "desc": "Meta-analizės arba pakartoti tyrimai su vaikais. Galima remtis."
+    },
+    "B": {
+      "label": "B",
+      "name": "Vidutinis",
+      "desc": "1–2 tyrimai, mažas efektas, ginčijamas pakartojimas arba tyrimai su kita amžiaus grupe."
+    },
+    "C": {
+      "label": "C",
+      "name": "Praktika",
+      "desc": "Logiška ir naudinga, bet su vaikais netirta arba rezultatai prieštaringi. Sakau tai garsiai."
+    },
+    "X": {
+      "label": "✗",
+      "name": "Mitas",
+      "desc": "Tyrimai nepatvirtina arba efektas dingsta su kontroline grupe."
+    }
+  },
+  "method": {
+    "title": "Kaip vertinam įrodymus",
+    "intro": [
+      "Kiekviena technika ir kiekvienas žaidimas čia turi ženklelį. Ženklelis sako, kiek galima ja remtis — ne kiek ji graži.",
+      "Neigiami radiniai sakomi taip pat garsiai kaip teigiami. Mokymosi stiliai — mitas. Bendri smegenų treniruokliai neperkelia įgūdžio. Perskaityti dar kartą ir pasibraukti — mažos naudos."
+    ],
+    "rules": [
+      "Efektas be amžiaus grupės, imties ir dizaino — tai ne įrodymas, o reklama.",
+      "Jei tyrimas darytas su suaugusiais, taip ir parašyta.",
+      "Jei pakartojimas silpnesnis už originalą, ženklelis mažinamas.",
+      "Šis įrankis nieko nereitinguoja ir nerekomenduoja būrelių."
+    ],
+    "sources": [
+      "Dunlosky ir kt. 2013 — mokymosi technikų naudingumo reitingas",
+      "Franzoi ir kt. 2025 — prisiminimo praktika realioje 5 klasėje (67 % vs 48,6 %)",
+      "Káldi ir kt. 2025 — prisiminimas 5–6 m. vaikams (n=202), sėkmės slenkstis",
+      "Cowan 2010 — darbinė atmintis ~4 gabaliukai",
+      "Sweller 2019 — kognityvinio krūvio teorija",
+      "Diamond 2013 — vykdomosios funkcijos",
+      "Nature Neuroscience 2024 RCT (n=235, 6–13 m.) — smegenų treniruokliai neperkelia",
+      "Skene ir kt. 2022 META (17 tyrimų, N=3 893) — vadovaujamas žaidimas",
+      "Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.) — judesys ir vykdomoji kontrolė",
+      "Peiffer ir kt. 2020 · Kurz ir kt. 2025 — miegas ir atmintis 7–12 m.",
+      "Pashler ir kt. 2008 · Dekker ir kt. 2012 — mokymosi stilių mitas",
+      "Sala & Gobet 2016–2020 · Bigand & Tillmann 2021 — šachmatų ir muzikos perkėlimas (ginčijama)",
+      "Ward ir kt. 2017 · 2023 meta-analizė — telefono buvimas šalia (efektas ginčijamas)",
+      "Holte & Ferraro 2020 · Dekker & Baumgartner 2024 — pilkas ekranas",
+      "Grįžtamojo ryšio META 2020 — d=0,99 informatyvus vs d=0,24 pagyrimas",
+      "Siegler & Ramani — skaičių linijos stalo žaidimas",
+      "UNESCO · 2024–2025 AI RCT (9–11 kl.) — AI be apribojimų −17 %"
+    ],
+    "note": "Pilnas šaltinių žemėlapis su nuorodomis gyvena Kristijono mokymosi mokslo kurse. Radai klaidą — parašyk: krisvas.lt"
+  },
+  "bands": [
+    {
+      "id": "4-5",
+      "label": "4–5 m.",
+      "parentMode": true,
+      "note": "Su tėvais. Balsu, be skaitymo."
+    },
+    {
+      "id": "6-7",
+      "label": "6–7 m.",
+      "parentMode": true,
+      "note": "Su tėvais. Garsas + ikona."
+    },
+    {
+      "id": "8-9",
+      "label": "8–9 m.",
+      "parentMode": false,
+      "note": "Jau gali pats."
+    },
+    {
+      "id": "10-11",
+      "label": "10–11 m.",
+      "parentMode": false,
+      "note": "Jau gali pats."
+    },
+    {
+      "id": "12",
+      "label": "12 m.",
+      "parentMode": false,
+      "note": "Jau gali pats."
+    },
+    {
+      "id": "13",
+      "label": "13 m.",
+      "parentMode": false,
+      "note": "Jau gali pats."
+    },
+    {
+      "id": "14",
+      "label": "14 m.",
+      "parentMode": false,
+      "note": "Jau gali pats."
+    }
+  ],
+  "plans": {
+    "free": {
+      "name": "Nemokama",
+      "price": "0 €",
+      "items": [
+        "Kasdienė 3 min treniruotė",
+        "VISI podcast'ai — visada nemokamai",
+        "5 technikos iš bibliotekos",
+        "1 žaidimas",
+        "Visi mitai, būreliai ir metodika — nemokamai"
+      ]
+    },
+    "plus": {
+      "name": "MKK+",
+      "priceA": "3,99 €/mėn",
+      "priceB": "6,99 €/mėn",
+      "priceNote": "⚠️ tikslinama — kaina dar nenuspręsta (399 ar 699)",
+      "items": [
+        "Visos technikos (37) ir visa biblioteka",
+        "Visi 3 žaidimai + vakarykštis patikrinimas",
+        "Namų įrankiai (ekranai, grayscale, Guided Access)",
+        "Kviestiniai svečiai ir kursai"
+      ]
+    },
+    "gift": {
+      "title": "Lankai būrelį? MKK+ nemokamai.",
+      "help": "Lankai būrelį? Paprašyk savo būrelio vadovo kodo — bet kuris būrelis gali gauti kodus nemokamai (ExoClass būreliai — automatiškai).",
+      "placeholder": "Kodas iš būrelio",
+      "ok": "Veikia. MKK+ atrakintas.",
+      "bad": "Toks kodas neveikia. Kodą duoda būrelio vadovas — bet kurio būrelio.",
+      "coi": "Kristijonas — ExoClass bendraįkūrėjas ir robotikos būrelio savininkas. Dovana nėra būrelių reitingas."
+    }
+  },
+  "guests": [
+    {
+      "name": "Neuromokslininkas",
+      "topic": "Kas iš tikrųjų vyksta galvoje, kai vaikas mokosi",
+      "status": "netrukus"
+    },
+    {
+      "name": "Kognityvinis mokslininkas",
+      "topic": "Kodėl prisiminti sunkiau nei perskaityti — ir kodėl tai gerai",
+      "status": "netrukus"
+    },
+    {
+      "name": "Mokymosi mokslininkas",
+      "topic": "Ko mokykla apie mokymąsi nepasako",
+      "status": "netrukus"
+    }
+  ],
+  "courses": {
+    "today": {
+      "title": "Šiandienos projektas",
+      "name": "Trijų klausimų kortelė",
+      "body": "Paimk tai, ką vaikas šiandien mokėsi. Užrašyk 3 klausimus. Ne pastraipą — 3 klausimus. Rytoj paklausk jų, nežiūrėdamas į atsakymus.",
+      "evidence": "A"
+    },
+    "course": {
+      "title": "Šiandienos kursas",
+      "name": "Kaip veikia atmintis (4 dalys)",
+      "body": "Darbinė atmintis telpa ~4 dalykus. Ilgalaikė — be žinomos ribos. Mokymas yra darbas ties tuo tarpu. Pirma dalis: kodėl „nesiklauso“ dažniausiai reiškia „perpildyta“.",
+      "evidence": "A"
+    },
+    "next": [
+      "Dėmesys be melo: ką galima treniruoti, ko ne",
+      "Grįžtamasis ryšys, kuris nepakenkia",
+      "Mokymasis ir miegas 7–12 m."
+    ]
+  }
+}

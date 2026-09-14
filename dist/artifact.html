@@ -1,0 +1,1236 @@
+<title>MKK</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* MKK v0.1.0 — ☀️ LIGHT default, 🌙 dark optional. Brand DNA: JetBrains Mono + Inter, 4px, one accent. */
+
+:root{
+  --ground:#FFFFFF;
+  --surface:#F7F7F5;
+  --card:#FFFFFF;
+  --ink:#0A0A0A;
+  --muted:#595959;
+  --line:#E5E2DE;
+  --accent:#D90429;
+  --accent-ink:#FFFFFF;
+  --red:#FF0000;
+  --ok:#0B7A45;
+  --shadow:0 1px 0 rgba(10,10,10,.04), 0 8px 24px rgba(10,10,10,.05);
+  --net:10,10,10;
+  --netop:.055;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --body:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --r:4px;
+  --tabh:64px;
+}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#080808; --surface:#0D0D0D; --card:#0D0D0D;
+    --ink:#FAFAFA; --muted:#9A9A9A; --line:#262626;
+    --accent-ink:#FFFFFF;
+    --shadow:0 1px 0 rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.5);
+    --net:255,255,255; --netop:.07;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#080808; --surface:#0D0D0D; --card:#0D0D0D;
+  --ink:#FAFAFA; --muted:#9A9A9A; --line:#262626;
+  --accent-ink:#FFFFFF;
+  --shadow:0 1px 0 rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.5);
+  --net:255,255,255; --netop:.07;
+}
+:root[data-contrast="1"]{ --muted:#1A1A1A; --line:#0A0A0A; }
+:root[data-theme="dark"][data-contrast="1"]{ --muted:#EDEDED; --line:#EDEDED; }
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--body); font-size:17px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(var(--tabh) + env(safe-area-inset-bottom));
+}
+body.grayscale{filter:grayscale(1)}
+#net{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:var(--netop)}
+
+h1,h2,h3{margin:0 0 .4em}
+p{margin:0 0 .8em}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+
+.h-mono,.lbl,.tl,.ev,.btn,.chip,.streak,.brand{font-family:var(--mono)}
+.lbl{
+  font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:700;
+  color:var(--muted);margin:0 0 10px;display:block;
+}
+
+/* header */
+#hdr{
+  position:sticky;top:0;z-index:5;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:calc(10px + env(safe-area-inset-top)) 18px 10px;
+  background:color-mix(in srgb,var(--ground) 88%,transparent);
+  backdrop-filter:saturate(1.2) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:.14em;font-size:14px;text-transform:uppercase}
+.brand .dot{width:8px;height:8px;background:var(--red);border-radius:50%;display:inline-block}
+.streak{
+  background:transparent;border:1px solid var(--line);border-radius:var(--r);
+  padding:5px 10px;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.06em;
+}
+
+/* layout */
+#view{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:22px 18px 30px}
+.scr{animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.scr{animation:none}}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:20px;margin:0 0 14px;box-shadow:var(--shadow);
+}
+.card.flat{box-shadow:none;background:var(--surface)}
+.card.hero{padding:26px 22px}
+.big{font-size:30px;line-height:1.18;font-weight:600;letter-spacing:-.01em;margin:0 0 6px}
+.h2{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;margin:26px 0 12px;color:var(--ink)}
+.muted{color:var(--muted)}
+.sm{font-size:14px}
+.xs{font-size:12.5px;line-height:1.5}
+.center{text-align:center}
+.row{display:flex;gap:10px;align-items:center}
+.row.wrap{flex-wrap:wrap}
+.spacer{height:18px}
+hr.sep{border:0;border-top:1px solid var(--line);margin:18px 0}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);
+  border-radius:var(--r);padding:15px 18px;font-size:14px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;width:100%;
+  text-decoration:none;min-height:52px;
+}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn.sm{min-height:44px;padding:11px 14px;font-size:12.5px;width:auto}
+.btn[disabled]{opacity:.45;cursor:default}
+.btn+.btn{margin-top:10px}
+.btnrow{display:flex;gap:10px}
+.btnrow .btn+.btn{margin-top:0}
+
+/* evidence badge */
+.ev{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:26px;height:22px;padding:0 6px;border-radius:var(--r);
+  font-size:11px;font-weight:800;letter-spacing:.08em;cursor:pointer;
+  border:1px solid var(--line);background:var(--surface);color:var(--ink);
+  vertical-align:middle;
+}
+.ev[data-ev="A"]{border-color:var(--ok);color:var(--ok)}
+.ev[data-ev="B"]{border-color:var(--muted);color:var(--muted)}
+.ev[data-ev="C"]{border-color:var(--line);color:var(--muted)}
+.ev[data-ev="X"]{border-color:var(--accent);color:var(--accent)}
+
+/* steps (today) */
+.step{
+  display:flex;gap:14px;align-items:flex-start;
+  border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:10px;
+  background:var(--card);cursor:pointer;width:100%;text-align:left;
+}
+.step .n{
+  flex:0 0 28px;height:28px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+  font-size:12px;font-weight:800;
+}
+.step.done{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 7%,var(--card))}
+.step.done .n{background:var(--ok);border-color:var(--ok);color:#fff}
+.step .t{display:block;font-weight:600;line-height:1.35}
+.step .s{display:block;font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.4}
+
+/* lists */
+.item{border-bottom:1px solid var(--line);padding:16px 0}
+.item:last-child{border-bottom:0}
+.item h3{font-size:18px;font-weight:600;margin:0 0 4px;display:flex;gap:8px;align-items:center;justify-content:space-between}
+.item .how{color:var(--ink);font-size:15.5px;margin:0 0 8px}
+.item .prac{background:var(--surface);border-left:2px solid var(--accent);padding:10px 12px;border-radius:0 var(--r) var(--r) 0;font-size:15px}
+.item .meta{font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--mono);letter-spacing:.03em}
+
+.chip{
+  display:inline-block;border:1px solid var(--line);background:var(--card);
+  border-radius:var(--r);padding:10px 12px;font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none;color:var(--ink);
+}
+.chip[aria-pressed="true"],.chip.on{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+
+.catrow{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;margin-bottom:10px;cursor:pointer;
+}
+.catrow .ic{font-size:22px;flex:0 0 28px}
+.catrow .tx b{display:block;font-weight:600;font-size:17px}
+.catrow .tx span{font-size:13.5px;color:var(--muted)}
+.catrow .ar{margin-left:auto;color:var(--muted);font-family:var(--mono)}
+
+/* tabs */
+#tabs{
+  position:fixed;left:0;right:0;bottom:0;z-index:6;
+  display:grid;grid-template-columns:repeat(5,1fr);
+  background:color-mix(in srgb,var(--ground) 94%,transparent);
+  backdrop-filter:saturate(1.2) blur(12px);
+  border-top:1px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.tab{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  height:var(--tabh);text-decoration:none;color:var(--muted);
+}
+.tab .ti{font-size:19px;line-height:1}
+.tab .tl{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.tab[aria-current="page"]{color:var(--accent)}
+
+/* sheet */
+#scrim{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:20}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:21;max-height:86vh;overflow-y:auto;
+  background:var(--ground);border-top:1px solid var(--line);
+  border-radius:12px 12px 0 0;padding:26px 20px calc(30px + env(safe-area-inset-bottom));
+  max-width:560px;margin:0 auto;
+}
+.sheet h2{font-size:13px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;padding-right:34px}
+.sheet-x{position:absolute;top:16px;right:16px;background:transparent;border:0;font-size:18px;cursor:pointer;color:var(--muted);padding:4px 8px}
+
+#toast{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh) + 18px);
+  background:var(--ink);color:var(--ground);padding:11px 16px;border-radius:var(--r);
+  font-size:14px;z-index:30;opacity:0;pointer-events:none;transition:opacity .2s;max-width:88vw;text-align:center;
+}
+#toast.on{opacity:1}
+
+/* forms */
+input[type=text]{
+  width:100%;padding:14px;font-size:16px;font-family:var(--mono);
+  border:1px solid var(--line);border-radius:var(--r);background:var(--card);color:var(--ink);
+}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px}
+.swatches{display:flex;gap:10px;flex-wrap:wrap}
+.sw{width:42px;height:42px;border-radius:var(--r);border:2px solid var(--line);cursor:pointer;padding:0}
+.sw[aria-pressed="true"]{border-color:var(--ink);box-shadow:0 0 0 2px var(--ground) inset}
+
+/* games */
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.cell{
+  aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:var(--r);background:var(--card);
+  font-size:26px;cursor:pointer;padding:4px;text-align:center;word-break:break-word;
+}
+.grid2 .cell{aspect-ratio:auto;min-height:62px;font-size:16px;font-family:var(--mono);font-weight:700}
+.cell[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--card));border-width:2px}
+.cell.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--card))}
+.cell.wrong{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--card));opacity:.6}
+.clock{font-family:var(--mono);font-size:58px;font-weight:800;text-align:center;letter-spacing:-.02em;margin:18px 0 6px;font-variant-numeric:tabular-nums}
+.bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;background:var(--accent);width:0}
+.check{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer;width:100%;text-align:left;background:none;border-left:0;border-right:0;border-top:0}
+.check .bx{flex:0 0 22px;height:22px;border:1px solid var(--line);border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-size:12px}
+.check.on .bx{background:var(--ok);border-color:var(--ok);color:#fff}
+
+.note{font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:12px;margin:12px 0}
+.warn{border-left-color:var(--accent)}
+.foot{font-size:12px;color:var(--muted);line-height:1.6;margin-top:26px;padding-top:18px;border-top:1px solid var(--line)}
+.coi{font-size:12.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;margin:12px 0;line-height:1.55}
+.price{font-family:var(--mono);font-size:22px;font-weight:800;letter-spacing:-.01em}
+ul.plain{margin:0;padding-left:18px}
+ul.plain li{margin-bottom:6px;font-size:15px}
+audio{width:100%;margin-top:12px}
+.audio-wrap{margin-top:12px}
+</style>
+<canvas id="net" aria-hidden="true"></canvas>
+
+<header id="hdr">
+  <div class="brand"><span class="dot"></span><span id="brandName">MKK</span></div>
+  <button id="streakBtn" class="streak" type="button" aria-label="Serija">🔥 <span id="streakN">0</span></button>
+</header>
+
+<main id="view" role="main" tabindex="-1"></main>
+
+<nav id="tabs" role="navigation" aria-label="Pagrindinis meniu">
+  <a class="tab" href="#/siandien" data-t="siandien"><span class="ti">☀️</span><span class="tl">Šiandien</span></a>
+  <a class="tab" href="#/treniruotes" data-t="treniruotes"><span class="ti">🧠</span><span class="tl">Treniruotės</span></a>
+  <a class="tab" href="#/zaidimai" data-t="zaidimai"><span class="ti">🎮</span><span class="tl">Žaidimai</span></a>
+  <a class="tab" href="#/biblioteka" data-t="biblioteka"><span class="ti">📚</span><span class="tl">Biblioteka</span></a>
+  <a class="tab" href="#/as" data-t="as"><span class="ti">👤</span><span class="tl">Aš</span></a>
+</nav>
+
+<div id="scrim" hidden></div>
+<section id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <button id="sheetClose" class="sheet-x" type="button" aria-label="Uždaryti">✕</button>
+  <h2 id="sheetTitle" class="h-mono"></h2>
+  <div id="sheetBody"></div>
+</section>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<script>window.MKK_CONTENT={"config":{"name":"MKK","fullName":"Mokymosi Meistrų Klubas","nameNote":"⚠️ darbinis pavadinimas","tagline":"Išmok mokytis. Kasdien po 3 minutes.","version":"v0.1.0","build":"2026-09-15","author":"Kristijonas Vasiliauskas","authorLink":"krisvas.lt","voiceNote":"Balsas: Kraist — AI Kris'o balso versija (⚠️ ear-check)","giftForAllProviders":true,"story":["Mokykloje mane tyliai nurašė. Puslapį normaliai perskaityti pradėjau vienuolikos.","Paskui daugiau nei dešimtmetį mokiau vaikus statyti robotus.","Per tą laiką perskaičiau viską, ką radau apie mokymosi mokslą, dirbtinį intelektą ir smegenis.","Ir pamačiau spragą: Bendrosiose programose (2022) mokėjimas mokytis ĮVARDYTAS — bet silpniausiai mokoma dalis yra refleksija ir savo mokymosi strategijų vertinimas.","MKK treniruoja būtent ją. Trys minutės per dieną."],"disclaimerShort":"⚗️ Eksperimentinis prototipas, sukurtas su AI. Gali klysti — svarbius dalykus pasitikrinkite. Nemokamas. Radote klaidą? Parašykite: krisvas.lt","disclaimerFull":["⚗️ Eksperimentinis prototipas","Šį įrankį sukūriau su dirbtiniu intelektu. Jis nuolat keičiasi, gali klysti, suklastoti detalę arba rodyti pasenusius duomenis — todėl naudokite jį kaip pokalbio pradžią, ne kaip galutinę tiesą.","Įrankiai nemokami ir kuriami atvirai: noriu, kad augtų VISŲ Lietuvos būrelių ir vaikų mokymosi kokybė — ne tik mano. Radote klaidą, netikslumą ar nesąžiningumą — parašykite, taisau greitai.","Kristijonas Vasiliauskas · krisvas.lt"],"coi":"Kristijonas — ExoClass bendraįkūrėjas ir robotikos būrelio savininkas. Dovana nėra būrelių reitingas.","coiLong":"Interesų konfliktas: esu ExoClass bendraįkūrėjis ir turiu robotikos būrelį. „MKK+ nemokamai“ galioja BET KURIO būrelio vaikams — tai dovana, ne veiklų reitingas. Būrelių skiltyje veiklos rikiuojamos abėcėle, robotika niekada nėra pirma, ir nė viena veikla čia nereitinguojama.","evidence":{"A":{"label":"A","name":"Stiprus","desc":"Meta-analizės arba pakartoti tyrimai su vaikais. Galima remtis."},"B":{"label":"B","name":"Vidutinis","desc":"1–2 tyrimai, mažas efektas, ginčijamas pakartojimas arba tyrimai su kita amžiaus grupe."},"C":{"label":"C","name":"Praktika","desc":"Logiška ir naudinga, bet su vaikais netirta arba rezultatai prieštaringi. Sakau tai garsiai."},"X":{"label":"✗","name":"Mitas","desc":"Tyrimai nepatvirtina arba efektas dingsta su kontroline grupe."}},"method":{"title":"Kaip vertinam įrodymus","intro":["Kiekviena technika ir kiekvienas žaidimas čia turi ženklelį. Ženklelis sako, kiek galima ja remtis — ne kiek ji graži.","Neigiami radiniai sakomi taip pat garsiai kaip teigiami. Mokymosi stiliai — mitas. Bendri smegenų treniruokliai neperkelia įgūdžio. Perskaityti dar kartą ir pasibraukti — mažos naudos."],"rules":["Efektas be amžiaus grupės, imties ir dizaino — tai ne įrodymas, o reklama.","Jei tyrimas darytas su suaugusiais, taip ir parašyta.","Jei pakartojimas silpnesnis už originalą, ženklelis mažinamas.","Šis įrankis nieko nereitinguoja ir nerekomenduoja būrelių."],"sources":["Dunlosky ir kt. 2013 — mokymosi technikų naudingumo reitingas","Franzoi ir kt. 2025 — prisiminimo praktika realioje 5 klasėje (67 % vs 48,6 %)","Káldi ir kt. 2025 — prisiminimas 5–6 m. vaikams (n=202), sėkmės slenkstis","Cowan 2010 — darbinė atmintis ~4 gabaliukai","Sweller 2019 — kognityvinio krūvio teorija","Diamond 2013 — vykdomosios funkcijos","Nature Neuroscience 2024 RCT (n=235, 6–13 m.) — smegenų treniruokliai neperkelia","Skene ir kt. 2022 META (17 tyrimų, N=3 893) — vadovaujamas žaidimas","Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.) — judesys ir vykdomoji kontrolė","Peiffer ir kt. 2020 · Kurz ir kt. 2025 — miegas ir atmintis 7–12 m.","Pashler ir kt. 2008 · Dekker ir kt. 2012 — mokymosi stilių mitas","Sala & Gobet 2016–2020 · Bigand & Tillmann 2021 — šachmatų ir muzikos perkėlimas (ginčijama)","Ward ir kt. 2017 · 2023 meta-analizė — telefono buvimas šalia (efektas ginčijamas)","Holte & Ferraro 2020 · Dekker & Baumgartner 2024 — pilkas ekranas","Grįžtamojo ryšio META 2020 — d=0,99 informatyvus vs d=0,24 pagyrimas","Siegler & Ramani — skaičių linijos stalo žaidimas","UNESCO · 2024–2025 AI RCT (9–11 kl.) — AI be apribojimų −17 %"],"note":"Pilnas šaltinių žemėlapis su nuorodomis gyvena Kristijono mokymosi mokslo kurse. Radai klaidą — parašyk: krisvas.lt"},"bands":[{"id":"4-5","label":"4–5 m.","parentMode":true,"note":"Su tėvais. Balsu, be skaitymo."},{"id":"6-7","label":"6–7 m.","parentMode":true,"note":"Su tėvais. Garsas + ikona."},{"id":"8-9","label":"8–9 m.","parentMode":false,"note":"Jau gali pats."},{"id":"10-11","label":"10–11 m.","parentMode":false,"note":"Jau gali pats."},{"id":"12","label":"12 m.","parentMode":false,"note":"Jau gali pats."},{"id":"13","label":"13 m.","parentMode":false,"note":"Jau gali pats."},{"id":"14","label":"14 m.","parentMode":false,"note":"Jau gali pats."}],"plans":{"free":{"name":"Nemokama","price":"0 €","items":["Kasdienė 3 min treniruotė","VISI podcast'ai — visada nemokamai","5 technikos iš bibliotekos","1 žaidimas","Visi mitai, būreliai ir metodika — nemokamai"]},"plus":{"name":"MKK+","priceA":"3,99 €/mėn","priceB":"6,99 €/mėn","priceNote":"⚠️ tikslinama — kaina dar nenuspręsta (399 ar 699)","items":["Visos technikos (37) ir visa biblioteka","Visi 3 žaidimai + vakarykštis patikrinimas","Namų įrankiai (ekranai, grayscale, Guided Access)","Kviestiniai svečiai ir kursai"]},"gift":{"title":"Lankai būrelį? MKK+ nemokamai.","help":"Lankai būrelį? Paprašyk savo būrelio vadovo kodo — bet kuris būrelis gali gauti kodus nemokamai (ExoClass būreliai — automatiškai).","placeholder":"Kodas iš būrelio","ok":"Veikia. MKK+ atrakintas.","bad":"Toks kodas neveikia. Kodą duoda būrelio vadovas — bet kurio būrelio.","coi":"Kristijonas — ExoClass bendraįkūrėjas ir robotikos būrelio savininkas. Dovana nėra būrelių reitingas."}},"guests":[{"name":"Neuromokslininkas","topic":"Kas iš tikrųjų vyksta galvoje, kai vaikas mokosi","status":"netrukus"},{"name":"Kognityvinis mokslininkas","topic":"Kodėl prisiminti sunkiau nei perskaityti — ir kodėl tai gerai","status":"netrukus"},{"name":"Mokymosi mokslininkas","topic":"Ko mokykla apie mokymąsi nepasako","status":"netrukus"}],"courses":{"today":{"title":"Šiandienos projektas","name":"Trijų klausimų kortelė","body":"Paimk tai, ką vaikas šiandien mokėsi. Užrašyk 3 klausimus. Ne pastraipą — 3 klausimus. Rytoj paklausk jų, nežiūrėdamas į atsakymus.","evidence":"A"},"course":{"title":"Šiandienos kursas","name":"Kaip veikia atmintis (4 dalys)","body":"Darbinė atmintis telpa ~4 dalykus. Ilgalaikė — be žinomos ribos. Mokymas yra darbas ties tuo tarpu. Pirma dalis: kodėl „nesiklauso“ dažniausiai reiškia „perpildyta“.","evidence":"A"},"next":["Dėmesys be melo: ką galima treniruoti, ko ne","Grįžtamasis ryšys, kuris nepakenkia","Mokymasis ir miegas 7–12 m."]}},"techniques":{"categories":[{"id":"smegenys","icon":"🧠","label":"Kaip smegenys mokosi","blurb":"Septynios taisyklės, kurios galioja kiekvienoje pamokoje."},{"id":"top3","icon":"⭐","label":"Top 3 mokymosi technikos","blurb":"Jei laiko tik trims — šitos trys."},{"id":"atmintis","icon":"🔁","label":"Atmintis","blurb":"Kaip įsiminti taip, kad liktų."},{"id":"demesys","icon":"👁","label":"Dėmesys","blurb":"Ką galima sutvarkyti aplinkoje, o ne vaike."},{"id":"fokusas","icon":"🎯","label":"Fokusas","blurb":"Planas · darbas · peržiūra."},{"id":"koncentracija","icon":"🕯","label":"Koncentracija","blurb":"Kūnas, nuotaika ir pirmos trys minutės."},{"id":"mitai","icon":"✗","label":"Mitai","blurb":"Populiaru, bet tyrimai nepatvirtina. Nemokama visiems."}],"techniques":[{"id":"wm4","cat":"smegenys","name":"Keturios vietos galvoje","how":"Vienu metu galvoje telpa apie keturi nauji dalykai — vaikams mažiau.","practice":"Pasakyk vaikui 4 daiktus, paprašyk atkartoti. Tada 6. Parodyk, kur lūžta — ir kad tai normalu.","age":5,"ev":"A","src":"Cowan 2010"},{"id":"ltm","cat":"smegenys","name":"Ilgalaikė atmintis neturi ribos","how":"Vietos galvoje netrūksta. Trūksta kelio iš darbinės atminties į ilgalaikę.","practice":"Paklausk vaiko, ką jis prisimena iš praėjusios savaitės pamokos. Ne perskaityk — prisimink.","age":6,"ev":"A","src":"Sweller 2019"},{"id":"chunk","cat":"smegenys","name":"Gabaliukai auga","how":"Kai įgūdis tampa savaimingas, jis užima vieną vietą vietoj keturių.","practice":"Išrink vieną dalyką, kurį vaikas daro lėtai ir sąmoningai. Pakartokite jį 2 min, kol tampa automatiškas.","age":7,"ev":"A","src":"Sweller 2019"},{"id":"split","cat":"smegenys","name":"Užrašas ant paveikslėlio","how":"Kai paaiškinimas ore, o paveikslėlis ekrane, vaikas eikvoja jėgas jų sujungimui.","practice":"Paimk bet kurią vaiko užduotį ir užrašyk žodžius TIESIOG ant piešinio, ne šalia jo.","age":6,"ev":"B","src":"CESE NSW 2017"},{"id":"forget","cat":"smegenys","name":"Pamiršti — ne gedimas","how":"Prisiminti sunku todėl, kad atmintis šiek tiek išbluko. Tos pastangos ir yra mokymasis.","practice":"Neatsakyk už vaiką. Palauk 10 sekundžių tylos. Tos 10 sekundžių dirba.","age":6,"ev":"B","src":"Nature Rev Psychology 2022"},{"id":"emotion","cat":"smegenys","name":"Emocija atrenka","how":"Vaikas, pasijutęs kvailas trečią minutę, nieko neišmoksta nuo ketvirtos iki devyniasdešimtos.","practice":"Pradėk nuo užduoties, kurią vaikas tikrai įveiks. Sėkmė pirma, sunkumas antras.","age":4,"ev":"B","src":"Mokymosi mokslo kursas L2.6"},{"id":"sleep","cat":"smegenys","name":"Miegas sutvirtina","how":"7–12 m. vaikai per naktį išlaiko tai, ką suaugusieji pamiršta.","practice":"Kartok naują dalyką vakare, prieš miegą — 2 min, be ekrano. Ryte paklausk, kas liko.","age":7,"ev":"A","src":"Peiffer ir kt. 2020 · Kurz ir kt. 2025 · AASM 2016 miego normos"},{"id":"retrieval","cat":"top3","name":"Prisiminimas be žiūrėjimo","how":"Vaikas pats pasako atsakymą, neatsivertęs knygos. Stipriausia technika, kokią turim.","practice":"Uždaryk knygą. 2 minutes vaikas pasakoja, ką prisimena. Tik po to tikrinam.","age":5,"ev":"A","src":"Dunlosky 2013 · Franzoi 2025 (67 % vs 48,6 %)"},{"id":"spacing","cat":"top3","name":"Kartok kitą dieną","how":"Išskirstytas kartojimas veikia laboratorijoje. ⚠️ 2025 m. klasėje intervalo keitimas nieko nedavė.","practice":"Tą patį klausimą užduok rytoj, ne po penkių minučių. Vieną klausimą. Vieną kartą.","age":6,"ev":"B","src":"Dunlosky 2013 · Franzoi 2025"},{"id":"success","cat":"top3","name":"70–90 % teisingai","how":"Klausimai turi būti tokie, kad vaikas dažniau atsakytų teisingai nei ne. Žemiau to — tai jau ne treniruotė, o nesėkmė.","practice":"Suskaičiuok 10 klausimų atsakymus. Jei teisingų mažiau nei 7 — klausimai per sunkūs, ne vaikas per silpnas.","age":5,"ev":"A","src":"Káldi ir kt. 2025 (n=202)"},{"id":"recall-say","cat":"atmintis","name":"Pasakyk atmintinai","how":"Laisvas prisiminimas balsu — pigiausias ir stipriausias įrankis.","practice":"„Papasakok viską, ką prisimeni.“ 2 min. Be pertraukimų. Tada kartu patikrinam, ko trūko.","age":5,"ev":"A","src":"Dunlosky 2013"},{"id":"cards","cat":"atmintis","name":"Trijų klausimų kortelė","how":"Trys klausimai vietoj perskaitytos pastraipos.","practice":"Užrašyk 3 klausimus iš to, ką vaikas mokėsi. Rytoj paklausk jų.","age":7,"ev":"A","src":"Dunlosky 2013"},{"id":"dual","cat":"atmintis","name":"Žodis ir paveikslėlis","how":"Ne todėl, kad vaikas „vizualas“ — o todėl, kad taip veikia atmintis pas visus.","practice":"Paprašyk vaiko nupiešti tai, ką ką tik pasakė. Vienas piešinys, 2 min.","age":4,"ev":"B","src":"Learning Scientists · Deans for Impact"},{"id":"draw","cat":"atmintis","name":"Piešk, o ne skaityk antrą kartą","how":"Piešimas priverčia pagaminti prasmę. Pakartotinis skaitymas — ne.","practice":"Uždaryk knygą. Nupiešk, kas ten vyko. Paskui palygink su knyga.","age":5,"ev":"B","src":"Generative learning REV"},{"id":"teach","cat":"atmintis","name":"Paaiškink kitam","how":"Mokyti ką nors — tai mokymosi būdas, ne egzaminas.","practice":"60 sekundžių vaikas aiškina tau (ar pliušiniam meškiukui) vieną dalyką. Tu klausi „kodėl?“.","age":6,"ev":"B","src":"Generative learning REV"},{"id":"elab","cat":"atmintis","name":"Klausimas „kodėl taip?“","how":"Elaboracija — vaikas pats susieja naują dalyką su tuo, ką jau žino.","practice":"Po kiekvieno fakto klausk „kodėl taip?“ tris kartus iš eilės. Sustok, kai vaikas sako „nežinau“ — ten prasideda mokymasis.","age":8,"ev":"B","src":"Dunlosky 2013 (elaboratyvus klausinėjimas — VIDUTINĖ nauda)"},{"id":"interleave","cat":"atmintis","name":"Maišyk uždavinių tipus","how":"Interleaving veikia — bet geriausiai įrodytas matematikoje ir kategorijose. Ne visur.","practice":"Vietoj 10 vienodų uždavinių duok 6 skirtingų tipų, sumaišytus.","age":8,"ev":"B","src":"Dunlosky 2013"},{"id":"mnemo","cat":"atmintis","name":"Istorija iš daiktų","how":"⚠️ Sąžiningai: Dunlosky raktažodžių mnemoniką vertina kaip MAŽOS naudos bendram mokymuisi. Smagu, bet nėra pagrindinis įrankis.","practice":"Susiek 5 daiktus į vieną juokingą istoriją. Po valandos paklausk sąrašo.","age":7,"ev":"C","src":"Dunlosky 2013 (LOW utility)"},{"id":"one-instr","cat":"demesys","name":"Vienas nurodymas vienu metu","how":"Trys nurodymai iš karto — vienas iškris. Ir tai ne vaiko kaltė.","practice":"Duok vieną nurodymą, palauk, kol bus padarytas, tada kitą. 2 min pabandyk taip.","age":4,"ev":"B","src":"Cowan 2010 · CLT"},{"id":"one-new","cat":"demesys","name":"Vienas naujas dalykas","how":"6–8 m.: vienas naujas dalykas + vienas naujas įrankis per kartą. 9–12 m.: du + vienas.","practice":"Suskaičiuok, kiek naujų dalykų buvo šiandienos pamokoje. Jei daugiau nei du — žinai, kodėl nepavyko.","age":6,"ev":"A","src":"Sweller 2019 · CESE NSW"},{"id":"phone-away","cat":"demesys","name":"Telefonas kitame kambaryje","how":"Telefonas kitame kambaryje, ne ekranu žemyn ant stalo. ⚠️ Tirta su suaugusiais; 2023 m. meta-analizė efektą rado mažesnį ir nepastovesnį nei originalas.","practice":"Padėk telefoną kitame kambaryje. Ne ant stalo ekranu žemyn — kitame kambaryje. 10 min.","age":8,"ev":"B","src":"Ward ir kt. 2017 (n≈800, suaugę) · 2023 meta-analizė (ginčija dydį)"},{"id":"grayscale","cat":"demesys","name":"Pilkas ekranas","how":"Pilkas ekranas nuima pusę to, kas telefone traukia. ⚠️ Vienas tyrimas: ~38 min/d mažiau ekrano; 2024 m. pakartojimas — silpnesnis. Su vaikais netirta.","practice":"Įjunk pilką ekraną telefone vienam vakarui. Paklausk vaiko, ar pastebėjo skirtumą.","age":9,"ev":"C","src":"Holte & Ferraro 2020 · Dekker & Baumgartner 2024 (silpnesnis)"},{"id":"move","cat":"demesys","name":"Judesys prieš mokymąsi","how":"9 mėn. popamokinė judėjimo programa pagerino vykdomąją kontrolę 7–9 m. vaikams.","practice":"5 min judesio prieš namų darbus: šuoliukai, laiptai, šokis. Ne „nusiraminti“ — pasiruošti.","age":6,"ev":"B","src":"Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.)"},{"id":"stop-switch","cat":"demesys","name":"Stop ir keisk","how":"Taisyklė pasikeičia žaidimo viduryje. ⚠️ Bet: bendri „smegenų treniruokliai“ neperkelia įgūdžio — tai veikia tik įdomios veiklos viduje.","practice":"Žaidimas: plok, kai sakau „žalia“. Po minutės apversk taisyklę. Dar po minutės — vėl.","age":5,"ev":"B","src":"Diamond 2013 · Nature Neuroscience 2024 (neigiamas)"},{"id":"nothing-held","cat":"demesys","name":"Nieko nelaikyti galvoje per perėjimą","how":"4–7 m. vaikas neišneša nurodymo iš vieno kambario į kitą. Daiktas turi būti rankoje.","practice":"Duok nurodymą ten, kur jis bus vykdomas, su daiktu rankose. Ne iš virtuvės į vaikų kambarį.","age":4,"ev":"B","src":"Cowan 2010"},{"id":"two-min","cat":"fokusas","name":"Dvi minutės — pradžios slenkstis","how":"⚠️ Praktika, ne tyrimas. Bet pradėti visada sunkiau nei tęsti.","practice":"Susitark: tik 2 minutės. Įjunk laikmatį. Po 2 min galima teisėtai sustoti — dažniausiai nesustoja.","age":7,"ev":"C","src":"MKK praktika"},{"id":"single-task","cat":"fokusas","name":"Vienas darbas ir laikmatis","how":"Matomas laikas paverčia „amžinai“ į „penkias minutes“.","practice":"Vienas darbas. Laikmatis matomas. Kol skaičiuoja — nieko kito.","age":8,"ev":"C","src":"MKK praktika"},{"id":"plan-first","cat":"fokusas","name":"Planas prieš darbą","how":"Planas → darbas → peržiūra. Dauguma daro tik vidurinę dalį.","practice":"Prieš pradedant: 3 žingsniai ant popieriaus. Po darbo — pažymėk, kurie pavyko.","age":8,"ev":"B","src":"SRL META (~0,69; mažiau, kai veda mokytojas)"},{"id":"review-q","cat":"fokusas","name":"„Kas buvo sunkiausia?“","how":"Vienas stipriausių efektų literatūroje. ⚠️ Su sąlyga: tyrimuose tai darė mokslininkai, ne mokytojai — pas mokytojus efektas mažesnis.","practice":"Po darbo — vienas klausimas: kas buvo sunkiausia? Ir antras: ką darysi kitaip?","age":8,"ev":"B","src":"Metakognicijos META"},{"id":"easy-hard","cat":"fokusas","name":"Dvi ikonos: lengva / sunku","how":"Iki ~8 m. vaikai save vertina per gerai. Refleksija turi būti konkreti, ne atvira.","practice":"Dvi kortelės: 😀 lengva, 😵 sunku. Vaikas padeda užduotį ant vienos. Viskas.","age":5,"ev":"B","src":"Metakognicijos REV"},{"id":"goal-mine","cat":"fokusas","name":"Tikslą renkuosi aš, žingsnius — tu","how":"Vadovaujamas žaidimas įveikė ir tiesioginį mokymą, ir laisvą žaidimą. Nuimk vieną pusę — efektas dingsta.","practice":"Pasakyk tikslą ir vieną apribojimą. Būdą tegu renkasi vaikas. Tu klausi klausimų, nerodai.","age":4,"ev":"A","src":"Skene ir kt. 2022 META (17 tyrimų, N=3 893)"},{"id":"first-three","cat":"koncentracija","name":"Pirmos trys minutės — ne turiniui","how":"Pirma reikia, kad pavyktų. Tik tada galima sunkiau.","practice":"Pradėk nuo to, ką vaikas jau moka. Trys minutės sėkmės. Tada nauja.","age":4,"ev":"B","src":"Mokymosi mokslo kursas L2.6"},{"id":"break-move","cat":"koncentracija","name":"Pertrauka su judesiu","how":"Judesys nėra pertrauka nuo mokymosi. FITKids tyrime judesys BUVO intervencija.","practice":"Kas 15 min — 60 sekundžių judesio. Ne telefonas. Kūnas.","age":6,"ev":"B","src":"Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.)"},{"id":"sleep-window","cat":"koncentracija","name":"Miego langas","how":"Tai, kas išmokta 17 val., sutvirtinama 22 val. ⚠️ Mechanizmo išvada, ne tyrimas apie būrelius.","practice":"Paskutinis kartojimas 30 min prieš miegą, be ekrano. Ryte — vienas klausimas.","age":6,"ev":"C","src":"Peiffer ir kt. 2020 · Kurz ir kt. 2025 (mechanizmo išvada)"},{"id":"clean-desk","cat":"koncentracija","name":"Vieno daikto stalas","how":"⚠️ Praktika. Bet kiekvienas daiktas ant stalo yra pasiūlymas nustoti.","practice":"Nuo stalo nuimk viską, išskyrus tai, ko reikia dabar. 30 sekundžių darbo.","age":6,"ev":"C","src":"MKK praktika"},{"id":"noise","cat":"koncentracija","name":"Fono garsas","how":"⚠️ Jokių mokslinių pažadų. Kai kuriems padeda uždengti triukšmą — ir tiek.","practice":"Įjunk fono garsą programėlėje 5 min. Paklausk vaiko: geriau, blogiau ar vienodai?","age":8,"ev":"C","src":"MKK praktika"},{"id":"feedback-work","cat":"koncentracija","name":"Kalbėk apie darbą, ne apie vaiką","how":"Informatyvus grįžtamasis ryšys d=0,99. Pagyrimas ar bausmė d=0,24. Trečdalis atvejų net pablogina.","practice":"Vietoj „šaunuolis“ pasakyk, ką tiksliai vaikas padarė: „tu tris kartus bandei kitaip, kol suveikė“.","age":4,"ev":"A","src":"Grįžtamojo ryšio META 2020"}],"myths":[{"id":"m-styles","name":"Mokymosi stiliai (vizualas · audialas · kinestetikas)","claim":"„Mano vaikas — vizualas, jam reikia mokyti paveikslėliais.“","truth":"Nė vienas tyrimas neatlaikė patikros. Pomėgiai tikri — bet mokymo pritaikymas jiems nepadeda. Daugiau nei 80 % mokytojų tuo tiki.","instead":"Duok visiems ir žodį, ir paveikslėlį, ir daiktą į rankas — ne dėl stiliaus, o todėl, kad taip veikia atmintis.","ev":"X","src":"Pashler ir kt. 2008 · Dekker ir kt. 2012"},{"id":"m-hemi","name":"Kairysis ir dešinysis pusrutulis","claim":"„Jis kūrybiškas, nes dešiniapusis.“","truth":"Mitas. Taip pat tikimas daugiau nei 80 % mokytojų.","instead":"Kalbėk apie tai, ką vaikas daro, o ne apie tai, kokia jo smegenų pusė.","ev":"X","src":"Dekker ir kt. 2012"},{"id":"m-10","name":"Naudojame tik 10 % smegenų","claim":"„Atrakink likusius 90 %.“","truth":"Mitas. Naudojame visas.","instead":"Nieko atrakinti nereikia. Reikia prisiminti, pakartoti ir pabandyti dar kartą.","ev":"X","src":"Neuromitų literatūra"},{"id":"m-brain-train","name":"Smegenų treniruokliai lavina dėmesį","claim":"„Ši programėlė lavina vaiko susikaupimą.“","truth":"2024 m. tyrimas su 235 vaikais (6–13 m.): 8 savaitės treniruočių pagerino TĄ žaidimą ir daugiau nieko — nei mokslus, nei smegenų struktūrą.","instead":"Dėmesys auga sunkioje, bet įdomioje veikloje: statyboje, muzikoje, sporte, projekte.","ev":"X","src":"Nature Neuroscience 2024 RCT (n=235)"},{"id":"m-chess","name":"Šachmatai ar muzika padaro protingesnį","claim":"„Muzika lavina matematinį mąstymą.“","truth":"Su aktyvia kontroline grupe efektas beveik dingsta: šachmatai g=0,34 → ~0; muzika g=0,18 → −0,02. ⚠️ Šis nulis pats yra ginčijamas — sakau „ginčijama“, ne „paneigta“.","instead":"Muzika verta dėl muzikos. Šachmatai — dėl šachmatų. To pakanka.","ev":"X","src":"Sala & Gobet 2016–2020 · Bigand & Tillmann 2021"},{"id":"m-reread","name":"Perskaityti dar kartą ir pasibraukti","claim":"„Pakartok — perskaityk dar kartą.“","truth":"Abu vertinami kaip MAŽOS naudos. Klasėje: testas su grįžtamuoju ryšiu 67 %, pakartotinis skaitymas 48,6 %.","instead":"Uždaryk knygą ir pabandyk pasakyti pats. Tik tada tikrink.","ev":"X","src":"Dunlosky 2013 · Franzoi ir kt. 2025"},{"id":"m-2sigma","name":"Meistriškumo mokymasis duoda „2 sigma“","claim":"„Šis metodas duoda dviejų standartinių nuokrypių šuolį.“","truth":"Ne. Tas skaičius buvo apie INDIVIDUALŲ korepetitorių 1984 m., ne apie metodą. Paties metodo efektas maždaug 0,5 SD.","instead":"Klausk, su kuo lyginama. Be palyginimo grupės nėra teiginio.","ev":"X","src":"Bloom 1984 · meistriškumo META"},{"id":"m-ai","name":"AI mokytojas įrodytai padeda vaikams","claim":"„Dirbtinis intelektas — asmeninis vaiko mokytojas.“","truth":"Vaikams 3–12 m. tokių tyrimų NĖRA. O neapribotas AI paaugliams pakenkė: kai jį atėmė, jie pasirodė 17 % prasčiau nei tie, kurie jo niekada neturėjo. Tas pats modelis, priverstas duoti tik užuominas, žalos nedarė.","instead":"AI niekada neturi pasakyti atsakymo, kurį vaikas pats buvo bepasakąs. Skirtumas ne technologijoje, o taisyklėse.","ev":"X","src":"2024–2025 RCT (9–11 kl.) · UNESCO"}]},"practices":{"practices":[{"id":"p-recall3","title":"Trys dalykai be žiūrėjimo","why":"Prisiminimas be knygos — stipriausia technika, kokią turim.","steps":["Uždaryk knygą arba sąsiuvinį.","Pasakyk garsiai 3 dalykus, kuriuos šiandien mokeisi.","Tik dabar pasitikrink, ko trūko."],"minAge":5,"ev":"A","src":"Dunlosky 2013 · Franzoi 2025"},{"id":"p-yesterday","title":"Vakarykštis klausimas","why":"Kartojimas kitą dieną, ne po penkių minučių.","steps":["Prisimink VIENĄ vakar dienos dalyką.","Pasakyk jį garsiai, nežiūrėdamas.","Jei nepavyko — tai gerai. Dabar pažiūrėk ir rytoj bandyk vėl."],"minAge":6,"ev":"B","src":"Franzoi 2025 (⚠️ klasėje intervalas nedavė skirtumo)"},{"id":"p-teach60","title":"60 sekundžių paaiškink","why":"Mokyti kitą — mokymosi būdas, ne egzaminas.","steps":["Pasirink vieną dalyką, kurį šiandien supratai.","60 sekundžių aiškink jį žmogui arba meškiukui.","Tegu jis paklausia „kodėl?“ vieną kartą."],"minAge":6,"ev":"B","src":"Generative learning REV"},{"id":"p-draw","title":"Piešinys iš atminties","why":"Piešimas priverčia pagaminti prasmę. Pakartotinis skaitymas — ne.","steps":["Uždenk tekstą.","Nupiešk tai, apie ką jis buvo. 90 sekundžių.","Palygink. Kas dingo?"],"minAge":5,"ev":"B","src":"Generative learning REV"},{"id":"p-why3","title":"Trys „kodėl?“","why":"Elaboracija — vaikas pats susieja naują dalyką su tuo, ką jau žino.","steps":["Pasakyk vieną faktą.","Klausk „kodėl taip?“ tris kartus iš eilės.","Kai atsakymas „nežinau“ — ten prasideda mokymasis."],"minAge":8,"ev":"B","src":"Dunlosky 2013 (vidutinė nauda)"},{"id":"p-move","title":"Du judesio","why":"9 mėn. judėjimo programa pagerino vykdomąją kontrolę 7–9 m. vaikams.","steps":["2 minutes: šuoliukai, laiptai arba šokis.","Tada iškart — sunkiausia dienos užduotis.","Ne „nusiraminti“, o pasiruošti."],"minAge":5,"ev":"B","src":"Hillman ir kt. 2014 FITKids RCT (n=221)"},{"id":"p-phone","title":"Telefonas kitame kambaryje","why":"Ne ekranu žemyn ant stalo — kitame kambaryje. ⚠️ Tirta su suaugusiais, dydis ginčijamas.","steps":["Nunešk telefoną į kitą kambarį.","10 minučių vienas darbas.","Grįžk ir pasakyk: buvo lengviau ar tas pats?"],"minAge":8,"ev":"B","src":"Ward ir kt. 2017 · 2023 meta-analizė"},{"id":"p-plan3","title":"Trys žingsniai popieriuje","why":"Planas → darbas → peržiūra. Dauguma daro tik vidurinę dalį.","steps":["Prieš pradėdamas užrašyk 3 žingsnius.","Dirbk.","Pažymėk, kurie pavyko."],"minAge":8,"ev":"B","src":"SRL META (~0,69; mažiau, kai veda mokytojas)"},{"id":"p-hardest","title":"Kas buvo sunkiausia?","why":"Vienas stipriausių efektų literatūroje — su sąlyga, kad klausiama tikrai.","steps":["Po darbo sustok minutei.","Atsakyk: kas buvo sunkiausia?","Ir: ką darysi kitaip rytoj?"],"minAge":8,"ev":"B","src":"Metakognicijos META"},{"id":"p-easyhard","title":"Lengva ar sunku?","why":"Iki ~8 m. vaikai save vertina per gerai. Refleksija turi būti konkreti.","steps":["Parodyk du ženklus: 😀 lengva, 😵 sunku.","Vaikas parodo, kaip buvo.","Jokių paaiškinimų nereikia."],"minAge":4,"ev":"B","src":"Metakognicijos REV"},{"id":"p-four","title":"Keturi daiktai","why":"Darbinė atmintis telpa apie keturis dalykus. Vaikams mažiau.","steps":["Pasakyk 4 daiktus. Vaikas atkartoja.","Tada 6. Dažniausiai nepavyks.","Pasakyk: tai ne tavo kaltė — tokia atmintis pas visus."],"minAge":4,"ev":"A","src":"Cowan 2010"},{"id":"p-picture","title":"Žodis ir paveikslėlis","why":"Ne todėl, kad vaikas „vizualas“ — o todėl, kad taip veikia atmintis pas visus.","steps":["Pasakyk vieną naują žodį.","Nupiešk jį mažu piešinuku šalia.","Rytoj parodyk tik piešinį."],"minAge":4,"ev":"B","src":"Learning Scientists"},{"id":"p-feedback","title":"Pagirk darbą, ne vaiką","why":"Informatyvus grįžtamasis ryšys d=0,99. Pagyrimas d=0,24. Trečdalis atvejų net pablogina.","steps":["Rask vieną dalyką, kurį vaikas padarė.","Pasakyk TIKSLIAI ką: „tu bandei tris kartus kitaip“.","Žodžio „šaunuolis“ šiandien nevartok."],"minAge":4,"ev":"A","src":"Grįžtamojo ryšio META 2020"},{"id":"p-goal","title":"Tikslas mano, žingsniai tavo","why":"Vadovaujamas žaidimas įveikė ir tiesioginį mokymą, ir laisvą žaidimą.","steps":["Pasakyk tikslą ir vieną apribojimą.","Būdą renkasi vaikas.","Tu tik klausi klausimų. Nerodai."],"minAge":4,"ev":"A","src":"Skene ir kt. 2022 META (N=3 893)"}],"checks":[{"id":"c-phone","text":"Telefonas buvo kitame kambaryje","minAge":8},{"id":"c-move","text":"Pajudėjau prieš sunkiausią užduotį","minAge":4},{"id":"c-say","text":"Pasakiau vieną dalyką iš atminties, nežiūrėdamas","minAge":5},{"id":"c-sleep","text":"Šiandien einu miegoti tuo pačiu laiku","minAge":4},{"id":"c-one","text":"Dariau vieną darbą vienu metu","minAge":6},{"id":"c-ask","text":"Paklausiau „kodėl taip?“ bent vieną kartą","minAge":6},{"id":"c-hard","text":"Pasakiau, kas buvo sunkiausia","minAge":5},{"id":"c-desk","text":"Ant stalo liko tik tai, ko reikia","minAge":5}]},"library":{"segments":[{"id":"knygos","icon":"📚","label":"Knygos"},{"id":"dokumentika","icon":"🎬","label":"Dokumentika"},{"id":"podkastai","icon":"🎧","label":"Podcast'ai"},{"id":"tyrimai","icon":"🔬","label":"Naujausi tyrimai"},{"id":"bureliai","icon":"🎪","label":"Būreliai"},{"id":"irankiai","icon":"🏠","label":"Namų įrankiai"}],"knygos":[{"title":"Learning How to Learn","author":"Barbara Oakley, Terrence Sejnowski","who":"Vaikams ir paaugliams 10+","why":"Parašyta dirbančių kognityvinių mokslininkų, tiesiai vaiko amžiaus grupei. Artimiausia tam, ką daro MKK.","lt":"⚠️ lietuviško vertimo neradau"},{"title":"Make It Stick","author":"Brown, Roediger, McDaniel","who":"Tėvams ir mokytojams","why":"Prisiminimo, išskirstymo ir maišymo sintezė. Jei skaitysi vieną knygą — šitą.","lt":"⚠️ lietuviško vertimo neradau"},{"title":"Sėkmės psichologija (Mindset)","author":"Carol Dweck","who":"Tėvams","why":"Augimo mąstysenos pradžia. ⚠️ Skaityk kartu su 2018–2023 m. ginču: efektas tikras, bet mažas ir sąlyginis (0,09–0,16 SD).","lt":"✅ yra lietuviškai"},{"title":"Kaip veikia smegenys","author":"Dr. Ramunė Dirvanskienė","who":"Tėvams","why":"Vienintelė lietuvių autorės knyga apie smegenis, kurią radau šiame etape. ⚠️ Nepatikrinau jos įrodymų kokybės — perskaityk pats prieš rekomenduodamas.","lt":"✅ lietuviška originali"},{"title":"The Gardener and the Carpenter","author":"Alison Gopnik","who":"Tėvams","why":"Atsvara „optimizuok savo vaiką“ mąstymui. Priminimas, kad vaikas nėra projektas.","lt":"⚠️ lietuviško vertimo neradau"}],"dokumentika":[{"title":"Screenagers","who":"Tėvams + 10–14 m.","why":"Ekranai, miegas, dėmesys. Tinka žiūrėti kartu ir po to kalbėtis.","note":""},{"title":"My Octopus Teacher","who":"Šeimai 6+","why":"Ne apie mokymosi mokslą — bet parodo smalsumą, iš kurio mokymasis prasideda.","note":""},{"title":"The Social Dilemma","who":"13+ ir tėvams","why":"Dėmesio ekonomika ir dizainas, kuris traukia.","note":"⚠️ Vietomis perdramatizuota. Palygink su radiniu, kad ekrano laikas paaiškina mažiau nei 1 % savijautos skirtumų."}],"podkastai":[{"title":"The Learning Scientists Podcast","who":"Tėvams ir mokytojams","why":"Tiesiai tos pačios šešios strategijos, kuriomis remiasi MKK."},{"title":"Cult of Pedagogy","who":"Mokytojams ir tėvams","why":"Atskiras ciklas apie mokymąsi ir atmintį."},{"title":"Hidden Brain (NPR)","who":"Suaugusiems","why":"Prieinamas kognityvinis mokslas. Gera medžiaga pokalbiui prie vakarienės."}],"tyrimai":[{"title":"Prisiminimo praktika realioje klasėje","year":"2025","finding":"5 klasė: testas su grįžtamuoju ryšiu 67,0 %, pakartotinis skaitymas 48,6 %. Intervalo keitimas (1 vs 4 dienos) nedavė nieko.","means":"Prisiminimas — stiprus. Išskirstymas klasėje silpnesnis, nei parduodama.","ev":"A"},{"title":"Smegenų treniruokliai vaikams","year":"2024","finding":"235 vaikai (6–13 m.), 8 savaitės stabdymo treniruočių: pagerėjo tik treniruota užduotis. Nei mokslai, nei smegenų struktūra.","means":"„Programėlė lavina dėmesį“ — nesąžininga. Ir tai svarbiausias neigiamas radinys visoje MKK.","ev":"X"},{"title":"Prisiminimas darželinukams","year":"2025","finding":"n=202, 5–6 m.: prisiminimo praktika veikia — bet tik virš pakankamo sėkmės lygio treniruotės metu.","means":"Per sunkūs klausimai paverčia treniruotę nesėkme. 70–90 % teisingų.","ev":"B"},{"title":"Miegas ir atmintis 7–12 m.","year":"2020 · 2025","finding":"Vaikai per naktį išlaiko tai, ką suaugusieji prarado.","means":"Vėlyvas būrelis, valgantis miegą, mainais atiduoda tai, ką ką tik pastatė. ⚠️ Mechanizmo išvada, ne tyrimas apie būrelius.","ev":"B"},{"title":"Ekranai ir mąstymas (8 metų kohorta)","year":"2026","finding":"Paaugliai, kurių ekrano veikla reikalavo aktyvaus mąstymo, rodė geresnį apdorojimą. Pasyvus naudojimas — ne.","means":"Svarbu ne valandos, o veiklos tipas. ⚠️ Sąsaja, ne priežastis.","ev":"B"},{"title":"Telefono buvimas šalia","year":"2017 · 2023","finding":"Originalus tyrimas: telefonas ant stalo mažina darbinę atmintį. 2023 m. meta-analizė: efektas mažesnis ir nepastovesnis.","means":"Telefonas kitame kambaryje padeda — bet dydis ginčijamas, o su vaikais netirta.","ev":"B"}],"bureliaiIntro":"Abėcėlės tvarka. Nereitinguojame ir nerekomenduojame nė vieno būrelio — čia tik tai, ką kiekviena veikla treniruoja, ir po dvi mažas namų praktikas.","bureliai":[{"id":"daile","icon":"🎨","label":"Dailė ir amatai","trains":"Ranką, kantrybę ir gebėjimą pagaminti tai, ko dar nėra. Piešimas iš atminties yra tikra atminties technika.","ev":"B","evNote":"Piešimas kaip mokymosi būdas — vidutiniai įrodymai. „Dailė daro protingesnį“ — ne.","home":["Nupiešk iš atminties tai, ką šiandien matei. Tik po to pažiūrėk.","Vienas daiktas, trys skirtingi būdai jį pavaizduoti."]},{"id":"gamta","icon":"🌱","label":"Gamta ir mokslas","trains":"Klausimo kėlimą ir tikrinimą. Vaikas spėja, paskui patikrina — ir tai yra visas mokslas.","ev":"B","evNote":"Tyrinėjimu grįstas mokymasis veikia, kai suaugęs duoda tikslą, o vaikas — žingsnius.","home":["Prieš bandymą: „kas, tavo manymu, nutiks?“ Užrašyk spėjimą.","Vienas langas, penkios minutės, penki pastebėjimai."]},{"id":"kalbos","icon":"🗣","label":"Kalbos","trains":"Atmintį ir garsų skyrimą. Žodžių mokymasis yra gryna prisiminimo praktika.","ev":"A","evNote":"Prisiminimo praktika svetimų žodžių mokymesi — vienas stipriausiai įrodytų dalykų.","home":["Penki žodžiai. Uždenk. Pasakyk. Tada tikrink.","Rytoj paklausk tų pačių penkių — ne šiandien po penkių minučių."]},{"id":"muzika","icon":"🎵","label":"Muzika","trains":"Klausą, ritmą ir kasdienę praktiką. ⚠️ „Muzika daro protingesnį“ — su aktyvia kontroline grupe efektas beveik dingsta (g=0,18 → −0,02; ginčijama).","ev":"X","evNote":"Muzika verta dėl muzikos. Perkėlimo į kitus dalykus nežadam.","home":["Vienas taktas, trys kartojimai lėtai. Greitis — paskutinis.","Sudainuok tai, ką ką tik grojai — be instrumento."]},{"id":"pasakojimas","icon":"📖","label":"Pasakojimas","trains":"Supratimą ir sekos laikymą galvoje. Lietuvių kalboje vaikai stringa ne prie raidžių, o prie supratimo.","ev":"A","evNote":"Bendras skaitymas ir pasakojimas — stiprūs įrodymai ankstyvam raštingumui.","home":["Perpasakok istoriją trimis sakiniais. Tik trimis.","„O kas būtų, jei…“ — pakeisk vieną detalę ir sek toliau."]},{"id":"sportas","icon":"⚽","label":"Sportas","trains":"Stabdymą, eilės laukimą ir taisyklių keitimą vidury žaidimo.","ev":"B","evNote":"9 mėn. popamokinė judėjimo programa pagerino vykdomąją kontrolę 7–9 m. vaikams (FITKids, n=221).","home":["Penkios minutės judesio prieš namų darbus.","Žaidimas, kuriame taisyklė apsiverčia po minutės."]},{"id":"sokis","icon":"💃","label":"Šokis","trains":"Sekos laikymą kūne ir judesio kartojimą. Kūnas prisimena tai, ko galva dar nespėja.","ev":"B","evNote":"Judesys ir vykdomoji kontrolė — vidutiniai įrodymai. Akademinių pažadų nedarom.","home":["Trys judesiai iš eilės, iš atminties. Rytoj — tie patys.","Rodyk seką, vaikas atkartoja atvirkščiai."]},{"id":"technologijos","icon":"🤖","label":"Technologijos","trains":"Tai, kas daroma: kodą, robotą, mechanizmą.","ev":"C","evNote":"⚠️ Sąžiningai: robotika turi vidutinį efektą STEM mokymuisi (g≈0,49), bet toje pačioje meta-analizėje efektas skaičiavimo mąstymui buvo NEREIKŠMINGAS (g=0,079). „Robotika lavina problemų sprendimą“ — neįrodyta. Ir tai mano paties būrelio sritis, todėl sakau garsiai.","home":["Prieš statant — nupiešk seką. Paskui statyk pagal ją.","Kas sugedo? Viena hipotezė, vienas bandymas, tada kita."]}],"bureliaiKita":"Kita — parašyk, pridėsim. krisvas.lt","irankiai":[{"id":"iphone-gray","icon":"📱","title":"iPhone — pilkas ekranas","steps":["Settings → Accessibility → Display & Text Size → Color Filters → įjungti → Grayscale.","Settings → Accessibility → Accessibility Shortcut → pažymėti Color Filters.","Tris kartus paspausk šoninį mygtuką — spalvos įsijungia ir išsijungia."],"ev":"C","evNote":"Vienas tyrimas: ~38 min/d mažiau ekrano. 2024 m. pakartojimas — silpnesnis. Su vaikais netirta."},{"id":"android-gray","icon":"🤖","title":"Android — pilkas ekranas ir miego režimas","steps":["Settings → Digital Wellbeing → Bedtime mode → Bedtime routine.","Nustatyk miego laiką → įjunk Grayscale.","Paklausk vaiko po savaitės: pastebėjai skirtumą?"],"ev":"C","evNote":"Tie patys prieštaringi duomenys kaip iPhone."},{"id":"ipad-ga","icon":"🔒","title":"iPad — Guided Access","steps":["Settings → Accessibility → Guided Access → įjungti, nustatyti kodą.","Atidaryk vieną programėlę → tris kartus šoninis mygtukas → Start.","iPad užrakintas TOJE vienoje programėlėje, kol įvesi kodą."],"ev":"C","evNote":"Trinties įrankis, ne mokymosi technika. Nieko neišmoko — tik nuima vieną blaškymosi šaltinį."},{"id":"phone-tool","icon":"🛠","title":"Telefonas → mokymosi įrankis","steps":["Diktofonas: vaikas 60 sek. paaiškina temą sau. Rytoj perklauso.","Kamera: nufotografuok užduotį, uždenk atsakymą, bandyk iš atminties.","Laikmatis: 2 minutės vienam darbui. Matomas ekrane."],"ev":"B","evNote":"Aktyvus naudojimas (kūrimas, aiškinimas) skiriasi nuo pasyvaus. 2026 m. kohorta: skirtumas yra veiklos tipe, ne valandose. ⚠️ Sąsaja, ne priežastis."},{"id":"pc-tool","icon":"💻","title":"Kompiuteris → mokymosi įrankis","steps":["macOS: Control Center → Focus → naujas „Namų darbai“ režimas.","Windows: Settings → System → Focus sessions.","Vienas langas ekrane. Kiti — uždaryti, ne sumažinti."],"ev":"C","evNote":"Trinties įrankis. Suporuok jį su technika: telefonas kitame kambaryje, TADA 60 sekundžių paaiškinimas."}]},"games":{"games":[{"id":"atsimink","icon":"🧠","name":"Atsimink ir pasakyk","sub":"Prisiminimo praktika","rule":"5 daiktai 10 sekundžių. Paskui jie dingsta. Rask tuos penkis tarp dešimties.","ev":"A","honest":"Šis žaidimas treniruoja prisiminimą — tai, ką jis ir matuoja. Bendri smegenų treniruokliai neperkelia įgūdžio į mokyklą; prisiminimo praktika mokyklinei medžiagai — perkelia.","src":"Dunlosky 2013 · Franzoi 2025","free":true},{"id":"laikmatis","icon":"⏱","name":"Dėmesio laikmatis","sub":"Vienas darbas, matomas laikas","rule":"Pasirink 2, 5 ar 10 minučių. Vienas darbas. Kol skaičiuoja — nieko kito.","ev":"C","honest":"Laikmatis ir pilkas ekranas — trinties įrankiai, ne mokymosi technikos. Jie nuima blaškymosi šaltinį, bet nieko neišmoko. Suporuok su prisiminimu.","src":"MKK praktika · Holte & Ferraro 2020 (silpnas pakartojimas)","free":false},{"id":"ismokyk","icon":"🗣","name":"Išmokyk kitą","sub":"60 sekundžių be užrašų","rule":"Gauni temą. 60 sekundžių aiškini garsiai. Paskui įvertini save nuo 1 iki 3.","ev":"B","honest":"Aiškinimas kitam yra tikras mokymosi būdas. ⚠️ Bet savęs vertinimas — silpni duomenys: iki ~8 m. vaikai save vertina per gerai. Skaičius čia tavo, ne pažymys.","src":"Generative learning REV · Metakognicijos REV","free":false}],"memoryPools":{"young":["🍎","🚲","🐸","⭐","🎈","🔑","🐝","🌙","🍌","🚂","🧦","🦊","🍄","🎩","🐟","🌵","🥕","🦋"],"old":["knyga","vilkas","laivas","kalnas","obuolys","raktas","žvaigždė","medis","lietus","duona","tiltas","paukštis","akmuo","sniegas","kelias","vėjas","ugnis","sodas"]},"teachTopics":[{"t":"Kodėl prisiminti sunkiau nei perskaityti — ir kodėl tai gerai","minAge":8},{"t":"Kas atsitinka, kai bandai daryti du darbus vienu metu","minAge":8},{"t":"Kodėl miegas padeda atsiminti","minAge":6},{"t":"Kas yra darbinė atmintis ir kiek į ją telpa","minAge":8},{"t":"Paaiškink, ką šiandien veikei mokykloje — bet taip, kad suprastų penkiametis","minAge":6},{"t":"Kodėl klaida yra naudinga","minAge":5},{"t":"Paaiškink vieną taisyklę iš savo mėgstamo žaidimo","minAge":5},{"t":"Kodėl „mokymosi stiliai“ yra mitas","minAge":10},{"t":"Kaip veiktų diena, jei niekas nieko nepamirštų","minAge":8},{"t":"Išmokyk ką nors piešti apskritimą — žodžiais, be rankų","minAge":5}],"teachRates":[{"n":1,"icon":"😵","label":"Sunku. Neradau žodžių.","tip":"Gerai. Rytoj tą pačią temą — bus lengviau. Tai ne gabumas, o kartojimas."},{"n":2,"icon":"🙂","label":"Vidutiniškai. Vietomis stringu.","tip":"Rask TĄ vietą, kur stringi. Ten ir yra tavo mokymosi taškas — ne visoje temoje."},{"n":3,"icon":"💪","label":"Lengva. Paaiškinau sklandžiai.","tip":"Tada paklausk savęs „kodėl taip?“ tris kartus iš eilės. Jei atsakymas baigiasi — tema dar neišmokta iki galo."}],"timerChecklist":["Telefonas kitame kambaryje","Ant stalo — tik tai, ko reikia dabar","Vienas darbas, ne du","Vanduo šalia, kad nereikėtų keltis"]},"podcasts":[{"band":"4-5","title":"Kaip smegenys mokosi — pasakyk, ką atsimeni","minutes":0.4,"script":"Ei, tu! Žinojai, kad tavo smegenys auga kaip mažas medis — kuo daugiau naudoji, tuo stipresnės šakos?\n\nŠiandien vieną žaidimą. Kai ką nors pamatai ar išgirsti — po truputį pabandyk PASAKYTI, ką atsimeni. Nesvarbu, jei ne viską. Tas bandymas prisiminti ir stiprina medį.\n\nPabandyk dabar: ką valgei pusryčiams? Pasakyk garsiai mamai ar tėčiui.\n\nAš Kristijonas. Rytoj — kita technika.","audio":"audio/mkk-4-5.mp3","status":"needs-ear-check"},{"band":"6-7","title":"Kaip smegenys mokosi — pasakyk, ką atsimeni","minutes":0.4,"script":"Ei, tu! Ar žinai, kaip tavo smegenys mokosi naujų dalykų?\n\nJos veikia kaip raumuo — kuo dažniau bandai prisiminti, tuo stipresnės tampa. Ne tada, kai kas nors tau paaiškina antrą kartą, o tada, kai PATS pabandai atsiminti.\n\nŠiandien technika: po pasakos ar pamokos, nežiūrėk į knygą — pabandyk garsiai pasakyti, ką atsimeni. Net jei ne viską — tas bandymas ir yra treniruotė.\n\nPabandyk dabar: ką darei šįryt? Pasakyk garsiai.\n\nAš Kristijonas. Rytoj — kita technika.","audio":"audio/mkk-6-7.mp3","status":"needs-ear-check"},{"band":"8-9","title":"Kaip smegenys mokosi — uždaryk knygą ir prisimink","minutes":0.7,"script":"Kaip tavo smegenys iš tikrųjų mokosi? Ne taip, kaip dauguma galvoja.\n\nPerskaityti tekstą dar kartą jaučiasi naudinga — bet tai beveik neveikia. Tavo smegenys stiprėja tada, kai PATS pabandai prisiminti, be pagalbos, be žiūrėjimo į knygą. Kaip svoris raumeniui — sunku iš pradžių, o būtent tas sunkumas ir stiprina atmintį.\n\nTechnika, kurią išbandyk šiandien: po to, kai ką nors skaitai ar mokaisi, uždaryk knygą. Garsiai pasakyk, ką atsimeni — savais žodžiais, niekur nežiūrėdamas. Tik tada atsiverk knygą ir patikrink, ko trūko. Šitą kartok kiekvieną dieną — trumpai, bet tikrai.\n\nDuok sau 2 minutes dabar: pasirink šiandienos pamoką ar knygą, uždaryk ją, ir pasakyk garsiai tris dalykus, kuriuos atsimeni.\n\nAš Kristijonas. Rytoj — kita technika.","audio":"audio/mkk-8-9.mp3","status":"needs-ear-check"},{"band":"10-11","title":"Kaip smegenys mokosi — uždaryk knygą ir prisimink","minutes":0.9,"script":"Kaip tavo smegenys iš tikrųjų mokosi? Atsakymas nustebins.\n\nPerskaityti pastraipą dar kartą ar pabraukti tekstą spalvotu žymekliu — jaučiasi produktyviai, bet mokslas rodo: tai vienas silpniausių būdų mokytis. Stipriausias būdas — priešingai — kai užsimerki ir PATS bandai prisiminti, be jokios pagalbos ir be knygos šalia. Vienoje penktokų klasėje mokiniai, kurie taip treniravosi, atsakė teisingai daug dažniau nei tie, kurie tiesiog perskaitė medžiagą dar kartą.\n\nKodėl tai veikia? Nes prisiminimas, kai jau šiek tiek pamiršai — sunkus. O tas sunkumas ir yra pati treniruotė smegenims, ne bausmė.\n\n2 minučių veiksmas: baigęs pamoką ar skaitymą, uždaryk knygą ir sąsiuvinį. Garsiai arba raštu išvardink viską, ką atsimeni. Tik POTOM atsiversk ir patikrink, ką praleidai.\n\nAš Kristijonas. Rytoj — kita technika.","audio":"audio/mkk-10-11.mp3","status":"needs-ear-check"},{"band":"12","title":"Kodėl smegenų treniruokliai neveikia — ir kas veikia","minutes":1.0,"script":"Dauguma smegenų treniruoklių neveikia. Rimtai. Yra tyrimas su 235 vaikais — po aštuonių savaičių treniruotės jie pagerėjo TIK tame pačiame žaidime. Ne mokykloje, ne dėmesyje per pamoką, niekur kitur. Pinigai ir laikas — į vėją.\n\nTai kas veikia? Trys dalykai, kuriuos gali išbandyti šiandien, be jokios programėlės. Pirma: kai mokaisi, nustok skaityti dar kartą. Vietoj to — uždaryk knygą ir garsiai arba raštu prisimink, ką tik skaitei. Tas jausmas, kai sunku prisiminti — tai ir yra treniruotė, ne ženklas, kad kažkas negerai.\n\nAntra: išsklaidyk mokymąsi per kelias dienas, ne viską per vieną vakarą prieš testą. Smegenims reikia laiko tarp bandymų, ne vienos ilgos sesijos.\n\nTrečia — telefoną kol mokaisi padėk KITAME kambaryje. Ne ant stalo apversto ekranu žemyn — kitame kambaryje. Tavo smegenys negali sutelkti dėmesio, kol laukia pranešimo, net jei jo neliečia.\n\nPabandyk šiandien: 10 minučių be telefono kambaryje, ir viena prisiminimo pertrauka.\n\nAš Kristijonas. Rytoj — kita technika.","audio":"audio/mkk-12.mp3","status":"needs-ear-check"},{"band":"13","title":"Kodėl smegenų treniruokliai neveikia — ir kas veikia","minutes":1.3,"script":"Tiesa, kurios niekas nesako: dauguma „smegenų treniruoklių\" programėlių neveikia. Tyrimas su 235 vaikais parodė — po aštuonių savaičių treniruotės jie pagerėjo tik pačiame žaidime. Į mokyklą, į testus, į koncentraciją apskritai tai nepersikėlė. Skamba nusivylusiai, bet svarbu žinoti, kol nepirkai dar vienos.\n\nKas veikia iš tikrųjų — nuobodžiau, bet realu, ir nemokama. Pirma: nustok skaityti konspektą dar kartą prieš testą. Vietoj to uždaryk jį ir bandyk prisiminti be pagalbos. Kuo sunkiau prisiminti, tuo geriau tai veikia — nes tavo smegenys tuo metu tikrai dirba, o ne tik atpažįsta pažįstamą tekstą.\n\nAntra: mokykis dalimis per kelias dienas, ne visą naktį prieš egzaminą. Tavo smegenys tvirtina atmintį poilsio metu, ne vien tuo metu, kai žiūri į puslapį.\n\nTrečia, ir sunkiausia: kol mokaisi, telefoną nunešk į kitą kambarį. Ne tylųjį režimą — KITĄ kambarį. Vien žinojimas, kad jis šalia, atima dėmesio, net jei jo neliečia.\n\nPabandyk šiandien: viena pertrauka be perskaitymo, viena be telefono kambaryje.\n\nAš Kristijonas. Rytoj — kita technika.","audio":"audio/mkk-13.mp3","status":"needs-ear-check"},{"band":"14","title":"Kodėl smegenų treniruokliai neveikia — ir kas veikia","minutes":1.1,"script":"Realybė: dauguma „smegenų treniruoklių\" ir atminties programėlių tiesiog neveikia už savo paties žaidimo ribų. Tyrimas su 235 vaikais tai įrodė — aštuonios savaitės treniruočių, o rezultatas persikėlė tik į patį žaidimą. Ne į mokyklą. Ne į koncentraciją apskritai. Jei kažkas tau parduoda „smegenų treniruotę\" — klausk, kur ta programėlė tai įrodė.\n\nTai kas realiai veikia — ne stebuklinga programėlė, o trys nuobodūs įpročiai, kuriuos gali pradėti šiandien, nemokamai. Pirma: nustok perskaitinėti konspektus prieš testą — tai jaučiasi produktyviai, bet moksliškai tai vienas silpniausių metodų. Vietoj to uždaryk juos ir prisimink be pagalbos. Sunku prisiminti — reiškia, kad veikia, o ne kad tu blogas mokinys.\n\nAntra: paskirstyk mokymąsi per kelias dienas, ne per vieną naktį — atmintis tvirtėja poilsio metu.\n\nTrečia: kol mokaisi, telefoną neškis į kitą kambarį, ne tik ant tylaus režimo. Vien jo buvimas šalia, net užrakintas, atima dalį dėmesio.\n\nŠiandien: viena mokymosi sesija be telefono kambaryje, su prisiminimo pertrauka pabaigoje.\n\nAš Kristijonas. Rytoj — kita technika.","audio":"audio/mkk-14.mp3","status":"needs-ear-check"}]};</script>
+<script>
+/* MKK v0.1.0 — Mokymosi Meistrų Klubas. Plain JS, no framework, no build. */
+(function () {
+  'use strict';
+
+  var C = null;            // content
+  var KEY = 'mkk.v1';
+  var S = {};              // state
+  var ACCENTS = [
+    { id: 'raudona', name: 'Raudona', v: '#D90429' },
+    { id: 'melyna', name: 'Mėlyna', v: '#0057B8' },
+    { id: 'zalia', name: 'Žalia', v: '#0B7A45' },
+    { id: 'violetine', name: 'Violetinė', v: '#6B21A8' },
+    { id: 'oranzine', name: 'Oranžinė', v: '#B84A00' },
+    { id: 'kontrastas', name: 'Didelis kontrastas', v: '#000000', hc: true }
+  ];
+  var AMBIENTS = [
+    { id: 'off', name: 'Išjungta' },
+    { id: 'pink', name: 'Rausvas triukšmas' },
+    { id: 'rain', name: 'Lietaus tipo' },
+    { id: 'pulse', name: 'Lėtas pulsas' }
+  ];
+
+  /* ---------- state ---------- */
+  function loadState() {
+    var d = {};
+    try { d = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { d = {}; }
+    S = {
+      band: d.band || null,
+      parent: d.parent === true,
+      theme: d.theme || 'light',
+      accent: d.accent || 'raudona',
+      ambient: d.ambient || 'off',
+      plus: d.plus === true,
+      code: d.code || '',
+      streak: d.streak || 0,
+      lastDone: d.lastDone || '',
+      days: d.days || {},
+      games: d.games || {}
+    };
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  function dayKey(dt) {
+    dt = dt || new Date();
+    var m = dt.getMonth() + 1, d = dt.getDate();
+    return dt.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (d < 10 ? '0' : '') + d;
+  }
+  function today() { return dayKey(); }
+  function yesterday() { var d = new Date(); d.setDate(d.getDate() - 1); return dayKey(d); }
+  function dayState() {
+    var k = today();
+    if (!S.days[k]) S.days[k] = { p: 0, x: 0, c: 0 };
+    return S.days[k];
+  }
+  function dayDone() { var d = dayState(); return d.p && d.x && d.c; }
+  function checkStreak() {
+    if (!dayDone()) return false;
+    if (S.lastDone === today()) return false;
+    S.streak = (S.lastDone === yesterday()) ? S.streak + 1 : 1;
+    S.lastDone = today();
+    save();
+    return true;
+  }
+
+  /* ---------- helpers ---------- */
+  function $(s, r) { return (r || document).querySelector(s); }
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function seed(str) { var h = 0, i; for (i = 0; i < str.length; i++) { h = (h * 31 + str.charCodeAt(i)) >>> 0; } return h; }
+  function shuffle(a, rnd) {
+    var arr = a.slice(), i, j, t;
+    for (i = arr.length - 1; i > 0; i--) {
+      j = Math.floor((rnd ? rnd() : Math.random()) * (i + 1));
+      t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function bandObj() {
+    var i, b = C.config.bands;
+    for (i = 0; i < b.length; i++) if (b[i].id === S.band) return b[i];
+    return b[0];
+  }
+  function bandMinAge() { return parseInt(String(S.band).split('-')[0], 10) || 8; }
+  function isYoung() { return bandMinAge() <= 7; }
+  function toast(msg) {
+    var t = $('#toast');
+    t.textContent = msg; t.classList.add('on');
+    clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('on'); }, 2200);
+  }
+  function evBadge(ev) {
+    var e = ev === '✗' ? 'X' : (ev || 'C');
+    var lbl = e === 'X' ? '✗' : e;
+    return '<button class="ev" data-ev="' + esc(e) + '" data-act="method" type="button" aria-label="Įrodymų lygis ' + esc(lbl) + ' — kaip vertinam">' + esc(lbl) + '</button>';
+  }
+
+  /* ---------- theme ---------- */
+  function applyTheme() {
+    var root = document.documentElement;
+    if (S.theme === 'auto') root.removeAttribute('data-theme');
+    else root.setAttribute('data-theme', S.theme);
+    var a = ACCENTS[0], i;
+    for (i = 0; i < ACCENTS.length; i++) if (ACCENTS[i].id === S.accent) a = ACCENTS[i];
+    root.style.setProperty('--accent', a.v);
+    if (a.hc) root.setAttribute('data-contrast', '1'); else root.removeAttribute('data-contrast');
+  }
+
+  /* ---------- ambient sound (Web Audio, generated) ---------- */
+  var AU = { ctx: null, src: null, gain: null, lfo: null };
+  function noiseBuffer(ctx) {
+    var len = ctx.sampleRate * 4, buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+    var b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0, i, w;
+    for (i = 0; i < len; i++) {
+      w = Math.random() * 2 - 1;
+      b0 = 0.99886 * b0 + w * 0.0555179;
+      b1 = 0.99332 * b1 + w * 0.0750759;
+      b2 = 0.96900 * b2 + w * 0.1538520;
+      b3 = 0.86650 * b3 + w * 0.3104856;
+      b4 = 0.55000 * b4 + w * 0.5329522;
+      b5 = -0.7616 * b5 - w * 0.0168980;
+      d[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11;
+      b6 = w * 0.115926;
+    }
+    return buf;
+  }
+  function ambientStop() {
+    try { if (AU.src) AU.src.stop(); } catch (e) {}
+    try { if (AU.lfo) AU.lfo.stop(); } catch (e) {}
+    AU.src = null; AU.lfo = null;
+  }
+  function ambientStart(kind) {
+    ambientStop();
+    if (kind === 'off') return;
+    try {
+      if (!AU.ctx) {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        AU.ctx = new AC();
+      }
+      if (AU.ctx.state === 'suspended') AU.ctx.resume();
+      var ctx = AU.ctx;
+      var src = ctx.createBufferSource();
+      src.buffer = noiseBuffer(ctx); src.loop = true;
+      var f = ctx.createBiquadFilter();
+      var g = ctx.createGain();
+      if (kind === 'rain') { f.type = 'bandpass'; f.frequency.value = 1400; f.Q.value = 0.6; g.gain.value = 0.5; }
+      else if (kind === 'pulse') { f.type = 'lowpass'; f.frequency.value = 500; g.gain.value = 0.22; }
+      else { f.type = 'lowpass'; f.frequency.value = 900; g.gain.value = 0.3; }
+      src.connect(f); f.connect(g); g.connect(ctx.destination);
+      if (kind === 'pulse') {
+        var lfo = ctx.createOscillator(), lg = ctx.createGain();
+        lfo.frequency.value = 0.12; lg.gain.value = 0.16;
+        lfo.connect(lg); lg.connect(g.gain); lfo.start();
+        AU.lfo = lfo;
+      }
+      src.start();
+      AU.src = src; AU.gain = g;
+    } catch (e) { /* audio is optional */ }
+  }
+  function beep() {
+    try {
+      if (!AU.ctx) { var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return; AU.ctx = new AC(); }
+      var ctx = AU.ctx, o = ctx.createOscillator(), g = ctx.createGain();
+      o.frequency.value = 528; o.type = 'sine';
+      g.gain.setValueAtTime(0.0001, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.14, ctx.currentTime + 0.05);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.1);
+      o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 1.2);
+    } catch (e) {}
+  }
+
+  /* ---------- neuron canvas ---------- */
+  function neurons() {
+    var cv = $('#net'); if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d'), N = [], i, W, H;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function size() {
+      W = cv.width = cv.clientWidth * (window.devicePixelRatio > 1 ? 2 : 1);
+      H = cv.height = cv.clientHeight * (window.devicePixelRatio > 1 ? 2 : 1);
+    }
+    size();
+    for (i = 0; i < 26; i++) N.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25 });
+    function tone() {
+      var c = getComputedStyle(document.documentElement).getPropertyValue('--net').trim();
+      return c || '10,10,10';
+    }
+    function frame() {
+      var col = tone(), a, b, d;
+      ctx.clearRect(0, 0, W, H);
+      for (i = 0; i < N.length; i++) {
+        a = N[i];
+        if (!reduce) { a.x += a.vx; a.y += a.vy; }
+        if (a.x < 0 || a.x > W) a.vx *= -1;
+        if (a.y < 0 || a.y > H) a.vy *= -1;
+        ctx.fillStyle = 'rgba(' + col + ',1)';
+        ctx.beginPath(); ctx.arc(a.x, a.y, 2.2, 0, 6.3); ctx.fill();
+      }
+      for (i = 0; i < N.length; i++) {
+        for (var j = i + 1; j < N.length; j++) {
+          a = N[i]; b = N[j];
+          d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < W / 4) {
+            ctx.strokeStyle = 'rgba(' + col + ',' + (1 - d / (W / 4)) * 0.5 + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    frame();
+    window.addEventListener('resize', function () { size(); if (reduce) frame(); });
+  }
+
+  /* ---------- sheet ---------- */
+  function sheet(title, html) {
+    $('#sheetTitle').textContent = title;
+    $('#sheetBody').innerHTML = html;
+    $('#sheet').hidden = false; $('#scrim').hidden = false;
+    $('#sheet').scrollTop = 0;
+  }
+  function closeSheet() { $('#sheet').hidden = true; $('#scrim').hidden = true; }
+
+  function methodSheet() {
+    var m = C.config.method, e = C.config.evidence, h = '', k;
+    for (k = 0; k < m.intro.length; k++) h += '<p class="sm">' + esc(m.intro[k]) + '</p>';
+    h += '<div class="spacer"></div>';
+    ['A', 'B', 'C', 'X'].forEach(function (id) {
+      h += '<div class="item"><h3><span>' + evBadge(id) + ' ' + esc(e[id].name) + '</span></h3>' +
+        '<p class="sm muted" style="margin:0">' + esc(e[id].desc) + '</p></div>';
+    });
+    h += '<p class="lbl" style="margin-top:22px">Taisyklės</p><ul class="plain">';
+    m.rules.forEach(function (r) { h += '<li>' + esc(r) + '</li>'; });
+    h += '</ul><p class="lbl" style="margin-top:22px">Šaltiniai</p><ul class="plain">';
+    m.sources.forEach(function (r) { h += '<li class="xs">' + esc(r) + '</li>'; });
+    h += '</ul><p class="note">' + esc(m.note) + '</p>';
+    sheet(m.title, h);
+  }
+
+  /* ---------- podcast ---------- */
+  function podcastFor(band) {
+    var p = C.podcasts, i;
+    if (!p || !p.length) return null;
+    for (i = 0; i < p.length; i++) if (p[i].band === band) return p[i];
+    return null;
+  }
+
+  /* ---------- daily picks ---------- */
+  function practiceToday() {
+    var list = C.practices.practices.filter(function (p) { return p.minAge <= bandMinAge() + 2; });
+    if (!list.length) list = C.practices.practices;
+    return list[seed(today() + S.band) % list.length];
+  }
+  function checkToday() {
+    var list = C.practices.checks.filter(function (p) { return p.minAge <= bandMinAge() + 2; });
+    if (!list.length) list = C.practices.checks;
+    return list[seed('c' + today() + S.band) % list.length];
+  }
+
+  /* ---------- screens ---------- */
+  function scrOnboard() {
+    var h = '<div class="scr"><div class="card hero">' +
+      '<span class="lbl">' + esc(C.config.name) + ' · ' + esc(C.config.nameNote) + '</span>' +
+      '<p class="big">' + esc(C.config.tagline) + '</p>' +
+      '<p class="muted sm">Pirmas klausimas: kelių metų vaikas mokysis?</p></div>';
+    h += '<p class="lbl">Amžius</p>';
+    C.config.bands.forEach(function (b) {
+      h += '<button class="catrow" data-act="band" data-band="' + esc(b.id) + '" type="button">' +
+        '<span class="ic">' + (b.parentMode ? '👪' : '🧒') + '</span>' +
+        '<span class="tx"><b>' + esc(b.label) + '</b><span>' + esc(b.note) + '</span></span>' +
+        '<span class="ar">→</span></button>';
+    });
+    h += '<p class="note">Pasirinkimą bet kada pakeisi skiltyje „Aš“. Nieko nesiunčiam į internetą — viskas lieka šitame telefone.</p>';
+    h += '<p class="foot">' + esc(C.config.disclaimerShort) + '</p></div>';
+    return h;
+  }
+
+  function scrToday() {
+    if (!S.band) return scrOnboard();
+    var b = bandObj(), d = dayState(), pc = podcastFor(S.band), pr = practiceToday(), ck = checkToday();
+    var g = C.games.games[seed('g' + today()) % C.games.games.length];
+    var h = '<div class="scr">';
+    h += '<div class="card hero">' +
+      '<span class="lbl">' + esc(b.label) + (b.parentMode ? ' · su tėvais' : '') + ' · šiandien · 🔥 ' + S.streak + '</span>' +
+      '<p class="big">' + esc(C.config.tagline) + '</p>' +
+      '<p class="muted sm" style="margin:0 0 16px">Trys žingsniai. Trys minutės. Tiek.</p>' +
+      '<button class="btn" data-act="start-now" type="button">▶ Pradėti dabar</button>' +
+      '<p class="xs muted center" style="margin:10px 0 0">Vienas paspaudimas: podcast\'as groja, paskui vienas klausimas.</p></div>';
+
+    /* 1 — podcast */
+    h += '<button class="step' + (d.p ? ' done' : '') + '" data-act="open-pod" type="button">' +
+      '<span class="n">' + (d.p ? '✓' : '1') + '</span><span><span class="t">🎙 Vienos minutės podcast\'as</span>' +
+      '<span class="s">' + (pc ? esc(pc.title) : 'Šiandienos mintis') + '</span></span></button>';
+    h += '<p class="xs muted" style="margin:-4px 0 14px 4px">' + esc(C.config.voiceNote) + '<br>' + esc(C.config.coi) + '</p>';
+
+    /* 2 — practice */
+    h += '<button class="step' + (d.x ? ' done' : '') + '" data-act="open-prac" type="button">' +
+      '<span class="n">' + (d.x ? '✓' : '2') + '</span><span><span class="t">🎯 Dviejų minučių praktika</span>' +
+      '<span class="s">' + esc(pr.title) + '</span></span></button>';
+
+    /* 3 — check */
+    h += '<button class="step' + (d.c ? ' done' : '') + '" data-act="tick" type="button">' +
+      '<span class="n">' + (d.c ? '✓' : '3') + '</span><span><span class="t">✅ Vienas varnelės klausimas</span>' +
+      '<span class="s">' + esc(ck.text) + '</span></span></button>';
+
+    if (dayDone()) {
+      h += '<div class="card flat center"><p class="lbl" style="margin:0 0 6px">Diena uždaryta</p>' +
+        '<p class="big" style="margin:0">🔥 ' + S.streak + '</p>' +
+        '<p class="muted sm" style="margin:6px 0 0">' + (S.streak === 1 ? 'Pirma diena iš eilės.' : S.streak + ' dienos iš eilės.') + '</p></div>';
+    }
+
+    /* today's game — visible without finishing the podcast */
+    h += '<p class="h2">Šiandienos žaidimas</p>' +
+      '<a class="catrow" href="#/zaidimai/' + esc(g.id) + '">' +
+      '<span class="ic">' + esc(g.icon) + '</span>' +
+      '<span class="tx"><b>' + esc(g.name) + '</b><span>' + esc(g.sub) + (!g.free && !S.plus ? ' · 🔒 MKK+' : '') + '</span></span>' +
+      '<span class="ar">→</span></a>';
+
+    /* ambient */
+    h += '<p class="h2">Fono garsas</p><div class="chips">';
+    AMBIENTS.forEach(function (a) {
+      h += '<button class="chip" data-act="amb" data-amb="' + esc(a.id) + '" aria-pressed="' + (S.ambient === a.id) + '" type="button">' + esc(a.name) + '</button>';
+    });
+    h += '</div><p class="xs muted">Fono garsas — be mokslinių pažadų. Kai kam padeda uždengti triukšmą, ir tiek.</p>';
+
+    h += '<p class="foot">' + esc(C.config.disclaimerShort) + '</p>';
+    h += '</div>';
+    return h;
+  }
+
+  function scrTechniques(cat) {
+    var T = C.techniques, h = '<div class="scr">';
+    if (!cat) {
+      h += '<p class="lbl">Treniruotės</p><p class="big">Ką iš tikrųjų verta daryti.</p>' +
+        '<p class="muted sm">' + T.techniques.length + ' technikos ir ' + T.myths.length + ' mitai. Kiekviena su įrodymų ženkleliu — paspausk jį.</p><div class="spacer"></div>';
+      T.categories.forEach(function (c) {
+        var n = c.id === 'mitai' ? T.myths.length : T.techniques.filter(function (t) { return t.cat === c.id; }).length;
+        h += '<a class="catrow" href="#/treniruotes/' + esc(c.id) + '">' +
+          '<span class="ic">' + esc(c.icon) + '</span>' +
+          '<span class="tx"><b>' + esc(c.label) + '</b><span>' + esc(c.blurb) + '</span></span>' +
+          '<span class="ar">' + n + ' →</span></a>';
+      });
+      h += '<p class="note">Nemokamai matai 5 technikas ir VISUS mitus. Likusios — MKK+.</p>';
+      return h + '</div>';
+    }
+    var c = null, i;
+    for (i = 0; i < T.categories.length; i++) if (T.categories[i].id === cat) c = T.categories[i];
+    if (!c) return scrTechniques(null);
+    h += '<a class="chip" href="#/treniruotes">← Atgal</a><div class="spacer"></div>';
+    h += '<p class="lbl">' + esc(c.icon) + ' ' + esc(c.label) + '</p><p class="muted sm">' + esc(c.blurb) + '</p>';
+    h += '<div class="card">';
+    if (cat === 'mitai') {
+      T.myths.forEach(function (m) {
+        h += '<div class="item"><h3><span>' + esc(m.name) + '</span>' + evBadge('X') + '</h3>' +
+          '<p class="how muted">„' + esc(m.claim) + '“</p>' +
+          '<p class="how">' + esc(m.truth) + '</p>' +
+          '<div class="prac"><b>Vietoj to:</b> ' + esc(m.instead) + '</div>' +
+          '<p class="meta">' + esc(m.src) + '</p></div>';
+      });
+    } else {
+      var list = T.techniques.filter(function (t) { return t.cat === cat; });
+      var free = freeTechIds();
+      list.forEach(function (t) {
+        var locked = !S.plus && free.indexOf(t.id) < 0;
+        h += '<div class="item"><h3><span>' + esc(t.name) + '</span>' + evBadge(t.ev) + '</h3>';
+        h += '<p class="how">' + esc(t.how) + '</p>';
+        if (locked) {
+          h += '<div class="prac muted">🔒 Praktika — MKK+ dalis. <a href="#/as">Žiūrėti planus</a></div>';
+        } else {
+          h += '<div class="prac"><b>2 min:</b> ' + esc(t.practice) + '</div>';
+        }
+        h += '<p class="meta">Nuo ' + t.age + ' m. · ' + esc(t.src) + '</p></div>';
+      });
+    }
+    h += '</div></div>';
+    return h;
+  }
+  function freeTechIds() { return ['retrieval', 'spacing', 'success', 'wm4', 'feedback-work']; }
+
+  function scrGames(id) {
+    var G = C.games.games, h = '<div class="scr">';
+    if (!id) {
+      h += '<p class="lbl">Žaidimai</p><p class="big">Trys žaidimai. Nulis pažadų.</p>' +
+        '<p class="muted sm">Kiekvienas sako, ką jis treniruoja — ir ko NE.</p><div class="spacer"></div>';
+      G.forEach(function (g) {
+        h += '<a class="catrow" href="#/zaidimai/' + esc(g.id) + '">' +
+          '<span class="ic">' + esc(g.icon) + '</span>' +
+          '<span class="tx"><b>' + esc(g.name) + '</b><span>' + esc(g.sub) + (!g.free && !S.plus ? ' · 🔒 MKK+' : '') + '</span></span>' +
+          '<span class="ar">→</span></a>';
+      });
+      h += '<p class="note warn">Bendri „smegenų treniruokliai“ neperkelia įgūdžio: 2024 m. tyrimas su 235 vaikais (6–13 m.) rado pagerėjimą tik treniruotoje užduotyje. Todėl čia nėra nė vieno žaidimo, kuris žadėtų „lavinti smegenis“.</p>';
+      return h + '</div>';
+    }
+    var g = null, i;
+    for (i = 0; i < G.length; i++) if (G[i].id === id) g = G[i];
+    if (!g) return scrGames(null);
+    h += '<a class="chip" href="#/zaidimai">← Atgal</a><div class="spacer"></div>';
+    h += '<p class="lbl">' + esc(g.icon) + ' ' + esc(g.name) + ' ' + evBadge(g.ev) + '</p>';
+    h += '<p class="muted sm">' + esc(g.rule) + '</p>';
+    if (!g.free && !S.plus) {
+      h += '<div class="card center"><p class="big">🔒</p><p class="sm">Šis žaidimas — MKK+ dalis.</p>' +
+        '<a class="btn" href="#/as">Žiūrėti planus</a></div>';
+      h += '<p class="note">' + esc(g.honest) + '</p></div>';
+      return h;
+    }
+    h += '<div class="card" id="gameBox"></div>';
+    h += '<p class="note warn"><b>Sąžiningai:</b> ' + esc(g.honest) + '</p>';
+    h += '<p class="meta xs muted">' + esc(g.src) + '</p>';
+    return h + '</div>';
+  }
+
+  function scrLibrary(seg) {
+    var L = C.library, h = '<div class="scr">';
+    h += '<p class="lbl">Biblioteka</p>';
+    if (!seg) {
+      h += '<p class="big">Kur ieškoti toliau.</p><p class="muted sm">Knygos, filmai, tyrimai ir tai, ką galima padaryti namuose šįvakar.</p><div class="spacer"></div>';
+      L.segments.forEach(function (s) {
+        h += '<a class="catrow" href="#/biblioteka/' + esc(s.id) + '">' +
+          '<span class="ic">' + esc(s.icon) + '</span><span class="tx"><b>' + esc(s.label) + '</b></span><span class="ar">→</span></a>';
+      });
+      return h + '</div>';
+    }
+    var s = null, i;
+    for (i = 0; i < L.segments.length; i++) if (L.segments[i].id === seg) s = L.segments[i];
+    if (!s) return scrLibrary(null);
+    /* bureliai stays FREE on purpose: it carries the conflict-of-interest disclosure. */
+    var locked = !S.plus && seg === 'irankiai';
+    h = '<div class="scr"><a class="chip" href="#/biblioteka">← Atgal</a><div class="spacer"></div>' +
+      '<p class="lbl">' + esc(s.icon) + ' ' + esc(s.label) + '</p>';
+
+    if (locked) {
+      h += '<div class="card center"><p class="big">🔒</p><p class="sm">Ši skiltis — MKK+ dalis.</p><a class="btn" href="#/as">Žiūrėti planus</a></div>';
+      return h + '</div>';
+    }
+    h += '<div class="card">';
+    if (seg === 'knygos') {
+      L.knygos.forEach(function (b) {
+        h += '<div class="item"><h3><span>' + esc(b.title) + '</span></h3>' +
+          '<p class="how muted sm">' + esc(b.author) + ' · ' + esc(b.who) + '</p>' +
+          '<p class="how">' + esc(b.why) + '</p><p class="meta">' + esc(b.lt) + '</p></div>';
+      });
+    } else if (seg === 'dokumentika') {
+      L.dokumentika.forEach(function (b) {
+        h += '<div class="item"><h3><span>' + esc(b.title) + '</span></h3>' +
+          '<p class="how muted sm">' + esc(b.who) + '</p><p class="how">' + esc(b.why) + '</p>' +
+          (b.note ? '<p class="meta">' + esc(b.note) + '</p>' : '') + '</div>';
+      });
+    } else if (seg === 'podkastai') {
+      L.podkastai.forEach(function (b) {
+        h += '<div class="item"><h3><span>' + esc(b.title) + '</span></h3>' +
+          '<p class="how muted sm">' + esc(b.who) + '</p><p class="how">' + esc(b.why) + '</p></div>';
+      });
+    } else if (seg === 'tyrimai') {
+      L.tyrimai.forEach(function (b) {
+        h += '<div class="item"><h3><span>' + esc(b.title) + '</span>' + evBadge(b.ev) + '</h3>' +
+          '<p class="meta" style="margin:0 0 6px">' + esc(b.year) + '</p>' +
+          '<p class="how">' + esc(b.finding) + '</p>' +
+          '<div class="prac"><b>Ką tai reiškia:</b> ' + esc(b.means) + '</div></div>';
+      });
+    } else if (seg === 'bureliai') {
+      h = h.replace('<div class="card">', '<p class="muted sm">' + esc(L.bureliaiIntro) + '</p><div class="card">');
+      L.bureliai.forEach(function (b) {
+        h += '<div class="item"><h3><span>' + esc(b.icon) + ' ' + esc(b.label) + '</span>' + evBadge(b.ev) + '</h3>' +
+          '<p class="how">' + esc(b.trains) + '</p>' +
+          '<div class="prac"><b>Namuose:</b><br>· ' + esc(b.home[0]) + '<br>· ' + esc(b.home[1]) + '</div>' +
+          '<p class="meta">' + esc(b.evNote) + '</p></div>';
+      });
+      h += '<div class="item"><p class="how muted">' + esc(L.bureliaiKita) + '</p></div>';
+    } else if (seg === 'irankiai') {
+      L.irankiai.forEach(function (b) {
+        h += '<div class="item"><h3><span>' + esc(b.icon) + ' ' + esc(b.title) + '</span>' + evBadge(b.ev) + '</h3><ol class="plain">';
+        b.steps.forEach(function (st) { h += '<li>' + esc(st) + '</li>'; });
+        h += '</ol><p class="meta">' + esc(b.evNote) + '</p></div>';
+      });
+    }
+    h += '</div></div>';
+    return h;
+  }
+
+  function scrMe() {
+    var cfg = C.config, b = bandObj(), h = '<div class="scr">';
+    h += '<p class="lbl">Aš</p><p class="big">' + esc(b.label) + (S.plus ? ' · MKK+' : '') + '</p>';
+    h += '<div class="card"><p class="lbl">Serija</p><p class="big" style="margin:0">🔥 ' + S.streak + '</p>' +
+      '<p class="muted sm" style="margin:4px 0 0">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas — atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + '</p></div>';
+
+    h += '<p class="h2">Amžius</p><div class="chips">';
+    cfg.bands.forEach(function (x) {
+      h += '<button class="chip" data-act="band" data-band="' + esc(x.id) + '" aria-pressed="' + (S.band === x.id) + '" type="button">' + esc(x.label) + '</button>';
+    });
+    h += '</div>';
+    h += '<button class="check' + (S.parent ? ' on' : '') + '" data-act="parent" type="button"><span class="bx">' + (S.parent ? '✓' : '') + '</span>' +
+      '<span><b>Tėvų režimas</b><br><span class="xs muted">4–7 m. — suaugęs skaito ir klausia. Rekomenduojama.</span></span></button>';
+
+    h += '<p class="h2">Spalvos</p><div class="chips">';
+    [['auto', 'Sistema'], ['light', 'Šviesi'], ['dark', 'Tamsi']].forEach(function (t) {
+      h += '<button class="chip" data-act="theme" data-theme="' + t[0] + '" aria-pressed="' + (S.theme === t[0]) + '" type="button">' + t[1] + '</button>';
+    });
+    h += '</div><p class="lbl">Keisti spalvą</p><div class="swatches">';
+    ACCENTS.forEach(function (a) {
+      h += '<button class="sw" data-act="accent" data-accent="' + a.id + '" aria-pressed="' + (S.accent === a.id) + '" style="background:' + a.v + '" title="' + esc(a.name) + '" aria-label="' + esc(a.name) + '" type="button"></button>';
+    });
+    h += '</div>';
+
+    h += '<p class="h2">Fono garsas</p><div class="chips">';
+    AMBIENTS.forEach(function (a) {
+      h += '<button class="chip" data-act="amb" data-amb="' + esc(a.id) + '" aria-pressed="' + (S.ambient === a.id) + '" type="button">' + esc(a.name) + '</button>';
+    });
+    h += '</div>';
+
+    /* plans */
+    h += '<p class="h2">Planai</p><div class="card"><p class="lbl">' + esc(cfg.plans.free.name) + '</p>' +
+      '<p class="price">' + esc(cfg.plans.free.price) + '</p><ul class="plain">';
+    cfg.plans.free.items.forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
+    h += '</ul></div>';
+
+    h += '<div class="card"><p class="lbl">' + esc(cfg.plans.plus.name) + '</p>' +
+      '<p class="price">' + esc(cfg.plans.plus.priceA) + ' <span class="muted">arba</span> ' + esc(cfg.plans.plus.priceB) + '</p>' +
+      '<p class="xs muted">' + esc(cfg.plans.plus.priceNote) + '</p><ul class="plain">';
+    cfg.plans.plus.items.forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
+    h += '</ul><button class="btn" data-act="pay" type="button">Užsisakyti MKK+</button></div>';
+
+    /* gift */
+    h += '<div class="card"><p class="lbl">🎁 ' + esc(cfg.plans.gift.title) + '</p>' +
+      '<p class="sm">' + esc(cfg.plans.gift.help) + '</p>' +
+      '<div class="coi">' + esc(cfg.plans.gift.coi) + '</div>';
+    if (S.plus) {
+      h += '<p class="sm"><b>✓ MKK+ aktyvus</b>' + (S.code ? ' · kodas ' + esc(S.code) : '') + '</p>' +
+        '<button class="btn ghost sm" data-act="unplus" type="button">Išjungti (testui)</button>';
+    } else {
+      h += '<input type="text" id="code" placeholder="' + esc(cfg.plans.gift.placeholder) + '" autocapitalize="characters" autocomplete="off">' +
+        '<div class="spacer"></div><button class="btn" data-act="code" type="button">Įvesti kodą</button>';
+    }
+    h += '</div>';
+
+    /* guests */
+    h += '<p class="h2">Kviestiniai svečiai</p>';
+    cfg.guests.forEach(function (g) {
+      h += '<div class="card flat"><p class="lbl" style="margin:0 0 4px">' + esc(g.name) + ' · ' + esc(g.status) + '</p>' +
+        '<p class="sm" style="margin:0">' + esc(g.topic) + '</p></div>';
+    });
+
+    /* courses */
+    h += '<p class="h2">Kursai</p>';
+    [cfg.courses.today, cfg.courses.course].forEach(function (c) {
+      h += '<div class="card"><p class="lbl">' + esc(c.title) + '</p>' +
+        '<h3 style="font-size:19px;margin:0 0 6px">' + esc(c.name) + ' ' + evBadge(c.evidence) + '</h3>' +
+        '<p class="sm" style="margin:0">' + esc(c.body) + '</p></div>';
+    });
+    h += '<div class="card flat"><p class="lbl">Būsimi kursai</p><ul class="plain">';
+    cfg.courses.next.forEach(function (x) { h += '<li class="muted">' + esc(x) + '</li>'; });
+    h += '</ul></div>';
+
+    /* about */
+    h += '<p class="h2">Apie</p><div class="card">' +
+      '<p class="lbl">' + esc(cfg.author) + '</p>';
+    cfg.story.forEach(function (l) { h += '<p class="sm">' + esc(l) + '</p>'; });
+    h += '<hr class="sep"><div class="coi">' + esc(cfg.coiLong) + '</div>' +
+      '<button class="btn ghost sm" data-act="method" type="button">Kaip vertinam įrodymus</button>' +
+      '<p class="meta" style="margin-top:14px">' + esc(cfg.version) + ' · ' + esc(cfg.build) + '</p></div>';
+
+    h += '<div class="card flat">';
+    cfg.disclaimerFull.forEach(function (l, i) { h += '<p class="' + (i === 0 ? 'lbl' : 'xs') + '">' + esc(l) + '</p>'; });
+    h += '</div>';
+
+    h += '<p class="h2">Duomenys</p><div class="card flat"><p class="xs">Nulis analitikos, nulis slapukų, nulis serverio. Viskas, ką čia pažymi, lieka šitame telefone.</p>' +
+      '<button class="btn ghost sm" data-act="reset" type="button">Ištrinti viską</button></div>';
+
+    return h + '</div>';
+  }
+
+  /* ---------- podcast + practice sheets ---------- */
+  function openPodcast(auto) {
+    var pc = podcastFor(S.band), h = '';
+    if (!pc) {
+      h = '<p class="sm">Šiam amžiui podcast\'as dar rašomas.</p><p class="big">🎙 įrašoma</p>' +
+        '<p class="muted sm">Tuo tarpu žingsnis 2 veikia — pradėk nuo praktikos.</p>';
+    } else {
+      h = '<p class="lbl">' + esc(bandObj().label) + ' · ' + (pc.minutes || 1) + ' min</p>' +
+        '<h3 style="font-size:21px">' + esc(pc.title) + '</h3>';
+      if (pc.audio) {
+        h += '<div class="audio-wrap"><audio id="pod" controls preload="auto" src="' + esc(pc.audio) + '"></audio>' +
+          '<p class="meta">' + esc(C.config.voiceNote) + '</p></div>';
+      } else {
+        h += '<p class="big">🎙 įrašoma</p>';
+      }
+      h += '<hr class="sep"><p class="lbl">Tekstas</p><p class="sm" style="white-space:pre-line">' + esc(pc.script || '') + '</p>';
+      if (pc.status) h += '<p class="meta">' + esc(pc.status) + '</p>';
+    }
+    h += '<hr class="sep"><p class="lbl">Ką prisimeni?</p>' +
+      '<p class="xs muted">Vienas paspaudimas. Ne pažymys — tik tavo paties patikrinimas.</p><div class="btnrow">' +
+      '<button class="btn ghost" data-act="recall" data-n="1" type="button">1</button>' +
+      '<button class="btn ghost" data-act="recall" data-n="2" type="button">2</button>' +
+      '<button class="btn ghost" data-act="recall" data-n="3" type="button">3</button></div>';
+    h += '<div class="spacer"></div><button class="btn ok" data-act="did-pod" type="button">Perklausiau ✓</button>';
+    sheet('🎙 Podcast\'as', h);
+    if (auto) {
+      var a = $('#pod');
+      if (a) { var p = a.play(); if (p && p.catch) p.catch(function () {}); }
+    }
+  }
+  function openPractice() {
+    var p = practiceToday(), h = '';
+    h += '<p class="lbl">2 minutės ' + evBadge(p.ev) + '</p><h3 style="font-size:21px">' + esc(p.title) + '</h3>' +
+      '<p class="sm muted">' + esc(p.why) + '</p><ol class="plain">';
+    p.steps.forEach(function (s) { h += '<li>' + esc(s) + '</li>'; });
+    h += '</ol><p class="meta">Nuo ' + p.minAge + ' m. · ' + esc(p.src) + '</p>' +
+      '<div class="spacer"></div><button class="btn ok" data-act="did-prac" type="button">Padaryta ✓</button>';
+    sheet('🎯 Praktika', h);
+  }
+
+  /* ---------- games ---------- */
+  var GM = {};
+  function gameMount(id) {
+    var box = $('#gameBox'); if (!box) return;
+    if (id === 'atsimink') gAtsimink(box);
+    else if (id === 'laikmatis') gLaikmatis(box);
+    else if (id === 'ismokyk') gIsmokyk(box);
+  }
+
+  function gAtsimink(box) {
+    var pools = C.games.memoryPools;
+    var pool = isYoung() ? pools.young : pools.old;
+    var st = S.games.atsimink || {};
+    var repeatAvail = st.date && st.date !== today() && st.items && st.items.length === 5;
+    GM.sel = []; GM.mode = 'idle';
+
+    function intro() {
+      var h = '<p class="lbl">Prisiminimo praktika</p>';
+      if (repeatAvail) {
+        h += '<p class="sm">Vakar buvai įsiminęs penkis. Patikrinkim, ar liko — tai ir yra išskirstytas kartojimas.</p>' +
+          '<button class="btn" data-g="repeat" type="button">🔁 Vakar dienos patikrinimas</button>' +
+          '<button class="btn ghost" data-g="new" type="button">Nauji penki</button>';
+      } else {
+        h += '<p class="sm">5 daiktai · 10 sekundžių · paskui juos rasi tarp dešimties.</p>' +
+          '<button class="btn" data-g="new" type="button">Pradėti</button>';
+      }
+      box.innerHTML = h;
+    }
+    function show(items) {
+      GM.items = items;
+      var left = 10, h = '<p class="lbl">Įsimink</p><div class="clock" id="gclk">10</div><div class="bar"><i id="gbar"></i></div><div class="grid5">';
+      items.forEach(function (x) { h += '<div class="cell">' + esc(x) + '</div>'; });
+      h += '</div><button class="btn ghost" data-g="hide" type="button">Jau įsiminiau</button>';
+      box.innerHTML = h;
+      clearInterval(GM.t);
+      GM.t = setInterval(function () {
+        left--;
+        var c = $('#gclk'), b = $('#gbar');
+        if (!c) { clearInterval(GM.t); return; }
+        c.textContent = left;
+        if (b) b.style.width = ((10 - left) * 10) + '%';
+        if (left <= 0) { clearInterval(GM.t); quiz(); }
+      }, 1000);
+    }
+    function quiz() {
+      clearInterval(GM.t);
+      var rest = pool.filter(function (x) { return GM.items.indexOf(x) < 0; });
+      var decoys = shuffle(rest).slice(0, 5);
+      GM.board = shuffle(GM.items.concat(decoys));
+      GM.sel = [];
+      render();
+    }
+    function render() {
+      var h = '<p class="lbl">Rask tuos penkis · pažymėta <span id="gsel">0</span>/5</p><div class="grid5">';
+      GM.board.forEach(function (x, i) {
+        h += '<button class="cell" data-g="pick" data-i="' + i + '" aria-pressed="false" type="button">' + esc(x) + '</button>';
+      });
+      h += '</div><button class="btn" id="gsub" disabled data-g="submit" type="button">Patikrinti</button>';
+      box.innerHTML = h;
+    }
+    /* update in place — re-rendering the whole grid on every tap flickers on a phone
+       and detaches the button that was just tapped */
+    function refresh() {
+      var n = box.querySelector('#gsel'), sub = box.querySelector('#gsub');
+      if (n) n.textContent = GM.sel.length;
+      if (sub) sub.disabled = GM.sel.length !== 5;
+    }
+    function result() {
+      var right = 0, missed = [], h = '';
+      GM.sel.forEach(function (i) { if (GM.items.indexOf(GM.board[i]) >= 0) right++; });
+      GM.items.forEach(function (it) {
+        var idx = GM.board.indexOf(it);
+        if (GM.sel.indexOf(idx) < 0) missed.push(it);
+      });
+      S.games.atsimink = { date: today(), items: GM.items, missed: missed };
+      save();
+      h += '<p class="lbl">Rezultatas</p><div class="clock">' + right + '/5</div>';
+      h += '<div class="grid5">';
+      GM.board.forEach(function (x, i) {
+        var was = GM.items.indexOf(x) >= 0, pick = GM.sel.indexOf(i) >= 0;
+        var cls = was ? 'right' : (pick ? 'wrong' : '');
+        h += '<div class="cell ' + cls + '">' + esc(x) + '</div>';
+      });
+      h += '</div>';
+      h += '<p class="sm">' + (right >= 4 ? 'Geras lygis. Tarp 70 ir 90 % teisingų — ten, kur treniruotė dar yra treniruotė.' :
+        right >= 2 ? 'Normalu. Rytoj tie patys penki bus lengvesni — tai ir yra visa technika.' :
+          'Per sunku. Rytoj bandom vėl — ir tai ne apie gabumus, o apie kartojimą.') + '</p>';
+      if (missed.length) h += '<p class="meta">Nepataikei: ' + esc(missed.join(' · ')) + ' — jie grįš rytoj.</p>';
+      h += '<div class="spacer"></div><button class="btn ghost" data-g="new" type="button">Dar kartą</button>';
+      box.innerHTML = h;
+    }
+    box.onclick = function (e) {
+      var b = e.target.closest ? e.target.closest('[data-g]') : null;
+      if (!b) return;
+      var g = b.getAttribute('data-g');
+      if (g === 'new') show(shuffle(pool).slice(0, 5));
+      else if (g === 'repeat') show(st.items.slice());
+      else if (g === 'hide') { clearInterval(GM.t); quiz(); }
+      else if (g === 'pick') {
+        var i = parseInt(b.getAttribute('data-i'), 10), at = GM.sel.indexOf(i);
+        if (at >= 0) { GM.sel.splice(at, 1); b.setAttribute('aria-pressed', 'false'); }
+        else if (GM.sel.length < 5) { GM.sel.push(i); b.setAttribute('aria-pressed', 'true'); }
+        refresh();
+      } else if (g === 'submit') result();
+    };
+    intro();
+  }
+
+  function gLaikmatis(box) {
+    GM.left = 0; GM.run = false; GM.checks = {};
+    function fmt(s) { var m = Math.floor(s / 60), r = s % 60; return m + ':' + (r < 10 ? '0' : '') + r; }
+    function draw() {
+      var h = '';
+      if (!GM.run && !GM.left) {
+        h += '<p class="lbl">Kiek minučių?</p><div class="btnrow">' +
+          '<button class="btn" data-g="start" data-m="2" type="button">2</button>' +
+          '<button class="btn" data-g="start" data-m="5" type="button">5</button>' +
+          '<button class="btn" data-g="start" data-m="10" type="button">10</button></div>';
+      } else {
+        h += '<p class="lbl">' + (GM.run ? 'Vienas darbas. Nieko kito.' : 'Pauzė') + '</p>' +
+          '<div class="clock">' + fmt(GM.left) + '</div><div class="bar"><i style="width:' + (100 - Math.round(GM.left / GM.total * 100)) + '%"></i></div>' +
+          '<div class="btnrow"><button class="btn ghost" data-g="toggle" type="button">' + (GM.run ? 'Pauzė' : 'Tęsti') + '</button>' +
+          '<button class="btn ghost" data-g="stop" type="button">Baigti</button></div>';
+      }
+      h += '<hr class="sep"><p class="lbl">Prieš pradedant</p>';
+      C.games.timerChecklist.forEach(function (t, i) {
+        h += '<button class="check' + (GM.checks[i] ? ' on' : '') + '" data-g="chk" data-i="' + i + '" type="button">' +
+          '<span class="bx">' + (GM.checks[i] ? '✓' : '') + '</span><span>' + esc(t) + '</span></button>';
+      });
+      h += '<div class="spacer"></div><button class="btn ghost sm" data-g="gray" type="button">' +
+        (document.body.classList.contains('grayscale') ? 'Grąžinti spalvas' : '⚫ Pilko ekrano iššūkis') + '</button>';
+      box.innerHTML = h;
+    }
+    function tick() {
+      if (!GM.run) return;
+      GM.left--;
+      if (GM.left <= 0) { GM.run = false; GM.left = 0; clearInterval(GM.t); beep(); draw(); toast('Laikas. Dabar pasakyk vieną dalyką iš atminties.'); return; }
+      draw();
+    }
+    box.onclick = function (e) {
+      var b = e.target.closest ? e.target.closest('[data-g]') : null;
+      if (!b) return;
+      var g = b.getAttribute('data-g');
+      if (g === 'start') {
+        GM.total = parseInt(b.getAttribute('data-m'), 10) * 60;
+        GM.left = GM.total; GM.run = true;
+        clearInterval(GM.t); GM.t = setInterval(tick, 1000); draw();
+      } else if (g === 'toggle') {
+        GM.run = !GM.run;
+        clearInterval(GM.t); if (GM.run) GM.t = setInterval(tick, 1000);
+        draw();
+      } else if (g === 'stop') { GM.run = false; GM.left = 0; clearInterval(GM.t); draw(); }
+      else if (g === 'chk') { var i = b.getAttribute('data-i'); GM.checks[i] = !GM.checks[i]; draw(); }
+      else if (g === 'gray') { document.body.classList.toggle('grayscale'); draw(); }
+    };
+    draw();
+  }
+
+  function gIsmokyk(box) {
+    var topics = C.games.teachTopics.filter(function (t) { return t.minAge <= bandMinAge() + 2; });
+    if (!topics.length) topics = C.games.teachTopics;
+    GM.left = 60; GM.run = false;
+    function pick() { GM.topic = topics[Math.floor(Math.random() * topics.length)].t; }
+    pick();
+    function draw(phase) {
+      var h = '<p class="lbl">Tema</p><p class="big" style="font-size:22px">' + esc(GM.topic) + '</p>';
+      if (phase === 'run') {
+        h += '<div class="clock">' + GM.left + '</div><div class="bar"><i style="width:' + ((60 - GM.left) / 60 * 100) + '%"></i></div>' +
+          '<p class="sm muted">Kalbėk garsiai. Be užrašų. Jei sustoji — vis tiek kalbėk.</p>' +
+          '<button class="btn ghost" data-g="stop" type="button">Baigiau</button>';
+      } else if (phase === 'rate') {
+        h += '<p class="lbl">Kaip sekėsi?</p>';
+        C.games.teachRates.forEach(function (r) {
+          h += '<button class="btn ghost" data-g="rate" data-n="' + r.n + '" type="button">' + esc(r.icon) + ' ' + esc(r.label) + '</button>';
+        });
+      } else if (phase === 'done') {
+        var r = C.games.teachRates[GM.rate - 1];
+        h += '<div class="clock">' + esc(r.icon) + '</div><p class="sm"><b>' + esc(r.label) + '</b></p>' +
+          '<div class="prac">' + esc(r.tip) + '</div><div class="spacer"></div>' +
+          '<button class="btn ghost" data-g="again" type="button">Kita tema</button>';
+      } else {
+        h += '<p class="sm muted">60 sekundžių. Aiškini garsiai — žmogui, meškiukui ar sienai. Be užrašų.</p>' +
+          '<button class="btn" data-g="go" type="button">Pradedu</button>' +
+          '<button class="btn ghost" data-g="again" type="button">Kita tema</button>';
+      }
+      box.innerHTML = h;
+    }
+    function tick() {
+      GM.left--;
+      if (GM.left <= 0) { clearInterval(GM.t); GM.run = false; beep(); draw('rate'); return; }
+      draw('run');
+    }
+    box.onclick = function (e) {
+      var b = e.target.closest ? e.target.closest('[data-g]') : null;
+      if (!b) return;
+      var g = b.getAttribute('data-g');
+      if (g === 'go') { GM.left = 60; GM.run = true; clearInterval(GM.t); GM.t = setInterval(tick, 1000); draw('run'); }
+      else if (g === 'stop') { clearInterval(GM.t); GM.run = false; draw('rate'); }
+      else if (g === 'rate') { GM.rate = parseInt(b.getAttribute('data-n'), 10); draw('done'); }
+      else if (g === 'again') { clearInterval(GM.t); GM.left = 60; pick(); draw(); }
+    };
+    draw();
+  }
+
+  /* ---------- router ---------- */
+  function route() {
+    var hash = location.hash.replace(/^#\/?/, '') || 'siandien';
+    var parts = hash.split('/');
+    var tab = parts[0] || 'siandien', sub = parts[1] || '';
+    var v = $('#view'), html;
+
+    if (!S.band && tab !== 'as') { html = scrOnboard(); tab = 'siandien'; }
+    else if (tab === 'treniruotes') html = scrTechniques(sub);
+    else if (tab === 'zaidimai') html = scrGames(sub);
+    else if (tab === 'biblioteka') html = scrLibrary(sub);
+    else if (tab === 'as') html = scrMe();
+    else html = scrToday();
+
+    v.innerHTML = html;
+    window.scrollTo(0, 0);
+    var tabs = document.querySelectorAll('#tabs .tab'), i;
+    for (i = 0; i < tabs.length; i++) {
+      if (tabs[i].getAttribute('data-t') === tab) tabs[i].setAttribute('aria-current', 'page');
+      else tabs[i].removeAttribute('aria-current');
+    }
+    $('#streakN').textContent = S.streak;
+    if (tab === 'zaidimai' && sub) gameMount(sub);
+    clearInterval(GM.t);
+    if (tab === 'zaidimai' && sub) gameMount(sub);
+  }
+
+  /* ---------- actions ---------- */
+  function markDone(field) {
+    var d = dayState();
+    d[field] = 1; save();
+    var gained = checkStreak();
+    closeSheet(); route();
+    toast(gained ? '🔥 Serija: ' + S.streak : 'Pažymėta ✓');
+  }
+
+  function onClick(e) {
+    var el = e.target.closest ? e.target.closest('[data-act]') : null;
+    if (!el) return;
+    var a = el.getAttribute('data-act');
+
+    if (a === 'method') { methodSheet(); return; }
+    if (a === 'band') {
+      S.band = el.getAttribute('data-band');
+      var b = bandObj();
+      if (b.parentMode) S.parent = true;
+      save(); route(); toast('Amžius: ' + b.label); return;
+    }
+    if (a === 'parent') { S.parent = !S.parent; save(); route(); return; }
+    if (a === 'theme') { S.theme = el.getAttribute('data-theme'); save(); applyTheme(); route(); return; }
+    if (a === 'accent') { S.accent = el.getAttribute('data-accent'); save(); applyTheme(); route(); return; }
+    if (a === 'amb') {
+      S.ambient = el.getAttribute('data-amb'); save(); ambientStart(S.ambient); route();
+      toast(S.ambient === 'off' ? 'Garsas išjungtas' : 'Fono garsas įjungtas'); return;
+    }
+    if (a === 'start-now') { openPodcast(true); return; }
+    if (a === 'open-pod') { openPodcast(false); return; }
+    if (a === 'recall') {
+      var n = parseInt(el.getAttribute('data-n'), 10);
+      var au = $('#pod'); if (au) { try { au.pause(); } catch (er2) {} }
+      markDone('p');
+      toast(n >= 3 ? 'Trys iš trijų. Rytoj tas pats klausimas bus dar lengvesnis.' :
+        n === 2 ? 'Du. Normalu — prisiminti sunkiau nei perskaityti, ir būtent todėl tai veikia.' :
+          'Vienas. Tai ne gabumai, o kartojimas. Rytoj vėl.');
+      return;
+    }
+    if (a === 'open-prac') { openPractice(); return; }
+    if (a === 'did-pod') { markDone('p'); return; }
+    if (a === 'did-prac') { markDone('x'); return; }
+    if (a === 'tick') { markDone('c'); return; }
+    if (a === 'pay') {
+      sheet('Netrukus', '<p class="sm">Mokėjimų dar nėra — MKK yra prototipas, ne parduotuvė.</p>' +
+        '<p class="sm">Kaina dar nenuspręsta: ' + esc(C.config.plans.plus.priceA) + ' ar ' + esc(C.config.plans.plus.priceB) + '. ⚠️ tikslinama.</p>' +
+        '<div class="coi">' + esc(C.config.plans.gift.coi) + '</div>' +
+        '<p class="sm">Turi nuomonę apie kainą? Parašyk: krisvas.lt</p>');
+      return;
+    }
+    if (a === 'code') {
+      var v = ($('#code') ? $('#code').value : '').trim().toUpperCase();
+      if (/^(EXO|BUR)/.test(v) && v.length >= 4) {
+        S.plus = true; S.code = v; save(); route(); toast(C.config.plans.gift.ok);
+      } else { toast(C.config.plans.gift.bad); }
+      return;
+    }
+    if (a === 'unplus') { S.plus = false; S.code = ''; save(); route(); toast('MKK+ išjungtas'); return; }
+    if (a === 'reset') {
+      sheet('Ištrinti viską?', '<p class="sm">Dings amžius, serija, spalvos ir kodas. Atgal nebus.</p>' +
+        '<button class="btn" data-act="reset2" type="button">Taip, ištrinti</button>');
+      return;
+    }
+    if (a === 'reset2') {
+      try { localStorage.removeItem(KEY); } catch (er) {}
+      loadState(); applyTheme(); closeSheet(); location.hash = '#/siandien'; route(); toast('Ištrinta'); return;
+    }
+  }
+
+  /* ---------- boot ---------- */
+  function start() {
+    loadState();
+    applyTheme();
+    document.addEventListener('click', onClick);
+    $('#sheetClose').addEventListener('click', closeSheet);
+    $('#scrim').addEventListener('click', closeSheet);
+    $('#streakBtn').addEventListener('click', function () {
+      sheet('🔥 Serija', '<p class="big">' + S.streak + '</p><p class="sm">Dienų iš eilės, kai užbaigei visus tris žingsnius.</p>' +
+        '<p class="sm muted">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas dalyvavimas atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + '</p>' +
+        '<p class="meta">Serija skaičiuojama tik šitame telefone.</p>');
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
+    window.addEventListener('hashchange', route);
+    if (S.ambient && S.ambient !== 'off') {
+      document.addEventListener('click', function once() {
+        ambientStart(S.ambient);
+        document.removeEventListener('click', once);
+      }, { once: true });
+    }
+    neurons();
+    route();
+  }
+
+  function boot() {
+    if (window.MKK_CONTENT) { C = window.MKK_CONTENT; start(); return; }
+    var names = ['config', 'techniques', 'practices', 'library', 'games', 'podcasts'];
+    Promise.all(names.map(function (n) {
+      return fetch('./content/' + n + '.json')
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; });
+    })).then(function (a) {
+      C = { config: a[0], techniques: a[1], practices: a[2], library: a[3], games: a[4], podcasts: a[5] };
+      if (!C.config || !C.techniques || !C.practices || !C.library || !C.games) {
+        document.getElementById('view').innerHTML =
+          '<div class="card"><p class="lbl">Klaida</p><p class="sm">Nepavyko įkelti turinio. Paleisk per serverį: <code>python3 -m http.server</code></p></div>';
+        return;
+      }
+      start();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+</script>
