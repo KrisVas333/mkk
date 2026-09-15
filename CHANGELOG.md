@@ -234,13 +234,13 @@ Pirmas veikiantis MKK prototipas. Vietinis, be jokio viešo paviršiaus.
 - Klaidos pranešimas tėvams be `python3 …` komandos.
 - LICENCE: viešai matoma, licencija dar nepasirinkta — iki tol visos teisės saugomos (README + LICENSE suderinti).
 
-## v0.3.1 — 2026-09-15 13:05 (builder B saugumo radiniai + repo higiena)
+## v0.3.1 — 2026-09-15 12:45 (builder B saugumo radiniai + repo higiena)
 - Šriftai savame serveryje (`fonts/`): jokių užklausų į Google Fonts — vaikų kategorija + offline pažadas. Inter → sistemos šriftas.
 - **Tėvų vartai** prieš kiekvieną išorinę nuorodą (aritmetikos klausimas suaugusiajam) — Apple Kids Category 1.3 / Google Families.
 - `sw.js` versija v0.3.1 + naujas turinys (i18n, about, blog, people, sources-lt, fonts) į shell cache.
 - `www/` (Capacitor staging) išimtas iš repo; `.gitignore` papildytas builder B sąrašu.
 
-## v0.3.2 — 2026-09-15 13:25 (critic v0.3 FIX-THEN-SHIP)
+## v0.3.2 — 2026-09-15 12:52 (critic v0.3 FIX-THEN-SHIP)
 - 8 B-technikos su vidiniu žymekliu vietoj šaltinio → C + „šaltinis tikslinamas" (app'o taisyklė: be šaltinio — ne aukščiau C).
 - Straipsnio „Prisiminimas vs perskaitymas" šaltinis → tikras Franzoi 2025 DOI.
 - Negyva knygos nuoroda (Ką sekti) pašalinta; README versija sutvarkyta.
