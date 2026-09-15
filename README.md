@@ -8,7 +8,7 @@ Mokymosi mokslo treniruoklis vaikams **4–14 m.** Lietuviškai, telefonui, be s
 > ne kaip galutinę tiesą. **Nemokamas.** Radote klaidą, netikslumą ar nesąžiningumą — parašykite,
 > taisau greitai: [krisvas.lt](https://krisvas.lt)
 >
-> ⚠️ **MKK — darbinis pavadinimas.** Versija `v0.2.0`.
+> ⚠️ **MKK — darbinis pavadinimas.** Versija `v0.3.2`.
 
 ---
 

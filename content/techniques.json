@@ -1,516 +1,524 @@
 {
- "categories": [
-  {
-   "id": "smegenys",
-   "icon": "🧠",
-   "label": "Kaip smegenys mokosi",
-   "blurb": "Septynios taisyklės, kurios galioja kiekvienoje pamokoje.",
-   "label_en": "How the brain learns",
-   "blurb_en": "Seven rules that hold in every lesson."
-  },
-  {
-   "id": "top3",
-   "icon": "⭐",
-   "label": "Top 3 mokymosi technikos",
-   "blurb": "Jei laiko tik trims — šitos trys.",
-   "label_en": "The top 3 learning techniques",
-   "blurb_en": "If you only have time for three — these three."
-  },
-  {
-   "id": "atmintis",
-   "icon": "🔁",
-   "label": "Atmintis",
-   "blurb": "Kaip įsiminti taip, kad liktų.",
-   "label_en": "Memory",
-   "blurb_en": "How to remember so that it stays."
-  },
-  {
-   "id": "demesys",
-   "icon": "👁",
-   "label": "Dėmesys",
-   "blurb": "Ką galima sutvarkyti aplinkoje, o ne vaike.",
-   "label_en": "Attention",
-   "blurb_en": "What you can fix in the room instead of in the child."
-  },
-  {
-   "id": "fokusas",
-   "icon": "🎯",
-   "label": "Fokusas",
-   "blurb": "Planas · darbas · peržiūra.",
-   "label_en": "Focus",
-   "blurb_en": "Plan · work · review."
-  },
-  {
-   "id": "koncentracija",
-   "icon": "🕯",
-   "label": "Koncentracija",
-   "blurb": "Kūnas, nuotaika ir pirmos trys minutės.",
-   "label_en": "Concentration",
-   "blurb_en": "The body, the mood and the first three minutes."
-  },
-  {
-   "id": "mitai",
-   "icon": "✗",
-   "label": "Mitai",
-   "blurb": "Populiaru, bet tyrimai nepatvirtina. Nemokama visiems.",
-   "label_en": "Myths",
-   "blurb_en": "Popular, but the research does not back it. Free for everyone."
-  }
- ],
- "techniques": [
-  {
-   "id": "wm4",
-   "cat": "smegenys",
-   "name": "Keturios vietos galvoje",
-   "how": "Vienu metu galvoje telpa apie keturi nauji dalykai — vaikams mažiau.",
-   "practice": "Pasakyk vaikui 4 daiktus, paprašyk atkartoti. Tada 6. Parodyk, kur lūžta — ir kad tai normalu.",
-   "age": 5,
-   "ev": "A",
-   "src": "Cowan 2010",
-   "name_en": "Four slots in the head",
-   "how_en": "About four new things fit in the head at once — fewer for children."
-  },
-  {
-   "id": "ltm",
-   "cat": "smegenys",
-   "name": "Ilgalaikė atmintis neturi ribos",
-   "how": "Vietos galvoje netrūksta. Trūksta kelio iš darbinės atminties į ilgalaikę.",
-   "practice": "Paklausk vaiko, ką jis prisimena iš praėjusios savaitės pamokos. Ne perskaityk — prisimink.",
-   "age": 6,
-   "ev": "A",
-   "src": "Sweller 2019"
-  },
-  {
-   "id": "chunk",
-   "cat": "smegenys",
-   "name": "Gabaliukai auga",
-   "how": "Kai įgūdis tampa savaimingas, jis užima vieną vietą vietoj keturių.",
-   "practice": "Išrink vieną dalyką, kurį vaikas daro lėtai ir sąmoningai. Pakartokite jį 2 min, kol tampa automatiškas.",
-   "age": 7,
-   "ev": "A",
-   "src": "Sweller 2019"
-  },
-  {
-   "id": "split",
-   "cat": "smegenys",
-   "name": "Užrašas ant paveikslėlio",
-   "how": "Kai paaiškinimas ore, o paveikslėlis ekrane, vaikas eikvoja jėgas jų sujungimui.",
-   "practice": "Paimk bet kurią vaiko užduotį ir užrašyk žodžius TIESIOG ant piešinio, ne šalia jo.",
-   "age": 6,
-   "ev": "B",
-   "src": "CESE NSW 2017"
-  },
-  {
-   "id": "forget",
-   "cat": "smegenys",
-   "name": "Pamiršti — ne gedimas",
-   "how": "Prisiminti sunku todėl, kad atmintis šiek tiek išbluko. Tos pastangos ir yra mokymasis.",
-   "practice": "Neatsakyk už vaiką. Palauk 10 sekundžių tylos. Tos 10 sekundžių dirba.",
-   "age": 6,
-   "ev": "B",
-   "src": "Nature Rev Psychology 2022"
-  },
-  {
-   "id": "emotion",
-   "cat": "smegenys",
-   "name": "Emocija atrenka",
-   "how": "Vaikas, pasijutęs kvailas trečią minutę, nieko neišmoksta nuo ketvirtos iki devyniasdešimtos.",
-   "practice": "Pradėk nuo užduoties, kurią vaikas tikrai įveiks. Sėkmė pirma, sunkumas antras.",
-   "age": 4,
-   "ev": "B",
-   "src": "Mokymosi mokslo kursas L2.6"
-  },
-  {
-   "id": "sleep",
-   "cat": "smegenys",
-   "name": "Miegas sutvirtina",
-   "how": "7–12 m. vaikai per naktį išlaiko tai, ką suaugusieji pamiršta.",
-   "practice": "Kartok naują dalyką vakare, prieš miegą — 2 min, be ekrano. Ryte paklausk, kas liko.",
-   "age": 7,
-   "ev": "A",
-   "src": "Peiffer ir kt. 2020, Scientific Reports · Kurz ir kt. 2025, J. Sleep Research · AASM 2016 konsensusas (JCSM)"
-  },
-  {
-   "id": "retrieval",
-   "cat": "top3",
-   "name": "Prisiminimas be žiūrėjimo",
-   "how": "Vaikas pats pasako atsakymą, neatsivertęs knygos. Stipriausia technika, kokią turim.",
-   "practice": "Uždaryk knygą. 2 minutes vaikas pasakoja, ką prisimena. Tik po to tikrinam.",
-   "age": 5,
-   "ev": "A",
-   "src": "Dunlosky 2013 · Franzoi 2025 (67 % vs 48,6 %)",
-   "name_en": "Recall instead of re-reading",
-   "how_en": "Close the book and say what you remember — that is what makes it stick."
-  },
-  {
-   "id": "spacing",
-   "cat": "top3",
-   "name": "Kartok kitą dieną",
-   "how": "Išskirstytas kartojimas veikia laboratorijoje. ⚠️ 2025 m. klasėje intervalo keitimas nieko nedavė.",
-   "practice": "Tą patį klausimą užduok rytoj, ne po penkių minučių. Vieną klausimą. Vieną kartą.",
-   "age": 6,
-   "ev": "B",
-   "src": "Dunlosky 2013 · Franzoi 2025",
-   "name_en": "Spread it out",
-   "how_en": "The same 30 minutes split across three days beats 30 minutes in one sitting."
-  },
-  {
-   "id": "success",
-   "cat": "top3",
-   "name": "70–90 % teisingai",
-   "how": "Klausimai turi būti tokie, kad vaikas dažniau atsakytų teisingai nei ne. Žemiau to — tai jau ne treniruotė, o nesėkmė.",
-   "practice": "Suskaičiuok 10 klausimų atsakymus. Jei teisingų mažiau nei 7 — klausimai per sunkūs, ne vaikas per silpnas.",
-   "age": 5,
-   "ev": "A",
-   "src": "Káldi ir kt. 2025 (n=202)",
-   "name_en": "Aim for 70–90 % right",
-   "how_en": "Training works when it is a bit hard, not when everything is correct."
-  },
-  {
-   "id": "recall-say",
-   "cat": "atmintis",
-   "name": "Pasakyk atmintinai",
-   "how": "Laisvas prisiminimas balsu — pigiausias ir stipriausias įrankis.",
-   "practice": "„Papasakok viską, ką prisimeni.“ 2 min. Be pertraukimų. Tada kartu patikrinam, ko trūko.",
-   "age": 5,
-   "ev": "A",
-   "src": "Dunlosky 2013"
-  },
-  {
-   "id": "cards",
-   "cat": "atmintis",
-   "name": "Trijų klausimų kortelė",
-   "how": "Trys klausimai vietoj perskaitytos pastraipos.",
-   "practice": "Užrašyk 3 klausimus iš to, ką vaikas mokėsi. Rytoj paklausk jų.",
-   "age": 7,
-   "ev": "A",
-   "src": "Dunlosky 2013"
-  },
-  {
-   "id": "dual",
-   "cat": "atmintis",
-   "name": "Žodis ir paveikslėlis",
-   "how": "Ne todėl, kad vaikas „vizualas“ — o todėl, kad taip veikia atmintis pas visus.",
-   "practice": "Paprašyk vaiko nupiešti tai, ką ką tik pasakė. Vienas piešinys, 2 min.",
-   "age": 4,
-   "ev": "B",
-   "src": "Learning Scientists · Deans for Impact"
-  },
-  {
-   "id": "draw",
-   "cat": "atmintis",
-   "name": "Piešk, o ne skaityk antrą kartą",
-   "how": "Piešimas priverčia pagaminti prasmę. Pakartotinis skaitymas — ne.",
-   "practice": "Uždaryk knygą. Nupiešk, kas ten vyko. Paskui palygink su knyga.",
-   "age": 5,
-   "ev": "B",
-   "src": "Generative learning REV"
-  },
-  {
-   "id": "teach",
-   "cat": "atmintis",
-   "name": "Paaiškink kitam",
-   "how": "Mokyti ką nors — tai mokymosi būdas, ne egzaminas.",
-   "practice": "60 sekundžių vaikas aiškina tau (ar pliušiniam meškiukui) vieną dalyką. Tu klausi „kodėl?“.",
-   "age": 6,
-   "ev": "B",
-   "src": "Generative learning REV"
-  },
-  {
-   "id": "elab",
-   "cat": "atmintis",
-   "name": "Klausimas „kodėl taip?“",
-   "how": "Elaboracija — vaikas pats susieja naują dalyką su tuo, ką jau žino.",
-   "practice": "Po kiekvieno fakto klausk „kodėl taip?“ tris kartus iš eilės. Sustok, kai vaikas sako „nežinau“ — ten prasideda mokymasis.",
-   "age": 8,
-   "ev": "B",
-   "src": "Dunlosky 2013 (elaboratyvus klausinėjimas — VIDUTINĖ nauda)"
-  },
-  {
-   "id": "interleave",
-   "cat": "atmintis",
-   "name": "Maišyk uždavinių tipus",
-   "how": "Interleaving veikia — bet geriausiai įrodytas matematikoje ir kategorijose. Ne visur.",
-   "practice": "Vietoj 10 vienodų uždavinių duok 6 skirtingų tipų, sumaišytus.",
-   "age": 8,
-   "ev": "B",
-   "src": "Dunlosky 2013"
-  },
-  {
-   "id": "mnemo",
-   "cat": "atmintis",
-   "name": "Istorija iš daiktų",
-   "how": "⚠️ Sąžiningai: Dunlosky raktažodžių mnemoniką vertina kaip MAŽOS naudos bendram mokymuisi. Smagu, bet nėra pagrindinis įrankis.",
-   "practice": "Susiek 5 daiktus į vieną juokingą istoriją. Po valandos paklausk sąrašo.",
-   "age": 7,
-   "ev": "C",
-   "src": "Dunlosky 2013 (LOW utility)"
-  },
-  {
-   "id": "one-instr",
-   "cat": "demesys",
-   "name": "Vienas nurodymas vienu metu",
-   "how": "Trys nurodymai iš karto — vienas iškris. Ir tai ne vaiko kaltė.",
-   "practice": "Duok vieną nurodymą, palauk, kol bus padarytas, tada kitą. 2 min pabandyk taip.",
-   "age": 4,
-   "ev": "B",
-   "src": "Cowan 2010 · CLT"
-  },
-  {
-   "id": "one-new",
-   "cat": "demesys",
-   "name": "Vienas naujas dalykas",
-   "how": "6–8 m.: vienas naujas dalykas + vienas naujas įrankis per kartą. 9–12 m.: du + vienas.",
-   "practice": "Suskaičiuok, kiek naujų dalykų buvo šiandienos pamokoje. Jei daugiau nei du — žinai, kodėl nepavyko.",
-   "age": 6,
-   "ev": "A",
-   "src": "Sweller 2019 · CESE NSW"
-  },
-  {
-   "id": "phone-away",
-   "cat": "demesys",
-   "name": "Telefonas kitame kambaryje",
-   "how": "Telefonas kitame kambaryje, ne ekranu žemyn ant stalo. ⚠️ Tirta su suaugusiais; 2023 m. meta-analizė efektą rado mažesnį ir nepastovesnį nei originalas.",
-   "practice": "Padėk telefoną kitame kambaryje. Ne ant stalo ekranu žemyn — kitame kambaryje. 10 min.",
-   "age": 8,
-   "ev": "B",
-   "src": "Ward ir kt. 2017 (n≈800, suaugę) · 2023 meta-analizė (ginčija dydį)"
-  },
-  {
-   "id": "grayscale",
-   "cat": "demesys",
-   "name": "Pilkas ekranas",
-   "how": "Pilkas ekranas nuima pusę to, kas telefone traukia. ⚠️ Vienas tyrimas: ~38 min/d mažiau ekrano; 2024 m. pakartojimas — silpnesnis. Su vaikais netirta.",
-   "practice": "Įjunk pilką ekraną telefone vienam vakarui. Paklausk vaiko, ar pastebėjo skirtumą.",
-   "age": 9,
-   "ev": "C",
-   "src": "Holte & Ferraro 2020, The Social Science Journal (n=161) · ⚠️ Dekker & Baumgartner 2024 — silpnesnis"
-  },
-  {
-   "id": "move",
-   "cat": "demesys",
-   "name": "Judesys prieš mokymąsi",
-   "how": "9 mėn. popamokinė judėjimo programa pagerino vykdomąją kontrolę 7–9 m. vaikams.",
-   "practice": "5 min judesio prieš namų darbus: šuoliukai, laiptai, šokis. Ne „nusiraminti“ — pasiruošti.",
-   "age": 6,
-   "ev": "B",
-   "src": "Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.)"
-  },
-  {
-   "id": "stop-switch",
-   "cat": "demesys",
-   "name": "Stop ir keisk",
-   "how": "Taisyklė pasikeičia žaidimo viduryje. ⚠️ Bet: bendri „smegenų treniruokliai“ neperkelia įgūdžio — tai veikia tik įdomios veiklos viduje.",
-   "practice": "Žaidimas: plok, kai sakau „žalia“. Po minutės apversk taisyklę. Dar po minutės — vėl.",
-   "age": 5,
-   "ev": "B",
-   "src": "Diamond 2013 · Nature Neuroscience 2024 (neigiamas)"
-  },
-  {
-   "id": "nothing-held",
-   "cat": "demesys",
-   "name": "Nieko nelaikyti galvoje per perėjimą",
-   "how": "4–7 m. vaikas neišneša nurodymo iš vieno kambario į kitą. Daiktas turi būti rankoje.",
-   "practice": "Duok nurodymą ten, kur jis bus vykdomas, su daiktu rankose. Ne iš virtuvės į vaikų kambarį.",
-   "age": 4,
-   "ev": "B",
-   "src": "Cowan 2010"
-  },
-  {
-   "id": "two-min",
-   "cat": "fokusas",
-   "name": "Dvi minutės — pradžios slenkstis",
-   "how": "⚠️ Praktika, ne tyrimas. Bet pradėti visada sunkiau nei tęsti.",
-   "practice": "Susitark: tik 2 minutės. Įjunk laikmatį. Po 2 min galima teisėtai sustoti — dažniausiai nesustoja.",
-   "age": 7,
-   "ev": "C",
-   "src": "MKK praktika"
-  },
-  {
-   "id": "single-task",
-   "cat": "fokusas",
-   "name": "Vienas darbas ir laikmatis",
-   "how": "Matomas laikas paverčia „amžinai“ į „penkias minutes“.",
-   "practice": "Vienas darbas. Laikmatis matomas. Kol skaičiuoja — nieko kito.",
-   "age": 8,
-   "ev": "C",
-   "src": "MKK praktika"
-  },
-  {
-   "id": "plan-first",
-   "cat": "fokusas",
-   "name": "Planas prieš darbą",
-   "how": "Planas → darbas → peržiūra. Dauguma daro tik vidurinę dalį.",
-   "practice": "Prieš pradedant: 3 žingsniai ant popieriaus. Po darbo — pažymėk, kurie pavyko.",
-   "age": 8,
-   "ev": "B",
-   "src": "SRL META (~0,69; mažiau, kai veda mokytojas)"
-  },
-  {
-   "id": "review-q",
-   "cat": "fokusas",
-   "name": "„Kas buvo sunkiausia?“",
-   "how": "Vienas stipriausių efektų literatūroje. ⚠️ Su sąlyga: tyrimuose tai darė mokslininkai, ne mokytojai — pas mokytojus efektas mažesnis.",
-   "practice": "Po darbo — vienas klausimas: kas buvo sunkiausia? Ir antras: ką darysi kitaip?",
-   "age": 8,
-   "ev": "B",
-   "src": "Metakognicijos META"
-  },
-  {
-   "id": "easy-hard",
-   "cat": "fokusas",
-   "name": "Dvi ikonos: lengva / sunku",
-   "how": "Iki ~8 m. vaikai save vertina per gerai. Refleksija turi būti konkreti, ne atvira.",
-   "practice": "Dvi kortelės: 😀 lengva, 😵 sunku. Vaikas padeda užduotį ant vienos. Viskas.",
-   "age": 5,
-   "ev": "B",
-   "src": "Metakognicijos REV"
-  },
-  {
-   "id": "goal-mine",
-   "cat": "fokusas",
-   "name": "Tikslą renkuosi aš, žingsnius — tu",
-   "how": "Vadovaujamas žaidimas įveikė ir tiesioginį mokymą, ir laisvą žaidimą. Nuimk vieną pusę — efektas dingsta.",
-   "practice": "Pasakyk tikslą ir vieną apribojimą. Būdą tegu renkasi vaikas. Tu klausi klausimų, nerodai.",
-   "age": 4,
-   "ev": "A",
-   "src": "Skene ir kt. 2022 META (17 tyrimų, N=3 893)"
-  },
-  {
-   "id": "first-three",
-   "cat": "koncentracija",
-   "name": "Pirmos trys minutės — ne turiniui",
-   "how": "Pirma reikia, kad pavyktų. Tik tada galima sunkiau.",
-   "practice": "Pradėk nuo to, ką vaikas jau moka. Trys minutės sėkmės. Tada nauja.",
-   "age": 4,
-   "ev": "B",
-   "src": "Mokymosi mokslo kursas L2.6"
-  },
-  {
-   "id": "break-move",
-   "cat": "koncentracija",
-   "name": "Pertrauka su judesiu",
-   "how": "Judesys nėra pertrauka nuo mokymosi. FITKids tyrime judesys BUVO intervencija.",
-   "practice": "Kas 15 min — 60 sekundžių judesio. Ne telefonas. Kūnas.",
-   "age": 6,
-   "ev": "B",
-   "src": "Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.)"
-  },
-  {
-   "id": "sleep-window",
-   "cat": "koncentracija",
-   "name": "Miego langas",
-   "how": "Tai, kas išmokta 17 val., sutvirtinama 22 val. ⚠️ Mechanizmo išvada, ne tyrimas apie būrelius.",
-   "practice": "Paskutinis kartojimas 30 min prieš miegą, be ekrano. Ryte — vienas klausimas.",
-   "age": 6,
-   "ev": "C",
-   "src": "Peiffer ir kt. 2020, Scientific Reports · Kurz ir kt. 2025, J. Sleep Research (mechanizmo išvada)"
-  },
-  {
-   "id": "clean-desk",
-   "cat": "koncentracija",
-   "name": "Vieno daikto stalas",
-   "how": "⚠️ Praktika. Bet kiekvienas daiktas ant stalo yra pasiūlymas nustoti.",
-   "practice": "Nuo stalo nuimk viską, išskyrus tai, ko reikia dabar. 30 sekundžių darbo.",
-   "age": 6,
-   "ev": "C",
-   "src": "MKK praktika"
-  },
-  {
-   "id": "noise",
-   "cat": "koncentracija",
-   "name": "Fono garsas",
-   "how": "⚠️ Jokių mokslinių pažadų. Kai kuriems padeda uždengti triukšmą — ir tiek.",
-   "practice": "Įjunk fono garsą programėlėje 5 min. Paklausk vaiko: geriau, blogiau ar vienodai?",
-   "age": 8,
-   "ev": "C",
-   "src": "MKK praktika"
-  },
-  {
-   "id": "feedback-work",
-   "cat": "koncentracija",
-   "name": "Kalbėk apie darbą, ne apie vaiką",
-   "how": "Informatyvus grįžtamasis ryšys d=0,99. Pagyrimas ar bausmė d=0,24. Trečdalis atvejų net pablogina.",
-   "practice": "Vietoj „šaunuolis“ pasakyk, ką tiksliai vaikas padarė: „tu tris kartus bandei kitaip, kol suveikė“.",
-   "age": 4,
-   "ev": "A",
-   "src": "Grįžtamojo ryšio META 2020",
-   "name_en": "Feedback about the work, not the child",
-   "how_en": "\"This step is wrong\" teaches; \"you are careless\" does not."
-  }
- ],
- "myths": [
-  {
-   "id": "m-styles",
-   "name": "Mokymosi stiliai (vizualas · audialas · kinestetikas)",
-   "claim": "„Mano vaikas — vizualas, jam reikia mokyti paveikslėliais.“",
-   "truth": "Nė vienas tyrimas neatlaikė patikros. Pomėgiai tikri — bet mokymo pritaikymas jiems nepadeda. Daugiau nei 80 % mokytojų tuo tiki.",
-   "instead": "Duok visiems ir žodį, ir paveikslėlį, ir daiktą į rankas — ne dėl stiliaus, o todėl, kad taip veikia atmintis.",
-   "ev": "X",
-   "src": "Pashler ir kt. 2008 · Dekker ir kt. 2012"
-  },
-  {
-   "id": "m-hemi",
-   "name": "Kairysis ir dešinysis pusrutulis",
-   "claim": "„Jis kūrybiškas, nes dešiniapusis.“",
-   "truth": "Mitas. Taip pat tikimas daugiau nei 80 % mokytojų.",
-   "instead": "Kalbėk apie tai, ką vaikas daro, o ne apie tai, kokia jo smegenų pusė.",
-   "ev": "X",
-   "src": "Dekker ir kt. 2012"
-  },
-  {
-   "id": "m-10",
-   "name": "Naudojame tik 10 % smegenų",
-   "claim": "„Atrakink likusius 90 %.“",
-   "truth": "Mitas. Naudojame visas.",
-   "instead": "Nieko atrakinti nereikia. Reikia prisiminti, pakartoti ir pabandyti dar kartą.",
-   "ev": "X",
-   "src": "Neuromitų literatūra"
-  },
-  {
-   "id": "m-brain-train",
-   "name": "Smegenų treniruokliai lavina dėmesį",
-   "claim": "„Ši programėlė lavina vaiko susikaupimą.“",
-   "truth": "2024 m. tyrimas su 235 vaikais (6–13 m.): 8 savaitės treniruočių pagerino TĄ žaidimą ir daugiau nieko — nei mokslus, nei smegenų struktūrą.",
-   "instead": "Dėmesys auga sunkioje, bet įdomioje veikloje: statyboje, muzikoje, sporte, projekte.",
-   "ev": "X",
-   "src": "Nature Neuroscience 2024 RCT (n=235)"
-  },
-  {
-   "id": "m-chess",
-   "name": "Šachmatai ar muzika padaro protingesnį",
-   "claim": "„Muzika lavina matematinį mąstymą.“",
-   "truth": "Su aktyvia kontroline grupe efektas beveik dingsta: šachmatai g=0,34 → ~0; muzika g=0,18 → −0,02. ⚠️ Šis nulis pats yra ginčijamas — sakau „ginčijama“, ne „paneigta“.",
-   "instead": "Muzika verta dėl muzikos. Šachmatai — dėl šachmatų. To pakanka.",
-   "ev": "X",
-   "src": "Sala & Gobet 2016–2020 · Bigand & Tillmann 2021"
-  },
-  {
-   "id": "m-reread",
-   "name": "Perskaityti dar kartą ir pasibraukti",
-   "claim": "„Pakartok — perskaityk dar kartą.“",
-   "truth": "Abu vertinami kaip MAŽOS naudos. Klasėje: testas su grįžtamuoju ryšiu 67 %, pakartotinis skaitymas 48,6 %.",
-   "instead": "Uždaryk knygą ir pabandyk pasakyti pats. Tik tada tikrink.",
-   "ev": "X",
-   "src": "Dunlosky 2013 · Franzoi ir kt. 2025"
-  },
-  {
-   "id": "m-2sigma",
-   "name": "Meistriškumo mokymasis duoda „2 sigma“",
-   "claim": "„Šis metodas duoda dviejų standartinių nuokrypių šuolį.“",
-   "truth": "Ne. Tas skaičius buvo apie INDIVIDUALŲ korepetitorių 1984 m., ne apie metodą. Paties metodo efektas maždaug 0,5 SD.",
-   "instead": "Klausk, su kuo lyginama. Be palyginimo grupės nėra teiginio.",
-   "ev": "X",
-   "src": "Bloom 1984 · meistriškumo META"
-  },
-  {
-   "id": "m-ai",
-   "name": "AI mokytojas įrodytai padeda vaikams",
-   "claim": "„Dirbtinis intelektas — asmeninis vaiko mokytojas.“",
-   "truth": "Vaikams 3–12 m. tokių tyrimų NĖRA. O neapribotas AI paaugliams pakenkė: kai jį atėmė, jie pasirodė 17 % prasčiau nei tie, kurie jo niekada neturėjo. Tas pats modelis, priverstas duoti tik užuominas, žalos nedarė.",
-   "instead": "AI niekada neturi pasakyti atsakymo, kurį vaikas pats buvo bepasakąs. Skirtumas ne technologijoje, o taisyklėse.",
-   "ev": "X",
-   "src": "2024–2025 RCT (9–11 kl.) · UNESCO"
-  }
- ]
+  "categories": [
+    {
+      "id": "smegenys",
+      "icon": "🧠",
+      "label": "Kaip smegenys mokosi",
+      "blurb": "Septynios taisyklės, kurios galioja kiekvienoje pamokoje.",
+      "label_en": "How the brain learns",
+      "blurb_en": "Seven rules that hold in every lesson."
+    },
+    {
+      "id": "top3",
+      "icon": "⭐",
+      "label": "Top 3 mokymosi technikos",
+      "blurb": "Jei laiko tik trims — šitos trys.",
+      "label_en": "The top 3 learning techniques",
+      "blurb_en": "If you only have time for three — these three."
+    },
+    {
+      "id": "atmintis",
+      "icon": "🔁",
+      "label": "Atmintis",
+      "blurb": "Kaip įsiminti taip, kad liktų.",
+      "label_en": "Memory",
+      "blurb_en": "How to remember so that it stays."
+    },
+    {
+      "id": "demesys",
+      "icon": "👁",
+      "label": "Dėmesys",
+      "blurb": "Ką galima sutvarkyti aplinkoje, o ne vaike.",
+      "label_en": "Attention",
+      "blurb_en": "What you can fix in the room instead of in the child."
+    },
+    {
+      "id": "fokusas",
+      "icon": "🎯",
+      "label": "Fokusas",
+      "blurb": "Planas · darbas · peržiūra.",
+      "label_en": "Focus",
+      "blurb_en": "Plan · work · review."
+    },
+    {
+      "id": "koncentracija",
+      "icon": "🕯",
+      "label": "Koncentracija",
+      "blurb": "Kūnas, nuotaika ir pirmos trys minutės.",
+      "label_en": "Concentration",
+      "blurb_en": "The body, the mood and the first three minutes."
+    },
+    {
+      "id": "mitai",
+      "icon": "✗",
+      "label": "Mitai",
+      "blurb": "Populiaru, bet tyrimai nepatvirtina. Nemokama visiems.",
+      "label_en": "Myths",
+      "blurb_en": "Popular, but the research does not back it. Free for everyone."
+    }
+  ],
+  "techniques": [
+    {
+      "id": "wm4",
+      "cat": "smegenys",
+      "name": "Keturios vietos galvoje",
+      "how": "Vienu metu galvoje telpa apie keturi nauji dalykai — vaikams mažiau.",
+      "practice": "Pasakyk vaikui 4 daiktus, paprašyk atkartoti. Tada 6. Parodyk, kur lūžta — ir kad tai normalu.",
+      "age": 5,
+      "ev": "A",
+      "src": "Cowan 2010",
+      "name_en": "Four slots in the head",
+      "how_en": "About four new things fit in the head at once — fewer for children."
+    },
+    {
+      "id": "ltm",
+      "cat": "smegenys",
+      "name": "Ilgalaikė atmintis neturi ribos",
+      "how": "Vietos galvoje netrūksta. Trūksta kelio iš darbinės atminties į ilgalaikę.",
+      "practice": "Paklausk vaiko, ką jis prisimena iš praėjusios savaitės pamokos. Ne perskaityk — prisimink.",
+      "age": 6,
+      "ev": "A",
+      "src": "Sweller 2019"
+    },
+    {
+      "id": "chunk",
+      "cat": "smegenys",
+      "name": "Gabaliukai auga",
+      "how": "Kai įgūdis tampa savaimingas, jis užima vieną vietą vietoj keturių.",
+      "practice": "Išrink vieną dalyką, kurį vaikas daro lėtai ir sąmoningai. Pakartokite jį 2 min, kol tampa automatiškas.",
+      "age": 7,
+      "ev": "A",
+      "src": "Sweller 2019"
+    },
+    {
+      "id": "split",
+      "cat": "smegenys",
+      "name": "Užrašas ant paveikslėlio",
+      "how": "Kai paaiškinimas ore, o paveikslėlis ekrane, vaikas eikvoja jėgas jų sujungimui.",
+      "practice": "Paimk bet kurią vaiko užduotį ir užrašyk žodžius TIESIOG ant piešinio, ne šalia jo.",
+      "age": 6,
+      "ev": "B",
+      "src": "CESE NSW 2017"
+    },
+    {
+      "id": "forget",
+      "cat": "smegenys",
+      "name": "Pamiršti — ne gedimas",
+      "how": "Prisiminti sunku todėl, kad atmintis šiek tiek išbluko. Tos pastangos ir yra mokymasis.",
+      "practice": "Neatsakyk už vaiką. Palauk 10 sekundžių tylos. Tos 10 sekundžių dirba.",
+      "age": 6,
+      "ev": "B",
+      "src": "Nature Rev Psychology 2022"
+    },
+    {
+      "id": "emotion",
+      "cat": "smegenys",
+      "name": "Emocija atrenka",
+      "how": "Vaikas, pasijutęs kvailas trečią minutę, nieko neišmoksta nuo ketvirtos iki devyniasdešimtos.",
+      "practice": "Pradėk nuo užduoties, kurią vaikas tikrai įveiks. Sėkmė pirma, sunkumas antras.",
+      "age": 4,
+      "ev": "C",
+      "src": "Mokymosi mokslo kursas L2.6",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "sleep",
+      "cat": "smegenys",
+      "name": "Miegas sutvirtina",
+      "how": "7–12 m. vaikai per naktį išlaiko tai, ką suaugusieji pamiršta.",
+      "practice": "Kartok naują dalyką vakare, prieš miegą — 2 min, be ekrano. Ryte paklausk, kas liko.",
+      "age": 7,
+      "ev": "A",
+      "src": "Peiffer ir kt. 2020, Scientific Reports · Kurz ir kt. 2025, J. Sleep Research · AASM 2016 konsensusas (JCSM)"
+    },
+    {
+      "id": "retrieval",
+      "cat": "top3",
+      "name": "Prisiminimas be žiūrėjimo",
+      "how": "Vaikas pats pasako atsakymą, neatsivertęs knygos. Stipriausia technika, kokią turim.",
+      "practice": "Uždaryk knygą. 2 minutes vaikas pasakoja, ką prisimena. Tik po to tikrinam.",
+      "age": 5,
+      "ev": "A",
+      "src": "Dunlosky 2013 · Franzoi 2025 (67 % vs 48,6 %)",
+      "name_en": "Recall instead of re-reading",
+      "how_en": "Close the book and say what you remember — that is what makes it stick."
+    },
+    {
+      "id": "spacing",
+      "cat": "top3",
+      "name": "Kartok kitą dieną",
+      "how": "Išskirstytas kartojimas veikia laboratorijoje. ⚠️ 2025 m. klasėje intervalo keitimas nieko nedavė.",
+      "practice": "Tą patį klausimą užduok rytoj, ne po penkių minučių. Vieną klausimą. Vieną kartą.",
+      "age": 6,
+      "ev": "B",
+      "src": "Dunlosky 2013 · Franzoi 2025",
+      "name_en": "Spread it out",
+      "how_en": "The same 30 minutes split across three days beats 30 minutes in one sitting."
+    },
+    {
+      "id": "success",
+      "cat": "top3",
+      "name": "70–90 % teisingai",
+      "how": "Klausimai turi būti tokie, kad vaikas dažniau atsakytų teisingai nei ne. Žemiau to — tai jau ne treniruotė, o nesėkmė.",
+      "practice": "Suskaičiuok 10 klausimų atsakymus. Jei teisingų mažiau nei 7 — klausimai per sunkūs, ne vaikas per silpnas.",
+      "age": 5,
+      "ev": "A",
+      "src": "Káldi ir kt. 2025 (n=202)",
+      "name_en": "Aim for 70–90 % right",
+      "how_en": "Training works when it is a bit hard, not when everything is correct."
+    },
+    {
+      "id": "recall-say",
+      "cat": "atmintis",
+      "name": "Pasakyk atmintinai",
+      "how": "Laisvas prisiminimas balsu — pigiausias ir stipriausias įrankis.",
+      "practice": "„Papasakok viską, ką prisimeni.“ 2 min. Be pertraukimų. Tada kartu patikrinam, ko trūko.",
+      "age": 5,
+      "ev": "A",
+      "src": "Dunlosky 2013"
+    },
+    {
+      "id": "cards",
+      "cat": "atmintis",
+      "name": "Trijų klausimų kortelė",
+      "how": "Trys klausimai vietoj perskaitytos pastraipos.",
+      "practice": "Užrašyk 3 klausimus iš to, ką vaikas mokėsi. Rytoj paklausk jų.",
+      "age": 7,
+      "ev": "A",
+      "src": "Dunlosky 2013"
+    },
+    {
+      "id": "dual",
+      "cat": "atmintis",
+      "name": "Žodis ir paveikslėlis",
+      "how": "Ne todėl, kad vaikas „vizualas“ — o todėl, kad taip veikia atmintis pas visus.",
+      "practice": "Paprašyk vaiko nupiešti tai, ką ką tik pasakė. Vienas piešinys, 2 min.",
+      "age": 4,
+      "ev": "C",
+      "src": "Learning Scientists · Deans for Impact",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "draw",
+      "cat": "atmintis",
+      "name": "Piešk, o ne skaityk antrą kartą",
+      "how": "Piešimas priverčia pagaminti prasmę. Pakartotinis skaitymas — ne.",
+      "practice": "Uždaryk knygą. Nupiešk, kas ten vyko. Paskui palygink su knyga.",
+      "age": 5,
+      "ev": "C",
+      "src": "Generative learning REV",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "teach",
+      "cat": "atmintis",
+      "name": "Paaiškink kitam",
+      "how": "Mokyti ką nors — tai mokymosi būdas, ne egzaminas.",
+      "practice": "60 sekundžių vaikas aiškina tau (ar pliušiniam meškiukui) vieną dalyką. Tu klausi „kodėl?“.",
+      "age": 6,
+      "ev": "C",
+      "src": "Generative learning REV",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "elab",
+      "cat": "atmintis",
+      "name": "Klausimas „kodėl taip?“",
+      "how": "Elaboracija — vaikas pats susieja naują dalyką su tuo, ką jau žino.",
+      "practice": "Po kiekvieno fakto klausk „kodėl taip?“ tris kartus iš eilės. Sustok, kai vaikas sako „nežinau“ — ten prasideda mokymasis.",
+      "age": 8,
+      "ev": "B",
+      "src": "Dunlosky 2013 (elaboratyvus klausinėjimas — VIDUTINĖ nauda)"
+    },
+    {
+      "id": "interleave",
+      "cat": "atmintis",
+      "name": "Maišyk uždavinių tipus",
+      "how": "Interleaving veikia — bet geriausiai įrodytas matematikoje ir kategorijose. Ne visur.",
+      "practice": "Vietoj 10 vienodų uždavinių duok 6 skirtingų tipų, sumaišytus.",
+      "age": 8,
+      "ev": "B",
+      "src": "Dunlosky 2013"
+    },
+    {
+      "id": "mnemo",
+      "cat": "atmintis",
+      "name": "Istorija iš daiktų",
+      "how": "⚠️ Sąžiningai: Dunlosky raktažodžių mnemoniką vertina kaip MAŽOS naudos bendram mokymuisi. Smagu, bet nėra pagrindinis įrankis.",
+      "practice": "Susiek 5 daiktus į vieną juokingą istoriją. Po valandos paklausk sąrašo.",
+      "age": 7,
+      "ev": "C",
+      "src": "Dunlosky 2013 (LOW utility)"
+    },
+    {
+      "id": "one-instr",
+      "cat": "demesys",
+      "name": "Vienas nurodymas vienu metu",
+      "how": "Trys nurodymai iš karto — vienas iškris. Ir tai ne vaiko kaltė.",
+      "practice": "Duok vieną nurodymą, palauk, kol bus padarytas, tada kitą. 2 min pabandyk taip.",
+      "age": 4,
+      "ev": "B",
+      "src": "Cowan 2010 · CLT"
+    },
+    {
+      "id": "one-new",
+      "cat": "demesys",
+      "name": "Vienas naujas dalykas",
+      "how": "6–8 m.: vienas naujas dalykas + vienas naujas įrankis per kartą. 9–12 m.: du + vienas.",
+      "practice": "Suskaičiuok, kiek naujų dalykų buvo šiandienos pamokoje. Jei daugiau nei du — žinai, kodėl nepavyko.",
+      "age": 6,
+      "ev": "A",
+      "src": "Sweller 2019 · CESE NSW"
+    },
+    {
+      "id": "phone-away",
+      "cat": "demesys",
+      "name": "Telefonas kitame kambaryje",
+      "how": "Telefonas kitame kambaryje, ne ekranu žemyn ant stalo. ⚠️ Tirta su suaugusiais; 2023 m. meta-analizė efektą rado mažesnį ir nepastovesnį nei originalas.",
+      "practice": "Padėk telefoną kitame kambaryje. Ne ant stalo ekranu žemyn — kitame kambaryje. 10 min.",
+      "age": 8,
+      "ev": "B",
+      "src": "Ward ir kt. 2017 (n≈800, suaugę) · 2023 meta-analizė (ginčija dydį)"
+    },
+    {
+      "id": "grayscale",
+      "cat": "demesys",
+      "name": "Pilkas ekranas",
+      "how": "Pilkas ekranas nuima pusę to, kas telefone traukia. ⚠️ Vienas tyrimas: ~38 min/d mažiau ekrano; 2024 m. pakartojimas — silpnesnis. Su vaikais netirta.",
+      "practice": "Įjunk pilką ekraną telefone vienam vakarui. Paklausk vaiko, ar pastebėjo skirtumą.",
+      "age": 9,
+      "ev": "C",
+      "src": "Holte & Ferraro 2020, The Social Science Journal (n=161) · ⚠️ Dekker & Baumgartner 2024 — silpnesnis"
+    },
+    {
+      "id": "move",
+      "cat": "demesys",
+      "name": "Judesys prieš mokymąsi",
+      "how": "9 mėn. popamokinė judėjimo programa pagerino vykdomąją kontrolę 7–9 m. vaikams.",
+      "practice": "5 min judesio prieš namų darbus: šuoliukai, laiptai, šokis. Ne „nusiraminti“ — pasiruošti.",
+      "age": 6,
+      "ev": "B",
+      "src": "Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.)"
+    },
+    {
+      "id": "stop-switch",
+      "cat": "demesys",
+      "name": "Stop ir keisk",
+      "how": "Taisyklė pasikeičia žaidimo viduryje. ⚠️ Bet: bendri „smegenų treniruokliai“ neperkelia įgūdžio — tai veikia tik įdomios veiklos viduje.",
+      "practice": "Žaidimas: plok, kai sakau „žalia“. Po minutės apversk taisyklę. Dar po minutės — vėl.",
+      "age": 5,
+      "ev": "B",
+      "src": "Diamond 2013 · Nature Neuroscience 2024 (neigiamas)"
+    },
+    {
+      "id": "nothing-held",
+      "cat": "demesys",
+      "name": "Nieko nelaikyti galvoje per perėjimą",
+      "how": "4–7 m. vaikas neišneša nurodymo iš vieno kambario į kitą. Daiktas turi būti rankoje.",
+      "practice": "Duok nurodymą ten, kur jis bus vykdomas, su daiktu rankose. Ne iš virtuvės į vaikų kambarį.",
+      "age": 4,
+      "ev": "B",
+      "src": "Cowan 2010"
+    },
+    {
+      "id": "two-min",
+      "cat": "fokusas",
+      "name": "Dvi minutės — pradžios slenkstis",
+      "how": "⚠️ Praktika, ne tyrimas. Bet pradėti visada sunkiau nei tęsti.",
+      "practice": "Susitark: tik 2 minutės. Įjunk laikmatį. Po 2 min galima teisėtai sustoti — dažniausiai nesustoja.",
+      "age": 7,
+      "ev": "C",
+      "src": "MKK praktika"
+    },
+    {
+      "id": "single-task",
+      "cat": "fokusas",
+      "name": "Vienas darbas ir laikmatis",
+      "how": "Matomas laikas paverčia „amžinai“ į „penkias minutes“.",
+      "practice": "Vienas darbas. Laikmatis matomas. Kol skaičiuoja — nieko kito.",
+      "age": 8,
+      "ev": "C",
+      "src": "MKK praktika"
+    },
+    {
+      "id": "plan-first",
+      "cat": "fokusas",
+      "name": "Planas prieš darbą",
+      "how": "Planas → darbas → peržiūra. Dauguma daro tik vidurinę dalį.",
+      "practice": "Prieš pradedant: 3 žingsniai ant popieriaus. Po darbo — pažymėk, kurie pavyko.",
+      "age": 8,
+      "ev": "C",
+      "src": "SRL META (~0,69; mažiau, kai veda mokytojas)",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "review-q",
+      "cat": "fokusas",
+      "name": "„Kas buvo sunkiausia?“",
+      "how": "Vienas stipriausių efektų literatūroje. ⚠️ Su sąlyga: tyrimuose tai darė mokslininkai, ne mokytojai — pas mokytojus efektas mažesnis.",
+      "practice": "Po darbo — vienas klausimas: kas buvo sunkiausia? Ir antras: ką darysi kitaip?",
+      "age": 8,
+      "ev": "C",
+      "src": "Metakognicijos META",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "easy-hard",
+      "cat": "fokusas",
+      "name": "Dvi ikonos: lengva / sunku",
+      "how": "Iki ~8 m. vaikai save vertina per gerai. Refleksija turi būti konkreti, ne atvira.",
+      "practice": "Dvi kortelės: 😀 lengva, 😵 sunku. Vaikas padeda užduotį ant vienos. Viskas.",
+      "age": 5,
+      "ev": "C",
+      "src": "Metakognicijos REV",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "goal-mine",
+      "cat": "fokusas",
+      "name": "Tikslą renkuosi aš, žingsnius — tu",
+      "how": "Vadovaujamas žaidimas įveikė ir tiesioginį mokymą, ir laisvą žaidimą. Nuimk vieną pusę — efektas dingsta.",
+      "practice": "Pasakyk tikslą ir vieną apribojimą. Būdą tegu renkasi vaikas. Tu klausi klausimų, nerodai.",
+      "age": 4,
+      "ev": "A",
+      "src": "Skene ir kt. 2022 META (17 tyrimų, N=3 893)"
+    },
+    {
+      "id": "first-three",
+      "cat": "koncentracija",
+      "name": "Pirmos trys minutės — ne turiniui",
+      "how": "Pirma reikia, kad pavyktų. Tik tada galima sunkiau.",
+      "practice": "Pradėk nuo to, ką vaikas jau moka. Trys minutės sėkmės. Tada nauja.",
+      "age": 4,
+      "ev": "C",
+      "src": "Mokymosi mokslo kursas L2.6",
+      "source": "šaltinis tikslinamas (kursas L2.6) → C"
+    },
+    {
+      "id": "break-move",
+      "cat": "koncentracija",
+      "name": "Pertrauka su judesiu",
+      "how": "Judesys nėra pertrauka nuo mokymosi. FITKids tyrime judesys BUVO intervencija.",
+      "practice": "Kas 15 min — 60 sekundžių judesio. Ne telefonas. Kūnas.",
+      "age": 6,
+      "ev": "B",
+      "src": "Hillman ir kt. 2014 FITKids RCT (n=221, 7–9 m.)"
+    },
+    {
+      "id": "sleep-window",
+      "cat": "koncentracija",
+      "name": "Miego langas",
+      "how": "Tai, kas išmokta 17 val., sutvirtinama 22 val. ⚠️ Mechanizmo išvada, ne tyrimas apie būrelius.",
+      "practice": "Paskutinis kartojimas 30 min prieš miegą, be ekrano. Ryte — vienas klausimas.",
+      "age": 6,
+      "ev": "C",
+      "src": "Peiffer ir kt. 2020, Scientific Reports · Kurz ir kt. 2025, J. Sleep Research (mechanizmo išvada)"
+    },
+    {
+      "id": "clean-desk",
+      "cat": "koncentracija",
+      "name": "Vieno daikto stalas",
+      "how": "⚠️ Praktika. Bet kiekvienas daiktas ant stalo yra pasiūlymas nustoti.",
+      "practice": "Nuo stalo nuimk viską, išskyrus tai, ko reikia dabar. 30 sekundžių darbo.",
+      "age": 6,
+      "ev": "C",
+      "src": "MKK praktika"
+    },
+    {
+      "id": "noise",
+      "cat": "koncentracija",
+      "name": "Fono garsas",
+      "how": "⚠️ Jokių mokslinių pažadų. Kai kuriems padeda uždengti triukšmą — ir tiek.",
+      "practice": "Įjunk fono garsą programėlėje 5 min. Paklausk vaiko: geriau, blogiau ar vienodai?",
+      "age": 8,
+      "ev": "C",
+      "src": "MKK praktika"
+    },
+    {
+      "id": "feedback-work",
+      "cat": "koncentracija",
+      "name": "Kalbėk apie darbą, ne apie vaiką",
+      "how": "Informatyvus grįžtamasis ryšys d=0,99. Pagyrimas ar bausmė d=0,24. Trečdalis atvejų net pablogina.",
+      "practice": "Vietoj „šaunuolis“ pasakyk, ką tiksliai vaikas padarė: „tu tris kartus bandei kitaip, kol suveikė“.",
+      "age": 4,
+      "ev": "A",
+      "src": "Grįžtamojo ryšio META 2020",
+      "name_en": "Feedback about the work, not the child",
+      "how_en": "\"This step is wrong\" teaches; \"you are careless\" does not."
+    }
+  ],
+  "myths": [
+    {
+      "id": "m-styles",
+      "name": "Mokymosi stiliai (vizualas · audialas · kinestetikas)",
+      "claim": "„Mano vaikas — vizualas, jam reikia mokyti paveikslėliais.“",
+      "truth": "Nė vienas tyrimas neatlaikė patikros. Pomėgiai tikri — bet mokymo pritaikymas jiems nepadeda. Daugiau nei 80 % mokytojų tuo tiki.",
+      "instead": "Duok visiems ir žodį, ir paveikslėlį, ir daiktą į rankas — ne dėl stiliaus, o todėl, kad taip veikia atmintis.",
+      "ev": "X",
+      "src": "Pashler ir kt. 2008 · Dekker ir kt. 2012"
+    },
+    {
+      "id": "m-hemi",
+      "name": "Kairysis ir dešinysis pusrutulis",
+      "claim": "„Jis kūrybiškas, nes dešiniapusis.“",
+      "truth": "Mitas. Taip pat tikimas daugiau nei 80 % mokytojų.",
+      "instead": "Kalbėk apie tai, ką vaikas daro, o ne apie tai, kokia jo smegenų pusė.",
+      "ev": "X",
+      "src": "Dekker ir kt. 2012"
+    },
+    {
+      "id": "m-10",
+      "name": "Naudojame tik 10 % smegenų",
+      "claim": "„Atrakink likusius 90 %.“",
+      "truth": "Mitas. Naudojame visas.",
+      "instead": "Nieko atrakinti nereikia. Reikia prisiminti, pakartoti ir pabandyti dar kartą.",
+      "ev": "X",
+      "src": "Neuromitų literatūra"
+    },
+    {
+      "id": "m-brain-train",
+      "name": "Smegenų treniruokliai lavina dėmesį",
+      "claim": "„Ši programėlė lavina vaiko susikaupimą.“",
+      "truth": "2024 m. tyrimas su 235 vaikais (6–13 m.): 8 savaitės treniruočių pagerino TĄ žaidimą ir daugiau nieko — nei mokslus, nei smegenų struktūrą.",
+      "instead": "Dėmesys auga sunkioje, bet įdomioje veikloje: statyboje, muzikoje, sporte, projekte.",
+      "ev": "X",
+      "src": "Nature Neuroscience 2024 RCT (n=235)"
+    },
+    {
+      "id": "m-chess",
+      "name": "Šachmatai ar muzika padaro protingesnį",
+      "claim": "„Muzika lavina matematinį mąstymą.“",
+      "truth": "Su aktyvia kontroline grupe efektas beveik dingsta: šachmatai g=0,34 → ~0; muzika g=0,18 → −0,02. ⚠️ Šis nulis pats yra ginčijamas — sakau „ginčijama“, ne „paneigta“.",
+      "instead": "Muzika verta dėl muzikos. Šachmatai — dėl šachmatų. To pakanka.",
+      "ev": "X",
+      "src": "Sala & Gobet 2016–2020 · Bigand & Tillmann 2021"
+    },
+    {
+      "id": "m-reread",
+      "name": "Perskaityti dar kartą ir pasibraukti",
+      "claim": "„Pakartok — perskaityk dar kartą.“",
+      "truth": "Abu vertinami kaip MAŽOS naudos. Klasėje: testas su grįžtamuoju ryšiu 67 %, pakartotinis skaitymas 48,6 %.",
+      "instead": "Uždaryk knygą ir pabandyk pasakyti pats. Tik tada tikrink.",
+      "ev": "X",
+      "src": "Dunlosky 2013 · Franzoi ir kt. 2025"
+    },
+    {
+      "id": "m-2sigma",
+      "name": "Meistriškumo mokymasis duoda „2 sigma“",
+      "claim": "„Šis metodas duoda dviejų standartinių nuokrypių šuolį.“",
+      "truth": "Ne. Tas skaičius buvo apie INDIVIDUALŲ korepetitorių 1984 m., ne apie metodą. Paties metodo efektas maždaug 0,5 SD.",
+      "instead": "Klausk, su kuo lyginama. Be palyginimo grupės nėra teiginio.",
+      "ev": "X",
+      "src": "Bloom 1984 · meistriškumo META"
+    },
+    {
+      "id": "m-ai",
+      "name": "AI mokytojas įrodytai padeda vaikams",
+      "claim": "„Dirbtinis intelektas — asmeninis vaiko mokytojas.“",
+      "truth": "Vaikams 3–12 m. tokių tyrimų NĖRA. O neapribotas AI paaugliams pakenkė: kai jį atėmė, jie pasirodė 17 % prasčiau nei tie, kurie jo niekada neturėjo. Tas pats modelis, priverstas duoti tik užuominas, žalos nedarė.",
+      "instead": "AI niekada neturi pasakyti atsakymo, kurį vaikas pats buvo bepasakąs. Skirtumas ne technologijoje, o taisyklėse.",
+      "ev": "X",
+      "src": "2024–2025 RCT (9–11 kl.) · UNESCO"
+    }
+  ]
 }
