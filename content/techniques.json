@@ -112,7 +112,7 @@
       "practice": "Kartok naują dalyką vakare, prieš miegą — 2 min, be ekrano. Ryte paklausk, kas liko.",
       "age": 7,
       "ev": "A",
-      "src": "Peiffer ir kt. 2020 · Kurz ir kt. 2025 · AASM 2016 miego normos"
+      "src": "Peiffer ir kt. 2020, Scientific Reports · Kurz ir kt. 2025, J. Sleep Research · AASM 2016 konsensusas (JCSM)"
     },
     {
       "id": "retrieval",
@@ -262,7 +262,7 @@
       "practice": "Įjunk pilką ekraną telefone vienam vakarui. Paklausk vaiko, ar pastebėjo skirtumą.",
       "age": 9,
       "ev": "C",
-      "src": "Holte & Ferraro 2020 · Dekker & Baumgartner 2024 (silpnesnis)"
+      "src": "Holte & Ferraro 2020, The Social Science Journal (n=161) · ⚠️ Dekker & Baumgartner 2024 — silpnesnis"
     },
     {
       "id": "move",
@@ -382,7 +382,7 @@
       "practice": "Paskutinis kartojimas 30 min prieš miegą, be ekrano. Ryte — vienas klausimas.",
       "age": 6,
       "ev": "C",
-      "src": "Peiffer ir kt. 2020 · Kurz ir kt. 2025 (mechanizmo išvada)"
+      "src": "Peiffer ir kt. 2020, Scientific Reports · Kurz ir kt. 2025, J. Sleep Research (mechanizmo išvada)"
     },
     {
       "id": "clean-desk",

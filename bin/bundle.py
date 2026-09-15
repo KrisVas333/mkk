@@ -5,7 +5,11 @@ The artifact is a single self-contained fragment:
   <title>  ->  Google Fonts <link>  ->  <style>  ->  markup  ->  <script>
 It deliberately contains NO <!doctype>, <html>, <head> or <body> tags, and no
 service worker: the artifact host supplies the page skeleton.
-Audio stays a relative reference (audio/mkk-<band>.mp3) — it is not inlined.
+
+NOT inlined, referenced relatively instead (they ship as supporting files):
+  * audio/mkk-<band>.mp3   — 7 podcasts
+  * img/<slug>.webp        — 22 illustrations (content/illustrations.json IS inlined,
+                             so a missing file falls back to the in-app SVG placeholder)
 
 Usage:  python3 bin/bundle.py
 """
@@ -15,7 +19,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CONTENT = ['config', 'techniques', 'practices', 'library', 'games', 'podcasts']
+CONTENT = ['config', 'techniques', 'practices', 'library', 'games', 'podcasts', 'illustrations']
 LIMIT = 1_500_000
 
 
@@ -49,7 +53,7 @@ def main():
         sys.exit('bundle.py: Google Fonts link not found in the HEAD block')
 
     # drop the local <script src="app.js"> — it is inlined after the markup
-    body = re.sub(r'<script src="app\.js"></script>', '', body).strip()
+    body = re.sub(r'<script src="\./?app\.js"></script>', '', body).strip()
 
     content = {}
     for name in CONTENT:
@@ -58,8 +62,18 @@ def main():
             with open(path, encoding='utf-8') as fh:
                 content[name] = json.load(fh)
         else:
-            content[name] = None
-            print('  ! missing content/%s.json — bundled as null' % name)
+            content[name] = {} if name == 'illustrations' else None
+            print('  ! missing content/%s.json — bundled as %r'
+                  % (name, content[name]))
+
+    # illustrations must stay RELATIVE (img/<slug>.webp) — the host publishes img/ alongside
+    ills = content.get('illustrations') or {}
+    present, missing = [], []
+    for slug, meta in sorted(ills.items()):
+        f = (meta or {}).get('file') or ''
+        if f.startswith('/') or '://' in f:
+            sys.exit('bundle.py: illustration %r must use a relative path, got %r' % (slug, f))
+        (present if os.path.exists(os.path.join(ROOT, f)) else missing).append(slug)
 
     data = json.dumps(content, ensure_ascii=False, separators=(',', ':'))
     # never let a literal </script> inside data close the tag
@@ -91,6 +105,15 @@ def main():
     print('dist/artifact.html  %.1f KB  (limit %d KB)' % (size / 1024, LIMIT // 1024))
     print('  css %.1f KB · js %.1f KB · content %.1f KB'
           % (len(css) / 1024, len(js) / 1024, len(data) / 1024))
+    print('  illustrations: %d declared · %d file present · %d fall back to SVG placeholder'
+          % (len(ills), len(present), len(missing)))
+    if missing:
+        print('    missing: ' + ' '.join(missing))
+    on_disk = []
+    imgdir = os.path.join(ROOT, 'img')
+    if os.path.isdir(imgdir):
+        on_disk = sorted(f for f in os.listdir(imgdir) if f.endswith('.webp'))
+    print('  img/ on disk: %d webp' % len(on_disk))
     if size > LIMIT:
         sys.exit('bundle.py: artifact is over 1.5 MB')
     print('OK')

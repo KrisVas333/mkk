@@ -1,11 +1,35 @@
 {
   "segments": [
-    { "id": "knygos", "icon": "📚", "label": "Knygos" },
-    { "id": "dokumentika", "icon": "🎬", "label": "Dokumentika" },
-    { "id": "podkastai", "icon": "🎧", "label": "Podcast'ai" },
-    { "id": "tyrimai", "icon": "🔬", "label": "Naujausi tyrimai" },
-    { "id": "bureliai", "icon": "🎪", "label": "Būreliai" },
-    { "id": "irankiai", "icon": "🏠", "label": "Namų įrankiai" }
+    {
+      "id": "knygos",
+      "icon": "📚",
+      "label": "Knygos"
+    },
+    {
+      "id": "dokumentika",
+      "icon": "🎬",
+      "label": "Dokumentika"
+    },
+    {
+      "id": "podkastai",
+      "icon": "🎧",
+      "label": "Podcast'ai"
+    },
+    {
+      "id": "tyrimai",
+      "icon": "🔬",
+      "label": "Naujausi tyrimai"
+    },
+    {
+      "id": "bureliai",
+      "icon": "🎪",
+      "label": "Būreliai"
+    },
+    {
+      "id": "irankiai",
+      "icon": "🏠",
+      "label": "Namų įrankiai"
+    }
   ],
   "knygos": [
     {
@@ -87,42 +111,48 @@
       "year": "2025",
       "finding": "5 klasė: testas su grįžtamuoju ryšiu 67,0 %, pakartotinis skaitymas 48,6 %. Intervalo keitimas (1 vs 4 dienos) nedavė nieko.",
       "means": "Prisiminimas — stiprus. Išskirstymas klasėje silpnesnis, nei parduodama.",
-      "ev": "A"
+      "ev": "A",
+      "src": "Franzoi ir kt. 2025 — prisiminimas realioje 5 klasėje"
     },
     {
       "title": "Smegenų treniruokliai vaikams",
       "year": "2024",
       "finding": "235 vaikai (6–13 m.), 8 savaitės stabdymo treniruočių: pagerėjo tik treniruota užduotis. Nei mokslai, nei smegenų struktūra.",
       "means": "„Programėlė lavina dėmesį“ — nesąžininga. Ir tai svarbiausias neigiamas radinys visoje MKK.",
-      "ev": "X"
+      "ev": "X",
+      "src": "Nature Neuroscience 2024 RCT (n=235, 6–13 m.)"
     },
     {
       "title": "Prisiminimas darželinukams",
       "year": "2025",
       "finding": "n=202, 5–6 m.: prisiminimo praktika veikia — bet tik virš pakankamo sėkmės lygio treniruotės metu.",
       "means": "Per sunkūs klausimai paverčia treniruotę nesėkme. 70–90 % teisingų.",
-      "ev": "B"
+      "ev": "B",
+      "src": "Káldi ir kt. 2025 (n=202, 5–6 m.)"
     },
     {
       "title": "Miegas ir atmintis 7–12 m.",
       "year": "2020 · 2025",
       "finding": "Vaikai per naktį išlaiko tai, ką suaugusieji prarado.",
       "means": "Vėlyvas būrelis, valgantis miegą, mainais atiduoda tai, ką ką tik pastatė. ⚠️ Mechanizmo išvada, ne tyrimas apie būrelius.",
-      "ev": "B"
+      "ev": "B",
+      "src": "Peiffer ir kt. 2020, Scientific Reports · Kurz ir kt. 2025, J. Sleep Research"
     },
     {
       "title": "Ekranai ir mąstymas (8 metų kohorta)",
       "year": "2026",
       "finding": "Paaugliai, kurių ekrano veikla reikalavo aktyvaus mąstymo, rodė geresnį apdorojimą. Pasyvus naudojimas — ne.",
       "means": "Svarbu ne valandos, o veiklos tipas. ⚠️ Sąsaja, ne priežastis.",
-      "ev": "B"
+      "ev": "B",
+      "src": "Jalanko ir kt. 2026, Pediatric Exercise Science (PANIC kohorta, n=260)"
     },
     {
       "title": "Telefono buvimas šalia",
       "year": "2017 · 2023",
       "finding": "Originalus tyrimas: telefonas ant stalo mažina darbinę atmintį. 2023 m. meta-analizė: efektas mažesnis ir nepastovesnis.",
       "means": "Telefonas kitame kambaryje padeda — bet dydis ginčijamas, o su vaikais netirta.",
-      "ev": "B"
+      "ev": "B",
+      "src": "Ward ir kt. 2017 · 2023 meta-analizė"
     }
   ],
   "bureliaiIntro": "Abėcėlės tvarka. Nereitinguojame ir nerekomenduojame nė vieno būrelio — čia tik tai, ką kiekviena veikla treniruoja, ir po dvi mažas namų praktikas.",
@@ -137,7 +167,8 @@
       "home": [
         "Nupiešk iš atminties tai, ką šiandien matei. Tik po to pažiūrėk.",
         "Vienas daiktas, trys skirtingi būdai jį pavaizduoti."
-      ]
+      ],
+      "src": "Fiorella & Mayer 2016 — piešimas kaip generatyvusis mokymasis"
     },
     {
       "id": "gamta",
@@ -149,7 +180,8 @@
       "home": [
         "Prieš bandymą: „kas, tavo manymu, nutiks?“ Užrašyk spėjimą.",
         "Vienas langas, penkios minutės, penki pastebėjimai."
-      ]
+      ],
+      "src": "Skene ir kt. 2022 META (17 tyrimų, N=3 893) — vadovaujamas žaidimas"
     },
     {
       "id": "kalbos",
@@ -161,7 +193,8 @@
       "home": [
         "Penki žodžiai. Uždenk. Pasakyk. Tada tikrink.",
         "Rytoj paklausk tų pačių penkių — ne šiandien po penkių minučių."
-      ]
+      ],
+      "src": "Dunlosky ir kt. 2013 · Franzoi ir kt. 2025 — prisiminimo praktika"
     },
     {
       "id": "muzika",
@@ -173,19 +206,21 @@
       "home": [
         "Vienas taktas, trys kartojimai lėtai. Greitis — paskutinis.",
         "Sudainuok tai, ką ką tik grojai — be instrumento."
-      ]
+      ],
+      "src": "Sala & Gobet 2017/2020 META · ⚠️ Bigand & Tillmann 2021 (ginčija nulį)"
     },
     {
       "id": "pasakojimas",
       "icon": "📖",
       "label": "Pasakojimas",
       "trains": "Supratimą ir sekos laikymą galvoje. Lietuvių kalboje vaikai stringa ne prie raidžių, o prie supratimo.",
-      "ev": "A",
-      "evNote": "Bendras skaitymas ir pasakojimas — stiprūs įrodymai ankstyvam raštingumui.",
+      "ev": "B",
+      "evNote": "Bendram skaitymui — stiprūs įrodymai. Pačiam pasakojimui atskirai — meta-analizės neradau, todėl ženklelis B, ne A.",
       "home": [
         "Perpasakok istoriją trimis sakiniais. Tik trimis.",
         "„O kas būtų, jei…“ — pakeisk vieną detalę ir sek toliau."
-      ]
+      ],
+      "src": "WWC 2016/2019 — bendras skaitymas (STRONG) · ⚠️ pasakojimui atskiros meta-analizės neradau"
     },
     {
       "id": "sportas",
@@ -197,19 +232,21 @@
       "home": [
         "Penkios minutės judesio prieš namų darbus.",
         "Žaidimas, kuriame taisyklė apsiverčia po minutės."
-      ]
+      ],
+      "src": "Hillman ir kt. 2014 FITKids RCT (n=221) · ⚠️ Ciria ir kt. 2023 — efektas ties nuliu"
     },
     {
       "id": "sokis",
       "icon": "💃",
       "label": "Šokis",
       "trains": "Sekos laikymą kūne ir judesio kartojimą. Kūnas prisimena tai, ko galva dar nespėja.",
-      "ev": "B",
-      "evNote": "Judesys ir vykdomoji kontrolė — vidutiniai įrodymai. Akademinių pažadų nedarom.",
+      "ev": "C",
+      "evNote": "Judesys ir vykdomoji kontrolė — vidutiniai įrodymai. Šokis atskirai netirtas, todėl ženklelis C. Akademinių pažadų nedarom.",
       "home": [
         "Trys judesiai iš eilės, iš atminties. Rytoj — tie patys.",
         "Rodyk seką, vaikas atkartoja atvirkščiai."
-      ]
+      ],
+      "src": "Hillman ir kt. 2014 · Diamond 2013 — judesys ir vykdomoji kontrolė · ⚠️ šokiui atskirai netirta"
     },
     {
       "id": "technologijos",
@@ -221,7 +258,8 @@
       "home": [
         "Prieš statant — nupiešk seką. Paskui statyk pagal ją.",
         "Kas sugedo? Viena hipotezė, vienas bandymas, tada kita."
-      ]
+      ],
+      "src": "Ouyang & Xu 2024 META (N=2 433) — g≈0,49 STEM · g=0,079 skaičiavimo mąstymui (nereikšminga)"
     }
   ],
   "bureliaiKita": "Kita — parašyk, pridėsim. krisvas.lt",

@@ -3,7 +3,7 @@
   "fullName": "Mokymosi Meistrų Klubas",
   "nameNote": "⚠️ darbinis pavadinimas",
   "tagline": "Išmok mokytis. Kasdien po 3 minutes.",
-  "version": "v0.1.0",
+  "version": "v0.2.0",
   "build": "2026-09-15",
   "author": "Kristijonas Vasiliauskas",
   "authorLink": "krisvas.lt",
@@ -76,7 +76,12 @@
       "Holte & Ferraro 2020 · Dekker & Baumgartner 2024 — pilkas ekranas",
       "Grįžtamojo ryšio META 2020 — d=0,99 informatyvus vs d=0,24 pagyrimas",
       "Siegler & Ramani — skaičių linijos stalo žaidimas",
-      "UNESCO · 2024–2025 AI RCT (9–11 kl.) — AI be apribojimų −17 %"
+      "UNESCO · 2024–2025 AI RCT (9–11 kl.) — AI be apribojimų −17 %",
+      "Ouyang & Xu 2024 META (21 tyrimas, N=2 433) — edukacinė robotika",
+      "Fiorella & Mayer 2016 — generatyvusis mokymasis (piešimas, aiškinimas)",
+      "WWC 2016/2019 — ankstyvas skaitymas, dekodavimas (STRONG)",
+      "Jalanko ir kt. 2026 (PANIC, n=260) — ekrano veiklos tipas ir mąstymas",
+      "Contreras-Osorio 2021 META · ⚠️ Ciria 2023 (efektas ties nuliu) — sportas ir vykdomosios funkcijos"
     ],
     "note": "Pilnas šaltinių žemėlapis su nuorodomis gyvena Kristijono mokymosi mokslo kurse. Radai klaidą — parašyk: krisvas.lt"
   },
@@ -140,7 +145,7 @@
       "name": "MKK+",
       "priceA": "3,99 €/mėn",
       "priceB": "6,99 €/mėn",
-      "priceNote": "⚠️ tikslinama — kaina dar nenuspręsta (399 ar 699)",
+      "priceNote": "",
       "items": [
         "Visos technikos (37) ir visa biblioteka",
         "Visi 3 žaidimai + vakarykštis patikrinimas",
@@ -192,5 +197,47 @@
       "Grįžtamasis ryšys, kuris nepakenkia",
       "Mokymasis ir miegas 7–12 m."
     ]
+  },
+  "onboarding": {
+    "steps": [
+      "Kas mokosi?",
+      "Kada priminti?",
+      "Pradedam"
+    ],
+    "s1title": "Kas mokosi?",
+    "s1sub": "Nuo amžiaus priklauso podcast'as, praktika ir klausimai. Vėliau pakeisi.",
+    "s1name": "Vardas (nebūtina)",
+    "s1namehelp": "Vardas lieka šitame telefone. Niekur nesiunčiamas.",
+    "s2title": "Kada priminti?",
+    "s2sub": "Trys minutės prigyja tada, kai turi savo vietą dienoje.",
+    "s2note": "⚠️ Priminimas kol kas tik užsirašo šitame telefone — pranešimų programėlė dar nesiunčia. Sąžiningai sakau iš karto.",
+    "s2skip": "Praleisti",
+    "s3title": "Viskas paruošta",
+    "s3sub": "Trys žingsniai. Trys minutės. Tiek.",
+    "s3go": "Pradėti pirmą dieną"
+  },
+  "times": [
+    "07:30",
+    "16:00",
+    "17:30",
+    "19:00",
+    "20:00",
+    "20:30"
+  ],
+  "reading": {
+    "title": "Skaitymo minutė",
+    "sub": "Viena minutė. Bet kokia knyga.",
+    "why": "Minutė nėra tikslas — minutė yra durys. Sunkiausia skaitymo dalis yra pradėti, o ne tęsti.",
+    "steps": [
+      "Pasiimk bet kokią knygą. Bet kokį puslapį.",
+      "Skaityk, kol skaičiuoja laikmatis.",
+      "Kai sustos — pasakyk vieną dalyką iš to, ką perskaitei."
+    ],
+    "ev": "B",
+    "src": "WWC 2016/2019 (bendras skaitymas) · Dunlosky 2013 (prisiminimas po skaitymo)",
+    "honest": "Kasdienis ir bendras skaitymas turi stiprius įrodymus raštingumui. ⚠️ Bet „viena minutė“ — mūsų formatas, ne tyrimo dydis. Minutė čia tam, kad būtų per lengva nepradėti.",
+    "weekTitle": "Savaitės knyga",
+    "done": "Minutė perskaityta ✓",
+    "optional": "Nebūtina — serijos neskaičiuoja"
   }
 }
