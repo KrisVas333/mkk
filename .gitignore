@@ -1,3 +1,35 @@
 .DS_Store
 qa/
 .DS_Store
+# ---- builder B additions (orchestrator: merge these lines into /.gitignore) ----
+# Dependencies and staged/native build output are never committed.
+node_modules/
+www/                      # disposable Capacitor web staging mirror (bin/build-web.sh)
+
+# Capacitor: android/ and ios/ ARE committed, their build output is not.
+android/app/src/main/assets/public/
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/build/
+android/app/build/
+android/.gradle/
+android/local.properties
+android/app/release/
+android/capacitor-cordova-android-plugins/build/
+*.keystore
+*.jks
+ios/App/App/public/
+ios/App/App/capacitor.config.json
+ios/App/Pods/
+ios/App/build/
+ios/DerivedData/
+ios/App/App.xcworkspace/xcuserdata/
+ios/App/App.xcodeproj/xcuserdata/
+*.mobileprovision
+*.p12
+
+# Test + audit output
+test-results/
+playwright-report/
+blob-report/
+docs/lighthouse.json

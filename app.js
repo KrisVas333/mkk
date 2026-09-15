@@ -1,28 +1,50 @@
-/* MKK v0.2.0 — Mokymosi Meistrų Klubas. Plain JS, no framework, no build.
+/* MKK v0.3.0 — Mokymosi Meistrų Klubas. Plain JS, no framework, no build.
    Design system: DESIGN.md (Endel logic · per-topic tone · low stimulation). */
 (function () {
   'use strict';
 
-  var VERSION = 'v0.2.0';
+  var VERSION = 'v0.3.0';
   var C = null;            // content
   var KEY = 'mkk.v2';
   var OLDKEY = 'mkk.v1';
   var S = {};              // state
   var P = null;            // active profile (reference into S.profiles)
+  var I18 = { lt: {}, en: {} };   // content/i18n.json — every UI string
+  var LANG = 'lt';                // LT is the default and the complete version
+
+  /* t('key') — UI string in the active language, LT as the always-present fallback. */
+  function t(k) {
+    var v = I18[LANG] && I18[LANG][k];
+    if (v === undefined || v === '') v = I18.lt && I18.lt[k];
+    return v === undefined ? k : v;
+  }
+  /* LX(obj,'field') — content field in the active language: `field_en` when we have it,
+     otherwise the Lithuanian original (content is LT-first on purpose). */
+  function LX(o, f) {
+    if (!o) return '';
+    if (LANG !== 'lt') {
+      var e = o[f + '_en'];
+      if (e !== undefined && e !== null && e !== '') return e;
+    }
+    return o[f];
+  }
+  /* LXA — same for an array field */
+  function LXA(o, f) { var v = LX(o, f); return (v && v.length) ? v : (o[f] || []); }
+  function isEN() { return LANG === 'en'; }
 
   var ACCENTS = [
-    { id: 'raudona', name: 'Raudona', v: '#D90429' },
-    { id: 'melyna', name: 'Mėlyna', v: '#0057B8' },
-    { id: 'zalia', name: 'Žalia', v: '#0B7A45' },
-    { id: 'violetine', name: 'Violetinė', v: '#6B21A8' },
-    { id: 'oranzine', name: 'Oranžinė', v: '#B84A00' },
-    { id: 'kontrastas', name: 'Didelis kontrastas', v: '#000000', hc: true }
+    { id: 'raudona', name: 'Raudona', en: 'Red', v: '#D90429' },
+    { id: 'melyna', name: 'Mėlyna', en: 'Blue', v: '#0057B8' },
+    { id: 'zalia', name: 'Žalia', en: 'Green', v: '#0B7A45' },
+    { id: 'violetine', name: 'Violetinė', en: 'Purple', v: '#6B21A8' },
+    { id: 'oranzine', name: 'Oranžinė', en: 'Orange', v: '#B84A00' },
+    { id: 'kontrastas', name: 'Didelis kontrastas', en: 'High contrast', v: '#000000', hc: true }
   ];
   var AMBIENTS = [
-    { id: 'off', name: 'Išjungta' },
-    { id: 'pink', name: 'Rausvas triukšmas' },
-    { id: 'rain', name: 'Lietaus tipo' },
-    { id: 'pulse', name: 'Lėtas pulsas' }
+    { id: 'off', name: 'Išjungta', en: 'Off' },
+    { id: 'pink', name: 'Rausvas triukšmas', en: 'Pink noise' },
+    { id: 'rain', name: 'Lietaus tipo', en: 'Rain-like' },
+    { id: 'pulse', name: 'Lėtas pulsas', en: 'Slow pulse' }
   ];
 
   /* ---------- per-topic design path: tone fallback (illustrations.json wins) ---------- */
@@ -137,8 +159,10 @@
       ambient: (d && d.ambient) || 'off',
       plus: d ? d.plus === true : false,
       code: (d && d.code) || '',
-      iosHint: d ? d.iosHint === true : false
+      iosHint: d ? d.iosHint === true : false,
+      lang: (d && d.lang === 'en') ? 'en' : 'lt'
     };
+    LANG = S.lang;
     S.profiles.forEach(function (p) {
       if (!p.days) p.days = {};
       if (!p.games) p.games = {};
@@ -234,19 +258,39 @@
   function evBadge(ev) {
     var e = ev === '✗' ? 'X' : (ev || 'C');
     var lbl = e === 'X' ? '✗' : e;
-    return '<button class="ev" data-ev="' + esc(e) + '" data-act="method" type="button" aria-label="Įrodymų lygis ' + esc(lbl) + ' — kaip vertinam">' + esc(lbl) + '</button>';
+    return '<button class="ev" data-ev="' + esc(e) + '" data-act="method" type="button" aria-label="' + esc(t('sh.evidenceAria')) + esc(lbl) + esc(t('sh.evidenceAria2')) + '">' + esc(lbl) + '</button>';
   }
   /* every evidence-badged card must show where the claim comes from (critic 🟠4) */
-  function srcLine(src) {
-    if (src && String(src).trim()) return '<p class="src"><b>Šaltinis</b> · ' + esc(src) + '</p>';
-    return '<p class="src"><b>Šaltinis</b> · ⚠️ tikslinamas — kol kas ženklelis C</p>';
+  function srcLine(src, techId) {
+    var h;
+    if (src && String(src).trim()) h = '<p class="src"><b>' + esc(t('bl.source')) + '</b> · ' + esc(src) + '</p>';
+    else h = '<p class="src"><b>' + esc(t('bl.source')) + '</b> · ' + esc(t('sh.srcPending')) + '</p>';
+    return h + ltSrcLine(techId);
+  }
+  /* 🇱🇹 LT šaltinis — rendered from content/sources-lt.json under the existing ŠALTINIS line */
+  function ltSrcLine(techId) {
+    if (!techId || !C.sourcesLt || !C.sourcesLt.length) return '';
+    var out = '', i, r;
+    for (i = 0; i < C.sourcesLt.length; i++) {
+      r = C.sourcesLt[i];
+      if (!r || r.technique_id !== techId) continue;
+      out += '<p class="src lt"><b>' + esc(t('sh.ltSource')) + '</b> · ' +
+        (r.url ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + '</a>' : esc(r.name)) +
+        (r.note ? ' — ' + esc(r.note) : '') + '</p>';
+    }
+    return out;
   }
   function evOf(o) { return (o && o.src && String(o.src).trim()) ? (o.ev || 'C') : 'C'; }
 
   var LTDAYS = ['Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št', 'Sk'];
   var LTMON = ['sausio', 'vasario', 'kovo', 'balandžio', 'gegužės', 'birželio',
     'liepos', 'rugpjūčio', 'rugsėjo', 'spalio', 'lapkričio', 'gruodžio'];
-  function niceDate(dt) { return dt.getDate() + ' ' + LTMON[dt.getMonth()]; }
+  var ENDAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  var ENMON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function dayName(i) { return isEN() ? ENDAYS[i] : LTDAYS[i]; }
+  function niceDate(dt) {
+    return isEN() ? (ENMON[dt.getMonth()] + ' ' + dt.getDate()) : (dt.getDate() + ' ' + LTMON[dt.getMonth()]);
+  }
   function mondayOf(dt) {
     var d = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
     var w = (d.getDay() + 6) % 7;
@@ -300,14 +344,58 @@
   }
 
   /* ---------- theme ---------- */
+  /* what the user actually SEES right now — 'auto' resolves through the media query */
+  function effTheme() {
+    if (S.theme === 'light' || S.theme === 'dark') return S.theme;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) ? 'dark' : 'light';
+  }
+  function paintThemeBtn() {
+    var b = document.getElementById('themeBtn');
+    if (!b) return;
+    var dark = effTheme() === 'dark';
+    b.textContent = dark ? '☀️' : '🌙';
+    b.setAttribute('aria-label', dark ? t('hdr.themeLight') : t('hdr.themeDark'));
+    b.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  }
   function applyTheme() {
     var root = document.documentElement;
     if (S.theme === 'auto') root.removeAttribute('data-theme');
     else root.setAttribute('data-theme', S.theme);
+    paintThemeBtn();
     var a = ACCENTS[0], i;
     for (i = 0; i < ACCENTS.length; i++) if (ACCENTS[i].id === S.accent) a = ACCENTS[i];
     root.style.setProperty('--accent', a.v);
     if (a.hc) root.setAttribute('data-contrast', '1'); else root.removeAttribute('data-contrast');
+  }
+  /* the flip Kris asked for: one tap in the top bar, light <-> dark, persisted */
+  function toggleTheme() {
+    S.theme = effTheme() === 'dark' ? 'light' : 'dark';
+    save(); applyTheme(); route();
+    toast(S.theme === 'dark' ? t('sh.themeToastDark') : t('sh.themeToast'));
+  }
+  /* language: the document lang attribute follows, tab labels + static chrome repaint */
+  function applyLang() {
+    LANG = S.lang === 'en' ? 'en' : 'lt';
+    document.documentElement.setAttribute('lang', LANG);
+    var map = { siandien: 'tab.today', treniruotes: 'tab.training', zaidimai: 'tab.games',
+      tinklarastis: 'tab.blog', as: 'tab.me' };
+    var tabs = document.querySelectorAll('#tabs .tab'), i, k, lbl;
+    for (i = 0; i < tabs.length; i++) {
+      k = map[tabs[i].getAttribute('data-t')];
+      lbl = tabs[i].querySelector('.tl');
+      if (k && lbl) lbl.textContent = t(k);
+    }
+    var nav = document.getElementById('tabs');
+    if (nav) nav.setAttribute('aria-label', t('nav.aria'));
+    var off = document.getElementById('offline');
+    if (off) off.textContent = t('offline');
+    var sb = document.getElementById('streakBtn');
+    if (sb) sb.setAttribute('aria-label', t('hdr.streak'));
+    var pb = document.getElementById('profileBtn');
+    if (pb) pb.setAttribute('aria-label', t('hdr.profile'));
+    var sx = document.getElementById('sheetClose');
+    if (sx) sx.setAttribute('aria-label', t('close'));
+    paintThemeBtn();
   }
 
   /* ---------- ambient sound (Web Audio, generated) ---------- */
@@ -489,57 +577,58 @@
   var OB = { step: 1, band: null, name: '', time: '' };
   function scrOnboard() {
     var o = C.config.onboarding, h = '';
+    function O(k) { return LX(o, k); }
     var slug = OB.band ? ('age-' + OB.band) : 'hero';
     h += '<div class="dots" aria-hidden="true">' +
       [1, 2, 3].map(function (n) { return '<i class="' + (n === OB.step ? 'on' : '') + '"></i>'; }).join('') + '</div>';
 
     if (OB.step === 1) {
       h += ill('hero', 'ill');
-      h += '<span class="lbl">' + esc(C.config.name) + ' · ' + esc(C.config.nameNote) + '</span>';
-      h += '<p class="big">' + esc(o.s1title) + '</p>';
-      h += '<p class="muted sm">' + esc(o.s1sub) + '</p><div class="spacer"></div>';
+      h += '<span class="lbl">' + esc(C.config.name) + ' · ' + esc(LX(C.config, 'nameNote')) + '</span>';
+      h += '<p class="big">' + esc(O('s1title')) + '</p>';
+      h += '<p class="muted sm">' + esc(O('s1sub')) + '</p><div class="spacer"></div>';
       h += '<div class="ob">';
       C.config.bands.forEach(function (b) {
         h += '<button class="catrow" style="--tone:' + tone('age-' + b.id) + '" data-act="ob-band" data-band="' + esc(b.id) + '" type="button" aria-pressed="' + (OB.band === b.id) + '">' +
           '<span class="ic">' + illMini('age-' + b.id) + '</span>' +
-          '<span class="tx"><b>' + esc(b.label) + '</b><span>' + esc(b.note) + '</span></span>' +
+          '<span class="tx"><b>' + esc(LX(b, 'label')) + '</b><span>' + esc(LX(b, 'note')) + '</span></span>' +
           '<span class="ar">' + (OB.band === b.id ? '✓' : '→') + '</span></button>';
       });
       h += '</div>';
-      h += '<p class="lbl" style="margin-top:22px">' + esc(o.s1name) + '</p>' +
-        '<input type="text" id="obName" value="' + esc(OB.name) + '" placeholder="pvz. Emilija" autocomplete="off" maxlength="24">' +
-        '<p class="xs muted" style="margin-top:8px">' + esc(o.s1namehelp) + '</p>';
-      h += '<div class="spacer"></div><button class="btn" data-act="ob-next" type="button"' + (OB.band ? '' : ' disabled') + '>Toliau</button>';
-      h += '<p class="foot">' + esc(C.config.disclaimerShort) + '</p>';
+      h += '<p class="lbl" style="margin-top:22px">' + esc(O('s1name')) + '</p>' +
+        '<input type="text" id="obName" value="' + esc(OB.name) + '" placeholder="' + esc(t('ob.namePlaceholder')) + '" autocomplete="off" maxlength="24">' +
+        '<p class="xs muted" style="margin-top:8px">' + esc(O('s1namehelp')) + '</p>';
+      h += '<div class="spacer"></div><button class="btn" data-act="ob-next" type="button"' + (OB.band ? '' : ' disabled') + '>' + esc(t('next')) + '</button>';
+      h += '<p class="foot">' + esc(LX(C.config, 'disclaimerShort')) + '</p>';
       return scr(slug, h);
     }
 
     if (OB.step === 2) {
       h += ill('sleep', 'ill');
-      h += '<span class="lbl">2 iš 3</span><p class="big">' + esc(o.s2title) + '</p>';
-      h += '<p class="muted sm">' + esc(o.s2sub) + '</p><div class="spacer"></div>';
+      h += '<span class="lbl">2 / 3</span><p class="big">' + esc(O('s2title')) + '</p>';
+      h += '<p class="muted sm">' + esc(O('s2sub')) + '</p><div class="spacer"></div>';
       h += '<div class="chips">';
       C.config.times.forEach(function (t) {
         h += '<button class="chip" data-act="ob-time" data-time="' + esc(t) + '" aria-pressed="' + (OB.time === t) + '" type="button">' + esc(t) + '</button>';
       });
       h += '</div>';
-      h += '<p class="note warn">' + esc(o.s2note) + '</p>';
-      h += '<div class="spacer"></div><button class="btn" data-act="ob-next" type="button">Toliau</button>' +
-        '<button class="btn ghost" data-act="ob-skip" type="button">' + esc(o.s2skip) + '</button>';
+      h += '<p class="note warn">' + esc(O('s2note')) + '</p>';
+      h += '<div class="spacer"></div><button class="btn" data-act="ob-next" type="button">' + esc(t('next')) + '</button>' +
+        '<button class="btn ghost" data-act="ob-skip" type="button">' + esc(O('s2skip')) + '</button>';
       return scr('sleep', h);
     }
 
     var b = null, i;
     for (i = 0; i < C.config.bands.length; i++) if (C.config.bands[i].id === OB.band) b = C.config.bands[i];
     h += ill('age-' + OB.band, 'ill');
-    h += '<span class="lbl">3 iš 3</span><p class="big">' + esc(o.s3title) + '</p>';
-    h += '<p class="muted sm">' + esc(o.s3sub) + '</p>';
-    h += '<div class="card flat"><p class="lbl" style="margin:0 0 10px">Ką pasirinkai</p>' +
-      '<p class="sm" style="margin:0 0 6px"><b>' + esc(OB.name || 'Be vardo') + '</b> · ' + esc(b ? b.label : '') + '</p>' +
-      '<p class="sm muted" style="margin:0">Priminimas: ' + esc(OB.time || 'be priminimo') + '</p></div>';
-    h += '<button class="btn" data-act="ob-done" type="button">' + esc(o.s3go) + '</button>';
-    h += '<div class="coi tight" style="margin-top:18px">' + esc(C.config.coiLong) + '</div>';
-    h += '<p class="foot">' + esc(C.config.disclaimerShort) + '</p>';
+    h += '<span class="lbl">3 / 3</span><p class="big">' + esc(O('s3title')) + '</p>';
+    h += '<p class="muted sm">' + esc(O('s3sub')) + '</p>';
+    h += '<div class="card flat"><p class="lbl" style="margin:0 0 10px">' + esc(t('ob.picked')) + '</p>' +
+      '<p class="sm" style="margin:0 0 6px"><b>' + esc(OB.name || t('ob.noname')) + '</b> · ' + esc(b ? LX(b, 'label') : '') + '</p>' +
+      '<p class="sm muted" style="margin:0">' + esc(t('ob.reminder')) + esc(OB.time || t('ob.noreminder')) + '</p></div>';
+    h += '<button class="btn" data-act="ob-done" type="button">' + esc(O('s3go')) + '</button>';
+    h += '<div class="coi tight" style="margin-top:18px">' + esc(LX(C.config, 'coiLong')) + '</div>';
+    h += '<p class="foot">' + esc(LX(C.config, 'disclaimerShort')) + '</p>';
     return scr(slug, h);
   }
   function illMini(slug) {
@@ -562,59 +651,59 @@
     /* THE day card */
     h += '<div class="mode">' + ill(slug, 'ill') +
       '<div class="body">' +
-      '<span class="lbl">' + esc(LTDAYS[(now.getDay() + 6) % 7]) + ' · ' + esc(niceDate(now)) + ' · ' + esc(b.label) + (P.name ? ' · ' + esc(P.name) : '') + '</span>' +
-      '<p class="big">' + esc(m.label) + '</p>' +
-      '<p class="why">' + esc(m.blurb) + '</p>' +
+      '<span class="lbl">' + esc(dayName((now.getDay() + 6) % 7)) + ' · ' + esc(niceDate(now)) + ' · ' + esc(LX(b, 'label')) + (P.name ? ' · ' + esc(P.name) : '') + '</span>' +
+      '<p class="big">' + esc(LX(m, 'label')) + '</p>' +
+      '<p class="why">' + esc(LX(m, 'blurb')) + '</p>' +
       (dayDone()
-        ? '<button class="btn ghost" data-act="start-now" type="button">✓ Diena uždaryta · 🔥 ' + P.streak + '</button>'
-        : '<button class="btn" data-act="start-now" type="button">▶ Pradėti · 3 min</button>') +
+        ? '<button class="btn ghost" data-act="start-now" type="button">' + esc(t('today.dayClosed')) + P.streak + '</button>'
+        : '<button class="btn" data-act="start-now" type="button">' + esc(t('today.start')) + '</button>') +
       '</div></div>';
 
     /* disclosure without a scroll — personas panel's single biggest lever (14/40) */
-    h += '<div class="coi tight">' + esc(C.config.coiLong) + '<br>' + esc(C.config.voiceNote) + '</div>';
+    h += '<div class="coi tight">' + esc(LX(C.config, 'coiLong')) + '<br>' + esc(LX(C.config, 'voiceNote')) + '</div>';
 
-    h += '<p class="h2">Trys žingsniai</p>';
+    h += '<p class="h2">' + esc(t('today.threeSteps')) + '</p>';
     h += '<button class="step' + (d.p ? ' done' : '') + '" data-act="open-pod" type="button">' +
-      '<span class="n">' + (d.p ? '✓' : '1') + '</span><span><span class="t">🎙 Vienos minutės podcast\'as</span>' +
-      '<span class="s">' + (pc ? esc(pc.title) : 'Šiandienos mintis') + '</span></span></button>';
+      '<span class="n">' + (d.p ? '✓' : '1') + '</span><span><span class="t">' + esc(t('today.step1')) + '</span>' +
+      '<span class="s">' + (pc ? esc(pc.title) : t('today.step1sub')) + '</span></span></button>';
     h += '<button class="step' + (d.x ? ' done' : '') + '" data-act="open-prac" type="button">' +
-      '<span class="n">' + (d.x ? '✓' : '2') + '</span><span><span class="t">🎯 Dviejų minučių praktika</span>' +
-      '<span class="s">' + esc(pr.title) + '</span></span></button>';
+      '<span class="n">' + (d.x ? '✓' : '2') + '</span><span><span class="t">' + esc(t('today.step2')) + '</span>' +
+      '<span class="s">' + esc(LX(pr, 'title')) + '</span></span></button>';
     h += '<button class="step' + (d.c ? ' done' : '') + '" data-act="tick" type="button">' +
-      '<span class="n">' + (d.c ? '✓' : '3') + '</span><span><span class="t">✅ Vienas varnelės klausimas</span>' +
-      '<span class="s">' + esc(ck.text) + '</span></span></button>';
+      '<span class="n">' + (d.c ? '✓' : '3') + '</span><span><span class="t">' + esc(t('today.step3')) + '</span>' +
+      '<span class="s">' + esc(LX(ck, 'text')) + '</span></span></button>';
 
     /* step 4 — reading minute, optional on purpose */
     var R = C.config.reading;
     h += '<button class="step opt' + (d.r ? ' done' : '') + '" data-act="open-read" type="button">' +
-      '<span class="n">' + (d.r ? '✓' : '4') + '</span><span><span class="t">📖 ' + esc(R.title) + '</span>' +
-      '<span class="s">' + esc(R.sub) + ' · ' + esc(R.optional) + '</span></span></button>';
+      '<span class="n">' + (d.r ? '✓' : '4') + '</span><span><span class="t">📖 ' + esc(LX(R, 'title')) + '</span>' +
+      '<span class="s">' + esc(LX(R, 'sub')) + ' · ' + esc(LX(R, 'optional')) + '</span></span></button>';
 
     /* book of the week */
     var bk = bookOfWeek();
-    h += '<p class="h2" style="--tone:' + tone('reading') + '">' + esc(R.weekTitle) + '</p>';
+    h += '<p class="h2" style="--tone:' + tone('reading') + '">' + esc(LX(R, 'weekTitle')) + '</p>';
     h += '<div class="card" style="--tone:' + tone('reading') + '">' +
       '<p class="lbl">' + esc(bk.who) + '</p>' +
       '<h3 style="font-size:19px;margin:0 0 6px">' + esc(bk.title) + '</h3>' +
       '<p class="sm muted" style="margin:0 0 10px">' + esc(bk.author) + '</p>' +
       '<p class="sm" style="margin:0 0 10px">' + esc(bk.why) + '</p>' +
-      '<p class="src"><b>Leidimas</b> · ' + esc(bk.lt) + '</p></div>';
+      '<p class="src"><b>' + esc(t('bl.edition')) + '</b> · ' + esc(bk.lt) + '</p></div>';
 
     /* today's game */
-    h += '<p class="h2" style="--tone:' + tone(GAME_SLUG[g.id]) + '">Šiandienos žaidimas</p>' +
+    h += '<p class="h2" style="--tone:' + tone(GAME_SLUG[g.id]) + '">' + esc(t('today.game')) + '</p>' +
       '<a class="catrow" style="--tone:' + tone(GAME_SLUG[g.id]) + '" href="#/zaidimai/' + esc(g.id) + '">' +
       '<span class="ic">' + illMini(GAME_SLUG[g.id]) + '</span>' +
-      '<span class="tx"><b>' + esc(g.name) + '</b><span>' + esc(g.sub) + (!g.free && !S.plus ? ' · 🔒 MKK+' : '') + '</span></span>' +
+      '<span class="tx"><b>' + esc(LX(g, 'name')) + '</b><span>' + esc(LX(g, 'sub')) + (!g.free && !S.plus ? ' · 🔒 MKK+' : '') + '</span></span>' +
       '<span class="ar">→</span></a>';
 
     /* ambient */
-    h += '<p class="h2">Fono garsas</p><div class="chips">';
+    h += '<p class="h2">' + esc(t('today.ambient')) + '</p><div class="chips">';
     AMBIENTS.forEach(function (a) {
-      h += '<button class="chip" data-act="amb" data-amb="' + esc(a.id) + '" aria-pressed="' + (S.ambient === a.id) + '" type="button">' + esc(a.name) + '</button>';
+      h += '<button class="chip" data-act="amb" data-amb="' + esc(a.id) + '" aria-pressed="' + (S.ambient === a.id) + '" type="button">' + esc(isEN() ? a.en : a.name) + '</button>';
     });
-    h += '</div><p class="xs muted">Fono garsas — be mokslinių pažadų. Kai kam padeda uždengti triukšmą, ir tiek.</p>';
+    h += '</div><p class="xs muted">' + esc(t('today.ambientNote')) + '</p>';
 
-    h += '<p class="foot">' + esc(C.config.disclaimerShort) + '</p>';
+    h += '<p class="foot">' + esc(LX(C.config, 'disclaimerShort')) + '</p>';
     return scr(slug, h);
   }
 
@@ -622,48 +711,49 @@
   function scrTechniques(cat) {
     var T = C.techniques, h = '';
     if (!cat) {
-      h += '<span class="lbl">Treniruotės</span><p class="big">Ką iš tikrųjų verta daryti.</p>' +
-        '<p class="muted sm">' + T.techniques.length + ' technikos ir ' + T.myths.length + ' mitai. Kiekviena su įrodymų ženkleliu ir šaltiniu — paspausk ženklelį.</p><div class="spacer"></div>';
+      h += '<span class="lbl">' + esc(t('tab.training')) + '</span><p class="big">' + esc(t('tr.title')) + '</p>' +
+        '<p class="muted sm">' + T.techniques.length + esc(t('tr.sub1')) + T.myths.length + esc(t('tr.sub2')) + '</p><div class="spacer"></div>';
       T.categories.forEach(function (c) {
         var n = c.id === 'mitai' ? T.myths.length : T.techniques.filter(function (t) { return t.cat === c.id; }).length;
         var s = CAT_SLUG[c.id];
         h += '<a class="catrow" style="--tone:' + tone(s) + '" href="#/treniruotes/' + esc(c.id) + '">' +
           '<span class="ic">' + illMini(s) + '</span>' +
-          '<span class="tx"><b>' + esc(c.label) + '</b><span>' + esc(c.blurb) + '</span></span>' +
+          '<span class="tx"><b>' + esc(LX(c, 'label')) + '</b><span>' + esc(LX(c, 'blurb')) + '</span></span>' +
           '<span class="ar">' + n + ' →</span></a>';
       });
-      h += '<p class="note">Nemokamai matai 5 technikas ir VISUS mitus. Likusios — MKK+.</p>';
+      h += '<p class="note">' + esc(t('tr.freeNote')) + '</p>';
       return scr('brain-learns', h);
     }
     var c = null, i;
     for (i = 0; i < T.categories.length; i++) if (T.categories[i].id === cat) c = T.categories[i];
     if (!c) return scrTechniques(null);
     var slug = CAT_SLUG[c.id];
-    h += '<a class="chip" href="#/treniruotes">← Atgal</a><div class="spacer"></div>';
+    h += '<a class="chip" href="#/treniruotes">' + esc(t('back')) + '</a><div class="spacer"></div>';
     h += ill(slug, 'ill');
-    h += '<span class="lbl">' + esc(c.icon) + ' ' + esc(c.label) + '</span><p class="muted sm">' + esc(c.blurb) + '</p>';
+    h += '<span class="lbl">' + esc(c.icon) + ' ' + esc(LX(c, 'label')) + '</span><p class="muted sm">' + esc(LX(c, 'blurb')) + '</p>';
     h += '<div class="card">';
     if (cat === 'mitai') {
       T.myths.forEach(function (m) {
-        h += '<div class="item"><h3><span>' + esc(m.name) + '</span>' + evBadge('X') + '</h3>' +
-          '<p class="how muted">' + esc(m.claim) + '</p>' +
-          '<p class="how">' + esc(m.truth) + '</p>' +
-          '<div class="prac"><b>Vietoj to:</b> ' + esc(m.instead) + '</div>' +
-          srcLine(m.src) + '</div>';
+        h += '<div class="item"><h3><span>' + esc(LX(m, 'name')) + '</span>' + evBadge('X') + '</h3>' +
+          '<p class="how muted">' + esc(LX(m, 'claim')) + '</p>' +
+          '<p class="how">' + esc(LX(m, 'truth')) + '</p>' +
+          '<div class="prac"><b>' + esc(t('tr.instead')) + '</b> ' + esc(LX(m, 'instead')) + '</div>' +
+          srcLine(m.src, m.id) + '</div>';
       });
     } else {
       var list = T.techniques.filter(function (t) { return t.cat === cat; });
       var free = freeTechIds();
-      list.forEach(function (t) {
-        var locked = !S.plus && free.indexOf(t.id) < 0;
-        h += '<div class="item"><h3><span>' + esc(t.name) + '</span>' + evBadge(evOf(t)) + '</h3>';
-        h += '<p class="how">' + esc(t.how) + '</p>';
+      list.forEach(function (tq) {
+        var locked = !S.plus && free.indexOf(tq.id) < 0;
+        h += '<div class="item"><h3><span>' + esc(LX(tq, 'name')) + '</span>' + evBadge(evOf(tq)) + '</h3>';
+        h += '<p class="how">' + esc(LX(tq, 'how')) + '</p>';
         if (locked) {
-          h += '<div class="prac muted">🔒 Praktika — MKK+ dalis. <a href="#/as">Žiūrėti planus</a></div>';
+          h += '<div class="prac muted">' + esc(t('tr.lockedPractice')) + '<a href="#/as">' + esc(t('tr.seePlans')) + '</a></div>';
         } else {
-          h += '<div class="prac"><b>2 min:</b> ' + esc(t.practice) + '</div>';
+          h += '<div class="prac"><b>' + esc(t('tr.twoMin')) + '</b> ' + esc(tq.practice) + '</div>';
+          if (isEN() && !tq.practice_en) h += '<p class="meta">beta: practice text in LT for now</p>';
         }
-        h += '<p class="meta">Nuo ' + t.age + ' m.</p>' + srcLine(t.src) + '</div>';
+        h += '<p class="meta">' + esc(t('tr.fromAge')) + tq.age + esc(t('tr.years')) + '</p>' + srcLine(tq.src, tq.id) + '</div>';
       });
     }
     h += '</div>';
@@ -675,66 +765,190 @@
   function scrGames(id) {
     var G = C.games.games, h = '';
     if (!id) {
-      h += '<span class="lbl">Žaidimai</span><p class="big">Trys žaidimai. Nulis pažadų.</p>' +
-        '<p class="muted sm">Kiekvienas sako, ką jis treniruoja — ir ko NE.</p><div class="spacer"></div>';
+      h += '<span class="lbl">' + esc(t('tab.games')) + '</span><p class="big">' + esc(t('gm.title')) + '</p>' +
+        '<p class="muted sm">' + esc(t('gm.sub')) + '</p><div class="spacer"></div>';
       G.forEach(function (g) {
         var s = GAME_SLUG[g.id];
         h += '<a class="catrow" style="--tone:' + tone(s) + '" href="#/zaidimai/' + esc(g.id) + '">' +
           '<span class="ic">' + illMini(s) + '</span>' +
-          '<span class="tx"><b>' + esc(g.name) + '</b><span>' + esc(g.sub) + (!g.free && !S.plus ? ' · 🔒 MKK+' : '') + '</span></span>' +
+          '<span class="tx"><b>' + esc(LX(g, 'name')) + '</b><span>' + esc(LX(g, 'sub')) + (!g.free && !S.plus ? ' · 🔒 MKK+' : '') + '</span></span>' +
           '<span class="ar">→</span></a>';
       });
-      h += '<p class="note warn">Bendri „smegenų treniruokliai“ neperkelia įgūdžio: 2024 m. tyrimas su 235 vaikais (6–13 m.) rado pagerėjimą tik treniruotoje užduotyje. Todėl čia nėra nė vieno žaidimo, kuris žadėtų „lavinti smegenis“.</p>';
+      h += '<p class="note warn">' + esc(t('gm.note')) + '</p>';
       return scr('game-recall', h);
     }
     var g = null, i;
     for (i = 0; i < G.length; i++) if (G[i].id === id) g = G[i];
     if (!g) return scrGames(null);
     var slug = GAME_SLUG[g.id];
-    h += '<a class="chip" href="#/zaidimai">← Atgal</a><div class="spacer"></div>';
+    h += '<a class="chip" href="#/zaidimai">' + esc(t('back')) + '</a><div class="spacer"></div>';
     h += ill(slug, 'ill');
-    h += '<span class="lbl">' + esc(g.icon) + ' ' + esc(g.name) + ' ' + evBadge(evOf(g)) + '</span>';
-    h += '<p class="muted sm">' + esc(g.rule) + '</p>';
+    h += '<span class="lbl">' + esc(g.icon) + ' ' + esc(LX(g, 'name')) + ' ' + evBadge(evOf(g)) + '</span>';
+    h += '<p class="muted sm">' + esc(LX(g, 'rule')) + '</p>';
     if (!g.free && !S.plus) {
-      h += '<div class="card center"><p class="big">🔒</p><p class="sm">Šis žaidimas — MKK+ dalis.</p>' +
-        '<a class="btn" href="#/as">Žiūrėti planus</a></div>';
-      h += '<p class="note">' + esc(g.honest) + '</p>';
+      h += '<div class="card center"><p class="big">🔒</p><p class="sm">' + esc(t('gm.locked')) + '</p>' +
+        '<a class="btn" href="#/as">' + esc(t('tr.seePlans')) + '</a></div>';
+      h += '<p class="note">' + esc(LX(g, 'honest')) + '</p>';
       return scr(slug, h);
     }
     h += '<div class="card" id="gameBox"></div>';
-    h += '<p class="note warn"><b>Sąžiningai:</b> ' + esc(g.honest) + '</p>';
-    h += '<div class="card flat">' + srcLine(g.src) + '</div>';
+    h += '<p class="note warn"><b>' + esc(t('gm.honest')) + '</b> ' + esc(LX(g, 'honest')) + '</p>';
+    h += '<div class="card flat">' + srcLine(g.src, g.id) + '</div>';
     return scr(slug, h);
   }
 
-  /* ---------- Biblioteka ---------- */
-  function scrLibrary(seg) {
-    var L = C.library, h = '';
+
+  /* ---------- Tinklaraštis (blog.json + people.json + the old library) ---------- */
+  var BLOG_SECTIONS = [
+    { id: 'kaip', icon: '🧭', key: 'bl.tutorial', slug: 'brain-learns', type: 'tutorial' },
+    { id: 'straipsniai', icon: '📝', key: 'bl.articles', slug: 'reading', type: 'article' },
+    { id: 'blogpod', icon: '🎧', key: 'bl.podcasts', slug: 'attention', type: 'podcast' },
+    { id: 'video', icon: '🎬', key: 'bl.videos', slug: 'focus', type: 'video' },
+    { id: 'zmones', icon: '👥', key: 'bl.people', slug: 'movement', type: 'people' }
+  ];
+  /* {"lt":…,"en":…} or a plain string — both shapes are accepted */
+  function bTx(o, f) {
+    var v = o ? o[f] : null;
+    if (!v) return '';
+    if (typeof v === 'string') return v;
+    return (LANG === 'en' && v.en) ? v.en : (v.lt || v.en || '');
+  }
+  function blogItems(type) {
+    var out = [], i, b;
+    if (!C.blog || !C.blog.length) return out;
+    for (i = 0; i < C.blog.length; i++) {
+      b = C.blog[i];
+      if (b && b.type === type && (b.status || 'published') !== 'draft') out.push(b);
+    }
+    return out;
+  }
+  /* markdown-lite: blank line = paragraph · "- " = bullet · **bold** */
+  function mdLite(txt) {
+    var lines = String(txt || '').split('\n'), h = '', ul = false, i, l;
+    function inline(x) { return esc(x).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>'); }
+    for (i = 0; i < lines.length; i++) {
+      l = lines[i].trim();
+      if (!l) { if (ul) { h += '</ul>'; ul = false; } continue; }
+      if (l.indexOf('- ') === 0 || l.indexOf('· ') === 0) {
+        if (!ul) { h += '<ul class="plain">'; ul = true; }
+        h += '<li>' + inline(l.slice(2)) + '</li>';
+      } else {
+        if (ul) { h += '</ul>'; ul = false; }
+        h += '<p class="how">' + inline(l) + '</p>';
+      }
+    }
+    if (ul) h += '</ul>';
+    return h;
+  }
+  function blogCard(b) {
+    var h = '<div class="item"><h3><span>' + esc(bTx(b, 'title')) + '</span>' +
+      (b.grade ? evBadge(b.grade) : '') + '</h3>';
+    if (bTx(b, 'summary')) h += '<p class="how muted">' + esc(bTx(b, 'summary')) + '</p>';
+    if (bTx(b, 'body')) h += mdLite(bTx(b, 'body'));
+    if (b.source && b.source.name) {
+      h += '<p class="src"><b>' + esc(t('bl.source')) + '</b> · ' +
+        (b.source.url ? '<a href="' + esc(b.source.url) + '" target="_blank" rel="noopener">' + esc(b.source.name) + '</a>' : esc(b.source.name)) +
+        (b.source.lang === 'lt' ? ' 🇱🇹' : '') + '</p>';
+    }
+    if (b.age) h += '<p class="meta">' + esc(b.age) + '</p>';
+    return h + '</div>';
+  }
+  /* the tutorial is guaranteed: blog.json wins, otherwise this hand-written one */
+  function tutorialFallback() {
+    var lt = ['Pasirink amžių — nuo jo priklauso podcast’as, praktika ir klausimai.',
+      'Kasdien atidaryk „Šiandien“ ir spausk vieną raudoną mygtuką. Viskas telpa į 3 minutes.',
+      'Žingsnis 1 — perklausyk vienos minutės podcast’ą ir pasakyk, ką prisimeni.',
+      'Žingsnis 2 — padaryk dviejų minučių praktiką. Ji kaskart kitokia.',
+      'Žingsnis 3 — atsakyk į vieną varnelės klausimą. Tada diena uždaryta ir 🔥 serija auga.',
+      'Nebūtinas 4 žingsnis — skaitymo minutė. Ji serijos neskaičiuoja, ir taip ir turi būti.'];
+    var en = ['Pick an age band — it decides the podcast, the practice and the questions.',
+      'Open "Today" every day and press the one red button. It all fits into 3 minutes.',
+      'Step 1 — listen to the one-minute podcast and say what you remember.',
+      'Step 2 — do the two-minute practice. It is different every day.',
+      'Step 3 — answer one check question. The day is closed and the 🔥 streak grows.',
+      'Optional step 4 — the reading minute. It never counts towards the streak, on purpose.'];
+    var list = isEN() ? en : lt, h = '<div class="item"><h3><span>' + esc(t('bl.tutorial')) + '</span></h3><ol class="plain">', i;
+    for (i = 0; i < list.length; i++) h += '<li>' + esc(list[i]) + '</li>';
+    return h + '</ol></div>';
+  }
+  function peopleCards() {
+    var h = '', i, p;
+    if (!C.people || !C.people.length) return '<div class="item"><p class="how muted">' + esc(t('bl.emptyPeople')) + '</p></div>';
+    for (i = 0; i < C.people.length; i++) {
+      p = C.people[i];
+      h += '<div class="item"><h3><span>' + esc(p.name) + (p.lt ? ' 🇱🇹' : '') + '</span></h3>' +
+        '<p class="how muted">' + esc(bTx(p, 'role')) + '</p>' +
+        '<p class="how">' + esc(bTx(p, 'why')) + '</p>';
+      if (p.links && p.links.length) {
+        h += '<p class="src">';
+        p.links.forEach(function (l, k) {
+          h += (k ? ' · ' : '') + '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + '</a>';
+        });
+        h += '</p>';
+      }
+      h += '</div>';
+    }
+    return h;
+  }
+  function scrBlog(seg) {
+    var h = '', i, sec = null;
+    for (i = 0; i < BLOG_SECTIONS.length; i++) if (BLOG_SECTIONS[i].id === seg) sec = BLOG_SECTIONS[i];
+
     if (!seg) {
-      h += '<span class="lbl">Biblioteka</span><p class="big">Kur ieškoti toliau.</p>' +
-        '<p class="muted sm">Knygos, filmai, tyrimai ir tai, ką galima padaryti namuose šįvakar.</p><div class="spacer"></div>';
-      L.segments.forEach(function (s) {
-        var sl = LIB_SLUG[s.id] || 'hero';
-        h += '<a class="catrow" style="--tone:' + tone(sl) + '" href="#/biblioteka/' + esc(s.id) + '">' +
-          '<span class="ic">' + illMini(sl) + '</span><span class="tx"><b>' + esc(s.label) + '</b></span><span class="ar">→</span></a>';
+      h += '<span class="lbl">' + esc(t('tab.blog')) + '</span><p class="big">' + esc(t('bl.title')) + '</p>' +
+        '<p class="muted sm">' + esc(t('bl.sub')) + '</p><div class="spacer"></div>';
+      BLOG_SECTIONS.forEach(function (x) {
+        var n = x.type === 'people' ? (C.people ? C.people.length : 0)
+          : (x.type === 'tutorial' ? Math.max(1, blogItems('tutorial').length) : blogItems(x.type).length);
+        h += '<a class="catrow" style="--tone:' + tone(x.slug) + '" href="#/tinklarastis/' + esc(x.id) + '">' +
+          '<span class="ic">' + illMini(x.slug) + '</span>' +
+          '<span class="tx"><b>' + esc(x.icon) + ' ' + esc(t(x.key)) + '</b></span>' +
+          '<span class="ar">' + (n ? n + ' →' : '→') + '</span></a>';
+      });
+      C.library.segments.forEach(function (x) {
+        var sl = LIB_SLUG[x.id] || 'hero';
+        h += '<a class="catrow" style="--tone:' + tone(sl) + '" href="#/tinklarastis/' + esc(x.id) + '">' +
+          '<span class="ic">' + illMini(sl) + '</span><span class="tx"><b>' + esc(x.icon) + ' ' + esc(LX(x, 'label')) + '</b></span><span class="ar">→</span></a>';
       });
       return scr('reading', h);
     }
+    if (!sec) return scrLibrary(seg);
+
+    h += '<a class="chip" href="#/tinklarastis">' + esc(t('back')) + '</a><div class="spacer"></div>' +
+      ill(sec.slug, 'ill') +
+      '<span class="lbl">' + esc(sec.icon) + ' ' + esc(t(sec.key)) + '</span>';
+    h += '<div class="card">';
+    if (sec.type === 'people') {
+      h += peopleCards();
+    } else {
+      var items = blogItems(sec.type);
+      if (items.length) items.forEach(function (b) { h += blogCard(b); });
+      else if (sec.type === 'tutorial') h += tutorialFallback();
+      else h += '<div class="item"><p class="how muted">' + esc(t('bl.empty')) + '</p></div>';
+    }
+    h += '</div>';
+    return scr(sec.slug, h);
+  }
+
+  /* ---------- Biblioteka (sekcijos gyvena Tinklaraštyje) ---------- */
+  function scrLibrary(seg) {
+    var L = C.library, h = '';
+    if (!seg) return scrBlog(null);
     var s = null, i;
     for (i = 0; i < L.segments.length; i++) if (L.segments[i].id === seg) s = L.segments[i];
-    if (!s) return scrLibrary(null);
+    if (!s) return scrBlog(null);
     var slug = LIB_SLUG[seg] || 'hero';
     /* bureliai stays FREE on purpose: it carries the conflict-of-interest disclosure. */
     var locked = !S.plus && seg === 'irankiai';
-    h = '<a class="chip" href="#/biblioteka">← Atgal</a><div class="spacer"></div>' +
+    h = '<a class="chip" href="#/tinklarastis">' + esc(t('back')) + '</a><div class="spacer"></div>' +
       ill(slug, 'ill') +
-      '<span class="lbl">' + esc(s.icon) + ' ' + esc(s.label) + '</span>';
+      '<span class="lbl">' + esc(s.icon) + ' ' + esc(LX(s, 'label')) + '</span>';
 
     if (locked) {
-      h += '<div class="card center"><p class="big">🔒</p><p class="sm">Ši skiltis — MKK+ dalis.</p><a class="btn" href="#/as">Žiūrėti planus</a></div>';
+      h += '<div class="card center"><p class="big">🔒</p><p class="sm">' + esc(t('bl.locked')) + '</p><a class="btn" href="#/as">' + esc(t('tr.seePlans')) + '</a></div>';
       return scr(slug, h);
     }
-    if (seg === 'bureliai') h += '<p class="muted sm">' + esc(L.bureliaiIntro) + '</p>';
+    if (seg === 'bureliai') h += '<p class="muted sm">' + esc(LX(L, 'bureliaiIntro')) + '</p>';
     h += '<div class="card">';
     if (seg === 'knygos') {
       L.knygos.forEach(function (b) {
@@ -758,22 +972,22 @@
         h += '<div class="item"><h3><span>' + esc(b.title) + '</span>' + evBadge(evOf(b)) + '</h3>' +
           '<p class="meta" style="margin:0 0 8px">' + esc(b.year) + '</p>' +
           '<p class="how">' + esc(b.finding) + '</p>' +
-          '<div class="prac"><b>Ką tai reiškia:</b> ' + esc(b.means) + '</div>' +
-          srcLine(b.src) + '</div>';
+          '<div class="prac"><b>' + esc(t('bl.means')) + '</b> ' + esc(b.means) + '</div>' +
+          srcLine(b.src, b.id) + '</div>';
       });
     } else if (seg === 'bureliai') {
       L.bureliai.forEach(function (b) {
         h += '<div class="item"><h3><span>' + esc(b.icon) + ' ' + esc(b.label) + '</span>' + evBadge(evOf(b)) + '</h3>' +
           '<p class="how">' + esc(b.trains) + '</p>' +
-          '<div class="prac"><b>Namuose:</b><br>· ' + esc(b.home[0]) + '<br>· ' + esc(b.home[1]) + '</div>' +
-          '<p class="meta">' + esc(b.evNote) + '</p>' + srcLine(b.src) + '</div>';
+          '<div class="prac"><b>' + esc(t('bl.athome')) + '</b><br>· ' + esc(b.home[0]) + '<br>· ' + esc(b.home[1]) + '</div>' +
+          '<p class="meta">' + esc(b.evNote) + '</p>' + srcLine(b.src, b.id) + '</div>';
       });
       h += '<div class="item"><p class="how muted">' + esc(L.bureliaiKita) + '</p></div>';
     } else if (seg === 'irankiai') {
       L.irankiai.forEach(function (b) {
         h += '<div class="item"><h3><span>' + esc(b.icon) + ' ' + esc(b.title) + '</span>' + evBadge(evOf(b)) + '</h3><ol class="plain">';
         b.steps.forEach(function (st) { h += '<li>' + esc(st) + '</li>'; });
-        h += '</ol><p class="meta">' + esc(b.evNote) + '</p>' + srcLine(b.src) + '</div>';
+        h += '</ol><p class="meta">' + esc(b.evNote) + '</p>' + srcLine(b.src, b.id) + '</div>';
       });
     }
     h += '</div>';
@@ -788,7 +1002,7 @@
       k = dayKey(d);
       done = P.days[k] && P.days[k].p && P.days[k].x && P.days[k].c;
       h += '<span class="wd' + (done ? ' on' : '') + (k === tk ? ' today' : '') + '">' +
-        '<span class="d"></span><span class="n">' + LTDAYS[i] + '</span></span>';
+        '<span class="d"></span><span class="n">' + dayName(i) + '</span></span>';
     }
     return h + '</div>';
   }
@@ -799,149 +1013,206 @@
     if (!keys.length) {
       return '<div class="card flat"><div class="empty">' + ill('memory', 'ill') +
         '<p>Istorija tuščia. Po pirmos treniruotės čia atsiras pirma eilutė — ir nuo tada matysi, ką iš tikrųjų padarei.</p>' +
-        '<a class="btn" href="#/siandien">Pradėti šiandien</a></div></div>';
+        '<a class="btn" href="#/siandien">' + esc(t('today.start')) + '</a></div></div>';
     }
     var h = '<div class="card">';
     keys.forEach(function (k) {
       var d = P.days[k], marks = (d.p ? '🎙' : '·') + ' ' + (d.x ? '🎯' : '·') + ' ' + (d.c ? '✅' : '·') + ' ' + (d.r ? '📖' : '·');
       var parts = k.split('-'), dt = new Date(+parts[0], +parts[1] - 1, +parts[2]);
-      h += '<div class="hrow"><span class="hd">' + LTDAYS[(dt.getDay() + 6) % 7] + ' ' + niceDate(dt) + '</span>' +
+      h += '<div class="hrow"><span class="hd">' + dayName((dt.getDay() + 6) % 7) + ' ' + niceDate(dt) + '</span>' +
         '<span class="hm">' + marks + '</span></div>';
     });
     return h + '</div>';
   }
 
+  /* Miegu pattern: a named human, an honest "how it is made", scientists still to come. */
+  function A(sec) {
+    var a = C.about && C.about[sec];
+    if (!a) return null;
+    return a[LANG] || a.lt || null;
+  }
+  function aboutHTML(cfg) {
+    var h = '<p class="h2">' + esc(t('me.about')) + '</p>', au = A('author'), mk = A('maker'),
+      hw = A('how'), sc = A('scientists'), pv = A('privacy'), bt = A('beta');
+
+    /* Apie autorių */
+    h += '<div class="card"><p class="lbl">' + esc(t('ab.author')) + '</p>' +
+      '<h3 style="font-size:19px;margin:0 0 4px">' + esc(au ? au.name : cfg.author) + '</h3>';
+    if (au && au.role) h += '<p class="meta" style="margin:0 0 10px">' + esc(au.role) + '</p>';
+    (au ? au.body : LXA(cfg, 'story')).forEach(function (l) { h += '<p class="sm">' + esc(l) + '</p>'; });
+    h += '<hr class="sep"><div class="coi">' + esc(au ? au.coi : LX(cfg, 'coiLong')) + '</div>' +
+      '<button class="btn ghost sm" data-act="method" type="button">' + esc(t('me.method')) + '</button></div>';
+
+    /* Apie kūrėją */
+    if (mk) {
+      h += '<div class="card"><p class="lbl">' + esc(t('ab.maker')) + '</p>' +
+        '<h3 style="font-size:19px;margin:0 0 8px">' + esc(mk.title) + '</h3>';
+      mk.body.forEach(function (l) { h += '<p class="sm">' + esc(l) + '</p>'; });
+      h += '<p class="note">' + esc(mk.note) + '</p></div>';
+    }
+    /* Kaip tai buvo padaryta */
+    if (hw) {
+      h += '<div class="card"><p class="lbl">' + esc(t('ab.how')) + '</p>' +
+        '<h3 style="font-size:19px;margin:0 0 8px">' + esc(hw.title) + '</h3><ol class="plain">';
+      hw.steps.forEach(function (l) { h += '<li>' + esc(l) + '</li>'; });
+      h += '</ol></div>';
+    }
+    /* Mokslininkai — placeholder roles only, no invented names */
+    if (sc) {
+      h += '<div class="card flat"><p class="lbl">' + esc(t('ab.scientists')) + '</p>' +
+        '<h3 style="font-size:19px;margin:0 0 8px">' + esc(sc.title) + '</h3>' +
+        '<p class="sm">' + esc(sc.note) + '</p><ul class="plain">';
+      sc.roles.forEach(function (l) { h += '<li class="muted">' + esc(l) + '</li>'; });
+      h += '</ul><p class="meta">' + esc(sc.cta) + '</p></div>';
+    }
+    /* Privatumas */
+    if (pv) {
+      h += '<div class="card"><p class="lbl">' + esc(t('ab.privacy')) + '</p>' +
+        '<h3 style="font-size:19px;margin:0 0 8px">' + esc(pv.title) + '</h3><ul class="plain">';
+      pv.body.forEach(function (l) { h += '<li>' + esc(l) + '</li>'; });
+      h += '</ul></div>';
+    }
+    /* Beta */
+    if (bt) {
+      h += '<div class="card"><p class="lbl">' + esc(t('ab.beta')) + '</p>' +
+        '<h3 style="font-size:19px;margin:0 0 8px">' + esc(bt.title) + '</h3>' +
+        '<p class="sm">' + esc(bt.body) + '</p>' +
+        '<a class="btn" href="' + esc(bt.url || 'https://krisvas.lt') + '" target="_blank" rel="noopener">' + esc(bt.cta) + '</a></div>';
+    }
+    h += '<p class="meta" style="margin:16px 0 0">' + esc(VERSION) + ' · ' + esc(cfg.build) + '</p>';
+    return h;
+  }
+
   function scrMe() {
     if (!S.onboarded || !P) return scrOnboard();
     var cfg = C.config, b = bandObj(), h = '';
-    h += '<span class="lbl">Aš</span><p class="big">' + esc(P.name || b.label) + (S.plus ? ' · MKK+' : '') + '</p>';
-    h += '<p class="muted sm">' + esc(b.label) + (b.parentMode ? ' · su tėvais' : '') + '</p><div class="spacer"></div>';
+    h += '<span class="lbl">' + esc(t('tab.me')) + '</span><p class="big">' + esc(P.name || LX(b, 'label')) + (S.plus ? ' · MKK+' : '') + '</p>';
+    h += '<p class="muted sm">' + esc(LX(b, 'label')) + (b.parentMode ? ' · ' + esc(t('me.parentMode')) : '') + '</p>';
+    if (isEN()) h += '<p class="note">' + esc(t('sh.enBeta')) + '</p>';
+    h += '<div class="spacer"></div>';
 
     /* week + stats */
-    h += '<div class="card"><p class="lbl">Ši savaitė</p>' + weekHTML() +
+    h += '<div class="card"><p class="lbl">' + esc(t('me.week')) + '</p>' + weekHTML() +
       '<div class="stats">' +
-      '<div class="stat"><div class="v">' + P.streak + '</div><div class="k">serija</div></div>' +
-      '<div class="stat"><div class="v">' + totalSessions() + '</div><div class="k">iš viso treniruočių</div></div>' +
-      '<div class="stat"><div class="v">' + totalReading() + '</div><div class="k">skaitymo min.</div></div>' +
+      '<div class="stat"><div class="v">' + P.streak + '</div><div class="k">' + esc(t('me.streak')) + '</div></div>' +
+      '<div class="stat"><div class="v">' + totalSessions() + '</div><div class="k">' + esc(t('me.totalSessions')) + '</div></div>' +
+      '<div class="stat"><div class="v">' + totalReading() + '</div><div class="k">' + esc(t('me.readingMin')) + '</div></div>' +
       '</div>' +
       '<p class="xs muted" style="margin:16px 0 0">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas — atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + ' <span class="meta">ŠALTINIS · Thouin 2020</span></p></div>';
 
     /* profiles */
-    h += '<p class="h2">Kas mokosi</p>';
+    h += '<p class="h2">' + esc(t('me.who')) + '</p>';
     S.profiles.forEach(function (p) {
       var bb = null, i;
       for (i = 0; i < cfg.bands.length; i++) if (cfg.bands[i].id === p.band) bb = cfg.bands[i];
       h += '<button class="catrow" style="--tone:' + tone('age-' + p.band) + '" data-act="switch" data-id="' + esc(p.id) + '" type="button" aria-pressed="' + (p.id === S.active) + '">' +
         '<span class="ic">' + illMini('age-' + p.band) + '</span>' +
-        '<span class="tx"><b>' + esc(p.name || (bb ? bb.label : '—')) + '</b><span>' + esc(bb ? bb.label : '') + ' · 🔥 ' + p.streak + '</span></span>' +
+        '<span class="tx"><b>' + esc(p.name || (bb ? LX(bb, 'label') : '—')) + '</b><span>' + esc(bb ? LX(bb, 'label') : '') + ' · 🔥 ' + p.streak + '</span></span>' +
         '<span class="ar">' + (p.id === S.active ? '✓' : '→') + '</span></button>';
     });
-    h += '<div class="btnrow"><button class="btn ghost sm" data-act="add-child" type="button">+ Pridėti vaiką</button>';
-    if (S.profiles.length > 1) h += '<button class="btn ghost sm" data-act="del-child" type="button">Pašalinti šitą</button>';
+    h += '<div class="btnrow"><button class="btn ghost sm" data-act="add-child" type="button">' + esc(t('me.addChild')) + '</button>';
+    if (S.profiles.length > 1) h += '<button class="btn ghost sm" data-act="del-child" type="button">' + esc(t('me.delChild')) + '</button>';
     h += '</div>';
 
-    h += '<p class="h2">Amžius</p><div class="chips">';
+    h += '<p class="h2">' + esc(t('me.age')) + '</p><div class="chips">';
     cfg.bands.forEach(function (x) {
-      h += '<button class="chip" data-act="band" data-band="' + esc(x.id) + '" aria-pressed="' + (P.band === x.id) + '" type="button">' + esc(x.label) + '</button>';
+      h += '<button class="chip" data-act="band" data-band="' + esc(x.id) + '" aria-pressed="' + (P.band === x.id) + '" type="button">' + esc(LX(x, 'label')) + '</button>';
     });
     h += '</div>';
     h += '<button class="check' + (P.parent ? ' on' : '') + '" data-act="parent" type="button"><span class="bx">' + (P.parent ? '✓' : '') + '</span>' +
-      '<span><b>Tėvų režimas</b><br><span class="xs muted">4–7 m. — suaugęs skaito ir klausia. Rekomenduojama.</span></span></button>';
+      '<span><b>' + esc(t('me.parentMode')) + '</b><br><span class="xs muted">' + esc(t('me.parentModeNote')) + '</span></span></button>';
 
     /* history */
-    h += '<p class="h2">Istorija</p>' + historyHTML();
+    h += '<p class="h2">' + esc(t('me.history')) + '</p>' + historyHTML();
 
     /* reminder */
-    h += '<p class="h2" style="--tone:' + tone('sleep') + '">Priminimas</p><div class="chips">';
+    h += '<p class="h2" style="--tone:' + tone('sleep') + '">' + esc(t('me.reminder')) + '</p><div class="chips">';
     cfg.times.forEach(function (t) {
       h += '<button class="chip" data-act="remind" data-time="' + esc(t) + '" aria-pressed="' + (S.remind === t) + '" type="button">' + esc(t) + '</button>';
     });
-    h += '<button class="chip" data-act="remind" data-time="" aria-pressed="' + (!S.remind) + '" type="button">Be priminimo</button></div>' +
-      '<p class="xs muted">' + esc(cfg.onboarding.s2note) + '</p>';
+    h += '<button class="chip" data-act="remind" data-time="" aria-pressed="' + (!S.remind) + '" type="button">' + esc(t('me.noReminder')) + '</button></div>' +
+      '<p class="xs muted">' + esc(LX(cfg.onboarding, 's2note')) + '</p>';
 
-    h += '<p class="h2">Spalvos</p><div class="chips">';
-    [['auto', 'Sistema'], ['light', 'Šviesi'], ['dark', 'Tamsi']].forEach(function (t) {
-      h += '<button class="chip" data-act="theme" data-theme="' + t[0] + '" aria-pressed="' + (S.theme === t[0]) + '" type="button">' + t[1] + '</button>';
+    /* language — LT is the complete version, EN is labelled beta */
+    h += '<p class="h2">' + esc(t('me.language')) + '</p><div class="chips">';
+    [['lt', '🇱🇹 Lietuvių'], ['en', '🇬🇧 English · beta']].forEach(function (lg) {
+      h += '<button class="chip" data-act="lang" data-lang="' + lg[0] + '" aria-pressed="' + (S.lang === lg[0]) + '" type="button">' + lg[1] + '</button>';
     });
-    h += '</div><span class="lbl">Keisti spalvą</span><div class="swatches">';
+    h += '</div><p class="xs muted">' + esc(t('me.langNote')) + '</p>';
+
+    h += '<p class="h2">' + esc(t('me.colors')) + '</p><div class="chips">';
+    [['auto', t('me.themeAuto')], ['light', t('me.themeLight')], ['dark', t('me.themeDark')]].forEach(function (th) {
+      h += '<button class="chip" data-act="theme" data-theme="' + th[0] + '" aria-pressed="' + (S.theme === th[0]) + '" type="button">' + esc(th[1]) + '</button>';
+    });
+    h += '</div><span class="lbl">' + esc(t('me.changeColor')) + '</span><div class="swatches">';
     ACCENTS.forEach(function (a) {
-      h += '<button class="sw" data-act="accent" data-accent="' + a.id + '" aria-pressed="' + (S.accent === a.id) + '" style="background:' + a.v + '" title="' + esc(a.name) + '" aria-label="' + esc(a.name) + '" type="button"></button>';
+      var an = isEN() ? a.en : a.name;
+      h += '<button class="sw" data-act="accent" data-accent="' + a.id + '" aria-pressed="' + (S.accent === a.id) + '" style="background:' + a.v + '" title="' + esc(an) + '" aria-label="' + esc(an) + '" type="button"></button>';
     });
     h += '</div>';
 
-    h += '<p class="h2">Fono garsas</p><div class="chips">';
+    h += '<p class="h2">' + esc(t('today.ambient')) + '</p><div class="chips">';
     AMBIENTS.forEach(function (a) {
-      h += '<button class="chip" data-act="amb" data-amb="' + esc(a.id) + '" aria-pressed="' + (S.ambient === a.id) + '" type="button">' + esc(a.name) + '</button>';
+      h += '<button class="chip" data-act="amb" data-amb="' + esc(a.id) + '" aria-pressed="' + (S.ambient === a.id) + '" type="button">' + esc(isEN() ? a.en : a.name) + '</button>';
     });
     h += '</div>';
 
     /* plans — 3,99 primary, 6,99 secondary, no "⚠️ tikslinama" */
-    h += '<p class="h2">Planai</p><div class="card"><p class="lbl">' + esc(cfg.plans.free.name) + '</p>' +
+    h += '<p class="h2">' + esc(t('me.plans')) + '</p><div class="card"><p class="lbl">' + esc(LX(cfg.plans.free, 'name')) + '</p>' +
       '<p class="price">' + esc(cfg.plans.free.price) + '</p><ul class="plain">';
-    cfg.plans.free.items.forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
+    LXA(cfg.plans.free, 'items').forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
     h += '</ul></div>';
 
     h += '<div class="card">' + (S.plus ? '<span class="pill">✓ Aktyvus</span>' : '') +
-      '<p class="lbl">' + esc(cfg.plans.plus.name) + '</p>' +
+      '<p class="lbl">' + esc(LX(cfg.plans.plus, 'name')) + '</p>' +
       '<p class="price">' + esc(cfg.plans.plus.priceA) + '</p>' +
-      '<p class="price2">arba ' + esc(cfg.plans.plus.priceB) + '</p><ul class="plain">';
-    cfg.plans.plus.items.forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
+      '<p class="price2">' + esc(t('me.orB')) + esc(cfg.plans.plus.priceB) + '</p><ul class="plain">';
+    LXA(cfg.plans.plus, 'items').forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
     h += '</ul>' + (S.plus
-      ? '<p class="sm"><b>MKK+ jau įjungtas</b>' + (S.code ? ' · kodas ' + esc(S.code) : '') + '</p>'
-      : '<button class="btn" data-act="pay" type="button">Užsisakyti MKK+</button>') + '</div>';
+      ? '<p class="sm"><b>' + esc(t('me.plusOn')) + '</b>' + (S.code ? t('me.code') + esc(S.code) : '') + '</p>'
+      : '<button class="btn" data-act="pay" type="button">' + esc(t('me.buy')) + '</button>') + '</div>';
 
     /* gift */
-    h += '<div class="card"><p class="lbl">🎁 ' + esc(cfg.plans.gift.title) + '</p>' +
-      '<p class="sm">' + esc(cfg.plans.gift.help) + '</p>' +
-      '<div class="coi">' + esc(cfg.plans.gift.coi) + '</div>';
+    h += '<div class="card"><p class="lbl">🎁 ' + esc(LX(cfg.plans.gift, 'title')) + '</p>' +
+      '<p class="sm">' + esc(LX(cfg.plans.gift, 'help')) + '</p>' +
+      '<div class="coi">' + esc(LX(cfg.plans.gift, 'coi')) + '</div>';
     if (S.plus) {
-      h += '<p class="sm"><b>✓ MKK+ aktyvus</b>' + (S.code ? ' · kodas ' + esc(S.code) : '') + '</p>' +
-        '<button class="btn ghost sm" data-act="unplus" type="button">Išjungti (prototipo testui)</button>';
+      h += '<p class="sm"><b>' + esc(t('me.plusActive')) + '</b>' + (S.code ? t('me.code') + esc(S.code) : '') + '</p>' +
+        '<button class="btn ghost sm" data-act="unplus" type="button">' + esc(t('me.plusOff')) + '</button>';
     } else {
       h += '<input type="text" id="code" placeholder="' + esc(cfg.plans.gift.placeholder) + '" autocapitalize="characters" autocomplete="off">' +
-        '<div class="spacer"></div><button class="btn" data-act="code" type="button">Įvesti kodą</button>';
+        '<div class="spacer"></div><button class="btn" data-act="code" type="button">' + esc(t('me.enterCode')) + '</button>';
     }
     h += '</div>';
 
     /* install */
     if (isIOS() && !isStandalone()) {
-      h += '<p class="h2">Programėlė telefone</p><div class="card flat">' +
-        '<p class="sm" style="margin:0 0 12px">MKK veikia kaip įprasta programėlė — tik reikia įsidėti į pradžios ekraną.</p>' +
-        '<button class="btn ghost sm" data-act="ios" type="button">Kaip pridėti į pradžios ekraną</button></div>';
+      h += '<p class="h2">' + esc(t('me.appOnPhone')) + '</p><div class="card flat">' +
+        '<p class="sm" style="margin:0 0 12px">' + esc(t('me.appOnPhoneNote')) + '</p>' +
+        '<button class="btn ghost sm" data-act="ios" type="button">' + esc(t('me.iosHow')) + '</button></div>';
     }
 
     /* guests */
-    h += '<p class="h2">Kviestiniai svečiai</p>';
-    cfg.guests.forEach(function (g) {
-      h += '<div class="card flat"><p class="lbl" style="margin:0 0 6px">' + esc(g.name) + ' · ' + esc(g.status) + '</p>' +
-        '<p class="sm" style="margin:0">' + esc(g.topic) + '</p></div>';
-    });
-
     /* courses */
-    h += '<p class="h2">Kursai</p>';
+    h += '<p class="h2">' + esc(t('me.courses')) + '</p>';
     [cfg.courses.today, cfg.courses.course].forEach(function (c) {
-      h += '<div class="card"><p class="lbl">' + esc(c.title) + '</p>' +
-        '<h3 style="font-size:19px;margin:0 0 8px">' + esc(c.name) + ' ' + evBadge(c.evidence) + '</h3>' +
-        '<p class="sm" style="margin:0">' + esc(c.body) + '</p></div>';
+      h += '<div class="card"><p class="lbl">' + esc(LX(c, 'title')) + '</p>' +
+        '<h3 style="font-size:19px;margin:0 0 8px">' + esc(LX(c, 'name')) + ' ' + evBadge(c.evidence) + '</h3>' +
+        '<p class="sm" style="margin:0">' + esc(LX(c, 'body')) + '</p></div>';
     });
-    h += '<div class="card flat"><p class="lbl">Būsimi kursai</p><ul class="plain">';
-    cfg.courses.next.forEach(function (x) { h += '<li class="muted">' + esc(x) + '</li>'; });
+    h += '<div class="card flat"><p class="lbl">' + esc(t('me.nextCourses')) + '</p><ul class="plain">';
+    LXA(cfg.courses, 'next').forEach(function (x) { h += '<li class="muted">' + esc(x) + '</li>'; });
     h += '</ul></div>';
 
-    /* about */
-    h += '<p class="h2">Apie</p><div class="card">' +
-      '<p class="lbl">' + esc(cfg.author) + '</p>';
-    cfg.story.forEach(function (l) { h += '<p class="sm">' + esc(l) + '</p>'; });
-    h += '<hr class="sep"><div class="coi">' + esc(cfg.coiLong) + '</div>' +
-      '<button class="btn ghost sm" data-act="method" type="button">Kaip vertinam įrodymus</button>' +
-      '<p class="meta" style="margin-top:16px">' + esc(cfg.version) + ' · ' + esc(cfg.build) + '</p></div>';
+    /* about — Apie autorių · Apie kūrėją · Kaip tai buvo padaryta · Mokslininkai · Privatumas · Beta */
+    h += aboutHTML(cfg);
 
     h += '<div class="card flat">';
-    cfg.disclaimerFull.forEach(function (l, i) { h += '<p class="' + (i === 0 ? 'lbl' : 'xs') + '">' + esc(l) + '</p>'; });
+    LXA(cfg, 'disclaimerFull').forEach(function (l, i) { h += '<p class="' + (i === 0 ? 'lbl' : 'xs') + '">' + esc(l) + '</p>'; });
     h += '</div>';
 
-    h += '<p class="h2">Duomenys</p><div class="card flat"><p class="xs">Nulis analitikos, nulis slapukų, nulis serverio. Viskas, ką čia pažymi, lieka šitame telefone.</p>' +
-      '<button class="btn ghost sm" data-act="reset" type="button">Ištrinti viską</button></div>';
+    h += '<p class="h2">' + esc(t('me.data')) + '</p><div class="card flat"><p class="xs">' + esc(t('me.dataNote')) + '</p>' +
+      '<button class="btn ghost sm" data-act="reset" type="button">' + esc(t('me.deleteAll')) + '</button></div>';
 
     return scr('hero', h);
   }
@@ -953,24 +1224,25 @@
       h = '<p class="sm">Šiam amžiui podcast\'as dar rašomas.</p><p class="big">🎙 įrašoma</p>' +
         '<p class="muted sm">Tuo tarpu žingsnis 2 veikia — pradėk nuo praktikos.</p>';
     } else {
-      h = '<span class="lbl">' + esc(bandObj().label) + ' · ' + (pc.minutes || 1) + ' min</span>' +
+      h = '<span class="lbl">' + esc(LX(bandObj(), 'label')) + ' · ' + (pc.minutes || 1) + esc(t('sh.minutes')) + '</span>' +
         '<h3 style="font-size:21px">' + esc(pc.title) + '</h3>';
       if (pc.audio) {
         h += '<div class="audio-wrap"><audio id="pod" controls preload="auto" src="' + esc(pc.audio) + '"></audio>' +
-          '<p class="meta">' + esc(C.config.voiceNote) + '</p></div>';
+          '<p class="meta">' + esc(LX(C.config, 'voiceNote')) + '</p></div>';
       } else {
-        h += '<p class="big">🎙 įrašoma</p>';
+        h += '<p class="big">' + esc(t('sh.recording')) + '</p>';
       }
-      h += '<hr class="sep"><span class="lbl">Tekstas</span><p class="sm" style="white-space:pre-line">' + esc(pc.script || '') + '</p>';
+      if (isEN()) h += '<p class="note">' + esc(t('sh.podEnBeta')) + '</p>';
+      h += '<hr class="sep"><span class="lbl">' + esc(t('sh.text')) + '</span><p class="sm" style="white-space:pre-line">' + esc(pc.script || '') + '</p>';
       if (pc.status === 'needs-ear-check') h += '<p class="meta">⚠️ Įrašą dar tikrina Kristijonas — balsas gali skambėti nelygiai.</p>';
     }
-    h += '<hr class="sep"><span class="lbl">Ką prisimeni?</span>' +
-      '<p class="xs muted">Vienas paspaudimas. Ne pažymys — tik tavo paties patikrinimas.</p><div class="btnrow">' +
+    h += '<hr class="sep"><span class="lbl">' + esc(t('sh.recall')) + '</span>' +
+      '<p class="xs muted">' + esc(t('sh.recallNote')) + '</p><div class="btnrow">' +
       '<button class="btn ghost" data-act="recall" data-n="1" type="button">1</button>' +
       '<button class="btn ghost" data-act="recall" data-n="2" type="button">2</button>' +
       '<button class="btn ghost" data-act="recall" data-n="3" type="button">3</button></div>';
-    h += '<div class="spacer"></div><button class="btn ok" data-act="did-pod" type="button">Perklausiau ✓</button>';
-    sheet('🎙 Podcast\'as', h, CAT_SLUG[modeToday().id]);
+    h += '<div class="spacer"></div><button class="btn ok" data-act="did-pod" type="button">' + esc(t('sh.listened')) + '</button>';
+    sheet(t('sh.podcast'), h, CAT_SLUG[modeToday().id]);
     if (auto) {
       var a = $('#pod');
       if (a) { var p = a.play(); if (p && p.catch) p.catch(function () {}); }
@@ -978,12 +1250,12 @@
   }
   function openPractice() {
     var p = practiceToday(), h = '';
-    h += '<span class="lbl">2 minutės ' + evBadge(evOf(p)) + '</span><h3 style="font-size:21px">' + esc(p.title) + '</h3>' +
-      '<p class="sm muted">' + esc(p.why) + '</p><ol class="plain">';
-    p.steps.forEach(function (s) { h += '<li>' + esc(s) + '</li>'; });
-    h += '</ol><p class="meta">Nuo ' + p.minAge + ' m.</p>' + srcLine(p.src) +
-      '<div class="spacer"></div><button class="btn ok" data-act="did-prac" type="button">Padaryta ✓</button>';
-    sheet('🎯 Praktika', h, CAT_SLUG[modeToday().id]);
+    h += '<span class="lbl">' + esc(t('sh.two')) + evBadge(evOf(p)) + '</span><h3 style="font-size:21px">' + esc(LX(p, 'title')) + '</h3>' +
+      '<p class="sm muted">' + esc(LX(p, 'why')) + '</p><ol class="plain">';
+    LXA(p, 'steps').forEach(function (s) { h += '<li>' + esc(s) + '</li>'; });
+    h += '</ol><p class="meta">' + esc(t('tr.fromAge')) + p.minAge + esc(t('tr.years')) + '</p>' + srcLine(p.src, p.id) +
+      '<div class="spacer"></div><button class="btn ok" data-act="did-prac" type="button">' + esc(t('sh.done')) + '</button>';
+    sheet(t('sh.practice'), h, CAT_SLUG[modeToday().id]);
   }
 
   /* reading minute — the feature Kris asked for and v0.1 silently skipped (critic 🟠7) */
@@ -992,17 +1264,17 @@
   function openReading() {
     var R = C.config.reading, h = '';
     RD.left = 60;
-    h += '<span class="lbl">' + esc(R.sub) + ' ' + evBadge(evOf(R)) + '</span>';
-    h += '<p class="sm muted">' + esc(R.why) + '</p>';
+    h += '<span class="lbl">' + esc(LX(R, 'sub')) + ' ' + evBadge(evOf(R)) + '</span>';
+    h += '<p class="sm muted">' + esc(LX(R, 'why')) + '</p>';
     h += '<div class="clock" id="rclk">1:00</div><div class="bar"><i id="rbar"></i></div>';
     h += '<div class="btnrow"><button class="btn" data-act="read-go" id="rgo" type="button">▶ Pradėti minutę</button></div>';
     h += '<ol class="plain" style="margin-top:20px">';
-    R.steps.forEach(function (s) { h += '<li>' + esc(s) + '</li>'; });
+    LXA(R, 'steps').forEach(function (s) { h += '<li>' + esc(s) + '</li>'; });
     h += '</ol>';
-    h += '<p class="note warn">' + esc(R.honest) + '</p>' + srcLine(R.src);
-    h += '<div class="spacer"></div><button class="btn ok" data-act="did-read" type="button">' + esc(R.done) + '</button>';
-    h += '<p class="xs muted center" style="margin-top:10px">' + esc(R.optional) + '</p>';
-    sheet('📖 ' + R.title, h, 'reading');
+    h += '<p class="note warn">' + esc(LX(R, 'honest')) + '</p>' + srcLine(R.src);
+    h += '<div class="spacer"></div><button class="btn ok" data-act="did-read" type="button">' + esc(LX(R, 'done')) + '</button>';
+    h += '<p class="xs muted center" style="margin-top:10px">' + esc(LX(R, 'optional')) + '</p>';
+    sheet('📖 ' + LX(R, 'title'), h, 'reading');
   }
   /* update in place — never re-render the sheet on a tick (60fps rule) */
   function readingTick() {
@@ -1286,7 +1558,7 @@
     if (!S.onboarded || !P || !P.band) { html = scrOnboard(); tab = 'siandien'; }
     else if (tab === 'treniruotes') html = scrTechniques(sub);
     else if (tab === 'zaidimai') html = scrGames(sub);
-    else if (tab === 'biblioteka') html = scrLibrary(sub);
+    else if (tab === 'tinklarastis' || tab === 'biblioteka') { tab = 'tinklarastis'; html = scrBlog(sub); }
     else if (tab === 'as') html = scrMe();
     else html = scrToday();
 
@@ -1317,7 +1589,7 @@
     d[field] = 1; save();
     var gained = checkStreak();
     closeSheet(); route();
-    toast(gained ? '🔥 Serija: ' + P.streak : 'Pažymėta ✓');
+    toast(gained ? t('sh.streakToast') + P.streak : t('sh.marked'));
   }
 
   function onClick(e) {
@@ -1335,7 +1607,7 @@
     if (a === 'ob-next') {
       if (OB.step === 1) {
         var n2 = $('#obName'); if (n2) OB.name = n2.value.trim();
-        if (!OB.band) { toast('Pirma pasirink amžių.'); return; }
+        if (!OB.band) { toast(t('ob.pickAge')); return; }
       }
       OB.step = Math.min(3, OB.step + 1); route(); return;
     }
@@ -1347,7 +1619,7 @@
       S.profiles.push(p); S.active = p.id; S.onboarded = true; S.remind = OB.time;
       pickActive(); save();
       location.hash = '#/siandien'; route();
-      toast('Pradedam. Trys minutės — ir diena uždaryta.');
+      toast(t('ob.started'));
       return;
     }
 
@@ -1400,6 +1672,10 @@
     if (a === 'parent') { P.parent = !P.parent; save(); route(); return; }
     if (a === 'remind') { S.remind = el.getAttribute('data-time'); save(); route(); toast(S.remind ? 'Priminimas: ' + S.remind : 'Be priminimo'); return; }
     if (a === 'theme') { S.theme = el.getAttribute('data-theme'); save(); applyTheme(); route(); return; }
+    if (a === 'lang') {
+      S.lang = el.getAttribute('data-lang') === 'en' ? 'en' : 'lt';
+      save(); applyLang(); route(); toast(t('sh.langSwitched')); return;
+    }
     if (a === 'accent') { S.accent = el.getAttribute('data-accent'); save(); applyTheme(); route(); return; }
     if (a === 'amb') {
       S.ambient = el.getAttribute('data-amb'); save(); ambientStart(S.ambient); route();
@@ -1438,9 +1714,9 @@
 
     /* --- money --- */
     if (a === 'pay') {
-      sheet('Netrukus', '<p class="sm">Mokėjimų dar nėra — MKK yra prototipas, ne parduotuvė.</p>' +
+      sheet(t('sh.notYet'), '<p class="sm">Mokėjimų dar nėra — MKK yra prototipas, ne parduotuvė.</p>' +
         '<p class="sm">MKK+ kainuos <b>' + esc(C.config.plans.plus.priceA) + '</b>; yra ir ' + esc(C.config.plans.plus.priceB) + ' variantas.</p>' +
-        '<div class="coi">' + esc(C.config.plans.gift.coi) + '</div>' +
+        '<div class="coi">' + esc(LX(C.config.plans.gift, 'coi')) + '</div>' +
         '<p class="sm">Turi nuomonę apie kainą? Parašyk: krisvas.lt</p>', 'hero');
       return;
     }
@@ -1470,7 +1746,13 @@
   /* ---------- boot ---------- */
   function start() {
     loadState();
+    applyLang();
     applyTheme();
+    var tb = document.getElementById('themeBtn');
+    if (tb) tb.addEventListener('click', toggleTheme);
+    if (window.matchMedia) {
+      try { window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', paintThemeBtn); } catch (e) {}
+    }
     document.addEventListener('click', onClick);
     $('#sheetClose').addEventListener('click', closeSheet);
     $('#scrim').addEventListener('click', closeSheet);
@@ -1496,8 +1778,13 @@
   }
 
   function boot() {
-    if (window.MKK_CONTENT) { C = window.MKK_CONTENT; start(); return; }
-    var names = ['config', 'techniques', 'practices', 'library', 'games', 'podcasts', 'illustrations'];
+    if (window.MKK_CONTENT) {
+      C = window.MKK_CONTENT;
+      I18 = C.i18n || I18;
+      start(); return;
+    }
+    var names = ['config', 'techniques', 'practices', 'library', 'games', 'podcasts', 'illustrations',
+      'i18n', 'about', 'blog', 'people', 'sources-lt'];
     Promise.all(names.map(function (n) {
       return fetch('./content/' + n + '.json')
         .then(function (r) { return r.ok ? r.json() : null; })
@@ -1505,11 +1792,14 @@
     })).then(function (a) {
       C = {
         config: a[0], techniques: a[1], practices: a[2], library: a[3],
-        games: a[4], podcasts: a[5], illustrations: a[6] || {}
+        games: a[4], podcasts: a[5], illustrations: a[6] || {},
+        i18n: a[7] || null, about: a[8] || null, blog: a[9] || null,
+        people: a[10] || null, sourcesLt: a[11] || null
       };
+      I18 = C.i18n || I18;
       if (!C.config || !C.techniques || !C.practices || !C.library || !C.games) {
         document.getElementById('view').innerHTML =
-          '<div class="card"><p class="lbl">Klaida</p><p class="sm">Nepavyko įkelti turinio. Patikrink ryšį ir atnaujink puslapį.</p></div>';
+          '<div class="card"><p class="lbl">' + esc(t('err.title')) + '</p><p class="sm">' + esc(t('err.load')) + '</p></div>';
         return;
       }
       start();

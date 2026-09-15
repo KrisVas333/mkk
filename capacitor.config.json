@@ -1,0 +1,15 @@
+{
+  "appId": "lt.krisvas.mkk",
+  "appName": "MKK",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  },
+  "ios": {
+    "contentInset": "always",
+    "limitsNavigationsToAppBoundDomains": true
+  }
+}

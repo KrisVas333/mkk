@@ -1,0 +1,112 @@
+{
+  "practices": [
+    {
+      "id": "p-recall3",
+      "title": "Trys dalykai be žiūrėjimo",
+      "why": "Prisiminimas be knygos — stipriausia technika, kokią turim.",
+      "steps": ["Uždaryk knygą arba sąsiuvinį.", "Pasakyk garsiai 3 dalykus, kuriuos šiandien mokeisi.", "Tik dabar pasitikrink, ko trūko."],
+      "minAge": 5, "ev": "A", "src": "Dunlosky 2013 · Franzoi 2025"
+    },
+    {
+      "id": "p-yesterday",
+      "title": "Vakarykštis klausimas",
+      "why": "Kartojimas kitą dieną, ne po penkių minučių.",
+      "steps": ["Prisimink VIENĄ vakar dienos dalyką.", "Pasakyk jį garsiai, nežiūrėdamas.", "Jei nepavyko — tai gerai. Dabar pažiūrėk ir rytoj bandyk vėl."],
+      "minAge": 6, "ev": "B", "src": "Franzoi 2025 (⚠️ klasėje intervalas nedavė skirtumo)"
+    },
+    {
+      "id": "p-teach60",
+      "title": "60 sekundžių paaiškink",
+      "why": "Mokyti kitą — mokymosi būdas, ne egzaminas.",
+      "steps": ["Pasirink vieną dalyką, kurį šiandien supratai.", "60 sekundžių aiškink jį žmogui arba meškiukui.", "Tegu jis paklausia „kodėl?“ vieną kartą."],
+      "minAge": 6, "ev": "B", "src": "Generative learning REV"
+    },
+    {
+      "id": "p-draw",
+      "title": "Piešinys iš atminties",
+      "why": "Piešimas priverčia pagaminti prasmę. Pakartotinis skaitymas — ne.",
+      "steps": ["Uždenk tekstą.", "Nupiešk tai, apie ką jis buvo. 90 sekundžių.", "Palygink. Kas dingo?"],
+      "minAge": 5, "ev": "B", "src": "Generative learning REV"
+    },
+    {
+      "id": "p-why3",
+      "title": "Trys „kodėl?“",
+      "why": "Elaboracija — vaikas pats susieja naują dalyką su tuo, ką jau žino.",
+      "steps": ["Pasakyk vieną faktą.", "Klausk „kodėl taip?“ tris kartus iš eilės.", "Kai atsakymas „nežinau“ — ten prasideda mokymasis."],
+      "minAge": 8, "ev": "B", "src": "Dunlosky 2013 (vidutinė nauda)"
+    },
+    {
+      "id": "p-move",
+      "title": "Du judesio",
+      "why": "9 mėn. judėjimo programa pagerino vykdomąją kontrolę 7–9 m. vaikams.",
+      "steps": ["2 minutes: šuoliukai, laiptai arba šokis.", "Tada iškart — sunkiausia dienos užduotis.", "Ne „nusiraminti“, o pasiruošti."],
+      "minAge": 5, "ev": "B", "src": "Hillman ir kt. 2014 FITKids RCT (n=221)"
+    },
+    {
+      "id": "p-phone",
+      "title": "Telefonas kitame kambaryje",
+      "why": "Ne ekranu žemyn ant stalo — kitame kambaryje. ⚠️ Tirta su suaugusiais, dydis ginčijamas.",
+      "steps": ["Nunešk telefoną į kitą kambarį.", "10 minučių vienas darbas.", "Grįžk ir pasakyk: buvo lengviau ar tas pats?"],
+      "minAge": 8, "ev": "B", "src": "Ward ir kt. 2017 · 2023 meta-analizė"
+    },
+    {
+      "id": "p-plan3",
+      "title": "Trys žingsniai popieriuje",
+      "why": "Planas → darbas → peržiūra. Dauguma daro tik vidurinę dalį.",
+      "steps": ["Prieš pradėdamas užrašyk 3 žingsnius.", "Dirbk.", "Pažymėk, kurie pavyko."],
+      "minAge": 8, "ev": "B", "src": "SRL META (~0,69; mažiau, kai veda mokytojas)"
+    },
+    {
+      "id": "p-hardest",
+      "title": "Kas buvo sunkiausia?",
+      "why": "Vienas stipriausių efektų literatūroje — su sąlyga, kad klausiama tikrai.",
+      "steps": ["Po darbo sustok minutei.", "Atsakyk: kas buvo sunkiausia?", "Ir: ką darysi kitaip rytoj?"],
+      "minAge": 8, "ev": "B", "src": "Metakognicijos META"
+    },
+    {
+      "id": "p-easyhard",
+      "title": "Lengva ar sunku?",
+      "why": "Iki ~8 m. vaikai save vertina per gerai. Refleksija turi būti konkreti.",
+      "steps": ["Parodyk du ženklus: 😀 lengva, 😵 sunku.", "Vaikas parodo, kaip buvo.", "Jokių paaiškinimų nereikia."],
+      "minAge": 4, "ev": "B", "src": "Metakognicijos REV"
+    },
+    {
+      "id": "p-four",
+      "title": "Keturi daiktai",
+      "why": "Darbinė atmintis telpa apie keturis dalykus. Vaikams mažiau.",
+      "steps": ["Pasakyk 4 daiktus. Vaikas atkartoja.", "Tada 6. Dažniausiai nepavyks.", "Pasakyk: tai ne tavo kaltė — tokia atmintis pas visus."],
+      "minAge": 4, "ev": "A", "src": "Cowan 2010"
+    },
+    {
+      "id": "p-picture",
+      "title": "Žodis ir paveikslėlis",
+      "why": "Ne todėl, kad vaikas „vizualas“ — o todėl, kad taip veikia atmintis pas visus.",
+      "steps": ["Pasakyk vieną naują žodį.", "Nupiešk jį mažu piešinuku šalia.", "Rytoj parodyk tik piešinį."],
+      "minAge": 4, "ev": "B", "src": "Learning Scientists"
+    },
+    {
+      "id": "p-feedback",
+      "title": "Pagirk darbą, ne vaiką",
+      "why": "Informatyvus grįžtamasis ryšys d=0,99. Pagyrimas d=0,24. Trečdalis atvejų net pablogina.",
+      "steps": ["Rask vieną dalyką, kurį vaikas padarė.", "Pasakyk TIKSLIAI ką: „tu bandei tris kartus kitaip“.", "Žodžio „šaunuolis“ šiandien nevartok."],
+      "minAge": 4, "ev": "A", "src": "Grįžtamojo ryšio META 2020"
+    },
+    {
+      "id": "p-goal",
+      "title": "Tikslas mano, žingsniai tavo",
+      "why": "Vadovaujamas žaidimas įveikė ir tiesioginį mokymą, ir laisvą žaidimą.",
+      "steps": ["Pasakyk tikslą ir vieną apribojimą.", "Būdą renkasi vaikas.", "Tu tik klausi klausimų. Nerodai."],
+      "minAge": 4, "ev": "A", "src": "Skene ir kt. 2022 META (N=3 893)"
+    }
+  ],
+  "checks": [
+    { "id": "c-phone", "text": "Telefonas buvo kitame kambaryje", "minAge": 8 },
+    { "id": "c-move", "text": "Pajudėjau prieš sunkiausią užduotį", "minAge": 4 },
+    { "id": "c-say", "text": "Pasakiau vieną dalyką iš atminties, nežiūrėdamas", "minAge": 5 },
+    { "id": "c-sleep", "text": "Šiandien einu miegoti tuo pačiu laiku", "minAge": 4 },
+    { "id": "c-one", "text": "Dariau vieną darbą vienu metu", "minAge": 6 },
+    { "id": "c-ask", "text": "Paklausiau „kodėl taip?“ bent vieną kartą", "minAge": 6 },
+    { "id": "c-hard", "text": "Pasakiau, kas buvo sunkiausia", "minAge": 5 },
+    { "id": "c-desk", "text": "Ant stalo liko tik tai, ko reikia", "minAge": 5 }
+  ]
+}

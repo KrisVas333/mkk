@@ -1,0 +1,35 @@
+{
+  "name": "mkk",
+  "version": "0.3.0",
+  "description": "MKK — Mokymosi Meistrų Klubas: offline-first PWA, kaip mokytis (4–14 m.)",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "serve": "python3 bin/serve.py",
+    "bundle": "python3 bin/bundle.py",
+    "sync": "cap sync",
+    "build:store": "bash bin/build-store.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrisVas333/mkk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KrisVas333/mkk/issues"
+  },
+  "homepage": "https://github.com/KrisVas333/mkk#readme",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/ios": "^8.5.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}

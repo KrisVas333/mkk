@@ -1,0 +1,132 @@
+{
+  "author": {
+    "lt": {
+      "name": "Kristijonas Vasiliauskas",
+      "role": "Autorius · praktikas, ne mokslininkas",
+      "body": [
+        "Ne mokslininkas, o praktikas. Daugiau nei dešimtmetį mokiau vaikus statyti robotus ir mačiau, kas per pamoką iš tikrųjų veikia, o kas tik gražiai atrodo.",
+        "Pats puslapį normaliai perskaityti pradėjau vienuolikos. Todėl MKK kalba trumpai, garsu ir ikonomis — taip, kaip man pačiam būtų padėję.",
+        "Kiekviena technika čia turi šaltinį. Jei šaltinio nėra — parašyta, kad jo nėra, ir ženklelis nukrenta į C."
+      ],
+      "coi": "Interesų konfliktas: esu ExoClass bendraįkūrėjas, BrAIn Club kūrėjas ir robotikos būrelio savininkas. „MKK+ nemokamai“ galioja BET KURIO būrelio vaikams — tai dovana, ne veiklų reitingas. Būrelių skiltyje veiklos rikiuojamos abėcėle, robotika niekada nėra pirma, ir nė viena veikla čia nereitinguojama.",
+      "link": "krisvas.lt"
+    },
+    "en": {
+      "name": "Kristijonas Vasiliauskas",
+      "role": "Author · a practitioner, not a scientist",
+      "body": [
+        "Not a scientist — a practitioner. For more than a decade I taught children to build robots and watched what actually works in a lesson and what only looks good.",
+        "I could not read a page properly until I was eleven. That is why MKK speaks in short lines, audio and icons — the way that would have helped me.",
+        "Every technique here carries a source. If there is no source, it says so, and the badge drops to C."
+      ],
+      "coi": "Conflict of interest: I am a co-founder of ExoClass, the maker of BrAIn Club and the owner of a robotics club. \"MKK+ for free\" applies to children from ANY after-school club — it is a gift, not a ranking of activities. In the clubs section the activities are listed alphabetically, robotics is never first, and no activity is ranked here.",
+      "link": "krisvas.lt"
+    }
+  },
+  "maker": {
+    "lt": {
+      "title": "Apie kūrėją — kaip MKK daroma",
+      "body": [
+        "Tekstas parašytas su Claude Code iš mano paties antrųjų smegenų (wiki) — ten guli tyrimai, pamokų užrašai ir tai, ką mačiau su vaikais.",
+        "Iliustracijos sugeneruotos su Higgsfield (Recraft).",
+        "Balsas — Kraist: mano paties balso AI klonas per ElevenLabs. Tai pasakyta kiekvieno podcast'o viduje, ne tik čia.",
+        "Turinys vertinamas pagal mokymosi mokslo kurso kriterijus: A / B / C ženklelis kiekvienai technikai."
+      ],
+      "note": "Eksperimentinis, gali klysti. Grįžtamasis ryšys laukiamas: krisvas.lt"
+    },
+    "en": {
+      "title": "About the creator — how MKK is made",
+      "body": [
+        "The text is written with Claude Code out of my own second brain (a wiki) — that is where the research, the lesson notes and what I saw with children live.",
+        "Illustrations are generated with Higgsfield (Recraft).",
+        "The voice is Kraist: an AI clone of my own voice via ElevenLabs. That is said inside every podcast, not only here.",
+        "Content is graded with the criteria from the learning-science course: an A / B / C badge on every technique."
+      ],
+      "note": "Experimental, can be wrong. Feedback welcome: krisvas.lt"
+    }
+  },
+  "how": {
+    "lt": {
+      "title": "Kaip tai buvo padaryta",
+      "steps": [
+        "2026-09-15, 00:50 — idėja: „programėlė, kuri moko vaiką mokytis, po 3 minutes per dieną“.",
+        "Tyrimas — mokymosi mokslo šaltiniai, esamos panašios programėlės, ko jose trūksta.",
+        "Statyba — paprastas HTML/CSS/JS, be framework'o, kad veiktų ir be interneto.",
+        "Taryba — bias (ar nešališka), personas (kaip reaguos tėvai), critic (ar tai, ko prašyta).",
+        "Iliustracijos — 22 piešiniai, vienas tonas kiekvienai temai.",
+        "Vieša beta — su šia eilute, kad matytum, kiek tai dar jauna."
+      ]
+    },
+    "en": {
+      "title": "How this was made",
+      "steps": [
+        "15 Sep 2026, 00:50 — the idea: \"an app that teaches a child to learn, three minutes a day\".",
+        "Research — learning-science sources, the apps that already exist, what is missing in them.",
+        "Build — plain HTML/CSS/JS, no framework, so it works offline too.",
+        "Counsel — bias (is it unbiased), personas (how will parents react), critic (is this what was asked for).",
+        "Illustrations — 22 drawings, one tone per topic.",
+        "Public beta — with this very line, so you can see how young it still is."
+      ]
+    }
+  },
+  "scientists": {
+    "lt": {
+      "title": "Kviestiniai mokslininkai — netrukus",
+      "note": "Kol kas MKK kalba vienu balsu — mano. Tai per mažai. Kviečiame mokslininkus, kurie pasakys tą patį savo žodžiais ir pataisys ten, kur klystu.",
+      "roles": [
+        "Neuromokslininkas — kas iš tikrųjų vyksta galvoje, kai vaikas mokosi",
+        "Kognityvinis mokslininkas — kodėl prisiminti sunkiau nei perskaityti",
+        "Mokymosi mokslininkas — ko mokykla apie mokymąsi nepasako"
+      ],
+      "cta": "Esi vienas iš jų? Parašyk: krisvas.lt"
+    },
+    "en": {
+      "title": "Guest scientists — coming soon",
+      "note": "For now MKK speaks with one voice — mine. That is not enough. We are inviting scientists to say the same things in their own words and correct me where I am wrong.",
+      "roles": [
+        "Neuroscientist — what actually happens in the head while a child learns",
+        "Cognitive scientist — why recalling is harder than re-reading",
+        "Learning scientist — what school does not tell you about learning"
+      ],
+      "cta": "Are you one of them? Write: krisvas.lt"
+    }
+  },
+  "privacy": {
+    "lt": {
+      "title": "Privatumas",
+      "body": [
+        "Nulis duomenų išeina iš šito telefono.",
+        "Nėra paskyrų. Nėra prisijungimo. Nėra slaptažodžio.",
+        "Nėra analitikos, nėra slapukų, nėra sekimo pikselių.",
+        "Serija, dienos, vardai ir žaidimų rezultatai laikomi tik naršyklės atmintyje (localStorage).",
+        "Garsas ir paveikslėliai krenta iš tos pačios svetainės — jokių trečių šalių.",
+        "Nori viską ištrinti? „Aš“ → Duomenys → Ištrinti viską. Dings iš karto ir be kopijų."
+      ]
+    },
+    "en": {
+      "title": "Privacy",
+      "body": [
+        "Zero data leaves this phone.",
+        "No accounts. No sign-in. No password.",
+        "No analytics, no cookies, no tracking pixels.",
+        "Streaks, days, names and game results live only in the browser's own storage (localStorage).",
+        "Audio and images come from this same site — no third parties.",
+        "Want it all gone? Me → Data → Delete everything. It goes instantly, with no copies."
+      ]
+    }
+  },
+  "beta": {
+    "lt": {
+      "title": "Nori tapti beta testuotoju?",
+      "body": "Ieškau tėvų ir vaikų, kurie naudos MKK savaitę ir pasakys, kur nuobodu, kur neaišku ir kur meluoju. Be formų — tiesiog parašyk.",
+      "cta": "Rašyk: krisvas.lt",
+      "url": "https://krisvas.lt"
+    },
+    "en": {
+      "title": "Want to be a beta tester?",
+      "body": "I am looking for parents and children who will use MKK for a week and tell me where it is boring, where it is unclear, and where I am wrong. No forms — just write.",
+      "cta": "Write: krisvas.lt",
+      "url": "https://krisvas.lt"
+    }
+  }
+}

@@ -19,8 +19,11 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CONTENT = ['config', 'techniques', 'practices', 'library', 'games', 'podcasts', 'illustrations']
-LIMIT = 1_500_000
+CONTENT = ['config', 'techniques', 'practices', 'library', 'games', 'podcasts', 'illustrations',
+           'i18n', 'about', 'blog', 'people', 'sources-lt']
+# app.js reads sources-lt as C.sourcesLt
+KEYMAP = {'sources-lt': 'sourcesLt'}
+LIMIT = 1_800_000
 
 
 def read(*parts):
@@ -65,6 +68,9 @@ def main():
             content[name] = {} if name == 'illustrations' else None
             print('  ! missing content/%s.json — bundled as %r'
                   % (name, content[name]))
+    for src, dst in KEYMAP.items():
+        if src in content:
+            content[dst] = content.pop(src)
 
     # illustrations must stay RELATIVE (img/<slug>.webp) — the host publishes img/ alongside
     ills = content.get('illustrations') or {}
@@ -115,7 +121,7 @@ def main():
         on_disk = sorted(f for f in os.listdir(imgdir) if f.endswith('.webp'))
     print('  img/ on disk: %d webp' % len(on_disk))
     if size > LIMIT:
-        sys.exit('bundle.py: artifact is over 1.5 MB')
+        sys.exit('bundle.py: artifact is over 1.8 MB')
     print('OK')
 
 

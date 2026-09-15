@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MKK — grįžtam į pradžią</title>
+<meta name="robots" content="noindex">
+<script>
+/* GitHub Pages serves this for any unknown path under the project.
+   MKK is a single hash-routed page, so send everyone back to today's screen. */
+(function () {
+  var base = location.pathname.replace(/\/[^\/]*$/, '/');
+  location.replace(base + '#/siandien');
+})();
+</script>
+<style>
+  :root{color-scheme:light dark}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+       background:#FFFFFF;color:#0A0A0A;font:16px/1.6 Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+       padding:24px;text-align:center}
+  @media (prefers-color-scheme:dark){body{background:#080808;color:#FAFAFA}}
+  a{color:#D90429}
+  p{max-width:34ch}
+</style>
+</head>
+<body>
+<p>Tokio puslapio nėra. <a href="./#/siandien">Grįžti į MKK</a></p>
+</body>
+</html>

@@ -80,11 +80,28 @@ ir be service worker'io. Turinys įdėtas kaip `window.MKK_CONTENT`.
 | `content/library.json` | knygos · dokumentika · podkastai · tyrimai · būreliai · namų įrankiai |
 | `content/games.json` | 3 žaidimų tekstai ir žodžių bankai |
 | `content/illustrations.json` + `img/*.webp` | 22 iliustracijos (slug → failas · alt · tonas) |
+| `content/i18n.json` | **visos UI eilutės lt + en** (`t('key')`); trūkstamas EN krenta į LT |
+| `content/about.json` | **Apie autorių · Apie kūrėją · Kaip tai buvo padaryta · Mokslininkai · Privatumas · Beta** (lt + en) |
+| `content/blog.json` | Tinklaraščio įrašai: vadovas · straipsniai · podcast'ai · vaizdo įrašai |
+| `content/people.json` | „Ką sekti" — žmonės, kuriuos verta sekti (🇱🇹 pažymėti) |
+| `content/sources-lt.json` | 🇱🇹 LT šaltinis po technikos ŠALTINIS eilute |
 | `content/podcasts.json` + `audio/*.mp3` | 7 podcast'ai pagal amžiaus juostą |
 | `bin/bundle.py` · `bin/serve.py` | artefakto surinkėjas · vietinis serveris (tik stdlib) |
 | `404.html` | GitHub Pages → `./#/siandien` |
 
 Kainos, pavadinimas ir šūkis keičiami **vienoje vietoje** — `content/config.json`.
+
+### Skiltys (v0.3)
+
+**Šiandien · Treniruotės · Žaidimai · Tinklaraštis · Aš.** Tinklaraštis sujungia naujus įrašus
+(`blog.json`, pirmas — „Kaip naudotis MKK") ir „Ką sekti" (`people.json`) su senomis bibliotekos
+sekcijomis. Senas `#/biblioteka` maršrutas vis dar veikia.
+
+### Kalbos ir tema
+
+- **🇱🇹 Lietuvių — pilna versija. 🇬🇧 English — beta** (ilgi tekstai: praktikos ir podcast'ų
+  skriptai kol kas lietuviški, ir tai parašyta ekrane). Jungiklis — „Aš" ekrane; `<html lang>` seka.
+- **☀️/🌙 mygtukas viršutinėje juostoje** — vienas paspaudimas apverčia temą; šviesi numatytoji.
 
 ## Ko sąmoningai NĖRA
 
@@ -101,6 +118,12 @@ Kainos, pavadinimas ir šūkis keičiami **vienoje vietoje** — `content/config
 One day is three steps and three minutes: a one-minute podcast, a two-minute practice, one check —
 plus an optional one-minute reading timer. Around it: 37 techniques and 8 myths, each carrying an
 A/B/C/✗ evidence badge **and its source**, three honest games, and a library.
+
+Five sections: **Today · Training · Games · Blog · Me**. The interface ships in **Lithuanian
+(complete) and English (beta)** — switch it in *Me*; long texts (practices, podcast scripts) are
+still Lithuanian and say so. A **light/dark toggle sits in the top bar**; light is the default.
+*Me* also carries the Miegu-style About: **About the author · About the creator · How this was
+made · Scientists (invited, not yet named) · Privacy · Beta**.
 
 Static HTML/CSS/JS — no framework, no build step, no server, no analytics, no cookies. Everything
 stays in the browser's `localStorage`. Run it with `python3 bin/serve.py 8765`.

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MKK — Mokymosi Meistrų Klubas</title>
+<meta name="description" content="Išmok mokytis. Kasdien po 3 minutes. Mokymosi mokslas vaikams 4–14 m.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="MKK">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<!--BUNDLE:HEAD-START-->
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<!--BUNDLE:HEAD-END-->
+</head>
+<body>
+<!--BUNDLE:BODY-START-->
+<canvas id="net" aria-hidden="true"></canvas>
+
+<header id="hdr">
+  <div class="brand"><span class="dot"></span><span id="brandName">MKK</span></div>
+  <button id="profileBtn" type="button" hidden aria-label="Profilis — perjungti">
+    <span class="av" id="profileAv">?</span><span class="pn" id="profileName">—</span>
+  </button>
+  <button id="streakBtn" class="streak" type="button" aria-label="Serija">🔥 <span id="streakN">0</span></button>
+</header>
+
+<div id="offline" role="status" hidden>Neprisijungta. Viskas veikia — turinys jau šitame telefone.</div>
+
+<main id="view" role="main" tabindex="-1">
+  <div class="scr" aria-hidden="true">
+    <div class="sk img"></div>
+    <div class="sk l w40"></div>
+    <div class="sk l w90"></div>
+    <div class="sk l w70"></div>
+    <div class="sk btn"></div>
+  </div>
+</main>
+
+<nav id="tabs" role="navigation" aria-label="Pagrindinis meniu">
+  <a class="tab" href="#/siandien" data-t="siandien"><span class="ti">☀️</span><span class="tl">Šiandien</span></a>
+  <a class="tab" href="#/treniruotes" data-t="treniruotes"><span class="ti">🧠</span><span class="tl">Treniruotės</span></a>
+  <a class="tab" href="#/zaidimai" data-t="zaidimai"><span class="ti">🎮</span><span class="tl">Žaidimai</span></a>
+  <a class="tab" href="#/biblioteka" data-t="biblioteka"><span class="ti">📚</span><span class="tl">Biblioteka</span></a>
+  <a class="tab" href="#/as" data-t="as"><span class="ti">👤</span><span class="tl">Aš</span></a>
+</nav>
+
+<div id="scrim" hidden></div>
+<section id="sheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+  <button id="sheetClose" class="sheet-x" type="button" aria-label="Uždaryti">✕</button>
+  <h2 id="sheetTitle" class="h-mono"></h2>
+  <div id="sheetBody"></div>
+</section>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="./app.js"></script>
+<!--BUNDLE:BODY-END-->
+<script>
+if('serviceWorker' in navigator && location.protocol.indexOf('http')===0){
+  window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});
+}
+</script>
+</body>
+</html>

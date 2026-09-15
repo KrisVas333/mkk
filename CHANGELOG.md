@@ -1,5 +1,69 @@
 # CHANGELOG
 
+## v0.3.0 — 2026-09-15 (šviesi/tamsi perjungimas · lietuvių+anglų · Tinklaraštis · Apie)
+
+Kris'o žodžiai, pagal kuriuos statyta: *„Add a light theme so you can flip. Make sure that
+everything has a Lithuanian version, Lithuanian names, and is based on Lithuanian sources too,
+but we're also preparing the English version. … Home screen, the training, the games, the blog,
+and me. Include About the Author, About the Creator, and how this was done, and make sure it's
+more like that Miegu app."*
+
+### ☀️/🌙 Temos perjungimas viršutinėje juostoje
+- **Naujas mygtukas `#themeBtn`** dešinėje nuo serijos žetono: vienas paspaudimas — šviesi ⇄ tamsi.
+  Išsaugoma (`S.theme`), veikia visuose ekranuose ir lapeliuose, turi `aria-label` + `aria-pressed`,
+  ikona keičiasi ☀️/🌙. **Šviesi lieka numatytoji** (brand ☀️ LIGHT).
+- `effTheme()` išsprendžia „Sistema" režimą per `prefers-color-scheme`, todėl perjungimas
+  visada apverčia TAI, ką žmogus mato, o ne tai, kas įrašyta.
+- Senasis 3 mygtukų pasirinkimas (Sistema · Šviesi · Tamsi) lieka „Aš" — tik nebėra vienintelis kelias.
+
+### 🇱🇹/🇬🇧 i18n sluoksnis
+- **`content/i18n.json`** — 130 UI raktų dviem kalbomis (skiltys, mygtukai, etiketės, onboarding,
+  planai, tuščios būsenos, klaidos, lapeliai). `app.js` naudoja `t('key')`; trūkstamas EN raktas
+  nukrenta į LT, niekada į tuščią vietą.
+- **`LX(obj,'field')`** ima turinio `field_en`, jei toks yra, kitaip lietuvišką originalą.
+  `_en` laukai pridėti: `config.json` (istorija, planai, amžiaus juostos, onboarding, skaitymo
+  minutė, kursai, atskleidimai), `techniques.json` (7 kategorijos + 5 nemokamos technikos),
+  `games.json` (visi 3 — vardas, paantraštė, taisyklė), `library.json` (sekcijų vardai, būrelių įžanga).
+- **Kalbos jungiklis „Aš" ekrane**, LT numatytoji, EN pažymėta **„beta"**; `<html lang>` seka kalbą.
+- **Sąžininga beta riba:** 2 min praktikų tekstai ir podcast'ų skriptai kol kas lietuviški —
+  angliškame režime jie pažymėti „beta: practice text in LT for now" ir
+  „🎙 English version coming". Lietuviški vardai (MKK, Kraist, Mokymosi Meistrų Klubas —
+  „Learning Masters Club") lieka lietuviški abiem kalbom.
+
+### 📚 Skiltis „Biblioteka" → **„Tinklaraštis"**
+- Skiltys dabar: **Šiandien · Treniruotės · Žaidimai · Tinklaraštis · Aš**
+  (EN: Today · Training · Games · Blog · Me). Senas `#/biblioteka` maršrutas vis dar veikia.
+- Tinklaraštyje **pirma kortelė — „Kaip naudotis MKK"** (iš `content/blog.json`, o jei jo nėra —
+  įrašytas 6 žingsnių vadovas LT+EN), toliau **Straipsniai · Podcast'ai · Vaizdo įrašai**
+  (`content/blog.json`) ir **„Ką sekti"** (`content/people.json`), o po jų — visos senos
+  bibliotekos sekcijos (knygos · dokumentika · podkastai · tyrimai · būreliai · namų įrankiai).
+- Trūkstamas failas **niekada nėra klaida** — rodoma rami tuščia būsena.
+- Markdown-lite (pastraipos · `- ` sąrašai · `**bold**`) tekstams iš `blog.json`.
+
+### 👤 „Apie" — Miegu tipo sekcija (`content/about.json`, lt+en)
+- **Apie autorių** — Kristijonas Vasiliauskas, *praktikas, ne mokslininkas*; kiekviena technika su
+  šaltiniu; interesų konfliktas (ExoClass · BrAIn Club · robotikos būrelis) tais pačiais žodžiais
+  kaip ir dovanos eilutėje. Niekur nėra „kaip tėtis".
+- **Apie kūrėją** — kaip MKK daroma: Claude Code iš Kris'o antrųjų smegenų, iliustracijos
+  Higgsfield (Recraft), balsas Kraist (ElevenLabs klonas), turinys vertinamas pagal mokymosi
+  mokslo kurso kriterijus; „eksperimentinis, gali klysti, grįžtamasis ryšys: krisvas.lt".
+- **Kaip tai buvo padaryta** — 6 žingsnių sąžininga chronologija (idėja 09-15 00:50 → tyrimas →
+  statyba → taryba: bias · personas · critic → iliustracijos → viešai).
+- **Mokslininkai** — „Kviestiniai mokslininkai — netrukus" su 3 vaidmenimis. **Nė vieno tikro vardo**,
+  kol jo nėra turinyje.
+- **Privatumas** — atskira kortelė: nulis duomenų išeina iš telefono, jokių paskyrų, jokios
+  analitikos; garsas ir paveikslėliai iš tos pačios svetainės.
+- **Beta** — „Nori tapti beta testuotoju?" su nuoroda į krisvas.lt (be formos).
+
+### 🇱🇹 LT šaltiniai
+- `content/sources-lt.json` renderinamas **po** esama ŠALTINIS eilute kaip „🇱🇹 LT šaltinis"
+  (technikos, mitai, žaidimai, tyrimai, būreliai). Esami šaltiniai nepaliesti.
+
+### Kita
+- `bin/bundle.py` inline'ina ir `i18n` · `about` · `blog` · `people` · `sources-lt`
+  (`sources-lt` → `C.sourcesLt`); riba pakelta iki 1,8 MB. Artefaktas: **228,7 KB**.
+- Versija „Aš" apačioje: `v0.3.0 · 2026-09-15`.
+
 ## v0.2.0 — 2026-09-15 (dizainas · UX · UI — „kad atrodytų kaip veikianti programėlė")
 
 Dizaino sistema užrašyta **prieš** kodą: [`DESIGN.md`](DESIGN.md).

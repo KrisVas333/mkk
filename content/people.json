@@ -1,0 +1,215 @@
+[
+  {
+    "name": "Pooja K. Agarwal",
+    "role": {
+      "lt": "Kognityvinė mokslininkė, retrievalpractice.org įkūrėja",
+      "en": "Cognitive scientist, founder of retrievalpractice.org"
+    },
+    "why": {
+      "lt": "Ji pavertė „prisiminimo be žiūrėjimo“ tyrimus į įrankius, kuriuos mokytojas gali naudoti rytoj, ne po metų skaitymo. MKK top3 skiltis stovi ant jos surinktų įrodymų.",
+      "en": "She turned retrieval-practice research into tools a teacher can use tomorrow, not after a year of reading. MKK's top-3 section stands on the evidence she compiled."
+    },
+    "links": [
+      {
+        "label": "retrievalpractice.org",
+        "url": "https://www.retrievalpractice.org/"
+      }
+    ],
+    "lang": "en",
+    "lt": false
+  },
+  {
+    "name": "Ramunė Dirvanskienė",
+    "role": {
+      "lt": "Neuropsichologė, knygos „Kaip veikia smegenys“ autorė",
+      "en": "Neuropsychologist, author of \"How the Brain Works\""
+    },
+    "why": {
+      "lt": "Viena nedaugelio lietuvių autorių, parašiusių originalią (ne verstą) knygą apie smegenis plačiajai auditorijai. ⚠️ Pats neperskaičiau visos knygos įrodymų kokybės — patikrink prieš rekomenduodamas toliau.",
+      "en": "One of few Lithuanian authors who wrote an original (not translated) popular book on the brain. ⚠️ I haven't personally checked the full book's evidence quality — verify before recommending it further."
+    },
+    "links": [
+      {
+        "label": "Knyga „Kaip veikia smegenys“",
+        "url": "https://www.knyguklubas.lt/kaip-veikia-smegenys"
+      }
+    ],
+    "lang": "lt",
+    "lt": true
+  },
+  {
+    "name": "Karolina Gurskienė",
+    "role": {
+      "lt": "Psichologė, rašo apie vaikus, ekranus ir tėvystę",
+      "en": "Psychologist, writes about children, screens and parenting"
+    },
+    "why": {
+      "lt": "Rašo tavovaikas.lt apie tai, kaip tėvai realiai gali dozuoti ekraną be karo namie — be baimės kultūros, su konkrečiais žingsniais.",
+      "en": "Writes for tavovaikas.lt about how parents can realistically ration screens without a war at home — no fear-mongering, concrete steps instead."
+    },
+    "links": [
+      {
+        "label": "psichologastau.lt",
+        "url": "https://psichologastau.lt/"
+      }
+    ],
+    "lang": "lt",
+    "lt": true
+  },
+  {
+    "name": "Urtė Neniškytė",
+    "role": {
+      "lt": "Neuromokslininkė, VU Gyvybės mokslų centras",
+      "en": "Neuroscientist, Vilnius University Life Sciences Center"
+    },
+    "why": {
+      "lt": "Viešai ir garsiai sako, kad „mokymosi stiliai“ — mitas, kai daugelis bijo tai pasakyti tėvams. Tiksliai ta drąsa sakyti neigiamą radinį, kurios MKK laikosi.",
+      "en": "Says loudly and publicly that \"learning styles\" is a myth, when most people are afraid to tell parents that. Exactly the courage to state a negative finding that MKK tries to hold onto."
+    },
+    "links": [
+      {
+        "label": "VU profilis",
+        "url": "https://www.gmc.vu.lt/mokslas/mokslininku-profiliai/dr-urte-neniskyte"
+      }
+    ],
+    "lang": "lt",
+    "lt": true
+  },
+  {
+    "name": "Barbara Oakley",
+    "role": {
+      "lt": "Inžinerijos profesorė, „Learning How to Learn“ (Coursera) bendraautorė",
+      "en": "Professor of engineering, co-author of \"Learning How to Learn\" (Coursera)"
+    },
+    "why": {
+      "lt": "Pati užaugo galvodama, kad „nesugeba“ matematikos, ir tapo inžinerijos daktare. Jos „fokusuoto/išsklaidyto mąstymo“ modelis — vienas geriausių paaiškinimų, kodėl pertrauka padeda, o ne trukdo.",
+      "en": "Grew up thinking she \"couldn't do\" math and became a doctor of engineering. Her \"focused/diffuse thinking\" model is one of the best explanations for why a break helps rather than hurts."
+    },
+    "links": [
+      {
+        "label": "barbaraoakley.com",
+        "url": "https://barbaraoakley.com/"
+      }
+    ],
+    "lang": "en",
+    "lt": false
+  },
+  {
+    "name": "Emilija Petraitytė",
+    "role": {
+      "lt": "Medicinos psichologė, rašo apie vaikų dėmesį",
+      "en": "Medical psychologist, writes about children's attention"
+    },
+    "why": {
+      "lt": "Aiškina dėmesį kaip įgūdį, kuris auga per santykį ir akių kontaktą, ne kaip diagnozę, kurią reikia „sutvarkyti“ programėle.",
+      "en": "Frames attention as a skill that grows through relationship and eye contact, not as a diagnosis an app needs to \"fix\"."
+    },
+    "links": [
+      {
+        "label": "tavovaikas.lt straipsnis",
+        "url": "https://tavovaikas.lt/mokslai/med-psichologe-emilija-petraityte-kaip-padeti-vaikui-auginti-demesio-supergalia"
+      },
+      {
+        "label": "Instagram @rami_erdve",
+        "url": "https://www.instagram.com/rami_erdve/"
+      }
+    ],
+    "lang": "lt",
+    "lt": true
+  },
+  {
+    "name": "Irena Stonkuvienė",
+    "role": {
+      "lt": "Edukologė, VU profesorė",
+      "en": "Education researcher, VU professor"
+    },
+    "why": {
+      "lt": "Kalba apie mokymąsi ir mokyklos kultūrą iš tyrimų, ne iš nostalgijos — geras atsvaras „anksčiau mokykla buvo geresnė“ kalboms.",
+      "en": "Talks about learning and school culture from research, not nostalgia — a good counterweight to \"school used to be better\" talk."
+    },
+    "links": [
+      {
+        "label": "VU Filosofijos fakultetas",
+        "url": "https://www.fsf.vu.lt/ugdymo-mokslu-institutas/ugdymo-mokslu-instituto-nariai/2322-irena-stonkuviene"
+      }
+    ],
+    "lang": "lt",
+    "lt": true
+  },
+  {
+    "name": "Megan Sumeracki (The Learning Scientists)",
+    "role": {
+      "lt": "Kognityvinė psichologė, „The Learning Scientists“ bendraįkūrėja",
+      "en": "Cognitive psychologist, co-founder of The Learning Scientists"
+    },
+    "why": {
+      "lt": "Pradėjo nuo Twitter paskyros ir per dešimtmetį pavertė mokymosi mokslą paveikslėliais ir plakatais, kuriuos gali naudoti bet kuris mokytojas be mokslo laipsnio.",
+      "en": "Started from a Twitter account and, over a decade, turned learning science into posters and visuals any teacher can use without a research degree."
+    },
+    "links": [
+      {
+        "label": "learningscientists.org",
+        "url": "https://www.learningscientists.org/"
+      }
+    ],
+    "lang": "en",
+    "lt": false
+  },
+  {
+    "name": "Inga Truskauskaitė",
+    "role": {
+      "lt": "Psichologė, VU Psichotraumatologijos centras",
+      "en": "Psychologist, VU Psychotraumatology Center"
+    },
+    "why": {
+      "lt": "Paaiškina, kas iš tikrųjų vyksta smegenyse per nenutrūkstamą naršymą — be moralizavimo, su mechanizmu. Naudinga, kai vaikas sako „bet aš tik žiūriu“.",
+      "en": "Explains what's actually happening in the brain during nonstop scrolling — no moralizing, just the mechanism. Useful when a child says \"but I'm just watching\"."
+    },
+    "links": [
+      {
+        "label": "LRT straipsnis",
+        "url": "https://www.lrt.lt/naujienos/mokslas-ir-it/11/2939113/pudo-smegenis-psichologe-apie-nenutrukstamo-narsymo-poveiki-zmogui"
+      }
+    ],
+    "lang": "lt",
+    "lt": true
+  },
+  {
+    "name": "Matthew Walker",
+    "role": {
+      "lt": "Miego neuromokslininkas, knygos „Why We Sleep“ autorius",
+      "en": "Sleep neuroscientist, author of \"Why We Sleep\""
+    },
+    "why": {
+      "lt": "Populiarino miego ir atminties ryšį plačiajai auditorijai. ⚠️ Kai kurie jo knygos teiginiai buvo kritikuoti dėl netikslių citavimų (2019–2020 diskusija) — skaityk kartu su kritika, ne vien knygą.",
+      "en": "Popularized the sleep–memory link for a broad audience. ⚠️ Some claims in his book were criticized for inaccurate citations (2019–2020 debate) — read alongside the critique, not the book alone."
+    },
+    "links": [
+      {
+        "label": "sleepdiplomat.com",
+        "url": "https://www.sleepdiplomat.com/"
+      }
+    ],
+    "lang": "en",
+    "lt": false
+  },
+  {
+    "name": "Daniel Willingham",
+    "role": {
+      "lt": "Kognityvinis psichologas, knygos „Why Don't Students Like School?“ autorius",
+      "en": "Cognitive psychologist, author of \"Why Don't Students Like School?\""
+    },
+    "why": {
+      "lt": "Verčia kognityvinį mokslą į paprastus atsakymus mokytojams ir tėvams klausimams, kurie kyla kiekvienoje klasėje — kodėl vaikas „nemėgsta mąstyti“.",
+      "en": "Translates cognitive science into plain answers for teachers and parents to the questions that come up in every classroom — why a child \"doesn't like to think\"."
+    },
+    "links": [
+      {
+        "label": "danielwillingham.com",
+        "url": "https://www.danielwillingham.com/"
+      }
+    ],
+    "lang": "en",
+    "lt": false
+  }
+]

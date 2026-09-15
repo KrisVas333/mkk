@@ -1,0 +1,147 @@
+{
+  "games": [
+    {
+      "id": "atsimink",
+      "icon": "🧠",
+      "name": "Atsimink ir pasakyk",
+      "sub": "Prisiminimo praktika",
+      "rule": "5 daiktai 10 sekundžių. Paskui jie dingsta. Rask tuos penkis tarp dešimties.",
+      "ev": "A",
+      "honest": "Šis žaidimas treniruoja prisiminimą — tai, ką jis ir matuoja. Bendri smegenų treniruokliai neperkelia įgūdžio į mokyklą; prisiminimo praktika mokyklinei medžiagai — perkelia.",
+      "src": "Dunlosky 2013 · Franzoi 2025",
+      "free": true
+    },
+    {
+      "id": "laikmatis",
+      "icon": "⏱",
+      "name": "Dėmesio laikmatis",
+      "sub": "Vienas darbas, matomas laikas",
+      "rule": "Pasirink 2, 5 ar 10 minučių. Vienas darbas. Kol skaičiuoja — nieko kito.",
+      "ev": "C",
+      "honest": "Laikmatis ir pilkas ekranas — trinties įrankiai, ne mokymosi technikos. Jie nuima blaškymosi šaltinį, bet nieko neišmoko. Suporuok su prisiminimu.",
+      "src": "Holte & Ferraro 2020, The Social Science Journal (n=161) · ⚠️ Dekker & Baumgartner 2024 — silpnesnis pakartojimas",
+      "free": false
+    },
+    {
+      "id": "ismokyk",
+      "icon": "🗣",
+      "name": "Išmokyk kitą",
+      "sub": "60 sekundžių be užrašų",
+      "rule": "Gauni temą. 60 sekundžių aiškini garsiai. Paskui įvertini save nuo 1 iki 3.",
+      "ev": "B",
+      "honest": "Aiškinimas kitam yra tikras mokymosi būdas. ⚠️ Bet savęs vertinimas — silpni duomenys: iki ~8 m. vaikai save vertina per gerai. Skaičius čia tavo, ne pažymys.",
+      "src": "Generative learning REV · Metakognicijos REV",
+      "free": false
+    }
+  ],
+  "memoryPools": {
+    "young": [
+      "🍎",
+      "🚲",
+      "🐸",
+      "⭐",
+      "🎈",
+      "🔑",
+      "🐝",
+      "🌙",
+      "🍌",
+      "🚂",
+      "🧦",
+      "🦊",
+      "🍄",
+      "🎩",
+      "🐟",
+      "🌵",
+      "🥕",
+      "🦋"
+    ],
+    "old": [
+      "knyga",
+      "vilkas",
+      "laivas",
+      "kalnas",
+      "obuolys",
+      "raktas",
+      "žvaigždė",
+      "medis",
+      "lietus",
+      "duona",
+      "tiltas",
+      "paukštis",
+      "akmuo",
+      "sniegas",
+      "kelias",
+      "vėjas",
+      "ugnis",
+      "sodas"
+    ]
+  },
+  "teachTopics": [
+    {
+      "t": "Kodėl prisiminti sunkiau nei perskaityti — ir kodėl tai gerai",
+      "minAge": 8
+    },
+    {
+      "t": "Kas atsitinka, kai bandai daryti du darbus vienu metu",
+      "minAge": 8
+    },
+    {
+      "t": "Kodėl miegas padeda atsiminti",
+      "minAge": 6
+    },
+    {
+      "t": "Kas yra darbinė atmintis ir kiek į ją telpa",
+      "minAge": 8
+    },
+    {
+      "t": "Paaiškink, ką šiandien veikei mokykloje — bet taip, kad suprastų penkiametis",
+      "minAge": 6
+    },
+    {
+      "t": "Kodėl klaida yra naudinga",
+      "minAge": 5
+    },
+    {
+      "t": "Paaiškink vieną taisyklę iš savo mėgstamo žaidimo",
+      "minAge": 5
+    },
+    {
+      "t": "Kodėl „mokymosi stiliai“ yra mitas",
+      "minAge": 10
+    },
+    {
+      "t": "Kaip veiktų diena, jei niekas nieko nepamirštų",
+      "minAge": 8
+    },
+    {
+      "t": "Išmokyk ką nors piešti apskritimą — žodžiais, be rankų",
+      "minAge": 5
+    }
+  ],
+  "teachRates": [
+    {
+      "n": 1,
+      "icon": "😵",
+      "label": "Sunku. Neradau žodžių.",
+      "tip": "Gerai. Rytoj tą pačią temą — bus lengviau. Tai ne gabumas, o kartojimas."
+    },
+    {
+      "n": 2,
+      "icon": "🙂",
+      "label": "Vidutiniškai. Vietomis stringu.",
+      "tip": "Rask TĄ vietą, kur stringi. Ten ir yra tavo mokymosi taškas — ne visoje temoje."
+    },
+    {
+      "n": 3,
+      "icon": "💪",
+      "label": "Lengva. Paaiškinau sklandžiai.",
+      "tip": "Tada paklausk savęs „kodėl taip?“ tris kartus iš eilės. Jei atsakymas baigiasi — tema dar neišmokta iki galo."
+    }
+  ],
+  "timerChecklist": [
+    "Telefonas kitame kambaryje",
+    "Ant stalo — tik tai, ko reikia dabar",
+    "Vienas darbas, ne du",
+    "Vanduo šalia, kad nereikėtų keltis"
+  ]
+}

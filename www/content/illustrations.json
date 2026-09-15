@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "file": "img/hero.webp",
+    "alt": "Vaikas sėdi ramiai užsimerkęs, virš galvos sklando raudonas siūlas su smegenų kibirkšties draugu",
+    "tone": "#D90429"
+  },
+  "brain-learns": {
+    "file": "img/brain-learns.webp",
+    "alt": "Vaikas laisto medelį, kurio šaknys nupieštos kaip šakotas neuronas",
+    "tone": "#9BB59C"
+  },
+  "top3": {
+    "file": "img/top3.webp",
+    "alt": "Trys sukrauti akmenys, ant viršaus balansuoja mažas kibirkšties padarėlis",
+    "tone": "#D9C9A8"
+  },
+  "memory": {
+    "file": "img/memory.webp",
+    "alt": "Vaikas uždaro knygą, prilaiko pirštą prie smilkinio, virš galvos sklando kortelė",
+    "tone": "#D8B4B0"
+  },
+  "attention": {
+    "file": "img/attention.webp",
+    "alt": "Vaikas laiko mažą žibintą ramioje, tuščioje erdvėje",
+    "tone": "#9FB3C8"
+  },
+  "focus": {
+    "file": "img/focus.webp",
+    "alt": "Vaikas žiūri pro didinamąjį stiklą į vieną lapą, toli fone telefonas guli ekranu žemyn",
+    "tone": "#E0B96B"
+  },
+  "concentration": {
+    "file": "img/concentration.webp",
+    "alt": "Vaikas ramiai sėdi prie tvenkinio krašto, vanduo su viena bangele",
+    "tone": "#7FA8A6"
+  },
+  "myths": {
+    "file": "img/myths.webp",
+    "alt": "Teatro kaukė guli ant žemės, perbraukta plona raudona linija, iš už jos žiūri mažas padarėlis",
+    "tone": "#B8B8B8"
+  },
+  "sleep": {
+    "file": "img/sleep.webp",
+    "alt": "Vaikas miega po antklode mėnulio šviesoje, šalia prigesęs kibirkšties draugas",
+    "tone": "#8E93B5"
+  },
+  "movement": {
+    "file": "img/movement.webp",
+    "alt": "Vaikas bėga į kalniuką, šalia šokinėja kibirkšties draugas",
+    "tone": "#A9CFC1"
+  },
+  "reading": {
+    "file": "img/reading.webp",
+    "alt": "Vaikas guli ant pilvo ir skaito atverstą knygą, virš jos švelnus lapo formos švytėjimas",
+    "tone": "#E8D7B5"
+  },
+  "phone-grayscale": {
+    "file": "img/phone-grayscale.webp",
+    "alt": "Vaikas deda telefoną į stalčių, telefonas virsta pilku popieriaus lapu",
+    "tone": "#C9C9C9"
+  },
+  "game-recall": {
+    "file": "img/game-recall.webp",
+    "alt": "Penki daiktai ant stalo, iš dalies uždengti audiniu",
+    "tone": "#D8B4B0"
+  },
+  "game-timer": {
+    "file": "img/game-timer.webp",
+    "alt": "Smėlio laikrodis su byrančiu smėliu ir durimis fone, už kurių laukia telefonas",
+    "tone": "#E0B96B"
+  },
+  "game-teach": {
+    "file": "img/game-teach.webp",
+    "alt": "Vaikas ramiai aiškina kibirkšties draugui prie mažos lentelės",
+    "tone": "#9BB59C"
+  },
+  "age-4-5": {
+    "file": "img/age-4-5.webp",
+    "alt": "Mažas vaikas krauna du kaladėlius, šalia jo kibirkšties draugas",
+    "tone": "#D9C9A8"
+  },
+  "age-6-7": {
+    "file": "img/age-6-7.webp",
+    "alt": "Vaikas rodo į paveikslėlio kortelę ir garsiai ją įvardija",
+    "tone": "#D9C9A8"
+  },
+  "age-8-9": {
+    "file": "img/age-8-9.webp",
+    "alt": "Vaikas rašo trumpu pieštuku į sąsiuvinį, šalia žvaigždutės lipdukas",
+    "tone": "#D8B4B0"
+  },
+  "age-10-11": {
+    "file": "img/age-10-11.webp",
+    "alt": "Vaikas su kuprine eina taku, ant peties sėdi kibirkšties draugas",
+    "tone": "#9FB3C8"
+  },
+  "age-12": {
+    "file": "img/age-12.webp",
+    "alt": "Paauglys su ausinėmis ant kaklo, šalia sąsiuvinis, ramus žvilgsnis",
+    "tone": "#7FA8A6"
+  },
+  "age-13": {
+    "file": "img/age-13.webp",
+    "alt": "Paauglys sėdi prie stalo prie lango, telefonas guli atvirame stalčiuje ekranu žemyn",
+    "tone": "#8E93B5"
+  },
+  "age-14": {
+    "file": "img/age-14.webp",
+    "alt": "Paauglys vaikšto lauke sutemus, mąsto, šalia mažas šviesos taškas",
+    "tone": "#E0B96B"
+  }
+}

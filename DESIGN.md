@@ -1,4 +1,4 @@
-# MKK — dizaino sistema v0.2.0
+# MKK — dizaino sistema v0.3.0
 
 **Updated:** 2026-09-15 · Autorius: Kristijonas Vasiliauskas · ☀️ LIGHT (brand default)
 
@@ -108,3 +108,43 @@ Brand kanonas sako „JetBrains Mono antraštėms + Inter body". MKK **`.big` (p
 - Kiekviena technika, mitas, žaidimas, būrelių sritis ir tyrimas rodo **šaltinį**. Jei šaltinio nėra — ženklelis nukrenta į `C` ir po juo parašyta „šaltinis tikslinamas".
 - Būrelių sritys — abėcėle, technologijos niekada ne pirmos, robotika su blogiausia žyma.
 - `tool-disclaimer` eilutė (AI · eksperimentinis · gali klysti · nemokamas · laukiam grįžtamojo ryšio) — „Šiandien" apačioje ir „Aš" ekrane.
+
+---
+
+## 8. i18n — dvi kalbos, viena tiesa (v0.3)
+
+**Lietuvių kalba yra pilna versija. Anglų — beta, ir tai parašyta ekrane.**
+
+| Sluoksnis | Kur gyvena | Taisyklė |
+|---|---|---|
+| UI eilutės | `content/i18n.json` → `t('key')` | 130 raktų · trūkstamas EN krenta į LT, niekada į tuščią |
+| Turinio laukai | `*_en` šalia lietuviško lauko → `LX(o,'f')` | nėra `_en` → rodomas lietuviškas originalas |
+| Masyvai | `LXA(o,'f')` | ta pati taisyklė sąrašams |
+| Datos | `dayName()` · `niceDate()` | Pr–Sk / Mon–Sun, „15 rugsėjo" / „Sep 15" |
+| `<html lang>` | `applyLang()` | seka jungiklį; skiltys ir antraštė persipiešia be perkrovimo |
+
+**Ko EN sąmoningai NETURI (v0.3):** 2 min praktikų tekstų ir podcast'ų skriptų. Jie rodomi
+lietuviškai su atvira žyma („beta: practice text in LT for now", „🎙 English version coming").
+Melas apie parengtumą čia brangesnis nei tuščia vieta.
+
+**Lietuviški vardai lieka lietuviški abiem kalbom** — MKK, Kraist, Mokymosi Meistrų Klubas
+(anglų kalba paaiškinamas kaip „Learning Masters Club", bet nepervadinamas).
+
+### Temos perjungimas
+Vienas mygtukas viršutinėje juostoje, dešinėje nuo 🔥 serijos. `effTheme()` pirma išsprendžia
+„Sistema" per `prefers-color-scheme`, todėl paspaudimas visada apverčia tai, ką žmogus MATO.
+Ikona ☀️/🌙 + `aria-label` + `aria-pressed`. Šviesi lieka numatytoji — brand ☀️ LIGHT.
+
+## 9. „Apie" — Miegu šablonas (v0.3)
+
+Miegu dirba todėl, kad turi **įvardintą žmogų**, vietinį pasakotoją ir ramią, sąžiningą
+„apie" skiltį. MKK perima šabloną, bet ne apsimetinėjimą:
+
+1. **Apie autorių** — įvardintas žmogus, iš karto pasakantis, kad jis **praktikas, ne mokslininkas**.
+2. **Apie kūrėją** — kaip daiktas pagamintas (AI, iliustracijų įrankis, balso klonas, vertinimo kriterijai).
+3. **Kaip tai buvo padaryta** — data ir 6 žingsniai, įskaitant tarybą (bias · personas · critic).
+4. **Mokslininkai** — kviečiami, dar neatėję. **Vaidmenys be vardų**, kol vardo nėra turinyje.
+5. **Privatumas** — atskira kortelė, ne eilutė paraštėje.
+6. **Beta** — kvietimas, ne forma.
+
+Visas tekstas gyvena `content/about.json` (lt + en) — ne kode, kad Kris galėtų taisyti savo žodžius.
