@@ -233,3 +233,9 @@ Pirmas veikiantis MKK prototipas. Vietinis, be jokio viešo paviršiaus.
 - „70 % mažesnė tikimybė mesti" gavo šaltinį (Thouin 2020) abiejose vietose.
 - Klaidos pranešimas tėvams be `python3 …` komandos.
 - LICENCE: viešai matoma, licencija dar nepasirinkta — iki tol visos teisės saugomos (README + LICENSE suderinti).
+
+## v0.3.1 — 2026-09-15 13:05 (builder B saugumo radiniai + repo higiena)
+- Šriftai savame serveryje (`fonts/`): jokių užklausų į Google Fonts — vaikų kategorija + offline pažadas. Inter → sistemos šriftas.
+- **Tėvų vartai** prieš kiekvieną išorinę nuorodą (aritmetikos klausimas suaugusiajam) — Apple Kids Category 1.3 / Google Families.
+- `sw.js` versija v0.3.1 + naujas turinys (i18n, about, blog, people, sources-lt, fonts) į shell cache.
+- `www/` (Capacitor staging) išimtas iš repo; `.gitignore` papildytas builder B sąrašu.

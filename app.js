@@ -524,6 +524,35 @@
     $('#sheet').hidden = false; $('#scrim').hidden = false;
     $('#sheet').scrollTop = 0;
   }
+
+  /* ---------- parental gate for external links (Apple Kids Category 1.3 / Google Families) ---------- */
+  var GATE = { url: null, a: 0, b: 0 };
+  function openGate(url) {
+    GATE.url = url; GATE.a = 3 + Math.floor(Math.random() * 7); GATE.b = 3 + Math.floor(Math.random() * 7);
+    var q = t('gate.q').replace('{a}', GATE.a).replace('{b}', GATE.b);
+    sheet(t('gate.title'),
+      '<p class="sm">' + esc(t('gate.text')) + '</p>' +
+      '<p class="lbl" style="margin-top:14px">' + esc(q) + '</p>' +
+      '<input id="gateIn" class="input" type="number" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="' + esc(q) + '">' +
+      '<p id="gateMsg" class="meta" aria-live="polite"></p>' +
+      '<div class="row" style="margin-top:12px"><button class="btn" id="gateGo">' + esc(t('gate.btn')) + '</button>' +
+      '<button class="btn ghost" id="gateNo">' + esc(t('gate.cancel')) + '</button></div>' +
+      '<p class="xs muted" style="margin-top:12px">' + esc(url) + '</p>', 'hero');
+    setTimeout(function () { var i = $('#gateIn'); if (i) i.focus(); }, 50);
+  }
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[target="_blank"]');
+    if (a && a.href && /^https?:/.test(a.href) && a.getAttribute('data-gated') !== 'no') {
+      ev.preventDefault(); openGate(a.href); return;
+    }
+    if (ev.target.id === 'gateGo') {
+      var v = parseInt(($('#gateIn') || {}).value, 10);
+      if (v === GATE.a * GATE.b) { var u = GATE.url; closeSheet(); window.open(u, '_blank', 'noopener'); }
+      else { $('#gateMsg').textContent = t('gate.wrong'); $('#gateIn').value = ''; $('#gateIn').focus(); }
+    }
+    if (ev.target.id === 'gateNo') closeSheet();
+  }, true);
+
   function closeSheet() { $('#sheet').hidden = true; $('#scrim').hidden = true; stopReading(); }
 
   function methodSheet() {

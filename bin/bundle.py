@@ -47,13 +47,8 @@ def main():
     head = slice_between(html, '<!--BUNDLE:HEAD-START-->', '<!--BUNDLE:HEAD-END-->', 'HEAD')
     body = slice_between(html, '<!--BUNDLE:BODY-START-->', '<!--BUNDLE:BODY-END-->', 'BODY')
 
-    # the fonts link survives; the local stylesheet link is replaced by inline CSS
-    fonts = ''
-    for line in head.splitlines():
-        if 'fonts.googleapis.com' in line:
-            fonts = line.strip()
-    if not fonts:
-        sys.exit('bundle.py: Google Fonts link not found in the HEAD block')
+    # self-hosted fonts: inline fonts/fonts.css (urls stay relative -> fonts/*.woff2 ship as supporting files)
+    fonts = '<style>' + open(os.path.join(ROOT, 'fonts', 'fonts.css'), encoding='utf-8').read() + '</style>'
 
     # drop the local <script src="app.js"> — it is inlined after the markup
     body = re.sub(r'<script src="\./?app\.js"></script>', '', body).strip()

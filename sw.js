@@ -1,9 +1,10 @@
-/* MKK service worker v0.2.0 — network-first for content, cache-first for icons/images. */
-var V = 'mkk-v0.2.0';
+/* MKK service worker v0.3.1 — network-first for content, cache-first for icons/images. */
+var V = 'mkk-v0.3.1';
 var SHELL = ['./', './index.html', './404.html', './styles.css', './app.js', './manifest.webmanifest',
   './content/config.json', './content/techniques.json', './content/practices.json',
   './content/library.json', './content/games.json', './content/podcasts.json',
   './content/illustrations.json',
+  './fonts/fonts.css', './fonts/jbm-latin.woff2', './fonts/jbm-latinext.woff2', './content/i18n.json', './content/about.json', './content/blog.json', './content/people.json', './content/sources-lt.json',
   './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png'];
 
 self.addEventListener('install', function (e) {

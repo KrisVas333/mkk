@@ -20,7 +20,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
-  webServer: {
+  webServer: process.env.PLAYWRIGHT_SKIP_WEBSERVER ? undefined : {
     command: `python3 bin/serve.py ${PORT}`,
     url: `http://localhost:${PORT}/index.html`,
     reuseExistingServer: true,

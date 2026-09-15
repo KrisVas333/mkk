@@ -30,7 +30,7 @@
 | 1.2 | `android/` native projektas | Neuron | — | 0 € | ✅ `npx cap add android` pavyko |
 | 1.3 | `ios/` native projektas | Neuron | — | 0 € | ✅ `npx cap add ios` pavyko (Capacitor 8 naudoja SPM, CocoaPods nereikia) |
 | 1.4 | App icon 1024² + splash 2732² | Neuron | — | 0 € | ✅ `resources/` |
-| 1.5 | Visų dydžių ikonos/splash'ai | Neuron | 10 | 0 € | ⬜ `npm i -D @capacitor/assets && npx @capacitor/assets generate` |
+| 1.5 | Visų dydžių ikonos/splash'ai | Neuron | — | 0 € | ✅ padaryta — `npx @capacitor/assets generate`: **118 Android + 13 iOS** failų |
 | 1.6 | **Self-host'inti Google Fonts** | builder A | 30 | 0 € | 🔴 **BLOKATORIUS** — trečiosios šalies užklausa vaikų app'se |
 | 1.7 | **Parental gate prieš išorines nuorodas** | builder A | 45 | 0 € | 🔴 **BLOKATORIUS** — Apple 1.3 / Kids reikalavimas |
 | 1.8 | Privatumo politikos puslapis `#/privatumas` | builder A | 30 | 0 € | ⏳ vykdoma šią bangą |
@@ -267,7 +267,7 @@ Free. No ads. Works offline.
 | **Android native projektas** | ✅ done | **100 %** | `android/` sugeneruotas, `cap sync` pavyko |
 | **iOS native projektas** | ✅ done | **100 %** | `ios/` sugeneruotas (SPM, be CocoaPods) |
 | **Store ikona + splash (šaltiniai)** | ✅ done | **100 %** | `resources/icon.png` 1024² be alfa, `splash*.png` 2732² |
-| **Visų dydžių ikonos** | 🟡 partial | **20 %** | Komanda žinoma (`@capacitor/assets`), nepaleista |
+| **Visų dydžių ikonos** | ✅ done | **100 %** | 118 Android mipmap/drawable + 13 iOS Assets.xcassets failų |
 | **Automatiniai testai** | ✅ done | **100 %** | 5 e2e + CI workflow |
 | **Saugumo / vaikų saugos auditas** | ✅ done | **90 %** | `docs/TEST-AND-SAFETY.md`; 2 radiniai atviri |
 | **Privatumo politikos puslapis** | 🟡 partial | **50 %** | builder A kuria `#/privatumas` šią bangą |
@@ -288,8 +288,8 @@ Free. No ads. Works offline.
 | Kelias | Pasiruošimas | Kas liko |
 |---|---|---|
 | **🌐 Web / PWA** | **~95 %** | Tik 1.6 + 1.7 + privatumo puslapis |
-| **▶️ Google Play (internal testing)** | **~45 %** | Techninė pusė padaryta; trūksta paskyros, SDK, keystore, anketų |
-| **🍏 App Store (TestFlight)** | **~40 %** | Techninė pusė padaryta; trūksta paskyros, Xcode, metaduomenų, nuotraukų |
+| **▶️ Google Play (internal testing)** | **~50 %** | Techninė pusė padaryta; trūksta paskyros, SDK, keystore, anketų |
+| **🍏 App Store (TestFlight)** | **~45 %** | Techninė pusė padaryta; trūksta paskyros, Xcode, metaduomenų, nuotraukų |
 
 **Realus laikas iki pirmo beta testuotojo telefone:**
 **Android ~5–8 darbo val. Kris'o laiko + 1–3 d. laukimo.**

@@ -1,0 +1,352 @@
+[
+  {
+    "id": "kaip-naudotis-mkk",
+    "type": "tutorial",
+    "title": {
+      "lt": "Kaip naudotis MKK",
+      "en": "How to use MKK"
+    },
+    "summary": {
+      "lt": "6 žingsniai iki pirmos 3 minučių treniruotės.",
+      "en": "6 steps to your first 3-minute session."
+    },
+    "body": {
+      "lt": "**1. Pasirink amžių.** MKK dalija technikas ir žaidimus pagal amžiaus grupes 4–14. Neatspėk — pasirink vaiko tikrą amžių, ne norimą lygį.\n\n**2. Atsidaryk vieną kategoriją.** Smegenys · Top 3 · Atmintis · Dėmesys · Fokusas · Koncentracija. Nesistenk padaryti visko iš karto. Viena kategorija, viena diena.\n\n**3. Perskaityk techniką — 30 sekundžių.** Kiekviena turi žymeklį A/B/C. Žymeklis sako, kiek galima ja remtis, ne kiek ji graži.\n\n**4. Padaryk praktiką su vaiku — 3 minutes.** Tai ne teorija vaikui skaityti. Tai vienas veiksmas, kurį darai kartu su juo, laikmačiu rankoje.\n\n**5. Pažaisk vieną žaidimą arba paklausyk podcast'o.** Žaidimai treniruoja tą pačią techniką žaidimo forma. Podcast'ai — trumpi, vaiko balsu.\n\n**6. Pasikeisk kalbą arba temą bet kada.** LT/EN mygtukas viršuje. Dovanos kodas (nemokamas visiems būreliams) — nustatymuose.\n\n⚗️ Eksperimentinis prototipas, sukurtas su AI. Gali klysti — svarbius dalykus pasitikrinkite. Nemokamas. Radote klaidą? Parašykite: krisvas.lt",
+      "en": "**1. Pick the age.** MKK sorts techniques and games by age band, 4–14. Don't guess up — pick the child's real age, not the level you wish they were at.\n\n**2. Open one category.** Brain · Top 3 · Memory · Attention · Focus · Concentration. Don't try all of them today. One category, one day.\n\n**3. Read the technique — 30 seconds.** Every one carries an A/B/C tag. The tag says how much you can lean on it, not how good it sounds.\n\n**4. Do the practice with the child — 3 minutes.** It's not theory for the kid to read. It's one action you do together, timer in hand.\n\n**5. Play one game or listen to one podcast.** Games train the same technique in game form. Podcasts are short, in a kid's voice.\n\n**6. Switch language or theme any time.** LT/EN toggle at the top. Gift code (free for every after-school club) lives in settings.\n\n⚗️ Experimental prototype, built with AI. It can be wrong — check anything that matters. Free. Found a mistake? Write to krisvas.lt"
+    },
+    "source": {
+      "name": "MKK",
+      "url": "https://krisvas.lt",
+      "lang": "lt"
+    },
+    "grade": "C",
+    "age": "4-14",
+    "tone": "#9BB59C",
+    "status": "published"
+  },
+  {
+    "id": "prisiminimas-vs-perskaitymas",
+    "type": "article",
+    "title": {
+      "lt": "Prisiminimas be žiūrėjimo veikia geriau nei skaitymas dar kartą",
+      "en": "Recalling without looking beats reading it again"
+    },
+    "summary": {
+      "lt": "Klasėje: 67 % teisingai su testu, 48,6 % — perskaičius dar kartą.",
+      "en": "In real classrooms: 67% correct with a test, 48.6% with rereading."
+    },
+    "body": {
+      "lt": "Vaikas užsidaro knygą ir bando pasakyti, ką prisimena. Nepatogu, lėčiau, dažnai nutyla. Būtent tas nepatogumas ir moko.\n\n2013 m. didelė apžvalga peržiūrėjo dešimtis mokymosi technikų ir surikiavo jas pagal įrodymus. Prisiminimas be žiūrėjimo (retrieval practice) atsidūrė pačioje viršūnėje. Perskaitymas dar kartą, pasibraukimas — apačioje.\n\n2025 m. tikroje penktoje klasėje (ne laboratorijoje) tai patikrino iš naujo: mokiniai, kurie po pamokos atsakinėjo į klausimus be knygos, po savaitės atsiminė 67 % medžiagos. Tie, kurie tiesiog perskaitė dar kartą — 48,6 %.\n\n**Ką daryti namie:** uždaryk knygą. Paklausk „papasakok, ką prisimeni“. Palauk 10 sekundžių tylos prieš padedant. Tik po to patikrinkit kartu, ko trūko.\n\n⚠️ Tas pats 2025 m. tyrimas parodė, kad kartojimo intervalo keitimas (diena vs keturios) klasėje nieko nepakeitė — nors laboratorijoje veikia. Prisiminimas — stipriausia dalis. Intervalas — silpnesnė, nei parduodama.",
+      "en": "A child closes the book and tries to say what they remember. It's awkward, slower, they often go quiet. That discomfort is exactly what teaches.\n\nA 2013 review scored dozens of study techniques by evidence. Retrieval practice — recalling without looking — came out on top. Rereading and highlighting came last.\n\nA 2025 study tested it again in a real fifth-grade classroom, not a lab: students who answered questions from memory after a lesson remembered 67% a week later. Students who just reread the material remembered 48.6%.\n\n**What to do at home:** close the book. Ask \"tell me what you remember.\" Wait 10 seconds of silence before helping. Only then check together what was missing.\n\n⚠️ The same 2025 study found that changing the repeat interval (one day vs. four) made no difference in the real classroom — even though it works in the lab. Retrieval is the strong part. Spacing is weaker than it's sold as."
+    },
+    "source": {
+      "name": "Dunlosky ir kt. 2013 · Franzoi ir kt. 2025",
+      "url": "https://www.retrievalpractice.org/why-it-works",
+      "lang": "en"
+    },
+    "grade": "A",
+    "age": "4-14",
+    "tone": "#D8B4B0",
+    "status": "published"
+  },
+  {
+    "id": "miegas-ir-atmintis",
+    "type": "article",
+    "title": {
+      "lt": "Miegas sutvirtina tai, ko vaikas mokėsi vakar",
+      "en": "Sleep locks in what a child learned yesterday"
+    },
+    "summary": {
+      "lt": "Vienas tyrimas: vaikai, kurie pamiegojo prieš testą, atsakė 20 % geriau.",
+      "en": "One study: kids who slept before the test scored 20% better."
+    },
+    "body": {
+      "lt": "Neišsimiegojęs vaikas ne tik pavargęs — jo smegenys tiesiog blogiau saugo tai, ką ką tik išmoko.\n\nViename tyrime su 10–14 metų vaikais viena grupė mokėsi atminties užduočių vakare ir buvo tikrinama tik kitą rytą, po miego. Vaikai, kuriems buvo leista pamiegoti tarp mokymosi ir testo, atsakė apytiksliai 20 % geriau nei tie, kurie buvo tikrinami tą pačią dieną be miego tarp.\n\n7–12 metų vaikams miegas dirba efektyviau nei suaugusiam: per naktį jie išlaiko tai, ką suaugęs žmogus per tą pačią naktį dažnai pamiršta. Amerikos miego medicinos akademija rekomenduoja 6–12 metų vaikams 9–12 val. miego per parą.\n\n**Ką daryti namie:** naują dalyką pakartok vakare, prieš miegą — 2 minutės, be ekrano. Ryte paklausk, kas liko atmintyje. Tai ne papildoma pamoka. Tai naudoja tai, ką smegenys daro nakties metu bet kuriuo atveju.\n\n⚠️ Tikslus procentas skiriasi tyrimuose ir amžiaus grupėse — imk kaip kryptį, ne garantiją konkrečiam vaikui.",
+      "en": "A tired child isn't just tired — their brain simply stores what it just learned worse.\n\nIn one study with 10–14 year olds, one group learned memory tasks in the evening and was only tested the next morning, after sleep. Kids who slept between learning and the test scored roughly 20% better than kids tested the same day with no sleep in between.\n\nFor 7–12 year olds, sleep works harder than it does for adults: overnight, they keep what an adult often loses over the same night. The American Academy of Sleep Medicine recommends 9–12 hours a night for 6–12 year olds.\n\n**What to do at home:** review something new in the evening, before bed — 2 minutes, no screen. In the morning, ask what stuck. This isn't an extra lesson. It's using what the brain does overnight anyway.\n\n⚠️ The exact percentage varies by study and age group — take it as a direction, not a guarantee for any one child."
+    },
+    "source": {
+      "name": "LRT — Kodėl vaikams prastėja atmintis",
+      "url": "https://www.lrt.lt/naujienos/mokslas-ir-it/11/1718741/kodel-vaikams-prasteja-atmintis-ir-ka-daryti-kad-ji-pasitaisytu",
+      "lang": "lt"
+    },
+    "grade": "B",
+    "age": "6-14",
+    "tone": "#8E93B5",
+    "status": "published"
+  },
+  {
+    "id": "telefonas-kitame-kambaryje",
+    "type": "article",
+    "title": {
+      "lt": "Telefonas kitame kambaryje — ne kišenėje",
+      "en": "Phone in another room, not in the pocket"
+    },
+    "summary": {
+      "lt": "Vien telefono buvimas šalia (net išjungto) mažina galimybę susikaupti.",
+      "en": "Just having the phone nearby (even off) drains attention."
+    },
+    "body": {
+      "lt": "Nereikia, kad telefonas skambėtų ar vibruotų. Užtenka, kad jis tiesiog gulėtų ant stalo.\n\nTeksaso universiteto tyrime su beveik 800 suaugusiųjų dalyviai buvo padalinti į tris grupes: telefonas ant stalo, telefonas kišenėje ar krepšyje, telefonas kitame kambaryje. Visiems buvo duotos užduotys, reikalaujančios dėmesio ir darbinės atminties. Geriausiai užduotis atliko tie, kurių telefonas buvo kitame kambaryje. Prasčiausiai — tie, kurių telefonas gulėjo ant stalo, net išjungtas ir apverstas.\n\nMokslininkai tai vadina „dėmesio nutekėjimu“ — dalis smegenų nuolat dirba stengdamasi NEGALVOTI apie telefoną, ir ta pastanga suvalgo dalį jėgų, kurių reikėtų užduočiai.\n\n**Ką daryti namie:** prieš pamokas ar namų darbus telefoną (savo ir vaiko) padėk kitame kambaryje, ne ant stalo apverstą. Pilkas ekranas (spalvų išjungimas telefone) papildomai mažina trauką pačiam paimti telefoną be reikalo.\n\n⚠️ Tyrimas darytas su suaugusiais, ne vaikais. ⚠️ 2023 m. metaanalizė kelia klausimą dėl efekto dydžio — mechanizmas tikras, poveikis gali būti mažesnis nei pirminis tyrimas rodė.",
+      "en": "The phone doesn't need to ring or buzz. It's enough that it's just lying on the table.\n\nIn a University of Texas study with nearly 800 adults, participants were split into three groups: phone on the desk, phone in pocket or bag, phone in another room. Everyone did tasks requiring attention and working memory. The group with the phone in another room performed best. The group with the phone on the desk — even off and face-down — performed worst.\n\nResearchers call this \"attention leakage\": part of the brain keeps working to NOT think about the phone, and that effort eats into capacity the task actually needs.\n\n**What to do at home:** before homework or a lesson, put the phone (yours and the child's) in another room — not face-down on the table. Grayscale mode (turning off colour) further cuts the pull to pick it up without a reason.\n\n⚠️ The study was done with adults, not children. ⚠️ A 2023 meta-analysis questions the size of the effect — the mechanism is real, the impact may be smaller than the original study suggested."
+    },
+    "source": {
+      "name": "Ward ir kt. 2017 (LT: technaujienos.lt)",
+      "url": "https://www.technaujienos.lt/sokiruojantis-tyrimas-stai-kodel-ismanuji-telefona-reikia-palikti-kuo-toliau-priezastis-visai-ne-radiacijoje/",
+      "lang": "lt"
+    },
+    "grade": "B",
+    "age": "8-14",
+    "tone": "#9FB3C8",
+    "status": "published"
+  },
+  {
+    "id": "mokymosi-stiliu-mitas",
+    "type": "article",
+    "title": {
+      "lt": "„Vizualas“, „audialas“, „kinestetikas“ — mitas, ne diagnozė",
+      "en": "\"Visual\", \"auditory\", \"kinesthetic\" — a myth, not a diagnosis"
+    },
+    "summary": {
+      "lt": "Pritaikius pamoką prie „stiliaus“ rezultatai nepagerėja — tyrimai to nepatvirtina.",
+      "en": "Matching a lesson to a \"style\" doesn't improve results — the research doesn't support it."
+    },
+    "body": {
+      "lt": "Vienas populiariausių mitų mokykloje: kiekvienas vaikas turi savo „mokymosi stilių“ — vizualą, audialą ar kinestetiką — ir mokosi geriausiai, kai medžiaga pritaikoma tam stiliui.\n\nLietuvos neuromokslininkė dr. Urtė Neniškytė (VU Gyvybės mokslų centras) tai vadina mitu: mokymo medžiagos diferencijavimas pagal tipus nepadeda pasiekti geresnių mokymosi rezultatų. Vaikas gali JAUSTIS patogiau vienu būdu — bet tas jausmas kyla iš patogumo, ne iš to, kad taip jis geriau įsimena.\n\nTai, kas veikia visiems vienodai: žodis IR paveikslėlis kartu (dvigubas kodavimas), kelių pojūčių derinys, ne vieno „tinkamo“ kanalo paieška.\n\n**Ką daryti namie:** nustok bandyti atspėti vaiko „tipą“. Vietoj to derink — paprašyk papasakoti IR nupiešti tą patį dalyką. Tas derinys stiprina atmintį pas visus vaikus, ne tik vieną tipą.\n\nNeigiami radiniai čia sakomi taip pat garsiai, kaip teigiami — nes tikslas ne patvirtinti gražią teoriją, o rasti tai, kas iš tikrųjų veikia.",
+      "en": "One of the most popular myths at school: every child has their own \"learning style\" — visual, auditory or kinesthetic — and learns best when material matches that style.\n\nLithuanian neuroscientist Dr. Urtė Neniškytė (Vilnius University Life Sciences Center) calls it a myth: differentiating teaching material by type doesn't produce better learning outcomes. A child may FEEL more comfortable one way — but that feeling comes from comfort, not from actually remembering more.\n\nWhat works the same for everyone: word AND picture together (dual coding), combining senses, rather than hunting for the one \"right\" channel.\n\n**What to do at home:** stop trying to guess the child's \"type\". Instead, combine — ask them to tell it AND draw it. That combination strengthens memory for every child, not one type.\n\nNegative findings get said just as loudly as positive ones here — because the goal isn't to confirm a pretty theory, it's to find what actually works."
+    },
+    "source": {
+      "name": "Dr. Urtė Neniškytė (LRT)",
+      "url": "https://www.lrt.lt/naujienos/mokslas-ir-it/11/1115930/neuromokslininke-neniskyte-mitas-kad-kiekvienam-geriausiai-tinka-tam-tikras-vienas-mokymosi-stilius",
+      "lang": "lt"
+    },
+    "grade": "A",
+    "age": "4-14",
+    "tone": "#B8B8B8",
+    "status": "published"
+  },
+  {
+    "id": "skaitymas-malonumui",
+    "type": "article",
+    "title": {
+      "lt": "Skaitymas malonumui — ne pareiga, o pratybos smegenims",
+      "en": "Reading for pleasure — not a duty, a workout for the brain"
+    },
+    "summary": {
+      "lt": "Tik apie dešimtadalis vaikų sako, kad tikrai mėgsta skaityti.",
+      "en": "Only about a tenth of children say they really love reading."
+    },
+    "body": {
+      "lt": "Lietuvos nacionalinė Martyno Mažvydo biblioteka apklausė daugiau nei tūkstantį mokinių: tik šiek tiek daugiau nei dešimtadalis sakė, kad tikrai mėgsta skaityti; beveik pusė (44 %) — kad skaityti nelabai patinka arba nepatinka visai.\n\nBibliotekos leidinys „Skaitymas kaip tikslas“ skiria pareigą skaityti (mokyklai) nuo skaitymo malonumui — savanoriško, paties pasirinkto skaitymo. Būtent antrasis tipas labiausiai siejamas su noru skaityti toliau, ne pirmasis.\n\nKitas tyrimas rodo tą pačią kryptį iš kitos pusės: tėvai pradeda skaityti vaikams vis anksčiau, bet skiria tam mažiau laiko nei anksčiau — ypač vaikams iki trejų metų.\n\n**Ką daryti namie:** leisk vaikui rinktis knygą PATS, net jei ji atrodo per lengva ar „ne ta“. Pareiga ir malonumas — dvi skirtingos veiklos smegenims, ir tik antroji augina norą skaityti savaime.\n\n⚠️ Tai koreliacinė sritis — sunku atskirti, ar malonumas skaitant kuria geresnius skaitytojus, ar geri skaitytojai tiesiog labiau mėgsta skaityti.",
+      "en": "The Lithuanian National Library surveyed over a thousand students: only just over a tenth said they really love reading; almost half (44%) said they don't much like it or don't like it at all.\n\nThe library's publication \"Reading as a Goal\" separates the duty to read (for school) from reading for pleasure — voluntary, self-chosen reading. It's the second type that's most linked to wanting to keep reading, not the first.\n\nAnother study points the same direction from a different angle: parents start reading to children earlier than before, but spend less time doing it — especially with children under three.\n\n**What to do at home:** let the child pick the book THEMSELVES, even if it looks too easy or \"wrong\". Duty and pleasure are two different activities for the brain, and only the second grows the wish to read on their own.\n\n⚠️ This is correlational territory — it's hard to separate whether enjoying reading creates better readers, or good readers simply enjoy reading more."
+    },
+    "source": {
+      "name": "Lietuvos nacionalinė Martyno Mažvydo biblioteka",
+      "url": "https://www.lnb.lt/tevams-ir-specialistams/leidiniai/7305-leidinys-skaitymas-kaip-tikslas-apie-skaitymo-skatinimo-metodus-ir-tyrimus",
+      "lang": "lt"
+    },
+    "grade": "B",
+    "age": "4-12",
+    "tone": "#E8D7B5",
+    "status": "published"
+  },
+  {
+    "id": "judejimas-ir-mokymasis",
+    "type": "article",
+    "title": {
+      "lt": "Judesys prieš mokymąsi — ne po jo",
+      "en": "Movement before learning — not after"
+    },
+    "summary": {
+      "lt": "9 savaičių tyrimas: judantys vaikai geriau susikaupė ir geriau atliko užduotis.",
+      "en": "A 9-week study: kids who moved focused better and did better on tasks."
+    },
+    "body": {
+      "lt": "„Pirma nusėdink, tada mokykis“ — įprasta, bet apverčia tvarką atvirkščiai.\n\nFITKids tyrime su 221 vaiku (7–9 m.) viena grupė 9 savaites po pamokų 60 minučių aktyviai judėjo, kita — ne. Judėjusi grupė vėliau geriau susikaupė ir geriau sprendė užduotis, reikalaujančias dėmesio perjungimo tarp taisyklių.\n\nLietuviškas mokslo populiarinimas tą pačią mintį pakartoja kita kryptimi: kuo mažiau vaikas juda, tuo prasčiau vystosi neuronų jungtys, atsakingos už dėmesio koncentraciją ir atmintį.\n\n**Ką daryti namie:** prieš namų darbus ar pamoką, ne po jos — 5–10 minučių aktyvaus judesio (šokinėjimas, bėgiojimas, šokis). Tai ne apšilimas prieš „tikrą“ darbą. Tai dalis darbo.\n\n⚠️ Efektas geriausiai patikrintas su 7–9 metų vaikais vidutinio intensyvumo judesiu — ne su bet kokiu fiziniu aktyvumu ir bet kokiu amžiumi.",
+      "en": "\"Sit still first, then learn\" is the default order — and it's backwards.\n\nIn the FITKids study with 221 children (7–9 y.o.), one group did 60 minutes of active movement after school for 9 weeks, the other didn't. The group that moved later focused better and did better on tasks that required switching attention between rules.\n\nLithuanian science coverage makes the same point from the other direction: the less a child moves, the worse the neural connections responsible for attention and memory develop.\n\n**What to do at home:** before homework or a lesson, not after — 5–10 minutes of active movement (jumping, running, dancing). It isn't a warm-up before the \"real\" work. It's part of the work.\n\n⚠️ The effect is best tested with 7–9 year olds and moderate-intensity movement — not with any activity at any age."
+    },
+    "source": {
+      "name": "Hillman ir kt. 2014, FITKids RCT (LT: LRT)",
+      "url": "https://www.lrt.lt/naujienos/gyvenimas/13/1265938/ne-tik-kuno-bet-ir-smegenu-treniruote-judejimas-gerina-atminti-gydo-nerima-ir-mazina-stresa",
+      "lang": "lt"
+    },
+    "grade": "A",
+    "age": "6-12",
+    "tone": "#A9CFC1",
+    "status": "published"
+  },
+  {
+    "id": "podcast-o-cia-pazymiui-sitas",
+    "type": "podcast",
+    "title": {
+      "lt": "„O čia pažymiui šitas?“ — švietimas be kaukės",
+      "en": "\"O čia pažymiui šitas?\" — Lithuanian education, unfiltered"
+    },
+    "summary": {
+      "lt": "Lietuviška tinklalaidė apie mokymąsi, vaikus ir mokyklą — jokio nuolatinio vedėjo.",
+      "en": "A Lithuanian podcast about learning, kids and school — no fixed host."
+    },
+    "body": {
+      "lt": "„Renkuosi mokyti!“ bendruomenės tinklalaidė. Kiekvieną epizodą veda kitas bendruomenės narys, todėl per keliolika epizodų išgirsti daug skirtingų balsų — nuo asmeninės patirties mokykloje iki pokalbių su psichologais, tyrėjais ir švietimo ekspertais.\n\nKodėl rekomenduoju: tai vienas nedaugelio lietuviškų šaltinių, kuris kalba apie mokymąsi ir mokyklą remdamasis tyrimais, o ne vien nuomone. Pavyzdžiui, vienas epizodas remiasi naujausiais PISA tyrimo duomenimis apie socialinę nelygybę mokykloje.\n\n**Kam:** tėvams ir mokytojams, kurie nori suprasti Lietuvos švietimo sistemą iš vidaus, ne iš antraščių.",
+      "en": "A podcast by the \"Renkuosi mokyti!\" (\"I Choose to Teach\") community. Every episode is led by a different community member, so across a dozen-plus episodes you hear many different voices — from personal school stories to conversations with psychologists, researchers and education experts.\n\nWhy I recommend it: it's one of the few Lithuanian sources that talks about learning and school grounded in research, not just opinion. One episode, for example, works through the latest PISA data on inequality in school.\n\n**For:** parents and teachers who want to understand Lithuania's education system from the inside, not from headlines."
+    },
+    "source": {
+      "name": "Renkuosi mokyti!",
+      "url": "https://podcasts.apple.com/lt/podcast/o-%C4%8Dia-pa%C5%BEymiui-%C5%A1itas/id1551138667",
+      "lang": "lt"
+    },
+    "grade": "C",
+    "age": "4-14",
+    "tone": "#9BB59C",
+    "status": "published"
+  },
+  {
+    "id": "podcast-learning-scientists",
+    "type": "podcast",
+    "title": {
+      "lt": "The Learning Scientists Podcast — tos pačios 6 strategijos, kuriomis remiasi MKK",
+      "en": "The Learning Scientists Podcast — the same 6 strategies MKK is built on"
+    },
+    "summary": {
+      "lt": "Anglų kalba, kognityviniai mokslininkai, tiesiai apie tai, kas veikia mokantis.",
+      "en": "English-language, run by cognitive scientists, straight about what actually works."
+    },
+    "body": {
+      "lt": "Podcast'ą veda „The Learning Scientists“ — grupė kognityvinių mokslininkių (Megan Sumeracki ir kolegos), kurios prieš dešimtmetį pradėjo nuo Twitter paskyros ir išaugo į vieną žinomiausių mokslu paremtų mokymosi šaltinių pasaulyje.\n\nTurinys tiesiogiai sutampa su MKK spina: prisiminimas be žiūrėjimo, kartojimas su tarpais, maišymas, dvigubas kodavimas, konkretizavimas, elaboratyvus klausinėjimas. Tos pačios šešios strategijos, tik plačiau paaiškintos ir su pavyzdžiais iš tikrų klasių.\n\n**Kam:** tėvams ir mokytojams, laisvai suprantantiems anglų kalbą, norintiems gilesnio, ne trumpo, paaiškinimo. LT santrauka: šešios strategijos veikia visose amžiaus grupėse, o pasibraukimas ir perskaitymas — beveik neveikia.",
+      "en": "Hosted by The Learning Scientists — a group of cognitive scientists (Megan Sumeracki and colleagues) who started from a Twitter account a decade ago and grew into one of the best-known evidence-based learning resources anywhere.\n\nThe content lines up directly with MKK's spine: retrieval practice, spaced repetition, interleaving, dual coding, concrete examples, elaborative interrogation. The same six strategies, explained at length with real classroom examples.\n\n**For:** parents and teachers comfortable in English who want the longer explanation, not the short version."
+    },
+    "source": {
+      "name": "The Learning Scientists",
+      "url": "https://www.learningscientists.org/",
+      "lang": "en"
+    },
+    "grade": "A",
+    "age": "4-14",
+    "tone": "#D8B4B0",
+    "status": "published"
+  },
+  {
+    "id": "podcast-cult-of-pedagogy",
+    "type": "podcast",
+    "title": {
+      "lt": "Cult of Pedagogy — praktiniai patarimai iš tikrų mokytojų",
+      "en": "Cult of Pedagogy — practical advice from real teachers"
+    },
+    "summary": {
+      "lt": "Kiekvienas epizodas — vienas konkretus dalykas, kurį gali pritaikyti kitą dieną.",
+      "en": "Every episode is one concrete thing you can use the next day."
+    },
+    "body": {
+      "lt": "Jennifer Gonzalez, buvusi mokytoja, veda podcast'ą, kuris verčia mokymosi mokslą į konkrečius, pritaikomus žingsnius mokytojams ir tėvams — be žargono.\n\nSkiriasi nuo Learning Scientists tuo, kad mažiau kalba apie „kodėl veikia“, daugiau — apie „kaip tai atrodo klasėje ar prie stalo namuose rytoj“.\n\n**Kam:** tėvams ir mokytojams, kurie jau žino teoriją ir ieško konkretaus, pritaikomo žingsnio — ne dar vieno paaiškinimo, kodėl atmintis svarbi.",
+      "en": "Jennifer Gonzalez, a former teacher, hosts a podcast that turns learning science into concrete, usable steps for teachers and parents — no jargon.\n\nDifferent from The Learning Scientists in that it spends less time on \"why it works\" and more on \"what this looks like in a classroom or at the kitchen table tomorrow\".\n\n**For:** parents and teachers who already know the theory and want one concrete, usable step — not another explanation of why memory matters."
+    },
+    "source": {
+      "name": "Cult of Pedagogy",
+      "url": "https://www.cultofpedagogy.com/pod/",
+      "lang": "en"
+    },
+    "grade": "C",
+    "age": "4-14",
+    "tone": "#E0B96B",
+    "status": "published"
+  },
+  {
+    "id": "video-screenagers",
+    "type": "video",
+    "title": {
+      "lt": "Screenagers — dokumentika apie ekranus, dėmesį ir šeimą",
+      "en": "Screenagers — a documentary on screens, attention and family"
+    },
+    "summary": {
+      "lt": "Gydytoja ir filmuotoja Dr. Delaney Ruston filmuoja savo šeimą ir kitas apie ekranus.",
+      "en": "Physician-filmmaker Dr. Delaney Ruston films her own family on screen habits."
+    },
+    "body": {
+      "lt": "Dr. Delaney Ruston, gydytoja ir dokumentininkė, filmuoja savo pačios šeimą ir kitas šeimas, kovojančias su tuo pačiu klausimu: kiek ekrano yra per daug, ir kaip apie tai kalbėtis su vaiku, o ne prieš jį.\n\nFilmas neduoda vienos taisyklės visiems. Vietoj to rodo realius pokalbius, realius nesutarimus tarp tėvų ir paauglių, ir mokslininkų komentarus apie dėmesį bei miegą.\n\n**Kam:** tėvams su 10–14 metų vaikais, žiūrėti KARTU su paaugliu, tada kalbėtis — ne filmą naudoti kaip argumentą prieš jį.\n\n⚠️ Pilnas filmas — mokamas nuomai/peržiūrai (screenagersmovie.com). Trailer'is nemokamas YouTube.",
+      "en": "Dr. Delaney Ruston, a physician and filmmaker, films her own family and other families wrestling with the same question: how much screen time is too much, and how to talk about it WITH a child, not against them.\n\nThe film doesn't hand down one rule for everyone. Instead it shows real conversations, real disagreements between parents and teens, and researcher commentary on attention and sleep.\n\n**For:** parents with 10–14 year olds, to watch TOGETHER with the teen, then talk — not to use as ammunition against them.\n\n⚠️ The full film is paid rental/streaming (screenagersmovie.com). The trailer is free on YouTube."
+    },
+    "source": {
+      "name": "Dr. Delaney Ruston — Screenagers",
+      "url": "https://www.youtube.com/watch?v=LQx2X0BXgZg",
+      "lang": "en"
+    },
+    "grade": "B",
+    "age": "10-14",
+    "tone": "#9FB3C8",
+    "status": "published"
+  },
+  {
+    "id": "video-ted-ed-memory",
+    "type": "video",
+    "title": {
+      "lt": "TED-Ed: kaip formuojasi prisiminimai ir kodėl juos pamirštame",
+      "en": "TED-Ed: how memories form and how we lose them"
+    },
+    "summary": {
+      "lt": "5 minučių animuota pamoka apie atmintį — tinka žiūrėti kartu su vaiku.",
+      "en": "A 5-minute animated lesson on memory — good to watch together with a child."
+    },
+    "body": {
+      "lt": "Catharine Young paaiškina, kaip smegenys pagamina, saugo ir kartais pameta prisiminimus — animuota, trumpa, be žargono.\n\nTinka kaip pirmas žingsnis prieš „prisiminimas be žiūrėjimo“ techniką MKK viduje: vaikas pamato, KODĖL prisiminti sunkiau nei perskaityti, ir kad pamiršti — normalu, ne gėda.\n\n**Kam:** vaikams nuo 8 metų kartu su tėvais, kaip 5 minučių įžanga prieš pokalbį apie tai, kaip jų pačių atmintis veikia.\n\n⚠️ Lietuviškų subtitrų šiuo metu nėra — tik anglų (arba automatinis vertimas per YouTube nustatymus).",
+      "en": "Catharine Young explains how the brain makes, stores, and sometimes loses memories — animated, short, no jargon.\n\nWorks well as a first step before the \"retrieval practice\" technique inside MKK: the child sees WHY recalling is harder than rereading, and that forgetting is normal, not shameful.\n\n**For:** kids from age 8 with a parent, as a 5-minute lead-in to a conversation about how their own memory works.\n\n⚠️ No Lithuanian subtitles currently exist — English only (or YouTube's auto-translate)."
+    },
+    "source": {
+      "name": "TED-Ed — Catharine Young",
+      "url": "https://www.youtube.com/watch?v=yOgAbKJGrTA",
+      "lang": "en"
+    },
+    "grade": "B",
+    "age": "8-14",
+    "tone": "#D8B4B0",
+    "status": "published"
+  },
+  {
+    "id": "video-oakley-talks-at-google",
+    "type": "video",
+    "title": {
+      "lt": "Barbara Oakley „Talks at Google“ — kaip mokytis mokytis",
+      "en": "Barbara Oakley at \"Talks at Google\" — learning how to learn"
+    },
+    "summary": {
+      "lt": "Inžinierė, kuri pati užaugo galvodama, kad „nesugeba“ matematikos.",
+      "en": "An engineer who grew up thinking she \"couldn't do\" math."
+    },
+    "body": {
+      "lt": "Barbara Oakley, inžinerijos profesorė ir vieno populiariausio pasaulyje MOOC „Learning How to Learn“ (kartu su Terrence Sejnowski) autorė, pasakoja, kaip pati perėjo nuo „nesugebu matematikos“ iki inžinerijos daktaro laipsnio.\n\nPaskaita paaiškina „fokusuoto“ ir „išsklaidyto“ mąstymo režimus — kodėl pertrauka kartais išsprendžia užduotį greičiau nei sėdėjimas prie jos.\n\n**Kam:** paaugliams 13+ ir tėvams, kurie patys galvoja, kad „nemoka mokytis“ — vienas honest admission po kito, ne pamokymas iš aukšto.\n\n⚠️ Anglų kalba, be lietuviškų subtitrų.",
+      "en": "Barbara Oakley, professor of engineering and co-author of one of the world's most popular MOOCs, \"Learning How to Learn\" (with Terrence Sejnowski), tells the story of going from \"I can't do math\" to a doctorate in engineering.\n\nThe talk explains \"focused\" and \"diffuse\" thinking modes — why a break sometimes solves a problem faster than sitting at the desk.\n\n**For:** teens 13+ and parents who think of themselves as \"not good at learning\" — one honest admission after another, not a lecture from above.\n\n⚠️ English only, no Lithuanian subtitles."
+    },
+    "source": {
+      "name": "Barbara Oakley — Talks at Google",
+      "url": "https://www.youtube.com/watch?v=vd2dtkMINIw",
+      "lang": "en"
+    },
+    "grade": "A",
+    "age": "13-14",
+    "tone": "#E0B96B",
+    "status": "published"
+  },
+  {
+    "id": "connectors",
+    "type": "article",
+    "title": {
+      "lt": "Kur mane rasti",
+      "en": "Where to find me"
+    },
+    "summary": {
+      "lt": "Kristijonas viešuose kanaluose — jokio pardavimo, tik kur sekti toliau.",
+      "en": "Kristijonas's public channels — no selling, just where to follow along."
+    },
+    "body": {
+      "lt": "Interesų konfliktas: esu ExoClass bendraįkūrėjas ir turiu robotikos būrelį. MKK nemokamas VISIEMS būreliams, ne tik mano.\n\nJei nori sekti daugiau apie mokymosi mokslą, robotiką ir tai, ką statau toliau:\n\n- **Svetainė:** [krisvas.lt](https://krisvas.lt)\n- **LinkedIn:** [linkedin.com/in/kristijonasvasiliauskas](https://www.linkedin.com/in/kristijonasvasiliauskas/)\n- **Instagram:** [@kristijonas.vas](https://www.instagram.com/kristijonas.vas/)\n- **TikTok:** [@krisvas369](https://www.tiktok.com/@krisvas369)\n- **YouTube:** [@KristijonasVasiliauskas](https://www.youtube.com/@KristijonasVasiliauskas/shorts)\n\n⚠️ Naujienlaiškio šiuo metu neturiu. Rašau apie tai, ką pats bandau, klystu ir taisau — ne apie tai, kas skamba gražiai.",
+      "en": "Conflict of interest: I'm an ExoClass co-founder and I own a robotics club. MKK is free for EVERY after-school club, not just mine.\n\nIf you want to follow more on learning science, robotics, and what I'm building next:\n\n- **Website:** [krisvas.lt](https://krisvas.lt)\n- **LinkedIn:** [linkedin.com/in/kristijonasvasiliauskas](https://www.linkedin.com/in/kristijonasvasiliauskas/)\n- **Instagram:** [@kristijonas.vas](https://www.instagram.com/kristijonas.vas/)\n- **TikTok:** [@krisvas369](https://www.tiktok.com/@krisvas369)\n- **YouTube:** [@KristijonasVasiliauskas](https://www.youtube.com/@KristijonasVasiliauskas/shorts)\n\n⚠️ No newsletter yet. I write about what I actually try, get wrong, and fix — not about what sounds good."
+    },
+    "source": {
+      "name": "Kristijonas Vasiliauskas",
+      "url": "https://krisvas.lt",
+      "lang": "lt"
+    },
+    "grade": "C",
+    "age": "4-14",
+    "tone": "#9BB59C",
+    "status": "published"
+  }
+]

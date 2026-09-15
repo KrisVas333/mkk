@@ -389,3 +389,9 @@ audio{width:100%;margin-top:12px}
 .src.lt{margin-top:4px;opacity:.9}
 .src.lt a{color:inherit}
 #profileBtn[hidden] ~ #streakBtn{margin-left:auto}
+
+/* v0.3.1 — parental gate inputs */
+.input{width:100%;box-sizing:border-box;padding:12px 14px;font:inherit;font-size:18px;border:1px solid var(--line);border-radius:var(--r,4px);background:var(--ground);color:var(--ink);margin-top:8px}
+.input:focus{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row .btn{flex:1 1 140px}

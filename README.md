@@ -138,3 +138,40 @@ The tool ranks and recommends no after-school provider; the author's conflict of
 ---
 
 © 2026 Kristijonas Vasiliauskas. Kodas ir turinys matomi viešai — kuriama atvirai; licencija dar nepasirinkta, iki tol visos teisės saugomos. / Source is public for transparency; no licence chosen yet — all rights reserved until then.
+
+---
+
+## Store build (iOS · Android)
+
+The web app above **is** the store app. [Capacitor](https://capacitorjs.com) wraps the same
+static build in a native shell — no rewrite, no framework, no second codebase.
+
+```bash
+npm install                      # once
+npx playwright test              # 5 e2e specs, must be 5/5
+bash bin/build-store.sh          # sanity → tests → stage www/ → cap sync → next steps
+npx cap open android             # needs Android Studio + SDK + Java
+npx cap open ios                 # needs the full Xcode, not Command Line Tools
+```
+
+| | |
+|---|---|
+| App ID | `lt.krisvas.mkk` |
+| App name | MKK |
+| webDir | `www/` — a disposable mirror built by `bin/build-web.sh`. Capacitor rejects `"."`, and it would otherwise copy `node_modules/` onto the phone. **The repo root is untouched:** `python3 bin/serve.py` and GitHub Pages work exactly as before. |
+| Native projects | `android/` (Gradle) · `ios/` (Xcode, Swift Package Manager — no CocoaPods) |
+| Store art | `resources/icon.png` 1024² (no alpha) · `resources/splash.png` / `splash-dark.png` 2732², regenerate with `node resources/make-resources.mjs`, then `npx @capacitor/assets generate` for every size |
+| Tests | `tests/*.spec.mjs`, `playwright.config.mjs`, CI in `.github/workflows/test.yml` (tests only — Pages deploy is unchanged and still branch-based) |
+
+**Read before touching the stores:**
+
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — now → target, data model, what changes when accounts arrive
+- [`docs/STORE-CHECKLIST.md`](docs/STORE-CHECKLIST.md) — accounts, costs, forms, Kids Category, LT+EN store copy, **% ready table**
+- [`docs/TEST-AND-SAFETY.md`](docs/TEST-AND-SAFETY.md) — test runs, kids-safety audit, security audit, tools to learn
+
+**Two open blockers before any store submission** (both in `app.js`/`index.html`):
+Google Fonts is a third-party request that also breaks offline · four external links have no
+parental gate. Details and fixes in `docs/TEST-AND-SAFETY.md` §3.
+
+Nothing here publishes, uploads, or signs anything. `bin/build-store.sh` stops at
+"open the IDE"; the store steps are Kris's, by design.

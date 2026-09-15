@@ -1,0 +1,100 @@
+[
+  {
+    "technique_id": "sleep",
+    "name": "LRT — Kodėl vaikams prastėja atmintis ir ką daryti, kad ji pasitaisytų",
+    "url": "https://www.lrt.lt/naujienos/mokslas-ir-it/11/1718741/kodel-vaikams-prasteja-atmintis-ir-ka-daryti-kad-ji-pasitaisytu",
+    "lang": "lt",
+    "note": "Vaikų miego trūkumo poveikis atminčiai ir vieno tyrimo duomenys (10–14 m., ~20 % geriau po miego)."
+  },
+  {
+    "technique_id": "sleep-window",
+    "name": "LRT — Kodėl vaikams prastėja atmintis ir ką daryti, kad ji pasitaisytų",
+    "url": "https://www.lrt.lt/naujienos/mokslas-ir-it/11/1718741/kodel-vaikams-prasteja-atmintis-ir-ka-daryti-kad-ji-pasitaisytu",
+    "lang": "lt",
+    "note": "Rekomenduojama miego trukmė 6–13 m. vaikams ir kodėl vakaro pasikartojimas prieš miegą sustiprina naują medžiagą."
+  },
+  {
+    "technique_id": "move",
+    "name": "LRT — Ne tik kūno, bet ir smegenų treniruotė",
+    "url": "https://www.lrt.lt/naujienos/gyvenimas/13/1265938/ne-tik-kuno-bet-ir-smegenu-treniruote-judejimas-gerina-atminti-gydo-nerima-ir-mazina-stresa",
+    "lang": "lt",
+    "note": "Kodėl judesys prieš protinę užduotį pagerina koncentraciją ir atmintį — mechanizmo paaiškinimas lietuviškai."
+  },
+  {
+    "technique_id": "break-move",
+    "name": "LRT — Sportuojantys vaikai ne tik ištvermingesni, bet ir geriau mokosi",
+    "url": "https://www.lrt.lt/naujienos/laisvalaikis/13/1654488/sportuojantys-vaikai-ne-tik-istvermingesni-bet-ir-geriau-mokosi-kaip-pratinti-atzalas-sportuoti",
+    "lang": "lt",
+    "note": "Ryšys tarp fizinio aktyvumo pertraukų ir mokymosi rezultatų vaikams — palaiko pertraukos su judesiu praktiką."
+  },
+  {
+    "technique_id": "phone-away",
+    "name": "Technaujienos.lt — kodėl išmanųjį telefoną reikia palikti kuo toliau",
+    "url": "https://www.technaujienos.lt/sokiruojantis-tyrimas-stai-kodel-ismanuji-telefona-reikia-palikti-kuo-toliau-priezastis-visai-ne-radiacijoje/",
+    "lang": "lt",
+    "note": "Lietuviška Teksaso universiteto (Ward ir kt. 2017) tyrimo apžvalga: telefonas kitame kambaryje > kišenėje > ant stalo."
+  },
+  {
+    "technique_id": "spacing",
+    "name": "Mokykla2030 — Kartojimas su tarpais: protingiausias būdas mokytis",
+    "url": "https://mokykla2030.lt/kartojimas-su-tarpais-protingiausias-b%C5%ABdas-mokytis/",
+    "lang": "lt",
+    "note": "Lietuviškas paaiškinimas, kaip ir kodėl veikia kartojimas su intervalais, su praktiniais patarimais tėvams."
+  },
+  {
+    "technique_id": "retrieval",
+    "name": "Mokykla2030 — Efektyvūs mokymosi metodai mokyklinio amžiaus vaikams",
+    "url": "https://mokykla2030.lt/efektyv%C5%ABs-mokymosi-metodai-mokyklinio-am%C5%BEiaus-vaikams/",
+    "lang": "lt",
+    "note": "15 technikų apžvalga lietuviškai, prisiminimą be žiūrėjimo (aktyvų atgaminimą) rikiuoja tarp stipriausių."
+  },
+  {
+    "technique_id": "success",
+    "name": "Mokykla2030 — Efektyvūs mokymosi metodai mokyklinio amžiaus vaikams",
+    "url": "https://mokykla2030.lt/efektyv%C5%ABs-mokymosi-metodai-mokyklinio-am%C5%BEiaus-vaikams/",
+    "lang": "lt",
+    "note": "Ta pati apžvalga aptaria, kodėl per sunkios užduotys mažina, o ne didina mokymosi efektą."
+  },
+  {
+    "technique_id": "feedback-work",
+    "name": "Mokykla2030 — Kaip tinkamai pagirti vaiką",
+    "url": "https://mokykla2030.lt/kaip-tinkamai-pagirti-vaik%C4%85/",
+    "lang": "lt",
+    "note": "Kodėl pagirti reikia konkretų veiksmą ar pastangą, ne bendrą „šaunuolis“ — tiesiogiai palaiko techniką."
+  },
+  {
+    "technique_id": "mnemo",
+    "name": "Mokykla2030 — Atminties technikos studentams: mnemonika paaiškinta",
+    "url": "https://mokykla2030.lt/atminties-technikos-studentams-mnemonika-paai%C5%A1kinta/",
+    "lang": "lt",
+    "note": "Lietuviškas mnemonikos (istorijos iš daiktų) paaiškinimas su pavyzdžiais — tiesioginis technikos atitikmuo."
+  },
+  {
+    "technique_id": "one-instr",
+    "name": "LRT — Psichologė paaiškino, kaip patys sau trukdome susikaupti ir kodėl neveikia „multitaskingas“",
+    "url": "https://www.lrt.lt/naujienos/gyvenimas/13/1597942/psichologe-paaiskino-kaip-patys-sau-trukdome-susikaupti-ir-kodel-neveikia-multitaskingas",
+    "lang": "lt",
+    "note": "Kodėl smegenys negali tikrai dirbti dviejų dalykų vienu metu — palaiko „vienas nurodymas vienu metu“ techniką."
+  },
+  {
+    "technique_id": "single-task",
+    "name": "LRT — Psichologė paaiškino, kaip patys sau trukdome susikaupti ir kodėl neveikia „multitaskingas“",
+    "url": "https://www.lrt.lt/naujienos/gyvenimas/13/1597942/psichologe-paaiskino-kaip-patys-sau-trukdome-susikaupti-ir-kodel-neveikia-multitaskingas",
+    "lang": "lt",
+    "note": "Tas pats šaltinis — kodėl vienas darbas su laikmačiu efektyvesnis nei kelių dalykų žongliravimas."
+  },
+  {
+    "technique_id": "dual",
+    "name": "eMokykla (5–6 kl. gamta) — Atmintis",
+    "url": "https://gamta5-6.mkp.emokykla.lt/lt/mo/zinynas/atmintis1/",
+    "lang": "lt",
+    "note": "Švietimo portalo skaitmeninė medžiaga apie atminties tipus ir vaizdinio susiejimo naudą — palaiko dvigubą kodavimą."
+  },
+  {
+    "technique_id": "review-q",
+    "name": "NŠA / sodas.ugdome.lt — Reflektavimo ir mokymosi mokytis kompetencijos tobulinimas",
+    "url": "https://sodas.ugdome.lt/metodiniai-dokumentai/perziura/19053",
+    "lang": "lt",
+    "note": "Nacionalinės švietimo agentūros metodinis leidinys apie refleksiją kaip mokėjimo mokytis kompetencijos dalį."
+  }
+]
