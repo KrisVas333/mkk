@@ -281,7 +281,7 @@
     var k = cls || 'ill';
     if (I && I.file) {
       return '<div class="illwrap"><img class="' + esc(k) + '" src="' + esc(I.file) + '" alt="' + esc(I.alt || '') +
-        '" width="1200" height="800" loading="lazy" decoding="async" data-tone="' + esc(t) + '" data-cls="' + esc(k) + '"></div>';
+        '" width="1200" height="800" loading="' + (k.indexOf('hero') >= 0 ? 'eager' : 'lazy') + '" decoding="async" data-tone="' + esc(t) + '" data-cls="' + esc(k) + '"></div>';
     }
     return '<div class="illwrap">' + svgPlaceholder(t, k) + '</div>';
   }
@@ -545,7 +545,7 @@
   function illMini(slug) {
     var I = C && C.illustrations && C.illustrations[slug];
     if (I && I.file) {
-      return '<img class="ill-mini ill" src="' + esc(I.file) + '" alt="" width="88" height="88" loading="lazy" decoding="async" data-tone="' + esc(tone(slug)) + '" data-cls="ill-mini ill">';
+      return '<img class="ill-mini ill" src="' + esc(I.file) + '" alt="" width="88" height="88" loading="eager" decoding="async" data-tone="' + esc(tone(slug)) + '" data-cls="ill-mini ill">';
     }
     return svgPlaceholder(tone(slug), 'ill-mini');
   }
@@ -824,7 +824,7 @@
       '<div class="stat"><div class="v">' + totalSessions() + '</div><div class="k">iš viso treniruočių</div></div>' +
       '<div class="stat"><div class="v">' + totalReading() + '</div><div class="k">skaitymo min.</div></div>' +
       '</div>' +
-      '<p class="xs muted" style="margin:16px 0 0">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas — atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + '</p></div>';
+      '<p class="xs muted" style="margin:16px 0 0">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas — atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + ' <span class="meta">ŠALTINIS · Thouin 2020</span></p></div>';
 
     /* profiles */
     h += '<p class="h2">Kas mokosi</p>';
@@ -1477,7 +1477,7 @@
     $('#profileBtn').addEventListener('click', profileSheet);
     $('#streakBtn').addEventListener('click', function () {
       sheet('🔥 Serija', '<p class="big">' + (P ? P.streak : 0) + '</p><p class="sm">Dienų iš eilės, kai užbaigei tris žingsnius. Skaitymo minutė neskaičiuojama — ji nebūtina.</p>' +
-        '<p class="sm muted">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas dalyvavimas atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + '</p>' +
+        '<p class="sm muted">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas dalyvavimas atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + ' <span class="meta">ŠALTINIS · Thouin 2020</span></p>' +
         '<p class="meta">Serija skaičiuojama tik šitame telefone.</p>', 'hero');
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
@@ -1509,7 +1509,7 @@
       };
       if (!C.config || !C.techniques || !C.practices || !C.library || !C.games) {
         document.getElementById('view').innerHTML =
-          '<div class="card"><p class="lbl">Klaida</p><p class="sm">Nepavyko įkelti turinio. Paleisk per serverį: <code>python3 bin/serve.py 8765</code></p></div>';
+          '<div class="card"><p class="lbl">Klaida</p><p class="sm">Nepavyko įkelti turinio. Patikrink ryšį ir atnaujink puslapį.</p></div>';
         return;
       }
       start();

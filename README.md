@@ -114,4 +114,4 @@ The tool ranks and recommends no after-school provider; the author's conflict of
 
 ---
 
-© 2026 Kristijonas Vasiliauskas — all rights reserved (v0, licence TBD)
+© 2026 Kristijonas Vasiliauskas. Kodas ir turinys matomi viešai — kuriama atvirai; licencija dar nepasirinkta, iki tol visos teisės saugomos. / Source is public for transparency; no licence chosen yet — all rights reserved until then.

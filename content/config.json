@@ -1,13 +1,13 @@
 {
   "name": "MKK",
   "fullName": "Mokymosi Meistrų Klubas",
-  "nameNote": "⚠️ darbinis pavadinimas",
+  "nameNote": "Mokymosi Meistrų Klubas",
   "tagline": "Išmok mokytis. Kasdien po 3 minutes.",
-  "version": "v0.2.0",
+  "version": "v0.2.1",
   "build": "2026-09-15",
   "author": "Kristijonas Vasiliauskas",
   "authorLink": "krisvas.lt",
-  "voiceNote": "Balsas: Kraist — AI Kris'o balso versija (⚠️ ear-check)",
+  "voiceNote": "Balsas: Kraist — AI Kristijono balso versija",
   "giftForAllProviders": true,
   "story": [
     "Mokykloje mane tyliai nurašė. Puslapį normaliai perskaityti pradėjau vienuolikos.",

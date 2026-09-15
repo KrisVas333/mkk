@@ -48,7 +48,7 @@ Dizaino sistema užrašyta **prieš** kodą: [`DESIGN.md`](DESIGN.md).
 
 ### Kainos (Kris patvirtino rytą)
 - Nuimta **„⚠️ tikslinama"**. MKK+ rodoma **3,99 €/mėn** kaip pagrindinė ir **6,99 €/mėn** kaip
-  antras variantas, be aiškinimų ekrane. *(Vidinė pastaba: du variantai, galutinį renkasi Kris.)*
+  antras variantas, be aiškinimų ekrane.
 - Dovana, interesų konfliktas ir atsakomybės eilutė — **nepakitę** nuo v0.1.1.
 - „Planai" kortelė dabar rodo `✓ Aktyvus`, kai MKK+ įjungtas (v0.1.1 🟡15).
 
@@ -160,3 +160,12 @@ Pirmas veikiantis MKK prototipas. Vietinis, be jokio viešo paviršiaus.
 ## v0.1.1 — 2026-09-15 02:05 (critic FIX-THEN-SHIP → 5 one-line fixes)
 - config.json: curriculum claim hedged (⚠️ „dar tikrinu su šaltiniais") — its source was never opened; `coiLong` typo bendraįkūrėjis→bendraįkūrėjas.
 - app.js: myth cards no longer double-quoted; internal `needs-ear-check` flag rendered as a human ⚠️ line; 5/5 in the memory game gets its own honest message (100 % ≠ 70–90 % zone).
+
+## v0.2.1 — 2026-09-15 (critic v0.2 FIX-THEN-SHIP + personos v0.2 ONE FIX)
+- `qa/` išimta iš viešo repo (.gitignore) — ekrano kopijos su senu kainos užrašu ir testiniais kodais nebeviešos.
+- Onboarding: amžiaus miniatiūros ir hero iliustracija kraunamos `eager` — nebelieka tuščių langelių pirmame kadre.
+- Pavadinimo žyma: „⚠️ darbinis pavadinimas" → „Mokymosi Meistrų Klubas" (Kris patvirtino MKK).
+- Balso eilutė be vidinio QA žymeklio; podcast'o kortelėje lieka sąžininga LT eilutė apie ausies patikrą.
+- „70 % mažesnė tikimybė mesti" gavo šaltinį (Thouin 2020) abiejose vietose.
+- Klaidos pranešimas tėvams be `python3 …` komandos.
+- LICENCE: viešai matoma, licencija dar nepasirinkta — iki tol visos teisės saugomos (README + LICENSE suderinti).
