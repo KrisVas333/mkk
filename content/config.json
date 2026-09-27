@@ -184,13 +184,13 @@
   },
   "gift": {
    "title": "Lankai būrelį? MKK+ nemokamai.",
-   "help": "Lankai būrelį? Paprašyk savo būrelio vadovo kodo: bet kuris būrelis gali gauti kodus nemokamai (ExoClass būreliai: automatiškai).",
+   "help": "Lankai būrelį? Paprašyk savo būrelio vadovo kodo: bet kuris būrelis gali gauti kodus nemokamai, nesvarbu, kokią sistemą naudoja.",
    "placeholder": "Kodas iš būrelio",
    "ok": "Veikia. MKK+ atrakintas.",
    "bad": "Toks kodas neveikia. Kodą duoda būrelio vadovas, bet kurio būrelio.",
    "coi": "Kristijonas: ExoClass bendraįkūrėjas ir robotikos būrelio savininkas. Dovana nėra būrelių reitingas.",
    "title_en": "MKK+ free for after-school kids",
-   "help_en": "Lankai būrelį? Paprašyk savo būrelio vadovo kodo: bet kuris būrelis gali gauti kodus nemokamai (ExoClass būreliai: automatiškai).",
+   "help_en": "Go to a club? Ask your club leader for a code: any club can get codes for free, whatever system it uses.",
    "coi_en": "Conflict of interest: I am a co-founder of ExoClass and I own a robotics club. \"MKK+ for free\" applies to children from ANY club. It is a gift, not a ranking of activities. In the clubs section activities are listed alphabetically, robotics is never first, and nothing here is ranked."
   }
  },

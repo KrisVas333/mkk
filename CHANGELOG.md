@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.4.5 · 2026-09-27 (bias vartai prieš push)
+
+- `bias` (?burelis= nuoroda): NEŠALIŠKA. Nuorodą gali susikurti bet kuris būrelis, nemokamai, be registracijos; ExoClass nėra numatytojo ar prioriteto; COI eilutė lieka.
+- Higiena: `plans.gift.help` pašalinta „(ExoClass būreliai: automatiškai)" (neberodoma, bet vieša config'e) · `help_en` išverstas į EN. SW `mkk-v0.4.5-bias`. Playwright 15/15.
+
 ## v0.4.2 → v0.4.4 · 2026-09-27 (sintetinis panelis, 3 raundai, LOKALIAI, push = orchestratorius)
 
 Panelis (SYNTHETIC, fiksuotas promptas): 24 LT tėvai + 20 LT būrelių teikėjų. Tėvai **6.3 → 6.2 → 6.25**, teikėjai **5.65 → 5.65 → 5.4**; ≥9 visais raundais 0 %. 9/10 tikslas nepasiektas.
