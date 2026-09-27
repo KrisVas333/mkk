@@ -208,7 +208,7 @@
     return P.days[k];
   }
   /* reading minute is step 4 and deliberately OPTIONAL — it never gates the streak */
-  function dayDone() { var d = dayState(); return !!(d.p && d.x && d.c); }
+  function dayDone() { var d = dayState(); return !!((d.p && d.x && d.c) || (d.q && d.p)); }
   function checkStreak() {
     if (!dayDone()) return false;
     if (P.lastDone === today()) return false;
@@ -259,6 +259,10 @@
   }
   /* daily reminder via the phone's own calendar: the app cannot notify while closed
      (no push server, zero data leaves the phone), so the calendar does it. */
+  /* co-brand: a club shares MKK under its own name (?burelis=…). Disclaimer + COI stay. */
+  function clubBanner() {
+    return S.club ? '<div class="card flat" style="margin:0 0 14px"><p class="sm" style="margin:0">🎁 <b>' + esc(t('club.gift').replace('{club}', S.club)) + '</b></p></div>' : '';
+  }
   function calBtn() {
     return '<button class="btn ghost sm" data-act="cal" type="button">' + esc(t('cal.btn')) + '</button>' +
       '<p class="xs muted" style="margin:6px 0 0">' + esc(t('cal.note')) + '</p>';
@@ -670,6 +674,7 @@
 
     if (OB.step === 1) {
       h += '<p class="strip">' + esc(t('strip.lab')) + ' <button class="linkbtn" data-act="feedback" type="button">' + esc(t('strip.fb')) + '</button></p>';
+      h += clubBanner();
       h += ill('hero', 'ill');
       h += '<span class="lbl">' + esc(C.config.name) + ' · ' + esc(LX(C.config, 'nameNote')) + '</span>';
       h += '<p class="big">' + esc(O('s1title')) + '</p>';
@@ -745,12 +750,15 @@
       '<p class="why">' + esc(LX(m, 'blurb')) + '</p>' +
       (dayDone()
         ? '<button class="btn ghost" data-act="start-now" type="button">' + esc(t('today.dayClosed')) + P.streak + '</button>'
-        : '<button class="btn" data-act="start-now" type="button">' + esc(t('today.start')) + '</button>') +
+        : '<button class="btn" data-act="start-now" type="button">' + esc(t('today.start')) + '</button>' +
+          '<button class="btn ghost sm" data-act="quick" type="button" style="margin-top:10px">' + esc(t('today.quick')) + '</button>' +
+          '<p class="xs muted" style="margin:6px 0 0">' + esc(t('today.quickNote')) + '</p>') +
       '</div></div>';
 
     /* disclosure without a scroll — personas panel's single biggest lever (14/40) */
     h += '<div class="coi tight">' + esc(LX(C.config, 'coiLong')) + '<br>' + esc(LX(C.config, 'voiceNote')) + '</div>';
 
+    h += clubBanner();
     if (S.remind && S.calAdded !== S.remind) h += '<div class="card flat">' + calBtn() + '</div>';
     h += '<p class="h2">' + esc(t('today.threeSteps')) + '</p>';
     h += '<button class="step' + (d.p ? ' done' : '') + '" data-act="open-pod" type="button">' +
@@ -1267,6 +1275,10 @@
       '<div class="coi">' + esc(LX(cfg.plans.gift, 'coi')) + '</div>' +
       '<p class="sm">' + esc(t('gift.provider')) + '</p>' +
       '<div class="coi tight">✅ ' + esc(t('gift.trust')) + '</div>' +
+      '<p class="lbl" style="margin-top:14px">' + esc(t('club.makeLbl')) + '</p>' +
+      '<input id="clubName" class="input" maxlength="40" autocomplete="off" placeholder="' + esc(t('club.placeholder')) + '">' +
+      '<button class="btn sm" data-act="club-link" type="button" style="margin-top:8px">' + esc(t('club.makeBtn')) + '</button>' +
+      '<p class="xs muted" style="margin:6px 0 12px">' + esc(t('club.note')) + '</p>' +
       '<button class="btn ghost sm" data-act="provider-codes" type="button">' + esc(t('gift.providerBtn')) + '</button><div class="spacer"></div>';
     /* unlock-for-test: code entry hidden until a real code server exists; the
        "request codes for your club" contact path above stays. */
@@ -1772,6 +1784,16 @@
     }
 
     /* --- daily loop --- */
+    if (a === 'club-link') {
+      var cn = ($('#clubName') ? $('#clubName').value : '').replace(/[\u0000-\u001f<>]/g, '').trim().slice(0, 40);
+      if (!cn) { toast(t('club.empty')); return; }
+      var cu = (C.config.canonicalUrl || location.href.split('#')[0].split('?')[0]).split('?')[0] + '?burelis=' + encodeURIComponent(cn);
+      var cdone = function () { toast(t('club.copied')); };
+      try { navigator.clipboard.writeText(cu).then(cdone, function () { toast(cu); }); } catch (ec) { toast(cu); }
+      el.setAttribute('data-url', cu);
+      return;
+    }
+    if (a === 'quick') { dayState().q = 1; save(); openPodcast(false); return; }
     if (a === 'start-now') { openPodcast(true); return; }
     if (a === 'open-pod') { openPodcast(false); return; }
     if (a === 'recall') {
@@ -1842,6 +1864,10 @@
   /* ---------- boot ---------- */
   function start() {
     loadState();
+    try {
+      var bq = new URLSearchParams(location.search).get('burelis');
+      if (bq) { S.club = String(bq).replace(/[\u0000-\u001f<>]/g, '').trim().slice(0, 40); save(); }
+    } catch (eq) {}
     applyLang();
     applyTheme();
     var tb = document.getElementById('themeBtn');

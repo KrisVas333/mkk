@@ -158,7 +158,16 @@
     "cal.btn": "📅 Įsidėti priminimą į telefono kalendorių",
     "cal.note": "Kalendorius primins kasdien pasirinktu laiku. Vienas paspaudimas, išjungti gali pačiame kalendoriuje.",
     "cal.done": "Kalendoriaus failas paruoštas. Patvirtink telefone.",
-    "cal.title": "MKK: 3 minutės mokymosi"
+    "cal.title": "MKK: 3 minutės mokymosi",
+    "today.quick": "⏱ Užimta diena: tik 1 minutė",
+    "today.quickNote": "Tik podcast'as ir vienas prisiminimo klausimas. Tinka ir rytą, ir automobilyje. Serija nenutrūksta.",
+    "club.gift": "Dovana šeimoms nuo būrelio „{club}“",
+    "club.makeLbl": "Nuoroda su tavo būrelio vardu",
+    "club.placeholder": "pvz. Šokių studija Ritmas",
+    "club.makeBtn": "🔗 Kopijuoti nuorodą tėvams",
+    "club.note": "Tėvai pirmame ekrane pamatys, kad tai dovana nuo tavo būrelio. Nuoroda nieko neseka ir nieko nesiunčia. Registracijos nereikia.",
+    "club.copied": "Nuoroda nukopijuota. Įklijuok ją tėvų grupėje.",
+    "club.empty": "Įrašyk būrelio pavadinimą."
   },
   "en": {
     "tab.today": "Today",
@@ -319,6 +328,15 @@
     "cal.btn": "📅 Add the reminder to your phone calendar",
     "cal.note": "Your calendar will remind you every day at that time. One tap, and you can turn it off in the calendar itself.",
     "cal.done": "Calendar file ready. Confirm it on your phone.",
-    "cal.title": "MKK: 3 minutes of learning"
+    "cal.title": "MKK: 3 minutes of learning",
+    "today.quick": "⏱ Busy day: just 1 minute",
+    "today.quickNote": "Just the podcast and one recall question. Works in the morning or in the car too. The streak keeps going.",
+    "club.gift": "A gift for families from the club \"{club}\"",
+    "club.makeLbl": "A link with your club's name",
+    "club.placeholder": "e.g. Rhythm Dance Studio",
+    "club.makeBtn": "🔗 Copy the link for parents",
+    "club.note": "Parents see on the first screen that it is a gift from your club. The link tracks nothing and sends nothing. No sign-up.",
+    "club.copied": "Link copied. Paste it in your parents' group.",
+    "club.empty": "Type your club's name."
   }
 }
