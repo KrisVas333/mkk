@@ -60,7 +60,7 @@ test('gift card offers a code path to ANY club, with the COI line in the same ca
   await page.goto('/index.html#/as');
   const card = page.locator('.card', { has: page.locator('[data-act="provider-codes"]') });
   await expect(card).toBeVisible();
-  await expect(card.locator('.coi')).toContainText('ExoClass');
+  await expect(card.locator('.coi').first()).toContainText('ExoClass');
 });
 
 test('self-hosted fonts resolve (no 404) and OG image exists', async ({ page, request }) => {

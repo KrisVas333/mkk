@@ -153,7 +153,12 @@
     "me.planned": "Planuojama, dar neparduodama",
     "me.plannedPrice": "Planuojama kaina: ",
     "me.plannedNote": "Mokėjimų dar nėra. Kol kas viskas atrakinta visiems nemokamai.",
-    "gift.openNow": "Kol MKK+ neparduodamas, viskas atrakinta visiems, kodo nereikia."
+    "gift.openNow": "Kol MKK+ neparduodamas, viskas atrakinta visiems, kodo nereikia.",
+    "gift.trust": "Būrelio vadovui prieš persiunčiant tėvams: jokių vaikų ar tėvų duomenų (viskas lieka telefone, be paskyrų ir be analitikos), jokio būrelių reitingo, jokios reklamos, jokių mokėjimų. Tinka bet kuriam būreliui ir bet kuriai sistemai.",
+    "cal.btn": "📅 Įsidėti priminimą į telefono kalendorių",
+    "cal.note": "Kalendorius primins kasdien pasirinktu laiku. Vienas paspaudimas, išjungti gali pačiame kalendoriuje.",
+    "cal.done": "Kalendoriaus failas paruoštas. Patvirtink telefone.",
+    "cal.title": "MKK: 3 minutės mokymosi"
   },
   "en": {
     "tab.today": "Today",
@@ -309,6 +314,11 @@
     "me.planned": "Planned, not for sale yet",
     "me.plannedPrice": "Planned price: ",
     "me.plannedNote": "There are no payments yet. For now everything is unlocked for everyone, free.",
-    "gift.openNow": "Until MKK+ goes on sale, everything is unlocked for everyone, no code needed."
+    "gift.openNow": "Until MKK+ goes on sale, everything is unlocked for everyone, no code needed.",
+    "gift.trust": "For a club leader before forwarding to parents: no data from kids or parents (everything stays on the phone, no accounts, no analytics), no ranking of clubs, no ads, no payments. Works for any club and any system.",
+    "cal.btn": "📅 Add the reminder to your phone calendar",
+    "cal.note": "Your calendar will remind you every day at that time. One tap, and you can turn it off in the calendar itself.",
+    "cal.done": "Calendar file ready. Confirm it on your phone.",
+    "cal.title": "MKK: 3 minutes of learning"
   }
 }

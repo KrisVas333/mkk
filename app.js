@@ -257,6 +257,35 @@
     t.textContent = msg; t.classList.add('on');
     clearTimeout(t._h); t._h = setTimeout(function () { t.classList.remove('on'); }, 2600);
   }
+  /* daily reminder via the phone's own calendar: the app cannot notify while closed
+     (no push server, zero data leaves the phone), so the calendar does it. */
+  function calBtn() {
+    return '<button class="btn ghost sm" data-act="cal" type="button">' + esc(t('cal.btn')) + '</button>' +
+      '<p class="xs muted" style="margin:6px 0 0">' + esc(t('cal.note')) + '</p>';
+  }
+  function icsFor(time) {
+    var hm = String(time || '19:00').split(':'), d = new Date(), p2 = function (n) { return (n < 10 ? '0' : '') + n; };
+    var day = d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate());
+    var start = day + 'T' + p2(+hm[0]) + p2(+hm[1]) + '00';
+    var endM = +hm[0] * 60 + +hm[1] + 5, end = day + 'T' + p2(Math.floor(endM / 60) % 24) + p2(endM % 60) + '00';
+    var url = (C.config.canonicalUrl || location.href.split('#')[0]);
+    return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//MKK//LT', 'CALSCALE:GREGORIAN', 'BEGIN:VEVENT',
+      'UID:mkk-daily-' + start + '@mkk', 'DTSTAMP:' + day + 'T000000', 'DTSTART:' + start, 'DTEND:' + end,
+      'RRULE:FREQ=DAILY', 'SUMMARY:' + t('cal.title'), 'DESCRIPTION:' + url, 'URL:' + url,
+      'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + t('cal.title'), 'TRIGGER:PT0M', 'END:VALARM',
+      'END:VEVENT', 'END:VCALENDAR'].join('\r\n') + '\r\n';
+  }
+  function addToCalendar(time) {
+    var ics = icsFor(time);
+    try {
+      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'mkk-priminimas.ics';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+    } catch (e) { location.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics); }
+    S.calAdded = time; save(); toast(t('cal.done'));
+  }
   function evBadge(ev) {
     var e = ev === '✗' ? 'X' : (ev || 'C');
     var lbl = e === 'X' ? '✗' : e;
@@ -683,7 +712,9 @@
     h += '<p class="muted sm">' + esc(O('s3sub')) + '</p>';
     h += '<div class="card flat"><p class="lbl" style="margin:0 0 10px">' + esc(t('ob.picked')) + '</p>' +
       '<p class="sm" style="margin:0 0 6px"><b>' + esc(OB.name || t('ob.noname')) + '</b> · ' + esc(b ? LX(b, 'label') : '') + '</p>' +
-      '<p class="sm muted" style="margin:0">' + esc(t('ob.reminder')) + esc(OB.time || t('ob.noreminder')) + '</p></div>';
+      '<p class="sm muted" style="margin:0">' + esc(t('ob.reminder')) + esc(OB.time || t('ob.noreminder')) + '</p>' +
+      (OB.time ? '<div class="spacer"></div><button class="btn ghost sm" data-act="cal" data-time="' + esc(OB.time) + '" type="button">' + esc(t('cal.btn')) + '</button><p class="xs muted" style="margin:6px 0 0">' + esc(t('cal.note')) + '</p>' : '') +
+      '</div>';
     h += '<button class="btn" data-act="ob-done" type="button">' + esc(O('s3go')) + '</button>';
     h += '<div class="coi tight" style="margin-top:18px">' + esc(LX(C.config, 'coiLong')) + '</div>';
     h += '<p class="foot">' + esc(LX(C.config, 'disclaimerShort')) + '</p>';
@@ -720,6 +751,7 @@
     /* disclosure without a scroll — personas panel's single biggest lever (14/40) */
     h += '<div class="coi tight">' + esc(LX(C.config, 'coiLong')) + '<br>' + esc(LX(C.config, 'voiceNote')) + '</div>';
 
+    if (S.remind && S.calAdded !== S.remind) h += '<div class="card flat">' + calBtn() + '</div>';
     h += '<p class="h2">' + esc(t('today.threeSteps')) + '</p>';
     h += '<button class="step' + (d.p ? ' done' : '') + '" data-act="open-pod" type="button">' +
       '<span class="n">' + (d.p ? '✓' : '1') + '</span><span><span class="t">' + esc(t('today.step1')) + '</span>' +
@@ -1190,7 +1222,7 @@
       h += '<button class="chip" data-act="remind" data-time="' + esc(t) + '" aria-pressed="' + (S.remind === t) + '" type="button">' + esc(t) + '</button>';
     });
     h += '<button class="chip" data-act="remind" data-time="" aria-pressed="' + (!S.remind) + '" type="button">' + esc(t('me.noReminder')) + '</button></div>' +
-      '<p class="xs muted">' + esc(LX(cfg.onboarding, 's2note')) + '</p>';
+      '<p class="xs muted">' + esc(LX(cfg.onboarding, 's2note')) + '</p>' + (S.remind ? calBtn() : '');
 
     /* language — LT is the complete version, EN is labelled beta */
     h += '<p class="h2">' + esc(t('me.language')) + '</p><div class="chips">';
@@ -1234,6 +1266,7 @@
       '<p class="sm">' + esc(t('gift.openNow')) + '</p>' +
       '<div class="coi">' + esc(LX(cfg.plans.gift, 'coi')) + '</div>' +
       '<p class="sm">' + esc(t('gift.provider')) + '</p>' +
+      '<div class="coi tight">✅ ' + esc(t('gift.trust')) + '</div>' +
       '<button class="btn ghost sm" data-act="provider-codes" type="button">' + esc(t('gift.providerBtn')) + '</button><div class="spacer"></div>';
     /* unlock-for-test: code entry hidden until a real code server exists; the
        "request codes for your club" contact path above stays. */
@@ -1725,6 +1758,7 @@
       save(); route(); toast('Amžius: ' + b2.label); return;
     }
     if (a === 'parent') { P.parent = !P.parent; save(); route(); return; }
+    if (a === 'cal') { addToCalendar(el.getAttribute('data-time') || S.remind || OB.time); if (location.hash.indexOf('siandien') >= 0) route(); return; }
     if (a === 'remind') { S.remind = el.getAttribute('data-time'); save(); route(); toast(S.remind ? 'Priminimas: ' + S.remind : 'Be priminimo'); return; }
     if (a === 'theme') { S.theme = el.getAttribute('data-theme'); save(); applyTheme(); route(); return; }
     if (a === 'lang') {
