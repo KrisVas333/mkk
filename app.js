@@ -157,7 +157,9 @@
       theme: (d && d.theme) || 'light',
       accent: (d && d.accent) || 'raudona',
       ambient: (d && d.ambient) || 'off',
-      plus: d ? d.plus === true : false,
+      /* unlock-for-test: no payments and no code server yet, so everything is open
+         to everyone (critic 2026-09-27). Forced, not defaulted: old saves with plus:false unlock too. */
+      plus: true,
       code: (d && d.code) || '',
       iosHint: d ? d.iosHint === true : false,
       lang: (d && d.lang === 'en') ? 'en' : 'lt'
@@ -1143,7 +1145,7 @@
   function scrMe() {
     if (!S.onboarded || !P) return scrOnboard();
     var cfg = C.config, b = bandObj(), h = '';
-    h += '<span class="lbl">' + esc(t('tab.me')) + '</span><p class="big">' + esc(P.name || LX(b, 'label')) + (S.plus ? ' · MKK+' : '') + '</p>';
+    h += '<span class="lbl">' + esc(t('tab.me')) + '</span><p class="big">' + esc(P.name || LX(b, 'label')) + '' + '</p>';
     h += '<p class="muted sm">' + esc(LX(b, 'label')) + (b.parentMode ? ' · ' + esc(t('me.parentMode')) : '') + '</p>';
     if (isEN()) h += '<p class="note">' + esc(t('sh.enBeta')) + '</p>';
     h += '<div class="spacer"></div>';
@@ -1220,28 +1222,21 @@
     LXA(cfg.plans.free, 'items').forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
     h += '</ul></div>';
 
-    h += '<div class="card">' + (S.plus ? '<span class="pill">✓ Aktyvus</span>' : '') +
+    h += '<div class="card"><span class="pill">' + esc(t('me.planned')) + '</span>' +
       '<p class="lbl">' + esc(LX(cfg.plans.plus, 'name')) + '</p>' +
-      '<p class="price">' + esc(cfg.plans.plus.priceA) + '</p>' +
+      '<p class="price">' + esc(t('me.plannedPrice')) + esc(cfg.plans.plus.priceA) + '</p>' +
       '<p class="price2">' + esc(t('me.orB')) + esc(cfg.plans.plus.priceB) + '</p><ul class="plain">';
     LXA(cfg.plans.plus, 'items').forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
-    h += '</ul>' + (S.plus
-      ? '<p class="sm"><b>' + esc(t('me.plusOn')) + '</b>' + (S.code ? t('me.code') + esc(S.code) : '') + '</p>'
-      : '<button class="btn" data-act="pay" type="button">' + esc(t('me.buy')) + '</button>') + '</div>';
+    h += '</ul><p class="sm"><b>' + esc(t('me.plannedNote')) + '</b></p></div>';
 
     /* gift */
     h += '<div class="card"><p class="lbl">🎁 ' + esc(LX(cfg.plans.gift, 'title')) + '</p>' +
-      '<p class="sm">' + esc(LX(cfg.plans.gift, 'help')) + '</p>' +
+      '<p class="sm">' + esc(t('gift.openNow')) + '</p>' +
       '<div class="coi">' + esc(LX(cfg.plans.gift, 'coi')) + '</div>' +
       '<p class="sm">' + esc(t('gift.provider')) + '</p>' +
       '<button class="btn ghost sm" data-act="provider-codes" type="button">' + esc(t('gift.providerBtn')) + '</button><div class="spacer"></div>';
-    if (S.plus) {
-      h += '<p class="sm"><b>' + esc(t('me.plusActive')) + '</b>' + (S.code ? t('me.code') + esc(S.code) : '') + '</p>' +
-        '<button class="btn ghost sm" data-act="unplus" type="button">' + esc(t('me.plusOff')) + '</button>';
-    } else {
-      h += '<input type="text" id="code" placeholder="' + esc(cfg.plans.gift.placeholder) + '" autocapitalize="characters" autocomplete="off">' +
-        '<div class="spacer"></div><button class="btn" data-act="code" type="button">' + esc(t('me.enterCode')) + '</button>';
-    }
+    /* unlock-for-test: code entry hidden until a real code server exists; the
+       "request codes for your club" contact path above stays. */
     h += '</div>';
 
     /* install */
@@ -1597,7 +1592,7 @@
     sheet('👤 Kas mokosi', h, 'hero');
   }
   function addChildSheet() {
-    var h = '<p class="sm muted">Vardas nebūtinas. Viskas lieka šitame telefone.</p>' +
+    var h = '<p class="sm muted">Vardas nebūtinas. Viskas lieka šiame telefone.</p>' +
       '<input type="text" id="newName" placeholder="Vardas (nebūtina)" autocomplete="off" maxlength="24">' +
       '<p class="lbl" style="margin-top:18px">Amžius</p><div class="chips" id="newBands">';
     C.config.bands.forEach(function (b) {
@@ -1780,13 +1775,15 @@
     /* --- money --- */
     if (a === 'pay') {
       sheet(t('sh.notYet'), '<p class="sm">Mokėjimų dar nėra. MKK yra prototipas, ne parduotuvė.</p>' +
-        '<p class="sm">MKK+ kainuos <b>' + esc(C.config.plans.plus.priceA) + '</b>; yra ir ' + esc(C.config.plans.plus.priceB) + ' variantas.</p>' +
+        '<p class="sm">MKK+ planuojama, dar neparduodama. Kol kas viskas atrakinta visiems. Planuojama kaina <b>' + esc(C.config.plans.plus.priceA) + '</b>; yra ir ' + esc(C.config.plans.plus.priceB) + ' variantas.</p>' +
         '<div class="coi">' + esc(LX(C.config.plans.gift, 'coi')) + '</div>' +
         '<p class="sm">Turi nuomonę apie kainą? Parašyk per „Parašyti atsiliepimą“ skiltyje Aš.</p>', 'hero');
       return;
     }
     if (a === 'code') {
       var v = ($('#code') ? $('#code').value : '').trim().toUpperCase();
+      /* unreachable in unlock-for-test (no #code input rendered). Before codes return:
+         real code server, no EXO-prefix privilege (bias, critic 2026-09-27). */
       if (/^(EXO|BUR)/.test(v) && v.length >= 4) {
         S.plus = true; S.code = v; save(); route(); toast(C.config.plans.gift.ok);
       } else { toast(C.config.plans.gift.bad); }
@@ -1825,7 +1822,7 @@
     $('#streakBtn').addEventListener('click', function () {
       sheet('🔥 Serija', '<p class="big">' + (P ? P.streak : 0) + '</p><p class="sm">Dienų iš eilės, kai užbaigei tris žingsnius. Skaitymo minutė neskaičiuojama, ji nebūtina.</p>' +
         '<p class="sm muted">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas dalyvavimas atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + ' <span class="meta">ŠALTINIS · Thouin 2020</span></p>' +
-        '<p class="meta">Serija skaičiuojama tik šitame telefone.</p>', 'hero');
+        '<p class="meta">Serija skaičiuojama tik šiame telefone.</p>', 'hero');
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeSheet(); });
     window.addEventListener('hashchange', route);

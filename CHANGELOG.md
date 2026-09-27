@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.4.1-unlock · 2026-09-27 (šaka `unlock-for-test`, NESUJUNGTA su main)
+
+Critic (sprint 2026-09-27, lane A): mokėjimų nėra, bet ekranas rodė užraktus + 3,99 €, o disclaimer'is sakė „Nemokamas". `EXO…/BUR…` kodas atrakindavo be kodų serverio (EXO prefiksas = ExoClass privilegija).
+- **Viskas atrakinta visiems** (`S.plus` priverstinai `true`, ir seniems įrašams su `plus:false`).
+- **MKK+ kortelė: „Planuojama, dar neparduodama"**, kaina rodoma kaip „Planuojama kaina", mygtukas „Užsisakyti" pašalintas.
+- **Kodo laukas paslėptas**, „Išjungti" mygtukas pašalintas; „Paprašyti kodų būreliui" liko.
+- Kalba: „šitame" → „šiame" visur; disclaimer'is ir būrelio eilutė vienu „tu" registru.
+- SW cache `mkk-v0.4.1-unlock`. Testai: 03 perrašytas naujam tikslui, 02 be kodo žingsnio. Playwright 11/11.
+
 ## v0.4.0 · 2026-09-27 (paruošta viešam realaus pasaulio testui)
 
 Tikslas (Kris): „complete that learning-to-learn app that Kris Vas is ready to publish and post on krisvas.lt".

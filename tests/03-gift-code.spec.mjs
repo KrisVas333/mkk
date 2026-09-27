@@ -1,29 +1,36 @@
 import { test, expect } from '@playwright/test';
-import { fresh, onboard, state } from './helpers.mjs';
+import { fresh, onboard, state, STORE_KEY } from './helpers.mjs';
 
-test.describe('provider gift code', () => {
-  test('a valid code unlocks MKK+ and a bad one does not', async ({ page }) => {
+/* unlock-for-test (critic 2026-09-27): no payments and no code server yet, so
+   MKK+ is open to everyone, the code input is hidden, MKK+ is labelled "planned",
+   and the "request codes for your club" contact path stays. Replaces the old
+   EXO/BUR gift-code unlock test. */
+test.describe('everything unlocked while MKK+ is not for sale', () => {
+  test('new user is unlocked, no code input, request-codes path stays', async ({ page }) => {
     await fresh(page);
     await onboard(page, '10-11', 'Testas');
-    await page.goto('/index.html#/as');
-
-    // bad code — stays locked
-    await page.locator('#code').fill('NELABAI');
-    await page.locator('[data-act="code"]').click();
-    await page.waitForTimeout(300);
-    expect((await state(page)).plus).toBeFalsy();
-
-    // good code — unlocks and persists
-    await page.locator('#code').fill('exo2026');   // lower-case on purpose: input is normalised
-    await page.locator('[data-act="code"]').click();
-    await expect.poll(async () => (await state(page)).plus).toBe(true);
-    expect((await state(page)).code).toBe('EXO2026');
-
-    await page.reload();
     expect((await state(page)).plus).toBe(true);
 
-    // and it can be turned off again
-    await page.locator('[data-act="unplus"]').click();
-    await expect.poll(async () => (await state(page)).plus).toBe(false);
+    await page.goto('/index.html#/as');
+    await expect(page.locator('#code')).toHaveCount(0);
+    await expect(page.locator('[data-act="code"]')).toHaveCount(0);
+    await expect(page.locator('[data-act="pay"]')).toHaveCount(0);
+    await expect(page.locator('[data-act="unplus"]')).toHaveCount(0);
+    await expect(page.locator('[data-act="provider-codes"]')).toBeVisible();
+    await expect(page.locator('#view')).toContainText('Planuojama, dar neparduodama');
+    await expect(page.locator('#view')).not.toContainText('Aktyvus');
+  });
+
+  test('an old save with plus:false is unlocked too', async ({ page }) => {
+    await fresh(page);
+    await onboard(page, '8-9', 'Testas');
+    await page.evaluate((k) => {
+      const s = JSON.parse(localStorage.getItem(k)); s.plus = false; localStorage.setItem(k, JSON.stringify(s));
+    }, STORE_KEY);
+    await page.reload();
+    await page.goto('/index.html#/zaidimai');
+    await expect(page.locator('#view')).not.toContainText('🔒');
+    await page.goto('/index.html#/treniruotes');
+    await expect(page.locator('#view')).not.toContainText('🔒');
   });
 });

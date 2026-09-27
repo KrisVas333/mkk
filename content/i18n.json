@@ -10,7 +10,7 @@
     "hdr.profile": "Profilis: perjungti",
     "hdr.themeLight": "Įjungti šviesią temą",
     "hdr.themeDark": "Įjungti tamsią temą",
-    "offline": "Neprisijungta. Viskas veikia: turinys jau šitame telefone.",
+    "offline": "Neprisijungta. Viskas veikia: turinys jau šiame telefone.",
     "close": "Uždaryti",
     "back": "← Atgal",
     "next": "Toliau",
@@ -98,7 +98,7 @@
     "me.about": "Apie",
     "me.method": "Kaip vertinam įrodymus",
     "me.data": "Duomenys",
-    "me.dataNote": "Nulis analitikos, nulis slapukų, nulis serverio. Viskas, ką čia pažymi, lieka šitame telefone.",
+    "me.dataNote": "Nulis analitikos, nulis slapukų, nulis serverio. Viskas, ką čia pažymi, lieka šiame telefone.",
     "me.deleteAll": "Ištrinti viską",
     "ab.author": "Apie autorių",
     "ab.maker": "Apie kūrėją",
@@ -146,10 +146,14 @@
     "fb.body": "Vaiko amžius:\nKas patiko:\nKas sulūžo arba buvo neaišku:\nKą pakeistum:\n",
     "strip.lab": "⚗️ Eksperimentinis prototipas, sukurtas su AI. Gali klysti. Nemokamas.",
     "strip.fb": "Atsiliepimai laukiami",
-    "gift.provider": "Vedate būrelį? Kodų savo vaikams gausite nemokamai, nesvarbu, kokią sistemą naudojate.",
+    "gift.provider": "Vedi būrelį? Kodų savo vaikams gausi nemokamai, nesvarbu, kokią sistemą naudoji.",
     "gift.providerBtn": "✉️ Paprašyti kodų būreliui",
     "gift.providerSubject": "MKK kodai būreliui",
-    "gift.providerBody": "Būrelio pavadinimas:\nMiestas:\nKiek vaikų:\nEl. paštas atsakymui:\n"
+    "gift.providerBody": "Būrelio pavadinimas:\nMiestas:\nKiek vaikų:\nEl. paštas atsakymui:\n",
+    "me.planned": "Planuojama, dar neparduodama",
+    "me.plannedPrice": "Planuojama kaina: ",
+    "me.plannedNote": "Mokėjimų dar nėra. Kol kas viskas atrakinta visiems nemokamai.",
+    "gift.openNow": "Kol MKK+ neparduodamas, viskas atrakinta visiems, kodo nereikia."
   },
   "en": {
     "tab.today": "Today",
@@ -301,6 +305,10 @@
     "gift.provider": "Run a club? Codes for your kids are free, whatever system you use.",
     "gift.providerBtn": "✉️ Ask for club codes",
     "gift.providerSubject": "MKK codes for a club",
-    "gift.providerBody": "Club name:\nCity:\nNumber of kids:\nReply email:\n"
+    "gift.providerBody": "Club name:\nCity:\nNumber of kids:\nReply email:\n",
+    "me.planned": "Planned, not for sale yet",
+    "me.plannedPrice": "Planned price: ",
+    "me.plannedNote": "There are no payments yet. For now everything is unlocked for everyone, free.",
+    "gift.openNow": "Until MKK+ goes on sale, everything is unlocked for everyone, no code needed."
   }
 }

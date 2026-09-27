@@ -8,10 +8,7 @@ test('every game opens and renders its board', async ({ page }) => {
   await fresh(page);
   await onboard(page, '8-9', 'Testas');
 
-  // unlock MKK+ with a provider gift code so the locked games are reachable
-  await page.goto('/index.html#/as');
-  await page.locator('#code').fill('EXO2026');
-  await page.locator('[data-act="code"]').click();
+  // unlock-for-test: MKK+ is open to everyone, no code needed
   await expect.poll(async () => (await page.evaluate(() => JSON.parse(localStorage.getItem('mkk.v2')).plus))).toBe(true);
 
   expect(GAMES.length, 'games.json is not empty').toBeGreaterThan(0);

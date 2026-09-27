@@ -16,11 +16,11 @@
   "Ir pamačiau spragą: Bendrosiose programose (2022) mokėjimas mokytis ĮVARDYTAS, bet, kiek matau iš tyrimų, silpniausiai mokoma dalis yra refleksija ir savo mokymosi strategijų vertinimas. ⚠️ Šį teiginį dar tikrinu su šaltiniais.",
   "MKK treniruoja būtent ją. Trys minutės per dieną."
  ],
- "disclaimerShort": "⚗️ Eksperimentinis prototipas, sukurtas su AI. Gali klysti. Svarbius dalykus pasitikrinkite. Nemokamas. Radote klaidą? Parašykite: krisvas.lt",
+ "disclaimerShort": "⚗️ Eksperimentinis prototipas, sukurtas su AI. Gali klysti. Svarbius dalykus pasitikrink. Nemokamas. Radai klaidą? Parašyk: krisvas.lt",
  "disclaimerFull": [
   "⚗️ Eksperimentinis prototipas",
-  "Šį įrankį sukūriau su dirbtiniu intelektu. Jis nuolat keičiasi, gali klysti, suklastoti detalę arba rodyti pasenusius duomenis, todėl naudokite jį kaip pokalbio pradžią, ne kaip galutinę tiesą.",
-  "Įrankiai nemokami ir kuriami atvirai: noriu, kad augtų VISŲ Lietuvos būrelių ir vaikų mokymosi kokybė, ne tik mano. Radote klaidą, netikslumą ar nesąžiningumą: parašykite, taisau greitai.",
+  "Šį įrankį sukūriau su dirbtiniu intelektu. Jis nuolat keičiasi, gali klysti, suklastoti detalę arba rodyti pasenusius duomenis, todėl naudok jį kaip pokalbio pradžią, ne kaip galutinę tiesą.",
+  "Įrankiai nemokami ir kuriami atvirai: noriu, kad augtų VISŲ Lietuvos būrelių ir vaikų mokymosi kokybė, ne tik mano. Radai klaidą, netikslumą ar nesąžiningumą: parašyk, taisau greitai.",
   "Kristijonas Vasiliauskas · krisvas.lt"
  ],
  "coi": "Kristijonas: ExoClass bendraįkūrėjas ir robotikos būrelio savininkas. Dovana nėra būrelių reitingas.",
@@ -246,10 +246,10 @@
   "s1title": "Kas mokosi?",
   "s1sub": "Nuo amžiaus priklauso podcast'as, praktika ir klausimai. Vėliau pakeisi.",
   "s1name": "Vardas (nebūtina)",
-  "s1namehelp": "Vardas lieka šitame telefone. Niekur nesiunčiamas.",
+  "s1namehelp": "Vardas lieka šiame telefone. Niekur nesiunčiamas.",
   "s2title": "Kada priminti?",
   "s2sub": "Trys minutės prigyja tada, kai turi savo vietą dienoje.",
-  "s2note": "⚠️ Priminimas kol kas tik užsirašo šitame telefone, pranešimų programėlė dar nesiunčia. Sąžiningai sakau iš karto.",
+  "s2note": "⚠️ Priminimas kol kas tik užsirašo šiame telefone, pranešimų programėlė dar nesiunčia. Sąžiningai sakau iš karto.",
   "s2skip": "Praleisti",
   "s3title": "Viskas paruošta",
   "s3sub": "Trys žingsniai. Trys minutės. Tiek.",
