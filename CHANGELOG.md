@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.4.2 → v0.4.4 · 2026-09-27 (sintetinis panelis, 3 raundai, LOKALIAI, push = orchestratorius)
+
+Panelis (SYNTHETIC, fiksuotas promptas): 24 LT tėvai + 20 LT būrelių teikėjų. Tėvai **6.3 → 6.2 → 6.25**, teikėjai **5.65 → 5.65 → 5.4**; ≥9 visais raundais 0 %. 9/10 tikslas nepasiektas.
+- v0.4.2: „Planuojama" žymė neutrali pilka (ne žalia) · nemokamos kortelės tekstas atitinka atrakinimą (37 technikos, 3 žaidimai).
+- v0.4.3: kasdienis priminimas per telefono kalendorių (.ics, RRULE daily, be serverio) · teikėjo pasitikėjimo eilutė prie „Paprašyti kodų".
+- v0.4.4: „Užimta diena: tik 1 minutė" (podcast'as + prisiminimas uždaro dieną) · būrelio nuoroda `?burelis=` su „Dovana nuo būrelio „X“" 1 ekrane; AI juosta ir COI lieka.
+- Playwright 15/15.
+
 ## v0.4.1-unlock · 2026-09-27 (šaka `unlock-for-test`, NESUJUNGTA su main)
 
 Critic (sprint 2026-09-27, lane A): mokėjimų nėra, bet ekranas rodė užraktus + 3,99 €, o disclaimer'is sakė „Nemokamas". `EXO…/BUR…` kodas atrakindavo be kodų serverio (EXO prefiksas = ExoClass privilegija).
