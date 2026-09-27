@@ -1,5 +1,5 @@
 /* MKK service worker v0.4.0 — network-first for content, cache-first for icons/images. */
-var V = 'mkk-v0.4.1-unlock';
+var V = 'mkk-v0.4.2-neutral';
 var SHELL = ['./', './index.html', './404.html', './styles.css', './app.js', './manifest.webmanifest',
   './content/config.json', './content/techniques.json', './content/practices.json',
   './content/library.json', './content/games.json', './content/podcasts.json',

@@ -1222,7 +1222,7 @@
     LXA(cfg.plans.free, 'items').forEach(function (x) { h += '<li>' + esc(x) + '</li>'; });
     h += '</ul></div>';
 
-    h += '<div class="card"><span class="pill">' + esc(t('me.planned')) + '</span>' +
+    h += '<div class="card"><span class="pill planned">' + esc(t('me.planned')) + '</span>' +
       '<p class="lbl">' + esc(LX(cfg.plans.plus, 'name')) + '</p>' +
       '<p class="price">' + esc(t('me.plannedPrice')) + esc(cfg.plans.plus.priceA) + '</p>' +
       '<p class="price2">' + esc(t('me.orB')) + esc(cfg.plans.plus.priceB) + '</p><ul class="plain">';

@@ -145,22 +145,22 @@
  ],
  "plans": {
   "free": {
-   "name": "Nemokama",
+   "name": "Dabar, testo metu",
    "price": "0 €",
    "items": [
     "Kasdienė 3 min treniruotė",
-    "VISI podcast'ai: visada nemokamai",
-    "5 technikos iš bibliotekos",
-    "1 žaidimas",
-    "Visi mitai, būreliai ir metodika: nemokamai"
+    "Visos 37 technikos ir visi mitai",
+    "Visi 3 žaidimai",
+    "Visi podcast'ai: visada nemokamai",
+    "Būreliai ir metodika: nemokamai"
    ],
-   "name_en": "Free",
+   "name_en": "Now, during the test",
    "items_en": [
     "The daily 3-minute session",
-    "ALL podcasts: always free",
-    "5 techniques from the library",
-    "1 game",
-    "All myths, clubs and the method: free"
+    "All 37 techniques and all myths",
+    "All 3 games",
+    "All podcasts: always free",
+    "Clubs and the method: free"
    ]
   },
   "plus": {
