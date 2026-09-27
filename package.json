@@ -1,6 +1,6 @@
 {
   "name": "mkk",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "MKK — Mokymosi Meistrų Klubas: offline-first PWA, kaip mokytis (4–14 m.)",
   "scripts": {
     "test": "playwright test",

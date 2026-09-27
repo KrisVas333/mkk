@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v0.4.0 · 2026-09-27 (paruošta viešam realaus pasaulio testui)
+
+Tikslas (Kris): „complete that learning-to-learn app that Kris Vas is ready to publish and post on krisvas.lt".
+
+### Pataisyta (bug'ai)
+- **Šriftai niekada nesikrovė viešoje svetainėje.** `fonts/fonts.css` rodė į `fonts/fonts/jbm-*.woff2` (404), todėl JetBrains Mono antraštės krito į sistemos šriftą. Kelias pataisytas; `bin/bundle.py` perrašo kelią artefakto build'ui.
+- Lighthouse (lokaliai): 88 · 100 · 100 · 100.
+
+### Nešališkumas ir atsakomybė (bias v0.4)
+- **Atsakomybės juosta 1 ekrano viršuje**, matoma be slinkimo ir be paspaudimo: AI · eksperimentinis · gali klysti · nemokamas · „Atsiliepimai laukiami".
+- **Dovana bet kuriam būreliui dabar turi realų kelią:** mygtukas „Paprašyti kodų būreliui" (laiškas su 4 laukais). COI eilutė toje pačioje kortelėje.
+- Anti-AI tekstų taisyklė: 0 ilgųjų brūkšnių (—) LT ir EN tekstuose.
+
+### Realaus pasaulio testui
+- **„Parašyti atsiliepimą"** (Šiandien apačioje, Aš, 1 ekrano juosta): paruoštas laiškas su 4 klausimais ir versija temoje.
+- **„Pasidalinti su kitu tėvu"**: Web Share, kitaip nuoroda nukopijuojama.
+- Abu eina per **tėvų vartus** (daugybos klausimas), kaip ir išorinės nuorodos.
+- OG/canonical meta + `img/og-1200x630.png` dalinimosi kortelei.
+- Nauji testai: `tests/06-v04-feedback-share-bias.spec.mjs` (5) + `tests/audit/crawl.mjs` (26 maršrutai × 2 pločiai).
+
 ## v0.3.0 — 2026-09-15 (šviesi/tamsi perjungimas · lietuvių+anglų · Tinklaraštis · Apie)
 
 Kris'o žodžiai, pagal kuriuos statyta: *„Add a light theme so you can flip. Make sure that

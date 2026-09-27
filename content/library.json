@@ -49,7 +49,7 @@
    "title": "Make It Stick",
    "author": "Brown, Roediger, McDaniel",
    "who": "Tėvams ir mokytojams",
-   "why": "Prisiminimo, išskirstymo ir maišymo sintezė. Jei skaitysi vieną knygą — šitą.",
+   "why": "Prisiminimo, išskirstymo ir maišymo sintezė. Jei skaitysi vieną knygą, šitą.",
    "lt": "⚠️ lietuviško vertimo neradau"
   },
   {
@@ -63,7 +63,7 @@
    "title": "Kaip veikia smegenys",
    "author": "Dr. Ramunė Dirvanskienė",
    "who": "Tėvams",
-   "why": "Vienintelė lietuvių autorės knyga apie smegenis, kurią radau šiame etape. ⚠️ Nepatikrinau jos įrodymų kokybės — perskaityk pats prieš rekomenduodamas.",
+   "why": "Vienintelė lietuvių autorės knyga apie smegenis, kurią radau šiame etape. ⚠️ Nepatikrinau jos įrodymų kokybės, perskaityk pats prieš rekomenduodamas.",
    "lt": "✅ lietuviška originali"
   },
   {
@@ -84,7 +84,7 @@
   {
    "title": "My Octopus Teacher",
    "who": "Šeimai 6+",
-   "why": "Ne apie mokymosi mokslą — bet parodo smalsumą, iš kurio mokymasis prasideda.",
+   "why": "Ne apie mokymosi mokslą, bet parodo smalsumą, iš kurio mokymasis prasideda.",
    "note": ""
   },
   {
@@ -116,22 +116,22 @@
    "title": "Prisiminimo praktika realioje klasėje",
    "year": "2025",
    "finding": "5 klasė: testas su grįžtamuoju ryšiu 67,0 %, pakartotinis skaitymas 48,6 %. Intervalo keitimas (1 vs 4 dienos) nedavė nieko.",
-   "means": "Prisiminimas — stiprus. Išskirstymas klasėje silpnesnis, nei parduodama.",
+   "means": "Prisiminimas: stiprus. Išskirstymas klasėje silpnesnis, nei parduodama.",
    "ev": "A",
-   "src": "Franzoi ir kt. 2025 — prisiminimas realioje 5 klasėje"
+   "src": "Franzoi ir kt. 2025: prisiminimas realioje 5 klasėje"
   },
   {
    "title": "Smegenų treniruokliai vaikams",
    "year": "2024",
    "finding": "235 vaikai (6–13 m.), 8 savaitės stabdymo treniruočių: pagerėjo tik treniruota užduotis. Nei mokslai, nei smegenų struktūra.",
-   "means": "„Programėlė lavina dėmesį“ — nesąžininga. Ir tai svarbiausias neigiamas radinys visoje MKK.",
+   "means": "„Programėlė lavina dėmesį“: nesąžininga. Ir tai svarbiausias neigiamas radinys visoje MKK.",
    "ev": "X",
    "src": "Nature Neuroscience 2024 RCT (n=235, 6–13 m.)"
   },
   {
    "title": "Prisiminimas darželinukams",
    "year": "2025",
-   "finding": "n=202, 5–6 m.: prisiminimo praktika veikia — bet tik virš pakankamo sėkmės lygio treniruotės metu.",
+   "finding": "n=202, 5–6 m.: prisiminimo praktika veikia, bet tik virš pakankamo sėkmės lygio treniruotės metu.",
    "means": "Per sunkūs klausimai paverčia treniruotę nesėkme. 70–90 % teisingų.",
    "ev": "B",
    "src": "Káldi ir kt. 2025 (n=202, 5–6 m.)"
@@ -147,7 +147,7 @@
   {
    "title": "Ekranai ir mąstymas (8 metų kohorta)",
    "year": "2026",
-   "finding": "Paaugliai, kurių ekrano veikla reikalavo aktyvaus mąstymo, rodė geresnį apdorojimą. Pasyvus naudojimas — ne.",
+   "finding": "Paaugliai, kurių ekrano veikla reikalavo aktyvaus mąstymo, rodė geresnį apdorojimą. Pasyvus naudojimas: ne.",
    "means": "Svarbu ne valandos, o veiklos tipas. ⚠️ Sąsaja, ne priežastis.",
    "ev": "B",
    "src": "Jalanko ir kt. 2026, Pediatric Exercise Science (PANIC kohorta, n=260)"
@@ -156,12 +156,12 @@
    "title": "Telefono buvimas šalia",
    "year": "2017 · 2023",
    "finding": "Originalus tyrimas: telefonas ant stalo mažina darbinę atmintį. 2023 m. meta-analizė: efektas mažesnis ir nepastovesnis.",
-   "means": "Telefonas kitame kambaryje padeda — bet dydis ginčijamas, o su vaikais netirta.",
+   "means": "Telefonas kitame kambaryje padeda, bet dydis ginčijamas, o su vaikais netirta.",
    "ev": "B",
    "src": "Ward ir kt. 2017 · 2023 meta-analizė"
   }
  ],
- "bureliaiIntro": "Abėcėlės tvarka. Nereitinguojame ir nerekomenduojame nė vieno būrelio — čia tik tai, ką kiekviena veikla treniruoja, ir po dvi mažas namų praktikas.",
+ "bureliaiIntro": "Abėcėlės tvarka. Nereitinguojame ir nerekomenduojame nė vieno būrelio: čia tik tai, ką kiekviena veikla treniruoja, ir po dvi mažas namų praktikas.",
  "bureliai": [
   {
    "id": "daile",
@@ -169,25 +169,25 @@
    "label": "Dailė ir amatai",
    "trains": "Ranką, kantrybę ir gebėjimą pagaminti tai, ko dar nėra. Piešimas iš atminties yra tikra atminties technika.",
    "ev": "B",
-   "evNote": "Piešimas kaip mokymosi būdas — vidutiniai įrodymai. „Dailė daro protingesnį“ — ne.",
+   "evNote": "Piešimas kaip mokymosi būdas: vidutiniai įrodymai. „Dailė daro protingesnį“: ne.",
    "home": [
     "Nupiešk iš atminties tai, ką šiandien matei. Tik po to pažiūrėk.",
     "Vienas daiktas, trys skirtingi būdai jį pavaizduoti."
    ],
-   "src": "Fiorella & Mayer 2016 — piešimas kaip generatyvusis mokymasis"
+   "src": "Fiorella & Mayer 2016: piešimas kaip generatyvusis mokymasis"
   },
   {
    "id": "gamta",
    "icon": "🌱",
    "label": "Gamta ir mokslas",
-   "trains": "Klausimo kėlimą ir tikrinimą. Vaikas spėja, paskui patikrina — ir tai yra visas mokslas.",
+   "trains": "Klausimo kėlimą ir tikrinimą. Vaikas spėja, paskui patikrina, ir tai yra visas mokslas.",
    "ev": "B",
-   "evNote": "Tyrinėjimu grįstas mokymasis veikia, kai suaugęs duoda tikslą, o vaikas — žingsnius.",
+   "evNote": "Tyrinėjimu grįstas mokymasis veikia, kai suaugęs duoda tikslą, o vaikas, žingsnius.",
    "home": [
     "Prieš bandymą: „kas, tavo manymu, nutiks?“ Užrašyk spėjimą.",
     "Vienas langas, penkios minutės, penki pastebėjimai."
    ],
-   "src": "Skene ir kt. 2022 META (17 tyrimų, N=3 893) — vadovaujamas žaidimas"
+   "src": "Skene ir kt. 2022 META (17 tyrimų, N=3 893): vadovaujamas žaidimas"
   },
   {
    "id": "kalbos",
@@ -195,23 +195,23 @@
    "label": "Kalbos",
    "trains": "Atmintį ir garsų skyrimą. Žodžių mokymasis yra gryna prisiminimo praktika.",
    "ev": "A",
-   "evNote": "Prisiminimo praktika svetimų žodžių mokymesi — vienas stipriausiai įrodytų dalykų.",
+   "evNote": "Prisiminimo praktika svetimų žodžių mokymesi: vienas stipriausiai įrodytų dalykų.",
    "home": [
     "Penki žodžiai. Uždenk. Pasakyk. Tada tikrink.",
-    "Rytoj paklausk tų pačių penkių — ne šiandien po penkių minučių."
+    "Rytoj paklausk tų pačių penkių, ne šiandien po penkių minučių."
    ],
-   "src": "Dunlosky ir kt. 2013 · Franzoi ir kt. 2025 — prisiminimo praktika"
+   "src": "Dunlosky ir kt. 2013 · Franzoi ir kt. 2025: prisiminimo praktika"
   },
   {
    "id": "muzika",
    "icon": "🎵",
    "label": "Muzika",
-   "trains": "Klausą, ritmą ir kasdienę praktiką. ⚠️ „Muzika daro protingesnį“ — su aktyvia kontroline grupe efektas beveik dingsta (g=0,18 → −0,02; ginčijama).",
+   "trains": "Klausą, ritmą ir kasdienę praktiką. ⚠️ „Muzika daro protingesnį“: su aktyvia kontroline grupe efektas beveik dingsta (g=0,18 → −0,02; ginčijama).",
    "ev": "X",
    "evNote": "Muzika verta dėl muzikos. Perkėlimo į kitus dalykus nežadam.",
    "home": [
-    "Vienas taktas, trys kartojimai lėtai. Greitis — paskutinis.",
-    "Sudainuok tai, ką ką tik grojai — be instrumento."
+    "Vienas taktas, trys kartojimai lėtai. Greitis: paskutinis.",
+    "Sudainuok tai, ką ką tik grojai, be instrumento."
    ],
    "src": "Sala & Gobet 2017/2020 META · ⚠️ Bigand & Tillmann 2021 (ginčija nulį)"
   },
@@ -221,12 +221,12 @@
    "label": "Pasakojimas",
    "trains": "Supratimą ir sekos laikymą galvoje. Lietuvių kalboje vaikai stringa ne prie raidžių, o prie supratimo.",
    "ev": "B",
-   "evNote": "Bendram skaitymui — stiprūs įrodymai. Pačiam pasakojimui atskirai — meta-analizės neradau, todėl ženklelis B, ne A.",
+   "evNote": "Bendram skaitymui: stiprūs įrodymai. Pačiam pasakojimui atskirai: meta-analizės neradau, todėl ženklelis B, ne A.",
    "home": [
     "Perpasakok istoriją trimis sakiniais. Tik trimis.",
-    "„O kas būtų, jei…“ — pakeisk vieną detalę ir sek toliau."
+    "„O kas būtų, jei…“: pakeisk vieną detalę ir sek toliau."
    ],
-   "src": "WWC 2016/2019 — bendras skaitymas (STRONG) · ⚠️ pasakojimui atskiros meta-analizės neradau"
+   "src": "WWC 2016/2019: bendras skaitymas (STRONG) · ⚠️ pasakojimui atskiros meta-analizės neradau"
   },
   {
    "id": "sportas",
@@ -239,7 +239,7 @@
     "Penkios minutės judesio prieš namų darbus.",
     "Žaidimas, kuriame taisyklė apsiverčia po minutės."
    ],
-   "src": "Hillman ir kt. 2014 FITKids RCT (n=221) · ⚠️ Ciria ir kt. 2023 — efektas ties nuliu"
+   "src": "Hillman ir kt. 2014 FITKids RCT (n=221) · ⚠️ Ciria ir kt. 2023: efektas ties nuliu"
   },
   {
    "id": "sokis",
@@ -247,12 +247,12 @@
    "label": "Šokis",
    "trains": "Sekos laikymą kūne ir judesio kartojimą. Kūnas prisimena tai, ko galva dar nespėja.",
    "ev": "C",
-   "evNote": "Judesys ir vykdomoji kontrolė — vidutiniai įrodymai. Šokis atskirai netirtas, todėl ženklelis C. Akademinių pažadų nedarom.",
+   "evNote": "Judesys ir vykdomoji kontrolė: vidutiniai įrodymai. Šokis atskirai netirtas, todėl ženklelis C. Akademinių pažadų nedarom.",
    "home": [
-    "Trys judesiai iš eilės, iš atminties. Rytoj — tie patys.",
+    "Trys judesiai iš eilės, iš atminties. Rytoj: tie patys.",
     "Rodyk seką, vaikas atkartoja atvirkščiai."
    ],
-   "src": "Hillman ir kt. 2014 · Diamond 2013 — judesys ir vykdomoji kontrolė · ⚠️ šokiui atskirai netirta"
+   "src": "Hillman ir kt. 2014 · Diamond 2013: judesys ir vykdomoji kontrolė · ⚠️ šokiui atskirai netirta"
   },
   {
    "id": "technologijos",
@@ -260,32 +260,32 @@
    "label": "Technologijos",
    "trains": "Tai, kas daroma: kodą, robotą, mechanizmą.",
    "ev": "C",
-   "evNote": "⚠️ Sąžiningai: robotika turi vidutinį efektą STEM mokymuisi (g≈0,49), bet toje pačioje meta-analizėje efektas skaičiavimo mąstymui buvo NEREIKŠMINGAS (g=0,079). „Robotika lavina problemų sprendimą“ — neįrodyta. Ir tai mano paties būrelio sritis, todėl sakau garsiai.",
+   "evNote": "⚠️ Sąžiningai: robotika turi vidutinį efektą STEM mokymuisi (g≈0,49), bet toje pačioje meta-analizėje efektas skaičiavimo mąstymui buvo NEREIKŠMINGAS (g=0,079). „Robotika lavina problemų sprendimą“: neįrodyta. Ir tai mano paties būrelio sritis, todėl sakau garsiai.",
    "home": [
-    "Prieš statant — nupiešk seką. Paskui statyk pagal ją.",
+    "Prieš statant: nupiešk seką. Paskui statyk pagal ją.",
     "Kas sugedo? Viena hipotezė, vienas bandymas, tada kita."
    ],
-   "src": "Ouyang & Xu 2024 META (N=2 433) — g≈0,49 STEM · g=0,079 skaičiavimo mąstymui (nereikšminga)"
+   "src": "Ouyang & Xu 2024 META (N=2 433): g≈0,49 STEM · g=0,079 skaičiavimo mąstymui (nereikšminga)"
   }
  ],
- "bureliaiKita": "Kita — parašyk, pridėsim. krisvas.lt",
+ "bureliaiKita": "Kita: parašyk, pridėsim. krisvas.lt",
  "irankiai": [
   {
    "id": "iphone-gray",
    "icon": "📱",
-   "title": "iPhone — pilkas ekranas",
+   "title": "iPhone: pilkas ekranas",
    "steps": [
     "Settings → Accessibility → Display & Text Size → Color Filters → įjungti → Grayscale.",
     "Settings → Accessibility → Accessibility Shortcut → pažymėti Color Filters.",
-    "Tris kartus paspausk šoninį mygtuką — spalvos įsijungia ir išsijungia."
+    "Tris kartus paspausk šoninį mygtuką: spalvos įsijungia ir išsijungia."
    ],
    "ev": "C",
-   "evNote": "Vienas tyrimas: ~38 min/d mažiau ekrano. 2024 m. pakartojimas — silpnesnis. Su vaikais netirta."
+   "evNote": "Vienas tyrimas: ~38 min/d mažiau ekrano. 2024 m. pakartojimas: silpnesnis. Su vaikais netirta."
   },
   {
    "id": "android-gray",
    "icon": "🤖",
-   "title": "Android — pilkas ekranas ir miego režimas",
+   "title": "Android: pilkas ekranas ir miego režimas",
    "steps": [
     "Settings → Digital Wellbeing → Bedtime mode → Bedtime routine.",
     "Nustatyk miego laiką → įjunk Grayscale.",
@@ -297,14 +297,14 @@
   {
    "id": "ipad-ga",
    "icon": "🔒",
-   "title": "iPad — Guided Access",
+   "title": "iPad: Guided Access",
    "steps": [
     "Settings → Accessibility → Guided Access → įjungti, nustatyti kodą.",
     "Atidaryk vieną programėlę → tris kartus šoninis mygtukas → Start.",
     "iPad užrakintas TOJE vienoje programėlėje, kol įvesi kodą."
    ],
    "ev": "C",
-   "evNote": "Trinties įrankis, ne mokymosi technika. Nieko neišmoko — tik nuima vieną blaškymosi šaltinį."
+   "evNote": "Trinties įrankis, ne mokymosi technika. Nieko neišmoko, tik nuima vieną blaškymosi šaltinį."
   },
   {
    "id": "phone-tool",
@@ -325,11 +325,11 @@
    "steps": [
     "macOS: Control Center → Focus → naujas „Namų darbai“ režimas.",
     "Windows: Settings → System → Focus sessions.",
-    "Vienas langas ekrane. Kiti — uždaryti, ne sumažinti."
+    "Vienas langas ekrane. Kiti: uždaryti, ne sumažinti."
    ],
    "ev": "C",
    "evNote": "Trinties įrankis. Suporuok jį su technika: telefonas kitame kambaryje, TADA 60 sekundžių paaiškinimas."
   }
  ],
- "bureliaiIntro_en": "In alphabetical order. We do not rank or recommend any club — this is only what each activity trains, plus two small practices you can do at home."
+ "bureliaiIntro_en": "In alphabetical order. We do not rank or recommend any club: this is only what each activity trains, plus two small practices you can do at home."
 }

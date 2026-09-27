@@ -48,7 +48,7 @@ def main():
     body = slice_between(html, '<!--BUNDLE:BODY-START-->', '<!--BUNDLE:BODY-END-->', 'BODY')
 
     # self-hosted fonts: inline fonts/fonts.css (urls stay relative -> fonts/*.woff2 ship as supporting files)
-    fonts = '<style>' + open(os.path.join(ROOT, 'fonts', 'fonts.css'), encoding='utf-8').read() + '</style>'
+    fonts = '<style>' + open(os.path.join(ROOT, 'fonts', 'fonts.css'), encoding='utf-8').read().replace("url('./jbm-", "url('./fonts/jbm-") + '</style>'
 
     # drop the local <script src="app.js"> — it is inlined after the markup
     body = re.sub(r'<script src="\./?app\.js"></script>', '', body).strip()

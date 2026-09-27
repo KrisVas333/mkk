@@ -276,7 +276,7 @@
       if (!r || r.technique_id !== techId) continue;
       out += '<p class="src lt"><b>' + esc(t('sh.ltSource')) + '</b> · ' +
         (r.url ? '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + '</a>' : esc(r.name)) +
-        (r.note ? ' — ' + esc(r.note) : '') + '</p>';
+        (r.note ? ': ' + esc(r.note) : '') + '</p>';
     }
     return out;
   }
@@ -537,7 +537,7 @@
       '<p id="gateMsg" class="meta" aria-live="polite"></p>' +
       '<div class="row" style="margin-top:12px"><button class="btn" id="gateGo">' + esc(t('gate.btn')) + '</button>' +
       '<button class="btn ghost" id="gateNo">' + esc(t('gate.cancel')) + '</button></div>' +
-      '<p class="xs muted" style="margin-top:12px">' + esc(url) + '</p>', 'hero');
+      (url === 'share' ? '' : '<p class="xs muted" style="margin-top:12px">' + esc(url.split('?')[0]) + '</p>'), 'hero');
     setTimeout(function () { var i = $('#gateIn'); if (i) i.focus(); }, 50);
   }
   document.addEventListener('click', function (ev) {
@@ -547,13 +547,39 @@
     }
     if (ev.target.id === 'gateGo') {
       var v = parseInt(($('#gateIn') || {}).value, 10);
-      if (v === GATE.a * GATE.b) { var u = GATE.url; closeSheet(); window.open(u, '_blank', 'noopener'); }
+      if (v === GATE.a * GATE.b) { var u = GATE.url; closeSheet(); gatePass(u); }
       else { $('#gateMsg').textContent = t('gate.wrong'); $('#gateIn').value = ''; $('#gateIn').focus(); }
     }
     if (ev.target.id === 'gateNo') closeSheet();
   }, true);
 
   function closeSheet() { $('#sheet').hidden = true; $('#scrim').hidden = true; stopReading(); }
+
+  /* ---------- feedback + share (v0.4 real-world test) — both behind the parental gate ---------- */
+  function mailto(subjKey, bodyKey) {
+    var cfg = C.config;
+    return 'mailto:' + (cfg.feedbackEmail || '') + '?subject=' + encodeURIComponent(t(subjKey) + ' · ' + cfg.version) +
+      '&body=' + encodeURIComponent(t(bodyKey));
+  }
+  function feedbackHTML() {
+    return '<div class="card flat fb"><p class="lbl">' + esc(t('fb.title')) + '</p>' +
+      '<p class="sm">' + esc(t('fb.note')) + '</p>' +
+      '<button class="btn ghost sm" data-act="feedback" type="button">' + esc(t('fb.write')) + '</button>' +
+      (C.config.shareButton ? '<button class="btn ghost sm" data-act="share" type="button">' + esc(t('fb.share')) + '</button>' : '') + '</div>';
+  }
+  function doShare() {
+    var url = C.config.canonicalUrl || location.href.split('#')[0];
+    var data = { title: C.config.name + ' · ' + C.config.fullName, text: t('fb.shareText'), url: url };
+    if (navigator.share) { navigator.share(data).catch(function () {}); return; }
+    var done = function () { toast(t('fb.copied')); };
+    try { navigator.clipboard.writeText(t('fb.shareText') + ' ' + url).then(done, function () { toast(url); }); }
+    catch (e) { toast(url); }
+  }
+  function gatePass(u) {
+    if (u === 'share') doShare();
+    else if (/^mailto:/.test(u)) { var m = document.createElement('a'); m.href = u; m.setAttribute('data-gated', 'no'); document.body.appendChild(m); m.click(); m.remove(); }
+    else window.open(u, '_blank', 'noopener');
+  }
 
   function methodSheet() {
     var m = C.config.method, e = C.config.evidence, h = '', k;
@@ -612,6 +638,7 @@
       [1, 2, 3].map(function (n) { return '<i class="' + (n === OB.step ? 'on' : '') + '"></i>'; }).join('') + '</div>';
 
     if (OB.step === 1) {
+      h += '<p class="strip">' + esc(t('strip.lab')) + ' <button class="linkbtn" data-act="feedback" type="button">' + esc(t('strip.fb')) + '</button></p>';
       h += ill('hero', 'ill');
       h += '<span class="lbl">' + esc(C.config.name) + ' · ' + esc(LX(C.config, 'nameNote')) + '</span>';
       h += '<p class="big">' + esc(O('s1title')) + '</p>';
@@ -732,6 +759,7 @@
     });
     h += '</div><p class="xs muted">' + esc(t('today.ambientNote')) + '</p>';
 
+    h += feedbackHTML();
     h += '<p class="foot">' + esc(LX(C.config, 'disclaimerShort')) + '</p>';
     return scr(slug, h);
   }
@@ -884,18 +912,18 @@
   }
   /* the tutorial is guaranteed: blog.json wins, otherwise this hand-written one */
   function tutorialFallback() {
-    var lt = ['Pasirink amžių — nuo jo priklauso podcast’as, praktika ir klausimai.',
+    var lt = ['Pasirink amžių. Nuo jo priklauso podcast’as, praktika ir klausimai.',
       'Kasdien atidaryk „Šiandien“ ir spausk vieną raudoną mygtuką. Viskas telpa į 3 minutes.',
-      'Žingsnis 1 — perklausyk vienos minutės podcast’ą ir pasakyk, ką prisimeni.',
-      'Žingsnis 2 — padaryk dviejų minučių praktiką. Ji kaskart kitokia.',
-      'Žingsnis 3 — atsakyk į vieną varnelės klausimą. Tada diena uždaryta ir 🔥 serija auga.',
-      'Nebūtinas 4 žingsnis — skaitymo minutė. Ji serijos neskaičiuoja, ir taip ir turi būti.'];
-    var en = ['Pick an age band — it decides the podcast, the practice and the questions.',
+      'Žingsnis 1: perklausyk vienos minutės podcast’ą ir pasakyk, ką prisimeni.',
+      'Žingsnis 2: padaryk dviejų minučių praktiką. Ji kaskart kitokia.',
+      'Žingsnis 3: atsakyk į vieną varnelės klausimą. Tada diena uždaryta ir 🔥 serija auga.',
+      'Nebūtinas 4 žingsnis: skaitymo minutė. Ji serijos neskaičiuoja, ir taip ir turi būti.'];
+    var en = ['Pick an age band. It decides the podcast, the practice and the questions.',
       'Open "Today" every day and press the one red button. It all fits into 3 minutes.',
-      'Step 1 — listen to the one-minute podcast and say what you remember.',
-      'Step 2 — do the two-minute practice. It is different every day.',
-      'Step 3 — answer one check question. The day is closed and the 🔥 streak grows.',
-      'Optional step 4 — the reading minute. It never counts towards the streak, on purpose.'];
+      'Step 1: listen to the one-minute podcast and say what you remember.',
+      'Step 2: do the two-minute practice. It is different every day.',
+      'Step 3: answer one check question. The day is closed and the 🔥 streak grows.',
+      'Optional step 4: the reading minute. It never counts towards the streak, on purpose.'];
     var list = isEN() ? en : lt, h = '<div class="item"><h3><span>' + esc(t('bl.tutorial')) + '</span></h3><ol class="plain">', i;
     for (i = 0; i < list.length; i++) h += '<li>' + esc(list[i]) + '</li>';
     return h + '</ol></div>';
@@ -1041,7 +1069,7 @@
     }).sort().reverse().slice(0, 30);
     if (!keys.length) {
       return '<div class="card flat"><div class="empty">' + ill('memory', 'ill') +
-        '<p>Istorija tuščia. Po pirmos treniruotės čia atsiras pirma eilutė — ir nuo tada matysi, ką iš tikrųjų padarei.</p>' +
+        '<p>Istorija tuščia. Po pirmos treniruotės čia atsiras pirma eilutė. Nuo tada matysi, ką iš tikrųjų padarei.</p>' +
         '<a class="btn" href="#/siandien">' + esc(t('today.start')) + '</a></div></div>';
     }
     var h = '<div class="card">';
@@ -1127,7 +1155,7 @@
       '<div class="stat"><div class="v">' + totalSessions() + '</div><div class="k">' + esc(t('me.totalSessions')) + '</div></div>' +
       '<div class="stat"><div class="v">' + totalReading() + '</div><div class="k">' + esc(t('me.readingMin')) + '</div></div>' +
       '</div>' +
-      '<p class="xs muted" style="margin:16px 0 0">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas — atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + ' <span class="meta">ŠALTINIS · Thouin 2020</span></p></div>';
+      '<p class="xs muted" style="margin:16px 0 0">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + ' <span class="meta">ŠALTINIS · Thouin 2020</span></p></div>';
 
     /* profiles */
     h += '<p class="h2">' + esc(t('me.who')) + '</p>';
@@ -1136,7 +1164,7 @@
       for (i = 0; i < cfg.bands.length; i++) if (cfg.bands[i].id === p.band) bb = cfg.bands[i];
       h += '<button class="catrow" style="--tone:' + tone('age-' + p.band) + '" data-act="switch" data-id="' + esc(p.id) + '" type="button" aria-pressed="' + (p.id === S.active) + '">' +
         '<span class="ic">' + illMini('age-' + p.band) + '</span>' +
-        '<span class="tx"><b>' + esc(p.name || (bb ? LX(bb, 'label') : '—')) + '</b><span>' + esc(bb ? LX(bb, 'label') : '') + ' · 🔥 ' + p.streak + '</span></span>' +
+        '<span class="tx"><b>' + esc(p.name || (bb ? LX(bb, 'label') : '·')) + '</b><span>' + esc(bb ? LX(bb, 'label') : '') + ' · 🔥 ' + p.streak + '</span></span>' +
         '<span class="ar">' + (p.id === S.active ? '✓' : '→') + '</span></button>';
     });
     h += '<div class="btnrow"><button class="btn ghost sm" data-act="add-child" type="button">' + esc(t('me.addChild')) + '</button>';
@@ -1204,7 +1232,9 @@
     /* gift */
     h += '<div class="card"><p class="lbl">🎁 ' + esc(LX(cfg.plans.gift, 'title')) + '</p>' +
       '<p class="sm">' + esc(LX(cfg.plans.gift, 'help')) + '</p>' +
-      '<div class="coi">' + esc(LX(cfg.plans.gift, 'coi')) + '</div>';
+      '<div class="coi">' + esc(LX(cfg.plans.gift, 'coi')) + '</div>' +
+      '<p class="sm">' + esc(t('gift.provider')) + '</p>' +
+      '<button class="btn ghost sm" data-act="provider-codes" type="button">' + esc(t('gift.providerBtn')) + '</button><div class="spacer"></div>';
     if (S.plus) {
       h += '<p class="sm"><b>' + esc(t('me.plusActive')) + '</b>' + (S.code ? t('me.code') + esc(S.code) : '') + '</p>' +
         '<button class="btn ghost sm" data-act="unplus" type="button">' + esc(t('me.plusOff')) + '</button>';
@@ -1235,6 +1265,7 @@
 
     /* about — Apie autorių · Apie kūrėją · Kaip tai buvo padaryta · Mokslininkai · Privatumas · Beta */
     h += aboutHTML(cfg);
+    h += feedbackHTML();
 
     h += '<div class="card flat">';
     LXA(cfg, 'disclaimerFull').forEach(function (l, i) { h += '<p class="' + (i === 0 ? 'lbl' : 'xs') + '">' + esc(l) + '</p>'; });
@@ -1251,7 +1282,7 @@
     var pc = podcastFor(P.band), h = '';
     if (!pc) {
       h = '<p class="sm">Šiam amžiui podcast\'as dar rašomas.</p><p class="big">🎙 įrašoma</p>' +
-        '<p class="muted sm">Tuo tarpu žingsnis 2 veikia — pradėk nuo praktikos.</p>';
+        '<p class="muted sm">Tuo tarpu žingsnis 2 veikia, pradėk nuo praktikos.</p>';
     } else {
       h = '<span class="lbl">' + esc(LX(bandObj(), 'label')) + ' · ' + (pc.minutes || 1) + esc(t('sh.minutes')) + '</span>' +
         '<h3 style="font-size:21px">' + esc(pc.title) + '</h3>';
@@ -1263,7 +1294,7 @@
       }
       if (isEN()) h += '<p class="note">' + esc(t('sh.podEnBeta')) + '</p>';
       h += '<hr class="sep"><span class="lbl">' + esc(t('sh.text')) + '</span><p class="sm" style="white-space:pre-line">' + esc(pc.script || '') + '</p>';
-      if (pc.status === 'needs-ear-check') h += '<p class="meta">⚠️ Įrašą dar tikrina Kristijonas — balsas gali skambėti nelygiai.</p>';
+      if (pc.status === 'needs-ear-check') h += '<p class="meta">⚠️ Įrašą dar tikrina Kristijonas, balsas gali skambėti nelygiai.</p>';
     }
     h += '<hr class="sep"><span class="lbl">' + esc(t('sh.recall')) + '</span>' +
       '<p class="xs muted">' + esc(t('sh.recallNote')) + '</p><div class="btnrow">' +
@@ -1339,7 +1370,7 @@
     function intro() {
       var h = '<span class="lbl">Prisiminimo praktika</span>';
       if (repeatAvail) {
-        h += '<p class="sm">Vakar buvai įsiminęs penkis. Patikrinkim, ar liko — tai ir yra išskirstytas kartojimas.</p>' +
+        h += '<p class="sm">Vakar buvai įsiminęs penkis. Patikrinkim, ar liko. Tai ir yra išskirstytas kartojimas.</p>' +
           '<button class="btn" data-g="repeat" type="button">🔁 Vakar dienos patikrinimas</button>' +
           '<button class="btn ghost" data-g="new" type="button">Nauji penki</button>';
       } else {
@@ -1403,11 +1434,11 @@
         h += '<div class="cell ' + cls + '">' + esc(x) + '</div>';
       });
       h += '</div>';
-      h += '<p class="sm">' + (right === 5 ? 'Visi penki. Jei taip bus ir rytoj — laikas sunkesnio lygio: treniruotė veikia, kai pataikai 70–90 %, ne 100 %.' :
-        right === 4 ? 'Geras lygis. Tarp 70 ir 90 % teisingų — ten, kur treniruotė dar yra treniruotė.' :
-          right >= 2 ? 'Normalu. Rytoj tie patys penki bus lengvesni — tai ir yra visa technika.' :
-            'Per sunku. Rytoj bandom vėl — ir tai ne apie gabumus, o apie kartojimą.') + '</p>';
-      if (missed.length) h += '<p class="meta">Nepataikei: ' + esc(missed.join(' · ')) + ' — jie grįš rytoj.</p>';
+      h += '<p class="sm">' + (right === 5 ? 'Visi penki. Jei taip bus ir rytoj, laikas sunkesnio lygio: treniruotė veikia, kai pataikai 70–90 %, ne 100 %.' :
+        right === 4 ? 'Geras lygis. Tarp 70 ir 90 % teisingų, ten, kur treniruotė dar yra treniruotė.' :
+          right >= 2 ? 'Normalu. Rytoj tie patys penki bus lengvesni. Tai ir yra visa technika.' :
+            'Per sunku. Rytoj bandom vėl. Tai ne apie gabumus, o apie kartojimą.') + '</p>';
+      if (missed.length) h += '<p class="meta">Nepataikei: ' + esc(missed.join(' · ')) + '. Jie grįš rytoj.</p>';
       h += '<div class="spacer"></div><button class="btn ghost" data-g="new" type="button">Dar kartą</button>';
       box.innerHTML = h;
     }
@@ -1498,7 +1529,7 @@
       var h = '<span class="lbl">Tema</span><p class="big sm2">' + esc(GM.topic) + '</p>';
       if (phase === 'run') {
         h += '<div class="clock" id="iclk">' + GM.left + '</div><div class="bar"><i id="ibar" style="width:' + ((60 - GM.left) / 60 * 100) + '%"></i></div>' +
-          '<p class="sm muted">Kalbėk garsiai. Be užrašų. Jei sustoji — vis tiek kalbėk.</p>' +
+          '<p class="sm muted">Kalbėk garsiai. Be užrašų. Jei sustoji, vis tiek kalbėk.</p>' +
           '<button class="btn ghost" data-g="stop" type="button">Baigiau</button>';
       } else if (phase === 'rate') {
         h += '<span class="lbl">Kaip sekėsi?</span>';
@@ -1511,7 +1542,7 @@
           '<div class="prac">' + esc(r.tip) + '</div><div class="spacer"></div>' +
           '<button class="btn ghost" data-g="again" type="button">Kita tema</button>';
       } else {
-        h += '<p class="sm muted">60 sekundžių. Aiškini garsiai — žmogui, meškiukui ar sienai. Be užrašų.</p>' +
+        h += '<p class="sm muted">60 sekundžių. Aiškini garsiai: žmogui, meškiukui ar sienai. Be užrašų.</p>' +
           '<button class="btn" data-g="go" type="button">Pradedu</button>' +
           '<button class="btn ghost" data-g="again" type="button">Kita tema</button>';
       }
@@ -1544,7 +1575,7 @@
   }
   function iosSheet() {
     sheet('📲 Pridėti į pradžios ekraną',
-      '<p class="sm">MKK veikia be parduotuvės — įsidedi tiesiai iš naršyklės ir ji atsidaro kaip įprasta programėlė.</p>' +
+      '<p class="sm">MKK veikia be parduotuvės. Įsidedi tiesiai iš naršyklės ir ji atsidaro kaip įprasta programėlė.</p>' +
       '<ol class="plain"><li>Apačioje paspausk <b>Dalintis</b> (kvadratas su rodykle ↑).</li>' +
       '<li>Slink žemyn iki <b>„Į pradžios ekraną“ / „Add to Home Screen“</b>.</li>' +
       '<li>Paspausk <b>Pridėti</b>. Ikona atsiras šalia kitų programėlių.</li></ol>' +
@@ -1559,7 +1590,7 @@
       for (i = 0; i < C.config.bands.length; i++) if (C.config.bands[i].id === p.band) bb = C.config.bands[i];
       h += '<button class="catrow" style="--tone:' + tone('age-' + p.band) + '" data-act="switch" data-id="' + esc(p.id) + '" type="button">' +
         '<span class="ic">' + illMini('age-' + p.band) + '</span>' +
-        '<span class="tx"><b>' + esc(p.name || (bb ? bb.label : '—')) + '</b><span>' + esc(bb ? bb.label : '') + ' · 🔥 ' + p.streak + '</span></span>' +
+        '<span class="tx"><b>' + esc(p.name || (bb ? bb.label : '·')) + '</b><span>' + esc(bb ? bb.label : '') + ' · 🔥 ' + p.streak + '</span></span>' +
         '<span class="ar">' + (p.id === S.active ? '✓' : '→') + '</span></button>';
     });
     h += '<div class="spacer"></div><button class="btn ghost" data-act="add-child" type="button">+ Pridėti vaiką</button>';
@@ -1719,7 +1750,7 @@
       var au = $('#pod'); if (au) { try { au.pause(); } catch (er2) {} }
       markDone('p');
       toast(n >= 3 ? 'Trys iš trijų. Rytoj tas pats klausimas bus dar lengvesnis.' :
-        n === 2 ? 'Du. Normalu — prisiminti sunkiau nei perskaityti, ir būtent todėl tai veikia.' :
+        n === 2 ? 'Du. Normalu. Prisiminti sunkiau nei perskaityti, ir būtent todėl tai veikia.' :
           'Vienas. Tai ne gabumai, o kartojimas. Rytoj vėl.');
       return;
     }
@@ -1734,19 +1765,24 @@
     if (a === 'did-read') {
       stopReading();
       var dd = dayState(); dd.r = 1; save(); closeSheet(); route();
-      toast('📖 Minutė užskaityta. Serijos neskaičiuoja — ir taip ir turi būti.');
+      toast('📖 Minutė užskaityta. Serijos neskaičiuoja, ir taip ir turi būti.');
       return;
     }
     if (a === 'did-pod') { markDone('p'); return; }
     if (a === 'did-prac') { markDone('x'); return; }
     if (a === 'tick') { markDone('c'); return; }
 
+    /* --- feedback / share (gated: kids' app) --- */
+    if (a === 'feedback') { openGate(mailto('fb.subject', 'fb.body')); return; }
+    if (a === 'provider-codes') { openGate(mailto('gift.providerSubject', 'gift.providerBody')); return; }
+    if (a === 'share') { openGate('share'); return; }
+
     /* --- money --- */
     if (a === 'pay') {
-      sheet(t('sh.notYet'), '<p class="sm">Mokėjimų dar nėra — MKK yra prototipas, ne parduotuvė.</p>' +
+      sheet(t('sh.notYet'), '<p class="sm">Mokėjimų dar nėra. MKK yra prototipas, ne parduotuvė.</p>' +
         '<p class="sm">MKK+ kainuos <b>' + esc(C.config.plans.plus.priceA) + '</b>; yra ir ' + esc(C.config.plans.plus.priceB) + ' variantas.</p>' +
         '<div class="coi">' + esc(LX(C.config.plans.gift, 'coi')) + '</div>' +
-        '<p class="sm">Turi nuomonę apie kainą? Parašyk: krisvas.lt</p>', 'hero');
+        '<p class="sm">Turi nuomonę apie kainą? Parašyk per „Parašyti atsiliepimą“ skiltyje Aš.</p>', 'hero');
       return;
     }
     if (a === 'code') {
@@ -1787,7 +1823,7 @@
     $('#scrim').addEventListener('click', closeSheet);
     $('#profileBtn').addEventListener('click', profileSheet);
     $('#streakBtn').addEventListener('click', function () {
-      sheet('🔥 Serija', '<p class="big">' + (P ? P.streak : 0) + '</p><p class="sm">Dienų iš eilės, kai užbaigei tris žingsnius. Skaitymo minutė neskaičiuojama — ji nebūtina.</p>' +
+      sheet('🔥 Serija', '<p class="big">' + (P ? P.streak : 0) + '</p><p class="sm">Dienų iš eilės, kai užbaigei tris žingsnius. Skaitymo minutė neskaičiuojama, ji nebūtina.</p>' +
         '<p class="sm muted">Nepertraukiamas dalyvavimas siejasi su 70 % mažesne tikimybe mesti. Pertrauktas dalyvavimas atrodo taip pat kaip nedalyvavimas. ' + evBadge('B') + ' <span class="meta">ŠALTINIS · Thouin 2020</span></p>' +
         '<p class="meta">Serija skaičiuojama tik šitame telefone.</p>', 'hero');
     });
